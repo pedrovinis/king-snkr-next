@@ -15,7 +15,7 @@ function UserCard({ user }: { user: User }) {
         <div className={styles.imageWrapper}>
           <Image
             alt={user.name}
-            src={'/icon-white-512x512.png'}
+            src={'/user-icon.svg'}
             className={cn(styles.image)}
             loading="lazy"
             title={user.name}
