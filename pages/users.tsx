@@ -23,14 +23,14 @@ export default function UsersPage( {users}: Props) {
     <Page meta={meta}>
       <Layout>
         <Header hero="Users" description={meta.description} />
-        <Link href={'/adduser'}>
+        <Link href={'/adduser'} >
           <a
           className='button'
           style={{
             width:'325px',
           }}
           >
-            Add user
+            Add User
           </a>
         </Link>
         <UsersGrid users={users} />

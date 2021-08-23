@@ -28,7 +28,7 @@ export default function ExpoPage({ products }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetch(`${process.env.BASE_URL}/api/products`)
+  const data = await fetch(`https://pxv.vercel.app/api/products`)
   const products = await data.json()
 
   return {

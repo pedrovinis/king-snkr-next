@@ -28,7 +28,7 @@ export default function SchedulePage({ schedule }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetch(`${process.env.BASE_URL}/api/schedule`)
+  const data = await fetch(`https://pxv.vercel.app/api/schedule`)
   const schedule = await data.json()
 
   return {

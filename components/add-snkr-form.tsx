@@ -54,7 +54,7 @@ export default function AddUserForm() {
             setFormState('loading')
           }}
         >
-          {formState === 'loading' ? <LoadingDots size={4} /> : <>Add SNKR</>}
+          {formState === 'loading' ? <LoadingDots size={6}/> : <>Add SNKR</>}
         </button>
       </div>
     </form>

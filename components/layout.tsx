@@ -18,7 +18,6 @@ type Props = {
 export default function Layout({ children, className, hideNav, layoutStyles }: Props) {
   const router = useRouter();
   const activeRoute = router.asPath;
-
   return (
     <>
       <div className={styles.background}>
@@ -35,10 +34,10 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
             </div>
             <div className={styles.tabs}>
               {NAVIGATION.map(({ name, route }) => (
-                <Link key={name} href={route}>
+                <Link key={name+route} href={route}>
                   <a
                     className={cn(styles.tab, {
-                      [styles['tab-active']]: activeRoute.endsWith(route)
+                      [styles['tab-active']]: activeRoute == route
                     })}
                   >
                     {name}

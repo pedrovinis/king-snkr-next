@@ -17,7 +17,7 @@ export default function UserSection({ user }: Props) {
   return (
     <>
       <Link href="/users">
-        <a className={styles.backlink}>
+        <a className={styles.backlink} >
           <svg
             viewBox="0 0 24 24"
             width="24"
@@ -64,7 +64,7 @@ export default function UserSection({ user }: Props) {
           setDeleteButtonState('loading')
         }}
       >
-        {deleteButtonState === 'loading' ? <LoadingDots size={4} /> : <>Delete User</>}
+        {deleteButtonState === 'loading' ? <LoadingDots size={6} /> : <>Delete User</>}
       </button>
     </>
   )

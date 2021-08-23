@@ -121,7 +121,7 @@ export default function AddUserForm() {
             setFormState('loading')
           }}
         >
-          {formState === 'loading' ? <LoadingDots size={4} /> : <>Add</>}
+          {formState === 'loading' ? <LoadingDots size={6} /> : <>Add</>}
         </button>
       </div>
     </form>

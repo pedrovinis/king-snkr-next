@@ -1,26 +1,24 @@
 import fs from 'fs'
-
 import Page from '@components/page'
 import Layout from '@components/layout'
-
-import { User } from '@lib/types'
-import UserSection from '@components/user-section'
+import { Snkr } from '@lib/types'
+import SnkrSection from '@components/snkr-section'
 import { GetServerSideProps } from 'next'
 
 type Props = {
-  user: User
+  snkr: Snkr
 }
 
-export default function UserPage({ user }: Props) {
+export default function SnkrPage({ snkr }: Props) {
   const meta = {
-    title: `pXv | ${user.name}`,
+    title: `pXv | ${snkr.name}`,
     description: 'META_DESCRIPTION'
   };
 
   return (
     <Page meta={meta}>
       <Layout>
-        <UserSection user={user} />
+        <SnkrSection snkr={snkr} />
       </Layout>
     </Page>
   );
@@ -28,14 +26,14 @@ export default function UserPage({ user }: Props) {
 
 export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) => {
   const slug = params?.slug;
-  const usersFileName = fs.readdirSync('bin/users')
-  const users: User[] = usersFileName.map( (userFileName) => {
+  const snkrsFileName = fs.readdirSync('bin/snkrs')
+  const snkrs: Snkr[] = snkrsFileName.map( (snkrFileName) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return JSON.parse(fs.readFileSync(`bin/users/${userFileName}`, 'utf8'))
+    return JSON.parse(fs.readFileSync(`bin/snkrs/${snkrFileName}`, 'utf8'))
   })
-  const user = users.find((s:any) => s.slug === slug) || null;
+  const snkr = snkrs.find((s:any) => s.slug === slug) || null;
 
-  if (!user) {
+  if (!snkr) {
     return {
       notFound: true
     };
@@ -43,7 +41,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) 
 
   return {
     props: {
-      user: user
+      snkr: snkr
     }
   }
 }

@@ -28,7 +28,7 @@ export default function Jobs({ services }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetch(`${process.env.BASE_URL}/api/services`)
+  const data = await fetch(`https://pxv.vercel.app/api/services`)
   const services = await data.json()
 
   return {

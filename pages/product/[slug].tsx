@@ -26,7 +26,7 @@ export default function SponsorPage({ product }: Props) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug
-  const data = await fetch(`${process.env.BASE_URL}/api/products`)
+  const data = await fetch(`https://pxv.vercel.app/api/products`)
   const products = await data.json()
   const product = products.find((s: any) => s.slug === slug) || null;
 
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await fetch(`${process.env.BASE_URL}/api/products`)
+  const data = await fetch(`https://pxv.vercel.app/api/products`)
   const products = await data.json()
   const slugs = products.map((s: any) => ({ params: { slug: s.slug } }))
 

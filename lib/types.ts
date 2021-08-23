@@ -68,7 +68,7 @@ export type Snkr = {
   name: string
   link: string
   sizes: Size[]
-  release: string
+  release: number
   sale_price: string
 }
 
