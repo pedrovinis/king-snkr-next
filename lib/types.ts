@@ -62,6 +62,22 @@ export type User = {
   authCookie: string
 }
 
+export type Snkr = {
+  id: string
+  slug: string
+  name: string
+  link: string
+  sizes: Size[]
+  release: string
+  sale_price: string
+}
+
+type Size = {
+  value: string
+  id: string
+  code: string
+}
+
 export type SponsorLink = {
   text: string
   url: string

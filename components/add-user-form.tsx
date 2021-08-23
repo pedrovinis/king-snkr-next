@@ -117,6 +117,9 @@ export default function AddUserForm() {
           type="submit"
           className={cn(styles.submit, styles[formState])}
           disabled={formState === 'loading'}
+          onClick={()=>{
+            setFormState('loading')
+          }}
         >
           {formState === 'loading' ? <LoadingDots size={4} /> : <>Add</>}
         </button>

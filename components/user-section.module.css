@@ -29,6 +29,8 @@
 
 .info {
   margin-top: var(--space-8x);
+  margin-left: var(--space-4x);
+  margin-right: var(--space-4x);
   padding: 0 var(--space-4x);
   max-width: 800px;
 }

@@ -13,7 +13,7 @@ type Props = {
 }
 
 
-export default function ExpoPage( {users}: Props) {
+export default function UsersPage( {users}: Props) {
   const meta = {
     title: 'pXv | Users',
     description: 'Here you will find your nike users.'
