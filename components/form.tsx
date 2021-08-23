@@ -133,7 +133,6 @@ export default function Form({ sharePage }: Props) {
             required
           />
         </label>
-        <br />
         <label
           htmlFor="email-input-field"
           className={cn(styles['input-label'], {

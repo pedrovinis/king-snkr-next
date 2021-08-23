@@ -1,13 +1,19 @@
-import Link from 'next/link';
-import { User } from '@lib/types';
-import styles from './user-section.module.css';
-import IconAvatar from './icons/icon-avatar';
+import Link from 'next/link'
+import { User } from '@lib/types'
+import styles from './user-section.module.css'
+import IconAvatar from './icons/icon-avatar'
+import { useState } from 'react'
+import LoadingDots from './loading-dots'
 
 type Props = {
   user: User
 }
 
+type ButtonState = 'default' | 'loading' | 'error'
+
 export default function UserSection({ user }: Props) {
+  const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
+  
   return (
     <>
       <Link href="/users">
@@ -30,7 +36,7 @@ export default function UserSection({ user }: Props) {
       </Link>
       <div key={user.name} className={styles.container}>
         <div style={{ minWidth: '300px' }}>
-          <IconAvatar size={'90%'}/>
+          <IconAvatar size={'250px'}/>
         </div>
         <div className={styles['user-details']}>
           <div>
@@ -45,8 +51,21 @@ export default function UserSection({ user }: Props) {
       </div>
         <div className={styles['info']}>
           <h3 className={styles['warning-header']}>Warning</h3>
-          <p>This user info can be found on 'bin/users'</p>
+          <p>This user info can be found on path: 'bin/users'</p>
         </div>
+
+        <button
+      className='buttonRed'
+      style={{
+        margin: '5px auto',
+        width: '325px',
+        }}
+        onClick={()=> {
+          setDeleteButtonState('loading')
+        }}
+      >
+        {deleteButtonState === 'loading' ? <LoadingDots size={4} /> : <>Delete User</>}
+      </button>
     </>
   )
 }
