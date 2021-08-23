@@ -13,8 +13,12 @@ export const COOKIE = 'user-id'
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
-    name: 'Schedule',
-    route: '/schedule'
+    name: 'Users',
+    route: '/users'
+  },
+  {
+    name: 'SNKRS',
+    route: '/snkrs'
   },
   {
     name: 'SNKRS Schedule',

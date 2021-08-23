@@ -1,7 +1,7 @@
 .container {
   padding: var(--space-4x);
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .backlink {
@@ -27,7 +27,7 @@
   flex: unset;
 }
 
-.talk-details {
+.info {
   margin-top: var(--space-8x);
   padding: 0 var(--space-4x);
   max-width: 800px;
@@ -97,7 +97,7 @@
   color: #fff;
 }
 
-.socials-header {
+.warning-header {
   font-size: 24px;
   letter-spacing: -0.05em;
   color: #fff;
@@ -106,8 +106,4 @@
 
 .disabled {
   cursor: not-allowed;
-}
-
-.githubIcon {
-  margin-left: var(--space-2x);
 }

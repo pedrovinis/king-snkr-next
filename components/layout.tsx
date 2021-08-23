@@ -7,7 +7,6 @@ import styles from './layout.module.css'
 import Logo from './icons/icon-logo'
 import MobileMenu from './mobile-menu'
 import Footer from './footer'
-import Avatar from './icons/icon-avatar'
 
 type Props = {
   children: React.ReactNode;
@@ -39,7 +38,7 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
                 <Link key={name} href={route}>
                   <a
                     className={cn(styles.tab, {
-                      [styles['tab-active']]: activeRoute.startsWith(route)
+                      [styles['tab-active']]: activeRoute.endsWith(route)
                     })}
                   >
                     {name}

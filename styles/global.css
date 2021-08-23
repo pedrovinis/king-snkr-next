@@ -150,3 +150,29 @@ svg circle {
   clip: auto;
 }
 
+.button {
+  width: 100%;
+  height: 56px;
+  margin-top: var(--space-4x);
+  border-radius: var(--space-2x);
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--text-md);
+  letter-spacing: -0.02em;
+  outline: none;
+  font-weight: 500;
+  color: white;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.button:hover,
+.button:focus {
+  background: black;
+  color: var(--brand);
+}

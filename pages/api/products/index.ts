@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (req : NextApiRequest, res: NextApiResponse) => {
-    await fetch('https://jsonplaceholder.typicode.com/todos/1')
     const products = [
     {
         name: 'King SNKR ',

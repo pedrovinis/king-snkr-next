@@ -9,7 +9,7 @@ import styles from './form.module.css'
 import useEmailQueryParam from '@lib/hooks/use-email-query-param'
 import { register } from '@lib/user-api'
 
-type FormState = 'default' | 'loading' | 'error';
+type FormState = 'default' | 'loading' | 'error'
 
 type Props = {
   sharePage?: boolean;
