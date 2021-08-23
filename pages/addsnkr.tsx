@@ -6,8 +6,8 @@ import Header from '@components/header'
 
 export default function Conf() {
   const meta = {
-    title: 'pXv | Add SNKR',
-    description: 'Add a nike SNKR.'
+    title: 'King Snkr | Add SNKR',
+    description: 'Add a nike Snkr.'
   };
 
 

@@ -7,8 +7,8 @@ import IconAvatar from '@components/icons/icon-avatar';
 
 export default function Conf() {
   const meta = {
-    title: 'pXv | Add User',
-    description: 'Add a nike user.'
+    title: 'King Snkr | Add User',
+    description: 'Add a nike User.'
   };
 
 

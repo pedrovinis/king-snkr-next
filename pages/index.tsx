@@ -7,8 +7,8 @@ import ConfContent from '@components/index';
 export default function Conf() {
   const { query } = useRouter();
   const meta = {
-    title: 'pXv | For your life',
-    description: 'META_DESCRIPTION'
+    title: 'King Snkr | pXv',
+    description: 'pXv'
   };
   const ticketNumber = query.ticketNumber?.toString();
   const defaultUserData = {

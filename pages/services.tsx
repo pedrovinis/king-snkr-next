@@ -13,7 +13,7 @@ type Props = {
 
 export default function Jobs({ services }: Props) {
   const meta = {
-    title: 'pXv | Services',
+    title: 'King Snkr | Services',
     description: ''
   };
 

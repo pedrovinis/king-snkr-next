@@ -13,7 +13,7 @@ type Props = {
 
 export default function ExpoPage({ products }: Props) {
   const meta = {
-    title: 'pXv | Products',
+    title: 'King Snkr | Products',
     description: 'Here you are going to find pXv official products to buy.'
   }
 

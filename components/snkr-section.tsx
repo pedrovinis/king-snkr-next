@@ -72,7 +72,7 @@ export default function SnkrSection({ snkr }: Props) {
           })}
         </div>
           <h3 className={styles['warning-header']}>Warning</h3>
-          <p>This snkr info can be found on path: 'bin/snkrs'. Do not try to change snkr using file explorer, it can broke te application.</p>
+          <p>This snkr info can be found on path: 'bin/snkrs'. Do not try to change snkr using file explorer, it can broke application.</p>
         </div>
 
         <button

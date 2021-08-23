@@ -51,7 +51,7 @@ export default function UserSection({ user }: Props) {
       </div>
         <div className={styles['info']}>
           <h3 className={styles['warning-header']}>Warning</h3>
-          <p>This user info can be found on path: 'bin/users'. Do not try to change user using file explorer, it can broke te application.</p>
+          <p>This user info can be found on path: 'bin/users'. Do not try to change user using file explorer, it can broke application.</p>
         </div>
 
         <button

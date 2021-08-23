@@ -13,8 +13,8 @@ type Props = {
 
 export default function UserPage({ user }: Props) {
   const meta = {
-    title: `pXv | ${user.name}`,
-    description: 'META_DESCRIPTION'
+    title: `King Snkr | ${user.name}`,
+    description: 'pXv'
   };
 
   return (

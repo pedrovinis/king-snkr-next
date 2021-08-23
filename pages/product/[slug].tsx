@@ -11,7 +11,7 @@ type Props = {
 
 export default function SponsorPage({ product }: Props) {
   const meta = {
-    title: `pXV | ${product.name}`,
+    title: `King Snkr | ${product.name}`,
     description: 'desc'
   };
 

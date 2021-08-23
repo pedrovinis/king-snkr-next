@@ -15,8 +15,8 @@ type Props = {
 
 export default function UsersPage( {users}: Props) {
   const meta = {
-    title: 'pXv | Users',
-    description: 'Here you will find your nike users.'
+    title: 'King Snkr | Users',
+    description: 'Here you will find your Nike Users.'
   }
 
   return (

@@ -15,7 +15,7 @@ type Props = {
 
 export default function SnkrsPage( {snkrs}: Props) {
   const meta = {
-    title: 'pXv | Snkrs',
+    title: 'King Snkr | Snkrs',
     description: 'Here you will find your nike snkrs.'
   }
 
