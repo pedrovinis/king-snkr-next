@@ -23,7 +23,7 @@ const formatUserData = (userData:any) => {
 
 export default async (req : NextApiRequest, res: NextApiResponse) => {
     let sucess = false
-    const b1 = await new BrowserClass({headless:false})
+    const b1 = await new BrowserClass()
     try {
         const userData = req.body
         const formatedUserData:User = formatUserData(userData)

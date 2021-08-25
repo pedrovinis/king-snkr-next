@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import SnkrClass from '@lib/class/snkr'
 import { getAndFormatSnkrData } from '@lib/utils/snkr_data'
+import Browser from '@lib/class/browser'
 
 const formatSizes:any = (sizes:any) => {
     const sizesValue = Object.keys(sizes)
@@ -16,14 +17,16 @@ const formatSizes:any = (sizes:any) => {
 export default async (req : NextApiRequest, res: NextApiResponse) => {
     let success = false
     const snkr = new SnkrClass()
+    const browser = await new Browser()
     try{
         const snkrDataReq = req.body
         const fSnkrData = JSON.parse(Buffer.from(snkrDataReq, 'base64').toString())
         let link:string = fSnkrData.snkr_link.trim()
         if(!link.startsWith('https://')) link = 'https://'+link
-
-        const snkrData = await getAndFormatSnkrData(link)
         
+        const snkrData = await getAndFormatSnkrData(browser, link)
+        browser.closeBrowser()
+         
         snkr.setSnkrLink(link)
         snkr.setSnkrName(snkrData.snkr_name)
         snkr.setSnkrId(snkrData.snkr_id)
@@ -36,6 +39,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         success = true
     }
     catch {
+        browser.closeBrowser()
         success = false
     }
     
