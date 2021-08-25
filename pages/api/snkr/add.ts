@@ -25,10 +25,10 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         if(!link.startsWith('https://')) link = 'https://'+link
         
         const snkrData = await getAndFormatSnkrData(browser, link)
-        browser.closeBrowser()
-         
+
         snkr.setSnkrLink(link)
         snkr.setSnkrName(snkrData.snkr_name)
+        snkr.setSnkrEdition(snkrData.snkr_edition)
         snkr.setSnkrId(snkrData.snkr_id)
         snkr.setSnkrSlug(snkrData.snkr_id)
         snkr.setSnkrSalePrice(snkrData.snkr_sale_price)
@@ -39,10 +39,11 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         success = true
     }
     catch {
-        browser.closeBrowser()
         success = false
     }
     
+    browser.closeBrowser()
+
     res.status(200).json({
         success:success,
         name: snkr.getSnkrName()

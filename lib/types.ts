@@ -66,6 +66,7 @@ export type Snkr = {
   id: string
   slug: string
   name: string
+  edition: string
   link: string
   sizes: Size[]
   release: number

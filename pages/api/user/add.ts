@@ -47,7 +47,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         sucess = logged
     }
     catch {
-        b1.closeBrowser()
+        await b1.closeBrowser()
         sucess = false
     }
     

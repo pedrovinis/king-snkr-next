@@ -29,10 +29,10 @@ export default function SnkrSection({ snkr }: Props) {
     const data = await res.json()
     if(data.success){
       router.push('/snkrs')
-      toast.success(`"${snkr.name}" succesfull deleted.`)
+      toast.success(`"${snkr.name} ${snkr.edition}" succesfull deleted.`)
     }
     else {
-      toast.error(`Error on deleting "${snkr.name}"'.`)
+      toast.error(`Error on deleting "${snkr.name} ${snkr.edition}"'.`)
     }
   }
 
@@ -45,7 +45,7 @@ export default function SnkrSection({ snkr }: Props) {
         </div>
         <div className={styles['snkr-details']}>
           <div>
-            <h1 className={styles.name}>{snkr.name}</h1>
+            <h1 className={styles.name}>{snkr.name} {snkr.edition}</h1>
             <p className={styles.title} >
               {snkr.id}
             </p>

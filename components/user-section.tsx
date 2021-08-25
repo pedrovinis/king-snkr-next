@@ -42,7 +42,7 @@ export default function UserSection({ user }: Props) {
               {user.email}
             </p>
             <h2 className={styles['bio-header']}>Phone</h2>
-            <p className={styles.bio}>{user.phone}</p>
+            <p className={styles.title}>{user.phone}</p>
           </div>
         </div>
       </div>
