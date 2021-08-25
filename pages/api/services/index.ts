@@ -5,7 +5,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     const services = await data.json()
 
 
-  res.setHeader('Cache-Control', 's-maxage=5, stale-while-revalidate')
+  res.setHeader('Cache-Control', 's-m axage=5, stale-while-revalidate')
   
   res.status(200).json(services)
 }

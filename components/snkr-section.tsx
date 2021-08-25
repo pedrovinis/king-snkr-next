@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Snkr } from '@lib/types'
 import styles from './snkr-section.module.css'
-import IconAvatar from './icons/icon-avatar'
+import IconSnkr from './icons/icon-snkrs'
 import { useState } from 'react'
 import LoadingDots from './loading-dots'
 
@@ -44,7 +44,7 @@ export default function SnkrSection({ snkr }: Props) {
       </Link>
       <div key={snkr.name} className={styles.container}>
         <div style={{ minWidth: '300px' }}>
-          <Image src={"/snkr-icon.svg"} width={250} height={150} />
+          <IconSnkr />
         </div>
         <div className={styles['snkr-details']}>
           <div>

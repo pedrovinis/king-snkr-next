@@ -1,9 +1,7 @@
 import Page from '@components/page'
 import Layout from '@components/layout'
-import Form from '@components/form';
-import AddUserForm from '@components/add-user-form';
-import Header from '@components/header';
-import IconAvatar from '@components/icons/icon-avatar';
+import AddUserForm from '@components/add-user-form'
+import Header from '@components/header'
 
 export default function Conf() {
   const meta = {

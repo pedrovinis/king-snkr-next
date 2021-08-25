@@ -120,6 +120,7 @@ export default function Form({ sharePage }: Props) {
           })}
         >
           <input
+            style={{width:'96%'}}
             className={styles.input}
             autoComplete="off"
             type="email"
@@ -140,6 +141,7 @@ export default function Form({ sharePage }: Props) {
           })}
         >
         <input
+            style={{width:'96%'}}
             className={styles.input}
             autoComplete="off"
             type="password"

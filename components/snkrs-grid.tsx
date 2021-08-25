@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import cn from 'classnames'
+import IconSnkr from '@components/icons/icon-snkrs'
 import { Snkr } from '@lib/types'
 import styles from './snkrs-grid.module.css'
 

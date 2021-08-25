@@ -54,11 +54,11 @@ export type User = {
   name: string
   email: string
   phone: string
+  password: string
   slug: string
-  cardImage: Image
   createdAt: number
   validated: boolean
-  authCookieCreatedAt: number
+  authCookieCreatedAt: string
   authCookie: string
 }
 
@@ -72,7 +72,7 @@ export type Snkr = {
   sale_price: string
 }
 
-type Size = {
+export type Size = {
   value: string
   id: string
   code: string

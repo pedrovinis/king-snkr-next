@@ -3,17 +3,28 @@ import cn from 'classnames'
 import Image from 'next/image'
 import FormError from '@lib/form-error'
 import LoadingDots from './loading-dots'
-import styles from './add-user-form.module.css'
-import useEmailQueryParam from '@lib/hooks/use-email-query-param'
+import styles from './add-snkr-form.module.css'
+
+import { addSnkrFetch } from '@lib/snkr-api'
+import router from 'next/router'
 
 type FormState = 'default' | 'loading' | 'error'
 
 export default function AddUserForm() {
-    const [link, setLink] = useState('')
-    const [errorMsg, setErrorMsg] = useState('')
-    const [errorTryAgain, setErrorTryAgain] = useState(false)
-    const [linkFocused, setLinkFocused] = useState(false)
-    const [formState, setFormState] = useState<FormState>('default')
+  const [link, setLink] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
+  const [errorTryAgain, setErrorTryAgain] = useState(false)
+  const [linkFocused, setLinkFocused] = useState(false)
+  const [formState, setFormState] = useState<FormState>('default')
+
+  const handleDeleteRes = async(res:any) => {
+    const data = await res.json()
+    if(data.success) {
+      router.push('/snkrs')
+      alert('Snkr succesful added.')
+    }
+    else alert('Error on add Snkr. Please try again.')
+  }
 
   return (
     <form className={styles.form}>
@@ -33,6 +44,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            style={{width:'96%'}}
             className={styles.input}
             autoComplete="off"
             type="link"
@@ -50,8 +62,11 @@ export default function AddUserForm() {
           type="submit"
           className={cn(styles.submit, styles[formState])}
           disabled={formState === 'loading'}
-          onClick={()=>{
+          onClick={async()=>{
             setFormState('loading')
+            const res = await addSnkrFetch(link)
+            await handleDeleteRes(res)
+            setFormState('default')
           }}
         >
           {formState === 'loading' ? <LoadingDots size={6}/> : <>Add SNKR</>}

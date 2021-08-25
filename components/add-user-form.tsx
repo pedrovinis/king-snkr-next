@@ -5,21 +5,34 @@ import LoadingDots from './loading-dots'
 import styles from './add-user-form.module.css'
 import useEmailQueryParam from '@lib/hooks/use-email-query-param'
 import IconAvatar from './icons/icon-avatar'
+import { addUserFetch } from '@lib/user-api'
+import router from 'next/router'
 
 type FormState = 'default' | 'loading' | 'error'
 
 export default function AddUserForm() {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [password, setPassword] = useState('')
-    const [errorMsg, setErrorMsg] = useState('')
-    const [errorTryAgain, setErrorTryAgain] = useState(false)
-    const [nameFocused, setNameFocused] = useState(false)
-    const [emailFocused, setEmailFocused] = useState(false)
-    const [phoneFocused, setPhoneFocused] = useState(false)
-    const [passwordFocused, setPasswordFocused] = useState(false)
-    const [formState, setFormState] = useState<FormState>('default')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
+  const [errorTryAgain, setErrorTryAgain] = useState(false)
+  const [nameFocused, setNameFocused] = useState(false)
+  const [emailFocused, setEmailFocused] = useState(false)
+  const [phoneFocused, setPhoneFocused] = useState(false)
+  const [passwordFocused, setPasswordFocused] = useState(false)
+  const [formState, setFormState] = useState<FormState>('default')
+
+  const handleResponse = async(res:Request) => {
+    const data = await res.json()
+    if(data.success){
+      router.push('/users')
+      alert('User succesfull added.')
+    }
+    else {
+      alert('Error, verify your credentials and try again.')
+    }
+  }
 
   return (
     <form className={styles.form}>
@@ -39,6 +52,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            style={{width:'96%'}}
             className={styles.input}
             autoComplete="off"
             type="name"
@@ -60,6 +74,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            style={{width:'96%'}}
             className={styles.input}
             autoComplete="off"
             type="email"
@@ -80,6 +95,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            style={{width:'96%'}}
             className={styles.input}
             autoComplete="off"
             type="phone"
@@ -100,6 +116,7 @@ export default function AddUserForm() {
           })}
         >
         <input
+            style={{width:'96%'}}
             className={styles.input}
             autoComplete="off"
             type="password"
@@ -116,9 +133,12 @@ export default function AddUserForm() {
         <button
           type="submit"
           className={cn(styles.submit, styles[formState])}
-          disabled={formState === 'loading'}
-          onClick={()=>{
+          disabled={formState === 'loading' }
+          onClick={async ()=>{
             setFormState('loading')
+            const res:any = await addUserFetch({name:name, email:email, phone:phone, password:password})
+            await handleResponse(res)
+            setFormState('default')
           }}
         >
           {formState === 'loading' ? <LoadingDots size={6} /> : <>Add</>}

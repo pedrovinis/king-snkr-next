@@ -4,6 +4,8 @@ import styles from './user-section.module.css'
 import IconAvatar from './icons/icon-avatar'
 import { useState } from 'react'
 import LoadingDots from './loading-dots'
+import { deleteUserFetch } from '@lib/user-api'
+import router from 'next/router'
 
 type Props = {
   user: User
@@ -14,6 +16,17 @@ type ButtonState = 'default' | 'loading' | 'error'
 export default function UserSection({ user }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
   
+  const handleDeleteResponse = async(res:Request) => {
+    const data = await res.json()
+    if(data.sucess) {
+      router.push('/users')
+      alert('User successful deleted.')
+    }
+    else {
+      alert('Error on delete user.')
+    }
+  }
+
   return (
     <>
       <Link href="/users">
@@ -60,8 +73,11 @@ export default function UserSection({ user }: Props) {
         margin: '5px auto',
         width: '325px',
         }}
-        onClick={()=> {
+        onClick={async()=> {
           setDeleteButtonState('loading')
+          const res:any = await deleteUserFetch(user)
+          await handleDeleteResponse(res)
+          setDeleteButtonState('default')
         }}
       >
         {deleteButtonState === 'loading' ? <LoadingDots size={6} /> : <>Delete User</>}

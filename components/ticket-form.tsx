@@ -9,7 +9,6 @@ import useConfData from '@lib/hooks/use-conf-data'
 import LoadingDots from './loading-dots'
 import formStyles from './form.module.css'
 import ticketFormStyles from './ticket-form.module.css'
-import { saveGithubToken } from '@lib/user-api'
 import { GitHubOAuthData } from '@lib/types'
 
 type FormState = 'default' | 'loading' | 'error';
