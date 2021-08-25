@@ -1,0 +1,27 @@
+.backlink {
+    color: var(--secondary-color);
+    padding: var(--space-8x) var(--space-4x) var(--space-4x) var(--space-4x);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    }
+    
+    .backlink > svg {
+        margin-right: var(--space-2x);
+    }
+    
+    .backlink:hover {
+        color: #fff;
+    }
+
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row;
+      padding: var(--space-8x);
+    }
+  
+    .backlink {
+      padding: var(--space-8x);
+      padding-bottom: 0;
+    }
+  }

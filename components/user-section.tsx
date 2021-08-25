@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { User } from '@lib/types'
 import styles from './user-section.module.css'
 import IconAvatar from './icons/icon-avatar'
@@ -6,6 +5,7 @@ import { useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteUserFetch } from '@lib/user-api'
 import router from 'next/router'
+import BackLink from './backLink'
 
 type Props = {
   user: User
@@ -16,37 +16,20 @@ type ButtonState = 'default' | 'loading' | 'error'
 export default function UserSection({ user }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
   
-  const handleDeleteResponse = async(res:Request) => {
+  const handleDeleteResponse = async(res:Response) => {
     const data = await res.json()
-    if(data.sucess) {
+    if(data.success) {
       router.push('/users')
-      alert('User successful deleted.')
+      alert(`"${user.name}" successful deleted.`)
     }
     else {
-      alert('Error on delete user.')
+      alert(`Error on delete "${user.name}".`)
     }
   }
 
   return (
     <>
-      <Link href="/users">
-        <a className={styles.backlink} >
-          <svg
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-            shapeRendering="geometricPrecision"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-          Back to Users
-        </a>
-      </Link>
+      <BackLink text={"Back to Users"} href={'/users'}/>
       <div key={user.name} className={styles.container}>
         <div style={{ minWidth: '300px' }}>
           <IconAvatar size={'250px'}/>

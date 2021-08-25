@@ -1,10 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-/**
- * If `paramName` exists in query string, then call `setEmail()` with the value
- * and delete it from the URL.
- */
 export default function useEmailQueryParam(
   paramName: string,
   setEmail: (email: string) => unknown

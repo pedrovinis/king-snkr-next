@@ -8,10 +8,10 @@ import { User } from '@lib/types'
 const formatUserData = (userData:any) => {
     const fUserData = JSON.parse(Buffer.from(userData, 'base64').toString())
     return {
-        name: fUserData.name,
-        slug: fUserData.name,
-        email: fUserData.email,
-        phone: fUserData.phone,
+        name: fUserData.name.trim(),
+        slug: fUserData.name.trim(),
+        email: fUserData.email.trim(),
+        phone: fUserData.phone.trim(),
         password: fUserData.password,
         //@ts-ignore
         createdAt: parseInt(new Date().getTime() / 1000),
@@ -50,9 +50,6 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     catch {
         sucess = false
     }
-   
-
-    res.setHeader('Cache-Control', 's-maxage=5, stale-while-revalidate')
     
     res.status(200).json({success:sucess})
 }

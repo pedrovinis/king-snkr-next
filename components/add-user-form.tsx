@@ -23,11 +23,11 @@ export default function AddUserForm() {
   const [passwordFocused, setPasswordFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
 
-  const handleResponse = async(res:Request) => {
+  const handleResponse = async(res:Response) => {
     const data = await res.json()
     if(data.success){
       router.push('/users')
-      alert('User succesfull added.')
+      alert(`"${name}" succesfull added.`)
     }
     else {
       alert('Error, verify your credentials and try again.')
@@ -35,7 +35,15 @@ export default function AddUserForm() {
   }
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form}
+    onSubmit={async e =>{
+      e.preventDefault()
+      setFormState('loading')
+      const res:any = await addUserFetch({name:name, email:email, phone:phone, password:password})
+      await handleResponse(res)
+      setFormState('default')
+    }}
+    >
       <div className={styles['form-row']}>
       <div style={{
         display: "flex",
@@ -52,8 +60,11 @@ export default function AddUserForm() {
           })}
         >
           <input
+            minLength={1}
+            maxLength={20}
             style={{width:'96%'}}
             className={styles.input}
+            disabled={formState === 'loading' }
             autoComplete="off"
             type="name"
             id="name-input-field"
@@ -76,11 +87,12 @@ export default function AddUserForm() {
           <input
             style={{width:'96%'}}
             className={styles.input}
+            disabled={formState === 'loading' }
             autoComplete="off"
             type="email"
             id="email-input-field"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value.trim())}
             onFocus={() => setEmailFocused(true)}
             onBlur={() => setEmailFocused(false)}
             placeholder="Enter your Nike email"
@@ -97,8 +109,9 @@ export default function AddUserForm() {
           <input
             style={{width:'96%'}}
             className={styles.input}
+            disabled={formState === 'loading' }
             autoComplete="off"
-            type="phone"
+            type="tel"
             id="phone-input-field"
             value={phone}
             onChange={e => setPhone(e.target.value)}
@@ -112,11 +125,12 @@ export default function AddUserForm() {
         <label
           htmlFor="email-input-field"
           className={cn(styles['input-label'], {
-            [styles.focused]: passwordFocused
+            [styles.focused]: passwordFocused,
           })}
         >
         <input
             style={{width:'96%'}}
+            disabled={formState === 'loading' }
             className={styles.input}
             autoComplete="off"
             type="password"
@@ -134,12 +148,6 @@ export default function AddUserForm() {
           type="submit"
           className={cn(styles.submit, styles[formState])}
           disabled={formState === 'loading' }
-          onClick={async ()=>{
-            setFormState('loading')
-            const res:any = await addUserFetch({name:name, email:email, phone:phone, password:password})
-            await handleResponse(res)
-            setFormState('default')
-          }}
         >
           {formState === 'loading' ? <LoadingDots size={6} /> : <>Add</>}
         </button>

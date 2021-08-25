@@ -137,7 +137,7 @@
 .submit.default:disabled:hover,
 .submit.default:disabled:focus {
   cursor: default;
-  background: var(--gray);
+  background: red;
   border-color: var(--gray);
   color: #fff;
   justify-content: flex-start;

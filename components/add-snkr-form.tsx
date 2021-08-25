@@ -46,6 +46,7 @@ export default function AddUserForm() {
           <input
             style={{width:'96%'}}
             className={styles.input}
+            disabled={formState === 'loading' }
             autoComplete="off"
             type="link"
             id="link-input-field"

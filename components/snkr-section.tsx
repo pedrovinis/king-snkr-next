@@ -1,10 +1,11 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import { Snkr } from '@lib/types'
 import styles from './snkr-section.module.css'
 import IconSnkr from './icons/icon-snkrs'
 import { useState } from 'react'
 import LoadingDots from './loading-dots'
+import { deleteSnkrFetch } from '@lib/snkr-api'
+import router from 'next/router'
+import BackLink from './backLink'
 
 type Props = {
   snkr: Snkr
@@ -15,33 +16,27 @@ type ButtonState = 'default' | 'loading' | 'error'
 export default function SnkrSection({ snkr }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
 
-  const formatRelease = (release:number) => {
-    if(release < new Date().getTime()/1000) return 'Released'
-    const timeStamp = new Date(release * 1000)
-    const formatedDate = timeStamp.toLocaleString('pt-BR')
-    return formatedDate
-}
+    const formatRelease = (release:number) => {
+      if(release < new Date().getTime()/1000) return 'Released'
+      const timeStamp = new Date(release * 1000)
+      const formatedDate = timeStamp.toLocaleString('pt-BR')
+      return formatedDate
+  }
   
+  const handleDeleteSnkrRes = async(res:Response) => {
+    const data = await res.json()
+    if(data.success){
+      router.push('/snkrs')
+      alert(`"${snkr.name}" succesfull deleted.`)
+    }
+    else {
+      alert(`Error on deleting "${snkr.name}"'.`)
+    }
+  }
+
   return (
     <>
-      <Link href="/snkrs">
-        <a className={styles.backlink} >
-          <svg
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-            shapeRendering="geometricPrecision"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-          Back to Snkrs
-        </a>
-      </Link>
+      <BackLink text={"Back to SNKRS"} href={'/snkrs'}/>
       <div key={snkr.name} className={styles.container}>
         <div style={{ minWidth: '300px' }}>
           <IconSnkr />
@@ -67,7 +62,7 @@ export default function SnkrSection({ snkr }: Props) {
         <div className={styles['info']}>
         <h3 className={styles['warning-header']}>Sizes</h3>
         <div style={{paddingBottom:'1rem'}}>
-          {snkr.sizes.map( size => {
+          {snkr.sizes.sort((a:any,b:any) => parseFloat(a.value) - parseFloat(b.value)).map( size => {
             return <a className="button" id={styles.size}> {size.value} </a>
           })}
         </div>
@@ -81,8 +76,11 @@ export default function SnkrSection({ snkr }: Props) {
         margin: '5px auto',
         width: '325px',
         }}
-        onClick={()=> {
+        onClick={async()=> {
           setDeleteButtonState('loading')
+          const res = await deleteSnkrFetch(snkr)
+          await handleDeleteSnkrRes(res)
+          setDeleteButtonState('default')
         }}
       >
         {deleteButtonState === 'loading' ? <LoadingDots size={6} /> : <>Delete Snkr</>}

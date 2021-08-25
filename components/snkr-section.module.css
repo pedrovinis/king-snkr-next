@@ -4,22 +4,6 @@
   flex-direction: column;
 }
 
-.backlink {
-  color: var(--secondary-color);
-  padding: var(--space-8x) var(--space-4x) var(--space-4x) var(--space-4x);
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-}
-
-.backlink > svg {
-  margin-right: var(--space-2x);
-}
-
-.backlink:hover {
-  color: #fff;
-}
-
 .speaker-details {
   padding: var(--space-4x) 0;
   display: flex;

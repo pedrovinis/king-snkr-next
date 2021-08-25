@@ -15,11 +15,11 @@ const formatSizes:any = (sizes:any) => {
 }
 export default async (req : NextApiRequest, res: NextApiResponse) => {
     let success = false
-
     try{
         const snkrDataReq = req.body
         const fSnkrData = JSON.parse(Buffer.from(snkrDataReq, 'base64').toString())
-        const link = fSnkrData.snkr_link
+        let link:string = fSnkrData.snkr_link.trim()
+        if(!link.startsWith('https://')) link = 'https://'+link
 
         const snkr = new SnkrClass()
         const snkrData = await getAndFormatSnkrData(link)
@@ -38,8 +38,6 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     catch {
         success = false
     }
-
-    res.setHeader('Cache-Control', 's-maxage=5, stale-while-revalidate')
     
     res.status(200).json({success:success})
 }
