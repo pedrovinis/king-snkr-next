@@ -13,6 +13,7 @@ const formatUserData = (userData:any) => {
         email: fUserData.email,
         phone: fUserData.phone,
         password: fUserData.password,
+        //@ts-ignore
         createdAt: parseInt(new Date().getTime() / 1000),
         validated: false,
         authCookieCreatedAt: 'none',
