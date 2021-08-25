@@ -6,7 +6,7 @@ const createWindow = () => {
     const mainWindow = new BrowserWindow()
     mainWindow.setMenu(null)
 
-    void mainWindow.loadURL('https://localhost:3000/')
+    void mainWindow.loadURL('http://localhost:3000/')
 }
 
 app.on('ready', createWindow)

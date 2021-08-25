@@ -23,7 +23,6 @@ const formatUserData = (userData:any) => {
 
 export default async (req : NextApiRequest, res: NextApiResponse) => {
     let sucess = false
-
     try {
         const userData = req.body
         const formatedUserData:User = formatUserData(userData)
@@ -38,8 +37,9 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
 
         const b1 = await new BrowserClass()
         
-        await NikeLogin(user)
+        await NikeLogin(b1, user)
         const logged = await verifyLogged(b1)
+
         if(logged) {
             user.setNikePassword('SECRET')
             user.saveConfigs()
@@ -50,6 +50,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     catch {
         sucess = false
     }
+   
 
     res.setHeader('Cache-Control', 's-maxage=5, stale-while-revalidate')
     
