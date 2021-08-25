@@ -6,6 +6,7 @@ import LoadingDots from './loading-dots'
 import { deleteUserFetch } from '@lib/user-api'
 import router from 'next/router'
 import BackLink from './backLink'
+import { toast } from 'react-toastify'
 
 type Props = {
   user: User
@@ -20,10 +21,10 @@ export default function UserSection({ user }: Props) {
     const data = await res.json()
     if(data.success) {
       router.push('/users')
-      alert(`"${user.name}" successful deleted.`)
+      toast.success(`"${user.name}" successful deleted.`)
     }
     else {
-      alert(`Error on delete "${user.name}".`)
+      toast.error(`Error on delete "${user.name}".`)
     }
   }
 

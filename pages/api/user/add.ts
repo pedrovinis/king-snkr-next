@@ -23,6 +23,7 @@ const formatUserData = (userData:any) => {
 
 export default async (req : NextApiRequest, res: NextApiResponse) => {
     let sucess = false
+    const b1 = await new BrowserClass({headless:false})
     try {
         const userData = req.body
         const formatedUserData:User = formatUserData(userData)
@@ -35,8 +36,6 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         user.setNikePhone(formatedUserData.phone)
         user.setCreatedAt(formatedUserData.createdAt)
 
-        const b1 = await new BrowserClass()
-        
         await NikeLogin(b1, user)
         const logged = await verifyLogged(b1)
 
@@ -44,10 +43,11 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
             user.setNikePassword('SECRET')
             user.saveConfigs()
         }
-        
+        await b1.closeBrowser()
         sucess = logged
     }
     catch {
+        b1.closeBrowser()
         sucess = false
     }
     

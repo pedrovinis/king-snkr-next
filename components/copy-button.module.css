@@ -1,0 +1,47 @@
+.copyButton {
+    width: 5rem;
+    height: 2rem;
+    margin-top: var(--space-4x);
+    border-radius: var(--space-2x);
+    border: 1px solid white;
+    background: black;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--text-md);
+    letter-spacing: -0.02em;
+    outline: none;
+    font-weight: 500;
+    color: white;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1rem;
+  }
+  
+  .copyButton:hover,
+  .copyButton:focus {
+    background: white;
+    color: black;
+  }
+
+  .copied{
+    width: 5rem;
+    height: 2rem;
+    margin-top: var(--space-4x);
+    border-radius: var(--space-2x);
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--text-md);
+    letter-spacing: -0.02em;
+    outline: none;
+    font-weight: 500;
+    color: black;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1rem;
+  }

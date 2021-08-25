@@ -7,6 +7,7 @@ import styles from './add-snkr-form.module.css'
 
 import { addSnkrFetch } from '@lib/snkr-api'
 import router from 'next/router'
+import { toast } from 'react-toastify'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -21,9 +22,9 @@ export default function AddUserForm() {
     const data = await res.json()
     if(data.success) {
       router.push('/snkrs')
-      alert('Snkr succesful added.')
+      toast.success(`${data.name} successful added.`)
     }
-    else alert('Error on add Snkr. Please try again.')
+    else toast.error('Error on add Snkr. Please try again.')
   }
 
   return (
@@ -54,8 +55,8 @@ export default function AddUserForm() {
             onChange={e => setLink(e.target.value)}
             onFocus={() => setLinkFocused(true)}
             onBlur={() => setLinkFocused(false)}
-            placeholder="Enter SNKR link"
-            aria-label="Enter SNKR link"
+            placeholder="https://www.nike.com.br/mysnkrlink"
+            aria-label="Enter a SNKR link"
             required
           />
         </label>

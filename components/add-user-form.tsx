@@ -7,6 +7,7 @@ import useEmailQueryParam from '@lib/hooks/use-email-query-param'
 import IconAvatar from './icons/icon-avatar'
 import { addUserFetch } from '@lib/user-api'
 import router from 'next/router'
+import { toast } from 'react-toastify'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -27,10 +28,10 @@ export default function AddUserForm() {
     const data = await res.json()
     if(data.success){
       router.push('/users')
-      alert(`"${name}" succesfull added.`)
+      toast.success(`"${name}" succesfull added.`)
     }
     else {
-      alert('Error, verify your credentials and try again.')
+      toast.error('Error, verify your credentials and try again.')
     }
   }
 

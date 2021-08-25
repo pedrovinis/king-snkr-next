@@ -6,6 +6,8 @@ import LoadingDots from './loading-dots'
 import { deleteSnkrFetch } from '@lib/snkr-api'
 import router from 'next/router'
 import BackLink from './backLink'
+import CopyButton from './copy-button'
+import { toast } from 'react-toastify'
 
 type Props = {
   snkr: Snkr
@@ -27,10 +29,10 @@ export default function SnkrSection({ snkr }: Props) {
     const data = await res.json()
     if(data.success){
       router.push('/snkrs')
-      alert(`"${snkr.name}" succesfull deleted.`)
+      toast.success(`"${snkr.name}" succesfull deleted.`)
     }
     else {
-      alert(`Error on deleting "${snkr.name}"'.`)
+      toast.error(`Error on deleting "${snkr.name}"'.`)
     }
   }
 
@@ -48,13 +50,14 @@ export default function SnkrSection({ snkr }: Props) {
               {snkr.id}
             </p>
             <h2 className={styles['bio-header']}>Sale Price</h2>
-            <p className={styles.bio}>R$ {snkr.sale_price}</p>
+            <p className={styles.title}>R$ {snkr.sale_price}</p>
 
             <h2 className={styles['bio-header']}>Release</h2>
-            <p className={styles.bio}>{formatRelease(snkr.release)}</p>
+            <p className={styles.title}>{formatRelease(snkr.release)}</p>
 
             <h2 className={styles['bio-header']}>Link</h2>
-            <p className={styles.bio} >{snkr.link}</p>
+            <p className={styles.bio}>{snkr.link} <CopyButton value={snkr.link}/> </p>
+           
 
           </div>
         </div>
@@ -70,7 +73,7 @@ export default function SnkrSection({ snkr }: Props) {
           <p>This snkr info can be found on path: 'bin/snkrs'. Do not try to change snkr using file explorer, it can broke application.</p>
         </div>
 
-        <button
+      <button
       className='buttonRed'
       style={{
         margin: '5px auto',

@@ -15,13 +15,13 @@ const formatSizes:any = (sizes:any) => {
 }
 export default async (req : NextApiRequest, res: NextApiResponse) => {
     let success = false
+    const snkr = new SnkrClass()
     try{
         const snkrDataReq = req.body
         const fSnkrData = JSON.parse(Buffer.from(snkrDataReq, 'base64').toString())
         let link:string = fSnkrData.snkr_link.trim()
         if(!link.startsWith('https://')) link = 'https://'+link
 
-        const snkr = new SnkrClass()
         const snkrData = await getAndFormatSnkrData(link)
         
         snkr.setSnkrLink(link)
@@ -39,5 +39,8 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         success = false
     }
     
-    res.status(200).json({success:success})
+    res.status(200).json({
+        success:success,
+        name: snkr.getSnkrName()
+    })
 }
