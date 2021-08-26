@@ -49,7 +49,7 @@ export default function SnkrSection({ snkr }: Props) {
       <BackLink text={"Back to SNKRS"} href={'/snkrs'}/>
       <div key={snkr.name} className={styles.container}>
         <div style={{ minWidth: '300px' }}>
-          <IconSnkr />
+          <IconSnkr snkrName={snkr.name}/>
         </div>
         <div className={styles['snkr-details']}>
           <div>

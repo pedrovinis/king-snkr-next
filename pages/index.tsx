@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
+import Image from 'next/image'
 
 import Page from '@components/page';
 import ConfContent from '@components/index';

@@ -27,13 +27,13 @@ export default function ScheduleCard({ snkr, showTime }: Props) {
 
   useEffect(() => {
     const now = Date.now()
-    setReleased(now > snkr.release*1000)
+    setReleased(now >snkr.release*1000)
     setStartTime(`${formatDate(start)}`)
   }, []);
 
   return (
     <div key={title} className={styles.talk}>
-      {showTime && <p className={styles.time}>{start || <>&nbsp;</>}</p>}
+      {showTime && <p className={styles.time}>{isReleased? <>Released</> : <>{start}</>}</p>}
       <Link href={`snkr/${snkr.slug}`}>
         <a
           className={cn(styles.card, {
@@ -48,7 +48,7 @@ export default function ScheduleCard({ snkr, showTime }: Props) {
             <div className={styles.speaker}>
               <div className={styles['avatar-group']}>
                   <div className={styles['avatar-wrapper']}>
-                    <SnkrIcon height={'100'} width={'150'}/>
+                    <SnkrIcon snkrName={snkr.name} size={'150px'}/>
                   </div>
               </div>
               <h5 className={styles.price}>

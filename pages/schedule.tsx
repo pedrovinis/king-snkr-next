@@ -16,7 +16,6 @@ export default function SchedulePage({ schedule }: Props) {
     title: 'King Snkr | Schedule',
     description: 'Snkrs added schedule, to add a snkr go to "SNKRS" and click on "Add Snkr".'
   }
-  console.log(schedule)
 
   return (
     <Page meta={meta}>

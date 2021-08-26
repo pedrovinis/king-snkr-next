@@ -16,6 +16,9 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
 }
 
 const formatSchedule = (snkrs:Snkr[]) => {
+    const now = parseInt(Date.now() / 1000)
+    console.log(snkrs[0].release)
+     
     const sortedSnkrs = snkrs.sort((a,b) => a.release + b.release)
     
     const snkrByDate:any = {}

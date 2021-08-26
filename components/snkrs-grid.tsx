@@ -4,6 +4,7 @@ import cn from 'classnames'
 import IconSnkr from '@components/icons/icon-snkrs'
 import { Snkr } from '@lib/types'
 import styles from './snkrs-grid.module.css'
+import SnkrIcon from '@components/icons/icon-snkrs'
 
 function SnkrCard({ snkr }: { snkr: Snkr }) {
   return (
@@ -14,7 +15,7 @@ function SnkrCard({ snkr }: { snkr: Snkr }) {
         className={cn(styles.card)}
       >
         <div className={styles.imageWrapper}>
-          <Image
+          {/* <Image
             alt={snkr.name}
             src={'/snkr-icon.svg'}
             className={cn(styles.image)}
@@ -22,13 +23,14 @@ function SnkrCard({ snkr }: { snkr: Snkr }) {
             title={snkr.name}
             width={900}
             height={500}
-          />
+          /> */}
+          <SnkrIcon snkrName={snkr.name}/>
         </div>
           <div className={styles.cardBody}>
             <div>
               <h2 className={styles.name}>{snkr.name} {snkr.edition}</h2>
-              <p className={styles.description}>{`R$ ${snkr.sale_price}`}</p>
             </div>
+            <p className={styles.description}>{`R$ ${snkr.sale_price}`}</p>
           </div>
       </a>
     </Link>
