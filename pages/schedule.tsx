@@ -29,7 +29,7 @@ export default function SchedulePage({ schedule }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await fetch(`https://pxv.vercel.app/api/schedule`)
+  const data = await fetch(`http://localhost:3000/api/schedule`)
   const schedule = await data.json()
   return {
     props: {

@@ -1,4 +1,4 @@
-export default function SnkrIcon( {height='150', width='250px'}) {
+export default function SnkrIcon( {height='150', width='250'}) {
 
 return (
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ return (
  preserveAspectRatio="xMidYMid meet">
 
 <g transform="translate(0.000000,439.000000) scale(0.100000,-0.100000)"
-fill="white" stroke="none">
+fill="white" stroke="none" strokeWidth="0px">
 <path d="M3502 3950 c-113 -57 -175 -165 -188 -322 -7 -81 -8 -84 -46 -118
 -22 -19 -99 -89 -170 -155 -205 -190 -343 -282 -567 -381 -465 -204 -734 -203
 -939 4 -51 52 -74 88 -128 197 -36 73 -73 140 -82 148 -15 14 -105 35 -219 52

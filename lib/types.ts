@@ -7,18 +7,14 @@ export type Event = {
   bio: string
   title: string
   slug: string
-  twitter: string
-  github: string
-  company: string
   talk: Talk
   image: Image
-  imageSquare: Image
 }
 
 export type Stage = {
   name: string
   slug: string
-  schedule: Talk[]
+  schedule: Snkr[]
 }
 
 export type Talk = {
@@ -26,7 +22,6 @@ export type Talk = {
   description: string
   start: string
   end: string
-  speaker: Event[]
 }
 
 export type Link = {

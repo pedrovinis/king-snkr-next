@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Stage } from '@lib/types';
 import styles from './schedule-sidebar.module.css';
 import Select from './select';
-import TalkCard from './talk-card';
+import TalkCard from './schedule-card';
 
 
 type Props = {

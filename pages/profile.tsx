@@ -17,7 +17,7 @@ export default function Conf() {
       <TicketVisual
             username={undefined}
             name={undefined}
-            ticketCode={'-PXVS'}
+            ticketCode={undefined}
             ticketGenerationState={undefined}
           />
         <ActivateKeyForm />

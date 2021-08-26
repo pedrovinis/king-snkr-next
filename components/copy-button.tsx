@@ -4,9 +4,7 @@ import styles from './copy-button.module.css'
 import IconCopy from './icons/icon-copy'
 
 export default function CopyButton({value}:any) {
-
     const [copied, setCopied] = useState(false)
-      
     return (
         <button 
         className={copied?  styles.copied : styles.copyButton}

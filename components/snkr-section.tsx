@@ -22,7 +22,14 @@ export default function SnkrSection({ snkr }: Props) {
     const formatRelease = (release:number) => {
       if(release < new Date().getTime()/1000) return 'Released'
       const timeStamp = new Date(release * 1000)
-      const formatedDate = timeStamp.toLocaleString('pt-BR')
+      const formatedDate = timeStamp.toLocaleString('pt-BR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour:'numeric',
+        minute: '2-digit',
+        hour12: true
+      })
       return formatedDate
   }
   
@@ -57,9 +64,8 @@ export default function SnkrSection({ snkr }: Props) {
             <p className={styles.title}>{formatRelease(snkr.release)}</p>
 
             <h2 className={styles['bio-header']}>Link</h2>
-            <p className={styles.bio}>{snkr.link} <CopyButton value={snkr.link}/> </p>
-           
-
+            <p className={styles.bio}>{snkr.link}</p>
+            <CopyButton value={snkr.link}/>
           </div>
         </div>
       </div>

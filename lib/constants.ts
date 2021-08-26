@@ -31,15 +31,7 @@ export const NAVIGATION = [
   {
     name: 'Schedule',
     route: '/schedule'
-  },
-  {
-    name: 'Products',
-    route: '/products'
-  },
-  {
-    name: 'Services',
-    route: '/services'
   }
-];
+]
 
 export type TicketGenerationState = 'default' | 'loading';
