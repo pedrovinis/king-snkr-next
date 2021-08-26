@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import cn from 'classnames'
-import useConfData from '@lib/hooks/use-conf-data'
+// import useConfData from '@lib/hooks/use-conf-data'
 import { useRouter } from 'next/router'
 import FormError from '@lib/form-error'
 import LoadingDots from './loading-dots'
@@ -23,7 +23,7 @@ export default function Form({ sharePage }: Props) {
   const [emailFocused, setEmailFocused] = useState(false)
   const [passwordFocused, setPasswordFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
-  const { setPageState, setUserData } = useConfData()
+  // const { setPageState, setUserData } = useConfData()
   const router = useRouter()
   
 
@@ -85,8 +85,8 @@ export default function Form({ sharePage }: Props) {
                   .join('&');
                 router.replace(`/?${queryString}`, '/');
               } else {
-                setUserData(params);
-                setPageState('ticket');
+                // setUserData(params);
+                // setPageState('ticket');
               }
             })
             .catch(async err => {

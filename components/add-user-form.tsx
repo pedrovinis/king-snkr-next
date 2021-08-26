@@ -62,7 +62,7 @@ export default function AddUserForm() {
         >
           <input
             minLength={1}
-            maxLength={20}
+            maxLength={25}
             style={{width:'96%'}}
             className={styles.input}
             disabled={formState === 'loading' }
@@ -86,6 +86,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            maxLength={256}
             style={{width:'96%'}}
             className={styles.input}
             disabled={formState === 'loading' }
@@ -108,6 +109,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            maxLength={30}
             style={{width:'96%'}}
             className={styles.input}
             disabled={formState === 'loading' }
@@ -130,6 +132,8 @@ export default function AddUserForm() {
           })}
         >
         <input
+            minLength={5}
+            maxLength={256}
             style={{width:'96%'}}
             disabled={formState === 'loading' }
             className={styles.input}

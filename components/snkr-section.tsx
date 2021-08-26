@@ -8,6 +8,7 @@ import router from 'next/router'
 import BackLink from './backLink'
 import CopyButton from './copy-button'
 import { toast } from 'react-toastify'
+import IconInfo from './icons/info-icon'
 
 type Props = {
   snkr: Snkr
@@ -69,7 +70,7 @@ export default function SnkrSection({ snkr }: Props) {
             return <a className="button" id={styles.size}> {size.value} </a>
           })}
         </div>
-          <h3 className={styles['warning-header']}>Warning</h3>
+          <h3 className={styles['warning-header']}>Warning<IconInfo /></h3>
           <p>This snkr info can be found on path: 'bin/snkrs'. Do not try to change snkr using file explorer, it can broke application.</p>
         </div>
 

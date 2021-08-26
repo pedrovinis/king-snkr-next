@@ -18,8 +18,6 @@ export type Event = {
 export type Stage = {
   name: string
   slug: string
-  stream: string
-  discord: string
   schedule: Talk[]
 }
 

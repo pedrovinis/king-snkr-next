@@ -1,31 +1,23 @@
-import cn from 'classnames';
-import Tilt from 'vanilla-tilt';
-import { useRef, useEffect, useState } from 'react';
-import { UserData } from '@lib/hooks/use-conf-data';
-import { TicketGenerationState } from '@lib/constants';
-import isMobileOrTablet from '@lib/is-mobile-or-tablet';
-import { scrollTo } from '@lib/smooth-scroll';
-import styles from './ticket.module.css';
-import styleUtils from './utils.module.css';
-import TicketForm from './ticket-form';
-import TicketVisual from './ticket-visual';
-import TicketActions from './ticket-actions';
-import TicketCopy from './ticket-copy';
-import { DATE } from '@lib/constants';
-import Form from './form';
-
-type Props = {
-  username: UserData['username'];
-  ticketNumber: UserData['ticketNumber'];
-  name: UserData['name'];
-  sharePage?: boolean;
-};
+import cn from 'classnames'
+import Tilt from 'vanilla-tilt'
+import { useRef, useEffect, useState } from 'react'
+import { TicketGenerationState } from '@lib/constants'
+import isMobileOrTablet from '@lib/is-mobile-or-tablet'
+import { scrollTo } from '@lib/smooth-scroll'
+import styles from './ticket.module.css'
+import styleUtils from './utils.module.css'
+import TicketForm from './ticket-form'
+import TicketVisual from './ticket-visual'
+import TicketActions from './ticket-actions'
+import TicketCopy from './ticket-copy'
+import { DATE } from '@lib/constants'
+import Form from './form'
 
 export default function Ticket({ username, name, ticketNumber, sharePage }: Props) {
   const ticketRef = useRef<HTMLDivElement>(null);
   const [ticketGenerationState, setTicketGenerationState] = useState<TicketGenerationState>(
     'default'
-  );
+  )
   const divRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,7 +29,7 @@ export default function Ticket({ username, name, ticketNumber, sharePage }: Prop
         'full-page-listening': true
       });
     }
-  }, [ticketRef]);
+  }, [ticketRef])
 
   useEffect(() => {
     if (!sharePage && divRef && divRef.current && isMobileOrTablet()) {

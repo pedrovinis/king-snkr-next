@@ -20,7 +20,7 @@ export default function TicketProfile({ name, username, size = 1, ticketGenerati
         })}
       >
         <span className={cn(styles.image, styles['empty-icon'])}>
-          <IconAvatar />
+          <IconAvatar size={''}/> 
         </span>
       </span>
       <div className={styles.text}>

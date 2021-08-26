@@ -5,7 +5,6 @@ import PxvIcon from '@components/icons/icon-platform'
 import CheckIcon from '@components/icons/icon-check';
 import { SITE_ORIGIN, TicketGenerationState } from '@lib/constants'
 import isMobileOrTablet from '@lib/is-mobile-or-tablet'
-import useConfData from '@lib/hooks/use-conf-data'
 import LoadingDots from './loading-dots'
 import formStyles from './form.module.css'
 import ticketFormStyles from './ticket-form.module.css'
@@ -17,7 +16,7 @@ type FormState = 'default' | 'loading' | 'error';
 type Props = {
   defaultUsername?: string;
   setTicketGenerationState: React.Dispatch<React.SetStateAction<TicketGenerationState>>;
-};
+}
 
 const githubEnabled = Boolean(process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID);
 
@@ -25,7 +24,6 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
   const [username, setUsername] = useState(defaultUsername);
   const [formState, setFormState] = useState<FormState>('default');
   const [errorMsg, setErrorMsg] = useState('');
-  const { userData, setUserData } = useConfData();
   const formRef = useRef<HTMLFormElement>(null);
 
   return formState === 'error' ? (
@@ -37,8 +35,8 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
             type="button"
             className={cn(formStyles.submit, formStyles.error)}
             onClick={() => {
-              setFormState('default');
-              setTicketGenerationState('default');
+              setFormState('default')
+              setTicketGenerationState('default')
             }}
           >
             Try Again

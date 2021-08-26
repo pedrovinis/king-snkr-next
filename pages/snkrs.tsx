@@ -42,7 +42,6 @@ export default function SnkrsPage( {snkrs}: Props) {
 export const getServerSideProps: GetServerSideProps = async() => {
   const snkrsFileName = fs.readdirSync('bin/snkrs')
   const snkrs: Snkr[] = snkrsFileName.map( (snkrFileName) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return JSON.parse(fs.readFileSync(`bin/snkrs/${snkrFileName}`, 'utf8'))
   })
 

@@ -42,7 +42,6 @@ export default function UsersPage( {users}: Props) {
 export const getServerSideProps: GetServerSideProps = async() => {
   const usersFileName = fs.readdirSync('bin/users')
   const users: User[] = usersFileName.map( (userFileName) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return JSON.parse(fs.readFileSync(`bin/users/${userFileName}`, 'utf8'))
   })
 

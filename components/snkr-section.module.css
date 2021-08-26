@@ -85,10 +85,12 @@
 }
 
 .warning-header {
+  display: flex;
   font-size: 24px;
   letter-spacing: -0.05em;
   color: #fff;
   margin-bottom: var(--space-4x);
+  align-items: center;
 }
 
 .disabled {
