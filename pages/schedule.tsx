@@ -5,7 +5,6 @@ import Schedule from '@components/schedule'
 import Layout from '@components/layout'
 import Header from '@components/header'
 import { Stage, Snkr } from '@lib/types'
-import ScheduleSidebar from '@components/schedule-sidebar'
 
 type Props = {
   schedule: Stage[]
@@ -44,9 +43,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 const formatSchedule = (snkrs:Snkr[]) => {
     const now = Date.now() / 1000
+    const tomorrow = new Date()
+    tomorrow.setDate(tomorrow.getDate()+1)
+    tomorrow.setHours(0,0,0,0)
+
+    
     const sortedSnkrs = snkrs.sort((a,b) => {
-      if((a.release - now) +  (60*60*5) <= 0) return 1
-      if((b.release - now) + (60*60*5) <= 0) return -1
+      if((a.release - now) +  ((tomorrow.getTime()/1000) - now) <= 0) return 1
+      if((b.release - now) + ((tomorrow.getTime()/1000) - now) <= 0) return -1
       return a.release - b.release
     })
 

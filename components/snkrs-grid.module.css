@@ -74,6 +74,10 @@
   line-height: 1.4;
 }
 
+.edition {
+  color: var(--brand);
+}
+
 .description {
   margin-top: var(--space);
   margin-bottom: 0;

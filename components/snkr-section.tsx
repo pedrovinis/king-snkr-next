@@ -53,7 +53,8 @@ export default function SnkrSection({ snkr }: Props) {
         </div>
         <div className={styles['snkr-details']}>
           <div>
-            <h1 className={styles.name}>{snkr.name} {snkr.edition}</h1>
+            <h1 className={styles.name}>{snkr.name}</h1>
+            <a className={styles.edition}>{snkr.edition}</a>
             <p className={styles.title} >
               {snkr.id}
             </p>

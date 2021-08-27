@@ -19,13 +19,13 @@ function SnkrCard({ snkr }: { snkr: Snkr }) {
         </div>
           <div className={styles.cardBody}>
             <div>
-              <h2 className={styles.name}>{snkr.name} {snkr.edition}</h2>
+              <h2 className={styles.name}>{snkr.name} <a className={styles.edition}>{snkr.edition}</a></h2>
             </div>
             <p className={styles.description}>{`R$ ${snkr.sale_price}`}</p>
           </div>
       </a>
     </Link>
-  );
+  )
 }
 
 type Props = {

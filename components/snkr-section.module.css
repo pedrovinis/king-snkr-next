@@ -64,6 +64,11 @@
   line-height: 1.2;
 }
 
+.edition {
+  color: var(--brand);
+  font-size: 2.2rem;
+}
+
 .company {
   color: #fff;
 }

@@ -8,12 +8,12 @@ interface Props {
 export default function SnkrIcon( {size='300px', snkrName=''}:Props) {
     const snkrNameFormated = snkrName.toLowerCase().replace(/\s/g, "")
     let snkrSVG = 'default'
-
+    console.log(snkrNameFormated)
     if(snkrNameFormated.search('airforce1')>=0) snkrSVG = 'air-force-1'
     else if(snkrNameFormated.search('airjordan1low')>=0) snkrSVG = 'air-jordan-1-low'
     else if(snkrNameFormated.search('dunklow')>=0) snkrSVG = 'dunk-low'
     else if(snkrNameFormated.search('dunkhigh')>=0) snkrSVG = 'dunk-high'
-    else if(snkrNameFormated.search('ispaflow2020')>=0) snkrSVG = 'ispa-flow-2020'
+    else if(snkrNameFormated.search('flow2020ispa')>=0) snkrSVG = 'ispa-flow-2020'
 
     return (
     <>
