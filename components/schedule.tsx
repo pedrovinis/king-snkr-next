@@ -7,8 +7,8 @@ function StageRow({ stage }: { stage: Stage }) {
   // Group talks by the time block
   const timeBlocks = stage.schedule.reduce((allBlocks: any, snkr) => {
     allBlocks[snkr.release] = [...(allBlocks[snkr.release] || []), snkr];
-    return allBlocks;
-  }, {});
+    return allBlocks
+  }, {})
 
   return (
     <div key={stage.name} className={styles.row}>

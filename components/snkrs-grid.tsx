@@ -15,15 +15,6 @@ function SnkrCard({ snkr }: { snkr: Snkr }) {
         className={cn(styles.card)}
       >
         <div className={styles.imageWrapper}>
-          {/* <Image
-            alt={snkr.name}
-            src={'/snkr-icon.svg'}
-            className={cn(styles.image)}
-            loading="lazy"
-            title={snkr.name}
-            width={900}
-            height={500}
-          /> */}
           <SnkrIcon snkrName={snkr.name}/>
         </div>
           <div className={styles.cardBody}>

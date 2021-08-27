@@ -23,7 +23,7 @@ export default function ScheduleCard({ snkr, showTime }: Props) {
   const [startTime, setStartTime] = useState('')
 
   const title = snkr.name
-  const start = new Date(snkr.release*1000).toLocaleString('pt-BR', { hour: 'numeric', minute:'numeric', hour12: true })
+  const start = new Date(snkr.release*1000).toLocaleString('pt-BR', { hour: '2-digit', minute:'2-digit', hour12: true })
 
   useEffect(() => {
     const now = Date.now()

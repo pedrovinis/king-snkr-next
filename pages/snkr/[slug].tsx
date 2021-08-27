@@ -28,7 +28,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) 
   const slug = params?.slug;
   const snkrsFileName = fs.readdirSync('bin/snkrs')
   const snkrs: Snkr[] = snkrsFileName.map( (snkrFileName) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return JSON.parse(fs.readFileSync(`bin/snkrs/${snkrFileName}`, 'utf8'))
   })
   const snkr = snkrs.find((s:any) => s.slug === slug) || null;
