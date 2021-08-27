@@ -21,7 +21,6 @@ export default function IconAvatar( {size = '100px'} ) {
         width="80"
         height="80"
       >
-        <circle cx="40" cy="40" r="40" fill="white" />
       </mask>
       <g mask="url(#avatar-mask0)">
         <g style={{ mixBlendMode: 'luminosity' }}>

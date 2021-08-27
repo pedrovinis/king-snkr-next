@@ -4,16 +4,19 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Snkr } from '@lib/types'
 import styles from './snkr-card.module.css'
-import SnkrIcon from './icons/icon-snkrs'
+import SnkrIcon from './icons/icon-snkr'
 import Select from './select'
+
+type FormState = 'default' | 'loading' | 'error'
 
 type Props = {
   snkr: Snkr
+  setSize: Function
+  formState: FormState
 }
 
-export default function SnkrCard({ snkr }: Props) {
+export default function SnkrCard({ snkr, setSize, formState }: Props) {
   const [isReleased, setReleased] = useState(false)
-  const [startTime, setStartTime] = useState('')
 
   const title = snkr.name
   const start = new Date(snkr.release*1000).toLocaleString('pt-BR',
@@ -29,9 +32,8 @@ export default function SnkrCard({ snkr }: Props) {
   useEffect(() => {
     const now = Date.now()
     setReleased(now >snkr.release*1000)
-    setStartTime(start)
-  }, []);
-
+  }, [])
+  
   return (
     <div key={title} className={styles.main}>
         <a
@@ -58,10 +60,17 @@ export default function SnkrCard({ snkr }: Props) {
             </div>
           <p className={styles.time}>{isReleased? <>Released</> : <>{start}</>}</p>
           </div>
-          <Select >
+          <Select
+            disabled={formState === 'loading'}
+            required
+            onChange={e => {
+              const sizeValue = e.target.value
+              setSize(sizeValue)
+          }}>
+            <option value="" disabled selected>Select a Size</option>
             {snkr.sizes.map( size => {
               return (
-                <option>
+                <option value={size.value}>
                   Size: {size.value}
                 </option>
               )

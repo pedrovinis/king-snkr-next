@@ -2,6 +2,18 @@ export type Image = {
   url: string
 }
 
+export type Task = {
+  name: string
+  slug: string
+  user: User
+  snkr: Snkr
+  cfg: TaskCfg
+}
+
+export type TaskCfg = {
+  size: string
+}
+
 export type Event = {
   name: string
   bio: string

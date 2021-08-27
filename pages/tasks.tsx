@@ -1,16 +1,15 @@
 import fs from 'fs'
 import Page from '@components/page'
-import SnkrsGrid from '@components/snkrs-grid'
+import TasksGrid from '@components/tasks-grid'
 import Header from '@components/header'
 import Layout from '@components/layout'
-
 import { GetServerSideProps } from 'next'
-import { Snkr } from '@lib/types'
+import { Task } from '@lib/types'
 import Link from 'next/link'
 import EmptyList from '@components/empty-list'
 
 type Props = {
-  tasks: Snkr[]
+  tasks: Task[]
 }
 
 
@@ -37,9 +36,9 @@ export default function SnkrsPage( {tasks}: Props) {
           </a>
         </Link>
         {isEmpty ? (
-          <></>// <EmptyList list={'tasks'} buttonText={'Add Task'}/>
+          <EmptyList list={'tasks'} buttonText={'Add Task'}/>
         ): (
-          {/* <SnkrsGrid snkrs={snkrs} /> */}
+          <TasksGrid tasks={tasks} />
         )}
 
       </Layout>
@@ -47,15 +46,15 @@ export default function SnkrsPage( {tasks}: Props) {
   )
 }
 
-// export const getServerSideProps: GetServerSideProps = async() => {
-//   const snkrsFileName = fs.readdirSync('bin/snkrs')
-//   const snkrs: Snkr[] = snkrsFileName.map( (snkrFileName) => {
-//     return JSON.parse(fs.readFileSync(`bin/snkrs/${snkrFileName}`, 'utf8'))
-//   })
+export const getServerSideProps: GetServerSideProps = async() => {
+  const tasksFileName = fs.readdirSync('bin/tasks')
+  const tasks: Task[] = tasksFileName.map( (taskFileName) => {
+    return JSON.parse(fs.readFileSync(`bin/tasks/${taskFileName}`, 'utf8'))
+  })
 
-//   return {
-//     props: {
-//       snkrs
-//     }
-//   }
-// }
+  return {
+    props: {
+      tasks
+    }
+  }
+}

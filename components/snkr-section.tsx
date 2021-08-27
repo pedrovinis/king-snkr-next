@@ -1,6 +1,6 @@
 import { Snkr } from '@lib/types'
 import styles from './snkr-section.module.css'
-import IconSnkr from './icons/icon-snkrs'
+import IconSnkr from './icons/icon-snkr'
 import { useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteSnkrFetch } from '@lib/snkr-api'

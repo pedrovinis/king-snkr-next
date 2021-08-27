@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import cn from 'classnames'
-import IconSnkr from '@components/icons/icon-snkrs'
+import IconSnkr from '@components/icons/icon-snkr'
 import { Snkr } from '@lib/types'
 import styles from './snkrs-grid.module.css'
-import SnkrIcon from '@components/icons/icon-snkrs'
+import SnkrIcon from '@components/icons/icon-snkr'
 
 function SnkrCard({ snkr }: { snkr: Snkr }) {
   return (

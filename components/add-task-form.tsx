@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import cn from 'classnames'
-import FormError from '@lib/form-error'
 import LoadingDots from './loading-dots'
 import styles from './add-task-form.module.css'
 import router from 'next/router'
@@ -10,30 +9,32 @@ import { Snkr, User } from '@lib/types'
 import Image from 'next/image'
 import SnkrCard from '@components/snkr-card'
 import UserCard from './user-card'
+import { addTaskFetch } from '@lib/task-api'
 
 type FormState = 'default' | 'loading' | 'error'
+
 type Props = {
     users: User[]
     snkrs: Snkr[]
 }
 
 export default function AddTaskForm({users, snkrs}: Props) {
-    const [taskName, setTaskName] = useState('')
-    const [userSelected, setUserSelected] = useState('')
-    const [snkrSelected, setSnkrSelected] = useState('')
-    const [errorMsg, setErrorMsg] = useState('')
-    const [errorTryAgain, setErrorTryAgain] = useState(false)
-    const [nameFocused, setNameFocused] = useState(false)
-    const [formState, setFormState] = useState<FormState>('default')
-
+  const [taskName, setTaskName] = useState('')
+  const [userSelected, setUserSelected] = useState('')
+  const [snkrSelected, setSnkrSelected] = useState('')
+  const [sizeSelected, setSizeSelected] = useState('')
+  const [nameFocused, setNameFocused] = useState(false)
+  const [formState, setFormState] = useState<FormState>('default')
+  
+  console.log(sizeSelected)
   const handleResponse = async(res:Response) => {
     const data = await res.json()
     if(data.success){
-      router.push('/users')
-      toast.success(`"${name}" succesfull added.`)
+      router.push('/tasks')
+      toast.success(`"${taskName}" succesfull added.`)
     }
     else {
-      toast.error('Error, verify your credentials and try again.')
+      toast.error('Error, try again.')
     }
   }
 
@@ -42,9 +43,14 @@ export default function AddTaskForm({users, snkrs}: Props) {
     onSubmit={async e =>{
       e.preventDefault()
       setFormState('loading')
-    //   const res:any = await addUserFetch({name:name})
-    //   await handleResponse(res)
-    //   setFormState('default')
+      const res:any = await addTaskFetch(
+        taskName,
+        userSelected,
+        snkrSelected,
+        sizeSelected
+      )
+      await handleResponse(res)
+      setFormState('default')
     }}
     >
       <div className={styles['form-row']}>
@@ -53,7 +59,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
         justifyContent: "center",
         margin: "1rem 0"
       }}>
-        <Image src={'/task-icon.svg'} width={'100'}height={'100'} />
+        <Image src={'/task-icon.svg'} width={'200'}height={'200'} />
       </div>
       <label
           htmlFor="name-input-field"
@@ -80,7 +86,8 @@ export default function AddTaskForm({users, snkrs}: Props) {
           />
         </label>
         <div className={styles.select}>
-        <Select 
+        <Select
+            disabled={formState === 'loading' }
             aria-label="Select a User"
             value={userSelected}
             required
@@ -97,7 +104,6 @@ export default function AddTaskForm({users, snkrs}: Props) {
                )
             })}
         </Select>
-
         {users.map( user => {
             if(userSelected == user.name) {
                 return <UserCard user={user}/>
@@ -106,12 +112,13 @@ export default function AddTaskForm({users, snkrs}: Props) {
         </div>
         <div className={styles.select}>
         <Select
+            disabled={formState === 'loading' }
             placeholder={'Select a Snkr'}
             aria-label="Select a Snkr"
             value={snkrSelected}
             required
             onChange={e => {
-            const snkrId = e.target.value;
+            const snkrId = e.target.value
             setSnkrSelected(snkrId)
         }}>
             <option value="" disabled selected>Select a SNKR</option>
@@ -125,7 +132,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
         </Select>
         {snkrs.map( snkr => {
             if(snkrSelected == snkr.id) {
-                return <SnkrCard snkr={snkr}/>
+              return <SnkrCard snkr={snkr} setSize={setSizeSelected} formState={formState}/>
             }
         })}
         </div>
