@@ -1,6 +1,5 @@
 import Page from '@components/page'
 import Layout from '@components/layout'
-import Form from '@components/form'
 import AddSnkrForm from '@components/add-snkr-form'
 import Header from '@components/header'
 
@@ -18,5 +17,5 @@ export default function Conf() {
         <AddSnkrForm />
       </Layout>
     </Page>
-  );
+  )
 }

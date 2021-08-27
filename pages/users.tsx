@@ -3,10 +3,11 @@ import Page from '@components/page'
 import UsersGrid from '@components/users-grid'
 import Header from '@components/header'
 import Layout from '@components/layout'
-
+import EmptyGrid from '@components/empty-grid'
 import { GetServerSideProps } from 'next'
 import { User } from '@lib/types'
 import Link from 'next/link'
+import EmptyList from '@components/empty-list'
 
 type Props = {
   users: User[]
@@ -18,6 +19,8 @@ export default function UsersPage( {users}: Props) {
     title: 'King Snkr | Users',
     description: 'Here you will find your Nike Users.'
   }
+
+  const isEmpty = !users.length
 
   return (
     <Page meta={meta}>
@@ -33,7 +36,12 @@ export default function UsersPage( {users}: Props) {
             Add User
           </a>
         </Link>
-        <UsersGrid users={users} />
+        {isEmpty ? (
+          <EmptyList list={'users'} buttonText={'Add User'}/>
+        )
+        :(
+          <UsersGrid users={users} />
+        )}
       </Layout>
     </Page>
   )

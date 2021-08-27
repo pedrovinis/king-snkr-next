@@ -7,17 +7,19 @@ import Layout from '@components/layout'
 import { GetServerSideProps } from 'next'
 import { Snkr } from '@lib/types'
 import Link from 'next/link'
+import EmptyList from '@components/empty-list'
 
 type Props = {
   snkrs: Snkr[]
 }
-
 
 export default function SnkrsPage( {snkrs}: Props) {
   const meta = {
     title: 'King Snkr | Snkrs',
     description: 'Here you will find your Nike snkrs.'
   }
+
+  const isEmpty = !snkrs.length
 
   return (
     <Page meta={meta}>
@@ -33,7 +35,11 @@ export default function SnkrsPage( {snkrs}: Props) {
             Add Snkr
           </a>
         </Link>
-        <SnkrsGrid snkrs={snkrs} />
+        {isEmpty ?(
+          <EmptyList list={'snkrs'} buttonText={'Add Snkr'}/>
+        ): (
+          <SnkrsGrid snkrs={snkrs} />
+        )}
       </Layout>
     </Page>
   )

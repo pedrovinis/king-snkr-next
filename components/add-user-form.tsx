@@ -27,7 +27,7 @@ export default function AddUserForm() {
   const handleResponse = async(res:Response) => {
     const data = await res.json()
     if(data.success){
-      router.push('/users')
+      if(router.route=='/adduser') router.push('/users')
       toast.success(`"${name}" succesfull added.`)
     }
     else {

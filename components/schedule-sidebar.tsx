@@ -7,8 +7,8 @@ import ScheduleCard from './schedule-card'
 
 
 type Props = {
-  allStages: Stage[];
-};
+  allStages: Stage[]
+}
 
 export default function ScheduleSidebar({ allStages }: Props) {
   const router = useRouter()

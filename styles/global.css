@@ -168,6 +168,20 @@ svg circle {
   clip: auto;
 }
 
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+::-webkit-scrollbar-track {
+  background:  black; 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accents-1); 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accents-3); 
+}
+
+
 .button {
   width: 100%;
   height: 56px;

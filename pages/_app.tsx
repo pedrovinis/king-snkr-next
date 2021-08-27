@@ -9,6 +9,7 @@ import ResizeHandler from '@components/resize-handler'
 import { useEffect } from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
 import NProgress from 'nprogress'
+import router from 'next/router'
 
 Router.events.on('routeChangeStart', ()=> {
   NProgress.start()

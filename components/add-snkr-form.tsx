@@ -21,8 +21,9 @@ export default function AddUserForm() {
   const handleDeleteRes = async(res:any) => {
     const data = await res.json()
     if(data.success) {
-      router.push('/snkrs')
+      // if(router.route=='/addsnkr') router.push('/snkrs')
       toast.success(`${data.name} successful added.`)
+      setLink('')
     }
     else toast.error('Error on add Snkr. Please try again.')
   }
