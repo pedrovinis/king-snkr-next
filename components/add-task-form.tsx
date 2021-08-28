@@ -26,7 +26,6 @@ export default function AddTaskForm({users, snkrs}: Props) {
   const [nameFocused, setNameFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
   
-  console.log(sizeSelected)
   const handleResponse = async(res:Response) => {
     const data = await res.json()
     if(data.success){

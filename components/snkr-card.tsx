@@ -11,12 +11,16 @@ type FormState = 'default' | 'loading' | 'error'
 
 type Props = {
   snkr: Snkr
-  setSize: Function
-  formState: FormState
+  setSize?: Function
+  formState?: FormState
+  sizeDefault?: string
+  sizeSelectDisabled?: boolean
 }
 
-export default function SnkrCard({ snkr, setSize, formState }: Props) {
+export default function SnkrCard({ snkr, setSize, formState, sizeDefault, sizeSelectDisabled }: Props) {
   const [isReleased, setReleased] = useState(false)
+
+  const sortedSizes = snkr.sizes.sort((a,b) => parseInt(a.value) - parseInt(b.value))
 
   const title = snkr.name
   const start = new Date(snkr.release*1000).toLocaleString('pt-BR',
@@ -42,11 +46,10 @@ export default function SnkrCard({ snkr, setSize, formState }: Props) {
           })}
         >
           <div className={styles['card-body']}>
-            <h4 title={title} className={styles.title}> 
-              {title} 
-            </h4>
-            <a className={styles.name}>{snkr.edition}</a>
-            
+              <h4 title={title} className={styles.title}> 
+                {title}
+              </h4>
+              <a className={styles.name}>{snkr.edition}</a>
             <div className={styles.speaker}>
               <div className={styles['avatar-group']}>
                   <div className={styles['avatar-wrapper']}>
@@ -68,9 +71,9 @@ export default function SnkrCard({ snkr, setSize, formState }: Props) {
               setSize(sizeValue)
           }}>
             <option value="" disabled selected>Select a Size</option>
-            {snkr.sizes.map( size => {
+            {sortedSizes.map( size => {
               return (
-                <option value={size.value}>
+                <option disabled={sizeSelectDisabled} selected={sizeDefault==size.value} value={size.value}>
                   Size: {size.value}
                 </option>
               )
