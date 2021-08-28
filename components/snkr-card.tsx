@@ -11,7 +11,7 @@ type FormState = 'default' | 'loading' | 'error'
 
 type Props = {
   snkr: Snkr
-  setSize?: Function
+  setSize?: any
   formState?: FormState
   sizeDefault?: string
   sizeSelectDisabled?: boolean
@@ -68,7 +68,7 @@ export default function SnkrCard({ snkr, setSize, formState, sizeDefault, sizeSe
             required
             onChange={e => {
               const sizeValue = e.target.value
-              setSize(sizeValue)
+              if(!sizeSelectDisabled) setSize(sizeValue)
           }}>
             <option value="" disabled selected>Select a Size</option>
             {sortedSizes.map( size => {

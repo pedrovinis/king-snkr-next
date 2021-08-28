@@ -31,7 +31,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         })
 
         const taskData = req.body
-        const formatedTaskData:Task = formatTaskData(taskData, users, snkrs)
+        const formatedTaskData:any = formatTaskData(taskData, users, snkrs)
         
         const task = new TaskClass()
         task.setName(formatedTaskData.name)
