@@ -18,6 +18,7 @@ type ButtonState = 'default' | 'loading' | 'error'
 
 export default function TaskSection({ task }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
+  const [startTaskButtonState, setStartTaskButtonState] = useState<ButtonState>('default')
 
   const handleDeleteResponse = async(res:Response) => {
     const data = await res.json()
@@ -41,35 +42,50 @@ export default function TaskSection({ task }: Props) {
           <div className={styles.grid}>
             <h1 className={styles.name}>{task.name}</h1>
             <div className={styles.card}>
-            <h2 className={styles['bio-header']}>User</h2>
-              <UserCard user={task.user}/>
-            </div>
-            <div className={styles.card}>
               <h2 className={styles['bio-header']}>SNKR</h2>
               <SnkrCard snkr={task.snkr} sizeDefault={task.cfg.size} sizeSelectDisabled={true}/>
+            </div>
+            <div className={styles.card}>
+            <h2 className={styles['bio-header']}>User</h2>
+              <UserCard user={task.user}/>
             </div>
            </div>
         </div>
       </div>
-        <div className={styles['info']}>
+      
+        <button
+        className='button'
+        style={{
+          margin: '',
+          width: '300px',
+          }}
+          onClick={async()=> {
+            setStartTaskButtonState('loading')
+          }}
+        >
+          {startTaskButtonState === 'loading' ? <LoadingDots size={6} /> : <>Start Task</>}
+        </button>
+
+      <div className={styles['info']}>
           <h3 className={styles['warning-header']}>Warning</h3>
           <p>This user info can be found on path: 'bin/tasks'. Do not try to change user using file explorer, it can broke application.</p>
         </div>
         <button
-      className='buttonRed'
-      style={{
-        margin: '5px auto',
-        width: '325px',
-        }}
-        onClick={async()=> {
-          setDeleteButtonState('loading')
-          const res:any = await deleteTaskFetch(task)
-          await handleDeleteResponse(res)
-          setDeleteButtonState('default')
-        }}
-      >
-        {deleteButtonState === 'loading' ? <LoadingDots size={6} /> : <>Delete Task</>}
+          className='buttonRed'
+          style={{
+            margin: '5px auto',
+            width: '325px',
+            }}
+            onClick={async()=> {
+              setDeleteButtonState('loading')
+              const res:any = await deleteTaskFetch(task)
+              await handleDeleteResponse(res)
+              setDeleteButtonState('default')
+            }}
+        >
+          {deleteButtonState === 'loading' ? <LoadingDots size={6} /> : <>Delete Task</>}
       </button>
+
     </>
   )
 }
