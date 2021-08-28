@@ -19,7 +19,7 @@ export default function SnkrsPage( {tasks}: Props) {
     description: 'Here you will find your programmed tasks.'
   }
 
-  const isEmpty = !tasks
+  const isEmpty = !tasks.length
 
   return (
     <Page meta={meta}>
@@ -36,7 +36,7 @@ export default function SnkrsPage( {tasks}: Props) {
           </a>
         </Link>
         {isEmpty ? (
-          <EmptyList list={'tasks'} buttonText={'Add Task'}/>
+          <EmptyList list={'task'} buttonText={'Add Task'}/>
         ): (
           <TasksGrid tasks={tasks} />
         )}

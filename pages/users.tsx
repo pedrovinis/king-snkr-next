@@ -37,7 +37,7 @@ export default function UsersPage( {users}: Props) {
           </a>
         </Link>
         {isEmpty ? (
-          <EmptyList list={'users'} buttonText={'Add User'}/>
+          <EmptyList list={'user'} buttonText={'Add User'}/>
         )
         :(
           <UsersGrid users={users} />

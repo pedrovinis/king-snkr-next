@@ -36,7 +36,7 @@ export default function SnkrsPage( {snkrs}: Props) {
           </a>
         </Link>
         {isEmpty ?(
-          <EmptyList list={'snkrs'} buttonText={'Add Snkr'}/>
+          <EmptyList list={'snkr'} buttonText={'Add Snkr'}/>
         ): (
           <SnkrsGrid snkrs={snkrs} />
         )}

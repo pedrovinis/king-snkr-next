@@ -3,6 +3,7 @@ import cn from 'classnames'
 import styles from './empty-grid.module.css'
 
 function EmptyCard({number=0, card='user'}) {
+  const fCard = card + 's'
   return (
       <a
         role="button"
@@ -29,7 +30,7 @@ function EmptyCard({number=0, card='user'}) {
 }
 
 type Props = {
-  card?: 'task' | 'user' | 'snkr'
+  card?: 'task' | 'user' | 'snkr' | string
   quantity?: number
 }
 
