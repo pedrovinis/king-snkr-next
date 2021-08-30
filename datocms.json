@@ -1,10 +1,8 @@
 {
-  "name": "Virtual Event Starter Kit",
-  "description": "Fully customizable starter kit for your virtual event.",
-  "previewImage": "https://demo.vercel.events/twitter-card.png",
+  "name": "pXv",
+  "description": "King SNKR, for improve your life.",
   "datocmsProjectId": "37685",
   "deploymentType": "vercel",
   "buildCommand": "npm run build",
-  "datocmsApiTokenEnvName": "DATOCMS_READ_ONLY_API_TOKEN",
-  "livePreviewUrl": "https://demo.vercel.events/"
+  "livePreviewUrl": "https://pxv.vercel.app"
 }
