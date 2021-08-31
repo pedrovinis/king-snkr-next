@@ -8,6 +8,8 @@ export type Task = {
   user: User
   snkr: Snkr
   cfg: TaskCfg
+  started: boolean
+  progress: number
 }
 
 export type TaskCfg = {

@@ -1,7 +1,7 @@
 import styles from './step-progress.module.css'
 import cn from 'classnames'
 
-export default function TaskProgress() {
+export default function StepProgress() {
 	const steps = [ 
 		'Starting',
 		'Waiting',

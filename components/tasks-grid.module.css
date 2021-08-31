@@ -1,3 +1,5 @@
+/* CARD */
+
 .card {
   border-radius: var(--space-2x);
   background: #111111;
@@ -82,4 +84,34 @@
   margin-top: var(--space);
   margin-bottom: 0;
   line-height: 1.4;
+}
+
+/* TABLE */
+
+.table {
+  margin: 1.5rem;
+  line-height: 2.7;
+  border-collapse: collapse;
+}
+
+.table td {
+  padding: 0.8rem;
+}
+
+.tHead {
+  background-color: transparent;
+  font-size: 1.2rem;
+}
+
+.tHead tr {
+  border-bottom: 1px solid var(--brand);
+}
+
+.selected {
+  background-color: white;
+  color: black;
+}
+
+.actions:hover {
+  fill: var(--brand);
 }

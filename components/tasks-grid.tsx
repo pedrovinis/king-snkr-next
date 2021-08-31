@@ -3,7 +3,12 @@ import cn from 'classnames'
 import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
 import TaskIcon from '@components/icons/icon-task'
-import IconAvatar from './icons/icon-avatar'
+import { useState } from 'react'
+import LinkIcon from './icons/icon-link'
+import StartIcon from './icons/icon-start'
+import PauseIcon from './icons/icon-pause'
+import EditIcon from './icons/icon-edit'
+
 
 function TaskCard({ task }: { task: Task }) {
   return (
@@ -28,16 +33,60 @@ function TaskCard({ task }: { task: Task }) {
   )
 }
 
+function TaskTable({ task, setSelected, selected }: { task: Task, setSelected: Function, selected:string }) {
+  const isSelected = selected == task.name
+  return (
+    <>
+    <tr 
+    onClick={()=>setSelected(task.name)}
+    className={cn({
+      [styles.selected]: isSelected
+    })}
+    >
+    
+    <td>
+      {task.user.name} <LinkIcon size={'15px'} fill={isSelected ? 'black' : 'white'}/>
+    </td>
+    <td>{task.snkr.name} {task.snkr.edition} - {task.cfg.size} </td>
+    <td>{task.progress}</td>
+    <td>
+      Completed
+    </td>
+    <td>
+      <StartIcon fill={isSelected ? 'black' : 'white'}/>
+      <PauseIcon fill={isSelected ? 'black' : 'white'}/>
+      <EditIcon fill={isSelected ? 'black' : 'white'}/>
+    </td>
+  </tr>
+  </>
+  )
+}
+
 type Props = {
   tasks: Task[]
 }
 
 export default function TasksGrid({ tasks }: Props) {
+  const [selected, setSelected] = useState('')
+  
   return (
     <>
-      <div className={styles.grid}>
-        {tasks.map(task => <TaskCard key={task.name} task={task} /> )}
-      </div>
+      <table className={styles.table}>
+        <thead className={styles.tHead}>
+          <tr>
+            <td>Task</td>
+            <td>User</td>
+            <td>SNKR</td>
+            <td>Status</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody className={styles.tBody}>
+          {tasks.map((task)=> {
+            return <TaskTable key={task.name} task={task} setSelected={setSelected} selected={selected}/>
+          })}
+        </tbody>
+      </table>
     </>
   )
 }
