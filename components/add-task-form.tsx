@@ -6,7 +6,7 @@ import router from 'next/router'
 import { toast } from 'react-toastify'
 import Select from './select'
 import { Snkr, User } from '@lib/types'
-import Image from 'next/image'
+import TaskIcon from './icons/icon-task'
 import SnkrCard from '@components/snkr-card'
 import UserCard from './user-card'
 import { addTaskFetch } from '@lib/task-api'
@@ -58,7 +58,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
         justifyContent: "center",
         margin: "1rem 0"
       }}>
-        <Image src={'/task-icon.svg'} width={'200'}height={'200'} />
+        <TaskIcon size={'100px'}/>
       </div>
       <label
           htmlFor="name-input-field"

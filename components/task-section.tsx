@@ -10,6 +10,8 @@ import TaskIcon from './icons/icon-task'
 import UserCard from './user-card'
 import SnkrCard from './snkr-card'
 
+import StepProgress from './step-progress'
+
 type Props = {
   task: Task
 }
@@ -53,19 +55,22 @@ export default function TaskSection({ task }: Props) {
         </div>
       </div>
       
-        <button
+        <a
+        href={'/'}
+        target="_blank"
         className='button'
         style={{
           margin: '',
           width: '300px',
           }}
+          
           onClick={async()=> {
             setStartTaskButtonState('loading')
           }}
         >
           {startTaskButtonState === 'loading' ? <LoadingDots size={6} /> : <>Start Task</>}
-        </button>
-
+        </a>
+          <StepProgress />
       <div className={styles['info']}>
           <h3 className={styles['warning-header']}>Warning</h3>
           <p>This user info can be found on path: 'bin/tasks'. Do not try to change user using file explorer, it can broke application.</p>

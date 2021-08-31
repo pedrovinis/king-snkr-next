@@ -1,0 +1,128 @@
+.mainWrapper {
+	width: 100ch;
+	min-width: 40ch;
+	max-width: 75vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.statusBar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0;
+	width: 100%;
+	position: relative;
+	cursor: default;
+}
+
+.statusBar::before {
+	content: "";
+	height: 0.3em;
+	background-color: grey;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+.pBar {
+	content: "";
+	height: 0.3em;
+	border-radius: 0 0 0.15em 0.15em;
+	background-color: var(--brand);
+	max-width: 100%;
+	margin: 10px #000000 solid;
+	position: absolute;
+	left: 0;
+  width: 0%;
+}
+
+.statusBar > .node {
+	background-color: grey;
+	height: 1.2em;
+	width: 1.2em;
+	border-radius: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.node > .text {
+	font-weight: 200;
+	color: grey;
+	text-align: center;
+	position: absolute;
+	top: 2.5em;
+	cursor: pointer;
+}
+
+
+.node.done {
+	background-color: var(--brand);
+}
+
+.node > .text.done {
+	color: var(--brand);
+}
+
+.node > .main {
+	position: absolute;
+	border: 0.2em grey solid;
+	width: 0;
+	height: 0;
+	border-radius: 100%;
+}
+
+.node > .main.done {
+	border: 0.2em var(--brand) solid;
+	width: 2em;
+	height: 2em;
+	border-radius: 100%;
+  animation: pulse 2s infinite;
+
+}
+
+.mainWrapper > .buttonHolder {
+	margin-top: 3em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.made {
+	position: absolute;
+	bottom: 0.7em;
+  
+}
+
+.made > .credit {
+	opacity: 40%;
+	color: #4b4b4b;
+	text-align: center;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(39, 221, 33, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(33, 131, 221, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(33, 131, 221, 0);
+  }
+}
+
+@keyframes nextStep {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
