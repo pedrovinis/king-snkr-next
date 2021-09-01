@@ -1,5 +1,3 @@
-import { Snkr } from "@lib/types";
-
 interface Props {
     snkrName: string
     size?: string
