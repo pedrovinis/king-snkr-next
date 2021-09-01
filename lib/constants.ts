@@ -9,8 +9,6 @@ export const DATE = 'September 20, 2021'
 
 export const COOKIE = 'user-id'
 
-
-export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
     name: 'Profile',
@@ -34,4 +32,15 @@ export const NAVIGATION = [
   }
 ]
 
-export type TicketGenerationState = 'default' | 'loading';
+export const TASKPROGRESS = [
+  `Desactived`,
+  'Starting',
+  'Waiting',
+  'NIKE LOGIN',
+  'Waiting',
+  'SNKR Buy',
+  'SMS Confirm',
+  'Completed'
+]
+
+export type TicketGenerationState = 'default' | 'loading'

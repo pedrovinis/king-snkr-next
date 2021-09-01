@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
-import FormError from '@lib/form-error'
 import LoadingDots from './loading-dots'
 import styles from './add-snkr-form.module.css'
 

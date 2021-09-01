@@ -12,8 +12,7 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build",
-    "license": "addlicense -l apache -c 'Vercel Inc.' components/**/* lib/**/* pages/**/* styles/**/* *.ts *.js"
+    "build": "next build"
   },
   "dependencies": {
     "@agility/content-fetch": "1.0.0",
@@ -31,7 +30,6 @@
     "next": "10.0.3",
     "nprogress": "0.2.0",
     "puppeteer": "^10.2.0",
-    "puppeteer-core": "^10.2.0",
     "puppeteer-extra": "^3.1.18",
     "puppeteer-extra-plugin-stealth": "^2.7.8",
     "react": "17.0.1",
@@ -41,7 +39,7 @@
     "smoothscroll-polyfill": "0.4.4",
     "swr": "0.3.9",
     "validator": "13.5.2",
-    "vanilla-tilt": "1.7.0"
+    "vanilla-tilt": "1.7.0",
   },
   "devDependencies": {
     "@types/classnames": "2.2.11",

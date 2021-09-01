@@ -30,12 +30,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) 
   const tasks: Task[] = tasksFileName.map( (taskFileName) => {
     return JSON.parse(fs.readFileSync(`bin/tasks/${taskFileName}`, 'utf8'))
   })
-  const task = tasks.find((s:any) => s.slug === slug) || null;
+  const task = tasks.find((s:any) => s.slug === slug) || null
 
   if (!task) {
     return {
       notFound: true
-    };
+    }
   }
 
   return {

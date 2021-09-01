@@ -13,7 +13,19 @@
 
 .input {
   border: none;
-  width: 100%;
+  width: 96%;
+  background: transparent;
+  outline: none;
+  height: 56px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: var(--text-md);
+  color: #fff;
+  font-family: inherit;
+}
+
+.phoneInput {
+  border: none;
   background: transparent;
   outline: none;
   height: 56px;
@@ -101,11 +113,10 @@
 }
 
 @media (min-width: 768px) {
-  .submit.register {
+  .submit.reset {
     width: 120px;
     height: 40px;
     margin-top: 0;
-    position: absolute;
     border-radius: 5px;
     right: var(--space-2x);
     top: var(--space-2x);

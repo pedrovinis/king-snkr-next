@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import cn from 'classnames'
-import FormError from '@lib/form-error'
 import LoadingDots from './loading-dots'
 import styles from './add-user-form.module.css'
-import useEmailQueryParam from '@lib/hooks/use-email-query-param'
 import IconAvatar from './icons/icon-avatar'
 import { addUserFetch } from '@lib/user-api'
 import router from 'next/router'
 import { toast } from 'react-toastify'
+import { PhoneNumberFormat } from '@lib/form-format'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -110,20 +109,25 @@ export default function AddUserForm() {
         >
           <input
             maxLength={30}
-            style={{width:'96%'}}
             className={styles.input}
             disabled={formState === 'loading' }
             autoComplete="off"
             type="tel"
             id="phone-input-field"
             value={phone}
-            onChange={e => setPhone(e.target.value)}
+            onChange={e => setPhone(PhoneNumberFormat(e.target.value))}
             onFocus={() => setPhoneFocused(true)}
             onBlur={() => setPhoneFocused(false)}
             placeholder="Enter your phone number (xx) x xxxx-xxxx"
             aria-label="Your email phone number"
             required
           />
+        <button 
+        tabIndex={-1} //Not Focusable
+        className={cn(styles.submit, styles.reset, styles[formState])} 
+        onClick={()=> setPhone('')}>
+          Delete
+        </button>
         </label>
         <label
           htmlFor="email-input-field"

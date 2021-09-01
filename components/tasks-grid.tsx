@@ -9,9 +9,14 @@ import PauseIcon from './icons/icon-pause'
 import EditIcon from './icons/icon-edit'
 import SnkrIcon from './icons/icon-snkr'
 import Link from 'next/link'
+import progress from 'pages/api/task/[slug]/progress'
+import TaskProgress from './task-progress'
+import DeleteIcon from './icons/icon-delete'
 
 function TaskTable({ task }: { task: Task }) {
   const [isSelected, setIsSelected] = useState(false)
+  const [progress, setProgress] = useState(0)
+
   return (
     <>
     <tr className={cn({
@@ -39,12 +44,13 @@ function TaskTable({ task }: { task: Task }) {
       </a>
     </td>
     <td>
-      Completed
+      <TaskProgress progress={task.progress}/>
     </td>
     <td>
       <a className={styles.action}><StartIcon size={'35px'}/></a>
       <a className={styles.action}><PauseIcon size={'35px'}/></a>
       <a className={styles.action}><EditIcon size={'35px'}/></a>
+      <a className={styles.action}><DeleteIcon size={'35px'}/></a>
     </td>
   </tr>
   </>
@@ -56,7 +62,6 @@ type Props = {
 }
 
 export default function TasksGrid({ tasks }: Props) {
-  const [selected, setSelected] = useState([])
 
   return (
     <>

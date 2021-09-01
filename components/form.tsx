@@ -1,12 +1,9 @@
 import { useState } from 'react'
 import cn from 'classnames'
-// import useConfData from '@lib/hooks/use-conf-data'
 import { useRouter } from 'next/router'
-import FormError from '@lib/form-error'
 import LoadingDots from './loading-dots'
 import styleUtils from './utils.module.css'
 import styles from './form.module.css'
-import useEmailQueryParam from '@lib/hooks/use-email-query-param'
 import { register } from '@lib/user-api'
 
 type FormState = 'default' | 'loading' | 'error'
@@ -62,9 +59,6 @@ export default function Form({ sharePage }: Props) {
           setFormState('loading');
           register(email)
             .then(async res => {
-              if (!res.ok) {
-                throw new FormError(res);
-              }
 
               const data = await res.json();
               const params = {
@@ -91,17 +85,6 @@ export default function Form({ sharePage }: Props) {
             })
             .catch(async err => {
               let message = 'Error! Please try again.';
-
-              if (err instanceof FormError) {
-                const { res } = err;
-                const data = res.headers.get('Content-Type')?.includes('application/json')
-                  ? await res.json()
-                  : null;
-
-                if (data?.error?.code === 'bad_email') {
-                  message = 'Please enter a valid email';
-                }
-              }
 
               setErrorMsg(message);
               setFormState('error');

@@ -19,21 +19,21 @@ export default function StepProgress({steps, progress}:Props) {
 		<div className={styles["mainWrapper"]}>
 		<div className={styles["statusBar"]}>
 		<span id="pBar" className={styles['pBar']}
-		style={{width:`${100/(totalSteps-1) * (progress -1)}%`}}
+		style={{width:`${100/(totalSteps-1) * (progress)}%`}}
 		/>
 		{steps.map( (step, i) => {
 			return (
 			<div id={`node${i}`} className={cn(styles['node'], {
-				[styles['done']]: i < progress
+				[styles['done']]: i <= progress
 			})}
 			>
 				<div className={cn(styles['main'],{
-					[styles['done']]: i < progress,
-					[styles['now']]: i+1 == progress
+					[styles['done']]: i <= progress,
+					[styles['now']]: i == progress
 
 				})}></div>
 				<span className={cn(styles['text'], {
-					[styles['done']]: i < progress,
+					[styles['done']]: i <= progress,
 				})}>{step}</span>
 			</div>)
 		})}

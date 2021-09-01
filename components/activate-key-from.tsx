@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import cn from 'classnames'
-import FormError from '@lib/form-error'
+
 import LoadingDots from './loading-dots'
 import styles from './activate-key-form.module.css'
 

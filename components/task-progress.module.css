@@ -1,0 +1,15 @@
+.default {
+    font: bold;
+}
+
+.inProgress {
+    color: var(--brand);
+}
+
+.warn {
+    color: yellow;
+}
+
+.error {
+    color: red;
+}

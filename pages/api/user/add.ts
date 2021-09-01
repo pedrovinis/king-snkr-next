@@ -11,7 +11,7 @@ const formatUserData = (userData:any) => {
         name: fUserData.name.trim(),
         slug: fUserData.name.trim(),
         email: fUserData.email.trim(),
-        phone: fUserData.phone.trim(),
+        phone: fUserData.phone.replace(/\D/g, ""),
         password: fUserData.password,
         //@ts-ignore
         createdAt: parseInt(new Date().getTime() / 1000),
@@ -27,7 +27,6 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     try {
         const userData = req.body
         const formatedUserData:User = formatUserData(userData)
-
         const user = new UserClass()
         user.setName(formatedUserData.name)
         user.setNikeEmail(formatedUserData.email)
@@ -43,13 +42,12 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
             user.setNikePassword('SECRET')
             user.saveConfigs()
         }
-        await b1.closeBrowser()
         sucess = logged
     }
     catch {
-        await b1.closeBrowser()
         sucess = false
     }
+    await b1.closeBrowser()
     
     res.status(200).json({success:sucess})
 }
