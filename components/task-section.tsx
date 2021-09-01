@@ -21,6 +21,7 @@ type ButtonState = 'default' | 'loading' | 'error'
 export default function TaskSection({ task }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
   const [startTaskButtonState, setStartTaskButtonState] = useState<ButtonState>('default')
+  const [progress, setProgress] = useState(0)
 
   const handleDeleteResponse = async(res:Response) => {
     const data = await res.json()
@@ -56,8 +57,6 @@ export default function TaskSection({ task }: Props) {
       </div>
       
         <a
-        href={'/'}
-        target="_blank"
         className='button'
         style={{
           margin: '',
@@ -66,11 +65,20 @@ export default function TaskSection({ task }: Props) {
           
           onClick={async()=> {
             setStartTaskButtonState('loading')
+            setProgress(1)
           }}
         >
           {startTaskButtonState === 'loading' ? <LoadingDots size={6} /> : <>Start Task</>}
         </a>
-          <StepProgress />
+          <StepProgress steps={[
+            'Starting',
+            'Waiting',
+            'NIKE Login',
+            'Waiting',
+            'SNKR BUY',
+            'Complete'
+          ]} progress={progress}/>
+
       <div className={styles['info']}>
           <h3 className={styles['warning-header']}>Warning</h3>
           <p>This user info can be found on path: 'bin/tasks'. Do not try to change user using file explorer, it can broke application.</p>

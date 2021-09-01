@@ -6,6 +6,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 5rem;
 }
 
 .statusBar {
@@ -31,12 +32,11 @@
 	content: "";
 	height: 0.3em;
 	border-radius: 0 0 0.15em 0.15em;
-	background-color: var(--brand);
+	background-color: violet;
 	max-width: 100%;
 	margin: 10px #000000 solid;
 	position: absolute;
 	left: 0;
-  width: 0%;
 }
 
 .statusBar > .node {
@@ -49,7 +49,6 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
 }
 
 .node > .text {
@@ -60,7 +59,6 @@
 	top: 2.5em;
 	cursor: pointer;
 }
-
 
 .node.done {
 	background-color: var(--brand);
@@ -83,8 +81,6 @@
 	width: 2em;
 	height: 2em;
 	border-radius: 100%;
-  animation: pulse 2s infinite;
-
 }
 
 .mainWrapper > .buttonHolder {
@@ -106,12 +102,16 @@
 	text-align: center;
 }
 
+.now {
+	animation: pulse 2s infinite;
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(39, 221, 33, 0.4);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(33, 131, 221, 0);
+    box-shadow: 0 0 0 20px rgba(33, 131, 221, 0);
   }
   100% {
     box-shadow: 0 0 0 0 rgba(33, 131, 221, 0);

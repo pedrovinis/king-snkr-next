@@ -1,16 +1,14 @@
 import styles from './step-progress.module.css'
 import cn from 'classnames'
+import { useState } from 'react'
 
-export default function StepProgress() {
-	const steps = [ 
-		'Starting',
-		'Waiting',
-		'Loggin',
-		'Waiting',
-		'Buying'
-	]
-	
-	let progress = 3
+type Props = {
+	steps: string[]
+	progress: number
+}
+
+export default function StepProgress({steps, progress}:Props) {
+	let totalSteps = steps.length
   return (
 	  <>
 	<div style={{
@@ -20,26 +18,27 @@ export default function StepProgress() {
 	}}>
 		<div className={styles["mainWrapper"]}>
 		<div className={styles["statusBar"]}>
-		<span id="pBar" className={styles['pBar']} />
+		<span id="pBar" className={styles['pBar']}
+		style={{width:`${100/(totalSteps-1) * (progress -1)}%`}}
+		/>
 		{steps.map( (step, i) => {
 			return (
 			<div id={`node${i}`} className={cn(styles['node'], {
 				[styles['done']]: i < progress
 			})}
 			>
-				<div className={styles['main']}></div>
-				<span className={styles['text']}>{step}</span>
+				<div className={cn(styles['main'],{
+					[styles['done']]: i < progress,
+					[styles['now']]: i+1 == progress
+
+				})}></div>
+				<span className={cn(styles['text'], {
+					[styles['done']]: i < progress,
+				})}>{step}</span>
 			</div>)
 		})}
 			</div>
-
 		</div>
-		
-	</div>
-	<br />
-	<br />
-	<div>
-		<a className="button" onClick={()=> {}}>Next</a>
 	</div>
 	</>
   )
