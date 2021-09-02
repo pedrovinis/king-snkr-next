@@ -112,6 +112,31 @@
   position: relative;
 }
 
+.buttonClear {
+  border-radius: var(--space-2x);
+  border: 1px solid #fff;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--text-md);
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  outline: none;
+  transition: background-color 0.2s ease;
+  width: 120px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonClear:hover,
+.buttonClear:focus {
+  background: black;
+  color: #fff;
+}
+
 @media (min-width: 768px) {
   .submit.reset {
     width: 120px;

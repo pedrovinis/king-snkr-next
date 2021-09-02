@@ -39,7 +39,7 @@
     "smoothscroll-polyfill": "0.4.4",
     "swr": "0.3.9",
     "validator": "13.5.2",
-    "vanilla-tilt": "1.7.0",
+    "vanilla-tilt": "1.7.0"
   },
   "devDependencies": {
     "@types/classnames": "2.2.11",

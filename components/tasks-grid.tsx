@@ -9,7 +9,6 @@ import PauseIcon from './icons/icon-pause'
 import EditIcon from './icons/icon-edit'
 import SnkrIcon from './icons/icon-snkr'
 import Link from 'next/link'
-import progress from 'pages/api/task/[slug]/progress'
 import TaskProgress from './task-progress'
 import DeleteIcon from './icons/icon-delete'
 

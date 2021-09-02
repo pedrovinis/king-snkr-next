@@ -124,9 +124,9 @@ export default function AddUserForm() {
           />
         <button 
         tabIndex={-1} //Not Focusable
-        className={cn(styles.submit, styles.reset, styles[formState])} 
+        className={cn(styles.buttonClear, styles[formState])} 
         onClick={()=> setPhone('')}>
-          Delete
+          Clear
         </button>
         </label>
         <label
