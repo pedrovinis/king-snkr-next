@@ -2,7 +2,7 @@ import { useState } from 'react'
 import cn from 'classnames'
 import LoadingDots from './loading-dots'
 import styles from './add-user-form.module.css'
-import IconAvatar from './icons/icon-avatar'
+import IconUser from './icons/icon-user'
 import { addUserFetch } from '@lib/user-api'
 import router from 'next/router'
 import { toast } from 'react-toastify'
@@ -50,7 +50,7 @@ export default function AddUserForm() {
         justifyContent: "center",
         margin: "1rem 0"
       }}>
-        <IconAvatar size="200px"/> 
+        <IconUser size="200px"/> 
       </div>
       
       <label

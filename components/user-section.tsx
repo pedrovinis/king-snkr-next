@@ -1,6 +1,6 @@
 import { User } from '@lib/types'
 import styles from './user-section.module.css'
-import IconAvatar from './icons/icon-avatar'
+import IconUser from './icons/icon-user'
 import { useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteUserFetch } from '@lib/user-api'
@@ -33,7 +33,7 @@ export default function UserSection({ user }: Props) {
       <BackLink text={"Back to Users"} href={'/users'}/>
       <div key={user.name} className={styles.container}>
         <div style={{ minWidth: '300px' }}>
-          <IconAvatar size={'250px'}/>
+          <IconUser size={'150px'}/>
         </div>
         <div className={styles['user-details']}>
           <div>

@@ -138,6 +138,7 @@ a[role='button'] {
   user-select: none;
 }
 
+
 svg {
   shape-rendering: crispEdges;
 }
@@ -179,6 +180,16 @@ svg circle {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accents-3); 
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: black;
+  background: violet;
+}
+
+::selection {
+  color: black;
+  background: violet;
 }
 
 .button {

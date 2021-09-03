@@ -4,45 +4,6 @@ type Props = {
 
 export default function UserIcon({ size = '20px' }: Props) {
   return (
-    <a style={{
-        height:size,
-        width:size
-    }}>
-        <svg
-        viewBox="0 0 80 80"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        >
-        <mask
-        id="avatar-mask0"
-        mask-type="alpha"
-        maskUnits="userSpaceOnUse"
-        x="0"
-        y="0"
-        width={size}
-        height={size}
-        >
-        </mask>
-        <g mask="url(#avatar-mask0)">
-        <g>
-            <circle cx="40" cy="40" r="40" fill="white" />
-        </g>
-        </g>
-        <path
-        d="M48 49V47C48 45.9391 47.5786 44.9217 46.8284 44.1716C46.0783 43.4214 45.0609 43 44 43H36C34.9391 43 33.9217 43.4214 33.1716 44.1716C32.4214 44.9217 32 45.9391 32 47V49"
-        stroke="white"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        />
-        <path
-        d="M40 39C42.2091 39 44 37.2091 44 35C44 32.7909 42.2091 31 40 31C37.7909 31 36 32.7909 36 35C36 37.2091 37.7909 39 40 39Z"
-        stroke="white"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        />
-    </svg>
-  </a>
+    <svg fill="none" height={size} stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width={size} xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
   )
 }

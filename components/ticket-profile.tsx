@@ -1,8 +1,8 @@
-import { TicketGenerationState } from '@lib/constants';
+import { TicketGenerationState } from '@lib/constants'
 import PxvIcon from '@components/icons/icon-platform'
-import cn from 'classnames';
-import IconAvatar from './icons/icon-avatar';
-import styles from './ticket-profile.module.css';
+import cn from 'classnames'
+import IconUser from './icons/icon-user'
+import styles from './ticket-profile.module.css'
 
 type Props = {
   name?: string;
@@ -20,7 +20,7 @@ export default function TicketProfile({ name, username, size = 1, ticketGenerati
         })}
       >
         <span className={cn(styles.image, styles['empty-icon'])}>
-          <IconAvatar size={''}/> 
+          <IconUser size={'100px'}/> 
         </span>
       </span>
       <div className={styles.text}>
