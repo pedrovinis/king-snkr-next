@@ -97,10 +97,8 @@ const getCountDown = (data:any) => {
     const cdStartSliced = data.slice(cdStart, data.length)
     const cdEnd = cdStartSliced.search('"')
     const dataCountDown = cdStartSliced.slice(0, cdEnd)
-    console.log(dataCountDown)
     //@ts-ignore
     const yearMonthDayTimeStamp = parseInt(parseInt(dataCountDown) + (Date.now()/1000))
-    console.log(yearMonthDayTimeStamp)
     const yearMonthDay = new Date(yearMonthDayTimeStamp*1000)
 
     const mhClassStart = data.search('class="detalhes-produto__disponibilidade"')+56
