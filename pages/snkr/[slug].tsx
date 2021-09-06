@@ -18,7 +18,7 @@ export default function SnkrPage({ snkr }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <SnkrSection snkr={snkr} />w
+        <SnkrSection snkr={snkr} />
       </Layout>
     </Page>
   );
