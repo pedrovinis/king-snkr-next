@@ -64,7 +64,7 @@ export type User = {
   slug: string
   createdAt: number
   validated: boolean
-  authCookieCreatedAt: string
+  authCookieCreatedAt: number
   authCookie: string
 }
 
