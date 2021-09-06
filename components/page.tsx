@@ -21,7 +21,7 @@ export default function Page({ meta, children, fullViewport = false }: Props) {
   const router = useRouter();
   const image = meta.image || '/twitter-card.png';
   const title = meta.title || 'pXv';
-  const url = meta.url || `${SITE_URL}${router.asPath}`;
+  const url = meta.url || `${SITE_URL}/${router.asPath}`;
   const description = meta.description || 'pXv';
 
   return (

@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://pxv.vercel.app/'
+export const SITE_URL = 'https://pxv.vercel.app'
 export const SITE_ORIGIN = 'https://pxv.vercel.app/'
 export const TWITTER_USER_NAME = 'pxv'
 export const BRAND_NAME = 'pXv'

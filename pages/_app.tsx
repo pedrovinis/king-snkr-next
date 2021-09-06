@@ -9,6 +9,8 @@ import ResizeHandler from '@components/resize-handler'
 import { useEffect } from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
 import NProgress from 'nprogress'
+import { AuthProvider } from '@components/auth-context'
+
 
 Router.events.on('routeChangeStart', ()=> {
   NProgress.start()
@@ -23,12 +25,14 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [])
 
   return (
-    <SSRProvider>
-      <OverlayProvider>
-        <ToastContainer transition={Slide}/>
-        <Component {...pageProps} />
-        <ResizeHandler />
-      </OverlayProvider>
-    </SSRProvider>
-  );
+    <AuthProvider>
+      <SSRProvider>
+        <OverlayProvider>
+          <ToastContainer transition={Slide}/>
+          <Component {...pageProps} />
+          <ResizeHandler />
+        </OverlayProvider>
+      </SSRProvider>
+    </AuthProvider>
+  )
 }

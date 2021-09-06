@@ -3,12 +3,16 @@ import Page from '@components/page';
 import TicketVisual from '@components/ticket-visual'
 import Header from '@components/header'
 import ActivateKeyForm from '@components/activate-key-from';
+import { AuthContext } from '@components/auth-context';
+import { useContext } from 'react';
 
 export default function Conf() {
   const meta = {
     title: 'King Snkr | Profile',
     description: 'pXv'
   }
+
+  const { } = useContext(AuthContext)
 
   return (
     <Page meta={meta} fullViewport>

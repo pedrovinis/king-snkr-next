@@ -205,7 +205,7 @@ svg circle {
   letter-spacing: -0.02em;
   outline: none;
   font-weight: 500;
-  color: white;
+  color: var(--accents-1);
   transition: background-color 0.2s ease, color 0.2s ease;
   display: inline-flex;
   align-items: center;

@@ -71,6 +71,12 @@
   }
 }
 
+.iconUser {
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
 .name {
   font-weight: 800;
   color: #fff;

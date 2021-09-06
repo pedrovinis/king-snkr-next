@@ -32,8 +32,8 @@ export default function UserSection({ user }: Props) {
     <>
       <BackLink text={"Back to Users"} href={'/users'}/>
       <div key={user.name} className={styles.container}>
-        <div style={{ minWidth: '300px' }}>
-          <IconUser size={'150px'}/>
+        <div className={styles.iconUser}>
+          <IconUser size={'200px'}/>
         </div>
         <div className={styles['user-details']}>
           <div>

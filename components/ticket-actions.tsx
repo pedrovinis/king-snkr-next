@@ -45,7 +45,7 @@ export default function TicketActions({ username }: Props) {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <IconTwitter width={24} /> Tweet it!
+        <IconTwitter size={24} /> Tweet it!
       </a>
       <a
         className={cn(

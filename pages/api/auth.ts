@@ -1,17 +1,15 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { COOKIE } from '@lib/constants';
+import { SITE_URL } from '@lib/constants'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function auth(req: NextApiRequest, res: NextApiResponse) {
-  const id = req.cookies[COOKIE];
-  if (!id) {
-    return res.status(401).json({
-      error: {
-        code: 'missing_cookie',
-        message: 'Missing cookie'
-      }
-    });
-  }
+export default async (req : NextApiRequest, res: NextApiResponse) => {
+    const pxvAuthToken = ''
 
+    const authReq = await fetch(`${SITE_URL}/api/auth/session`, {
+        headers: {
+            "Cookie": `__Secure-next-auth.session-token=${pxvAuthToken}`
+        }
+    })
+    const data = await authReq.json()
 
-  return res.status(200).json({ loggedIn: true });
+    res.status(200).json(data)
 }
