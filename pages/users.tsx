@@ -13,7 +13,6 @@ type Props = {
   users: User[]
 }
 
-
 export default function UsersPage( {users}: Props) {
   const meta = {
     title: 'King Snkr | Users',

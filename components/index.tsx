@@ -1,44 +1,43 @@
-import { useState } from 'react';
-import { PageState, ConfDataContext, UserData } from '@lib/hooks/use-conf-data';
-import Layout from './layout';
-import ConfContainer from './conf-container';
-import Hero from './hero';
-import Form from './form';
-import LearnMore from './learn-more';
-import LoginButton from './login-button';
+import { useContext } from 'react'
+import Layout from './layout'
+import Hero from './hero'
+import cn from 'classnames'
+import styleUtils from './utils.module.css'
+import styles from './index.module.css'
 
-type Props = {
-  defaultUserData: UserData;
-  sharePage?: boolean;
-  defaultPageState?: PageState;
-};
+import Profile from '@components/profile'
 
-export default function Conf({
-  defaultUserData,
-  sharePage,
-  defaultPageState = 'registration'
-}: Props) {
-  const [userData, setUserData] = useState<UserData>(defaultUserData);
-  const [pageState, setPageState] = useState<PageState>(defaultPageState);
+import LearnMore from './learn-more'
+import LoginButton from './login-button'
+import { AuthContext } from './auth-context'
+import LoadingDots from './loading-dots'
+import PageContainer from './page-container'
+
+
+export default function Index() {
+  const { session, loading } = useContext(AuthContext)
 
   return (
-    <ConfDataContext.Provider
-      value={{
-        userData,
-        setUserData,
-        setPageState
-      }}
-    >
       <Layout>
-        <ConfContainer>
-            <>
+        <PageContainer >
               <Hero />
-              <LoginButton />
-              <LearnMore />
-            </>
-          
-        </ConfContainer>
+              <span className={cn(styleUtils.appear, styles.info,
+                  [styleUtils['appear-fourth']],
+              )}>
+              {!loading ? (
+                <LoadingDots size={20} />
+              ) : (
+                <>
+                {session ? (
+                  <Profile user={session?.user}/>
+                ) : (
+                  <LoginButton />
+                )}
+                </>
+              )}
+            </span>
+            <LearnMore />
+        </PageContainer>
       </Layout>
-    </ConfDataContext.Provider>
-  );
+  )
 }

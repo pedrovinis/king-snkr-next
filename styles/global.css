@@ -219,6 +219,41 @@ svg circle {
   color: var(--brand);
 }
 
+.buttonWhite {
+  width: 100%;
+  height: 56px;
+  margin-top: var(--space-4x);
+  border-radius: var(--space-2x);
+  border: 1px solid var(--accents-8);
+  background: var(--accents-1);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--text-md);
+  letter-spacing: -0.02em;
+  outline: none;
+  font-weight: 500;
+  color: var(--accents-8);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+}
+
+.buttonWhite:hover,
+.buttonWhite:focus {
+  background: var(--accents-8);
+  color: var(--accents-1);
+  border-color: var(--accents-1);
+}
+
 .buttonRed {
   width: 100%;
   height: 56px;

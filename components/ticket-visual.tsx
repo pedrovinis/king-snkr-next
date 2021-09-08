@@ -15,14 +15,14 @@ type Props = {
   size?: number
   name?: string
   ticketCode?: string
-  username?: string
+  email?: string
   ticketGenerationState?: TicketGenerationState;
 };
 
 export default function TicketVisual({
   size = 1,
   name,
-  username,
+  email,
   ticketCode,
   ticketGenerationState = 'default'
 }: Props) {
@@ -46,15 +46,15 @@ export default function TicketVisual({
         >
       <div className={styles.visual} style={{ ['--size' as string]: size }}>
         <div className={styles['horizontal-ticket']}>
-          {username ? <TicketColored /> : <TicketMono />}
+          {email ? <TicketColored /> : <TicketMono />}
         </div>
         <div className={styles['vertical-ticket']}>
-          {username ? <TicketColoredMobile /> : <TicketMonoMobile />}
+          {email ? <TicketColoredMobile /> : <TicketMonoMobile />}
         </div>
         <div className={styles.profile}>
           <TicketProfile
             name={name}
-            username={username}
+            email={email}
             size={size}
             ticketGenerationState={ticketGenerationState}
           />

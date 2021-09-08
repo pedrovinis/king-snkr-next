@@ -5,25 +5,37 @@ import Header from '@components/header'
 import ActivateKeyForm from '@components/activate-key-from';
 import { AuthContext } from '@components/auth-context';
 import { useContext } from 'react';
+import LoadingDots from '@components/loading-dots';
 
 export default function Conf() {
   const meta = {
     title: 'King Snkr | Profile',
     description: 'pXv'
   }
-
-  const { } = useContext(AuthContext)
+  const { loading, session } = useContext(AuthContext)
 
   return (
     <Page meta={meta} fullViewport>
       <Layout >
       <Header hero="Profile" description=""/>
-      <TicketVisual
-            username={undefined}
-            name={undefined}
-            ticketCode={undefined}
-            ticketGenerationState={undefined}
-          />
+      {loading ? (
+        <LoadingDots size={20} />
+      ) : (
+      <>
+      {session ? (
+        <TicketVisual
+          name={session?.user?.name}
+          email={session?.user?.email}
+          ticketCode={undefined}
+          ticketGenerationState={undefined}
+        />
+      ) : (
+        <>NO SESSION</>
+      )}
+
+      </>
+      )}
+
         <ActivateKeyForm />
       </Layout>
     </Page>

@@ -19,7 +19,7 @@ function UserCard({ user }: { user: User }) {
             className={cn(styles.image)}
             loading="lazy"
             title={user.name}
-            width={900}
+            width={1000}
             height={500}
           />
         </div>

@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { SkipNavContent } from '@reach/skip-nav'
 
-import Page from '@components/page';
-import ConfContent from '@components/index'
+import Page from '@components/page'
+import IndexComp from '@components/index'
 
 export default function Conf() {
   const { query } = useRouter();
@@ -22,10 +22,7 @@ export default function Conf() {
   return (
     <Page meta={meta} fullViewport>
       <SkipNavContent />
-      <ConfContent
-        defaultUserData={defaultUserData}
-        defaultPageState={query.ticketNumber ? 'ticket' : 'registration'}
-      />
+      <IndexComp />
     </Page>
-  );
+  )
 }

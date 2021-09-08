@@ -1,25 +1,35 @@
 import { SITE_URL } from '@lib/constants'
 import cn from 'classnames'
+import styleUtils from './utils.module.css'
 import { useState } from 'react'
 import LoadingDots from './loading-dots'
 
 export default function LoginButton() {
   const [loading, setLoading] = useState(false)
   return (
-    <a
+    <button
       id="#auth-button"
       style={{margin:'1rem auto', width:'50%', display:'flex',}}
-      className="button"
+      className={cn(styleUtils.appear, "buttonWhite", styleUtils['appear-fourth'])}
+      disabled={loading}
       onClick={()=>{
         handleAuthWindow()
         setLoading(true)
     }}
     >
-    {loading ? <LoadingDots size={6}/> : <>Login or Register </>}</a>
+    {loading ? <LoadingDots size={6}/> : <>Login or Register </>}</button>
   )
 }
 
 
 const handleAuthWindow = () => {
-  window.open('')
+  const width = 700
+  const height = 700
+  const left = (screen.width - width) / 2
+  const top = (screen.height - height) / 4
+      
+  const authWindow:any = window.open(`${SITE_URL}/auth`, 'pxv Auth',
+    'width=' + width + ', height=' + height +
+    ', top=' + top + ', left=' + left)
+  authWindow.focus()
 }

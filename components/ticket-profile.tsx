@@ -6,12 +6,12 @@ import styles from './ticket-profile.module.css'
 
 type Props = {
   name?: string;
-  username?: string;
+  email?: string;
   size?: number;
   ticketGenerationState: TicketGenerationState;
 };
 
-export default function TicketProfile({ name, username, size = 1, ticketGenerationState }: Props) {
+export default function TicketProfile({ name, email, size = 1, ticketGenerationState }: Props) {
   return (
     <div className={styles.profile}>
       <span
@@ -20,13 +20,13 @@ export default function TicketProfile({ name, username, size = 1, ticketGenerati
         })}
       >
         <span className={cn(styles.image, styles['empty-icon'])}>
-          <IconUser size={'100px'}/> 
+          <IconUser size={'50px'}/> 
         </span>
       </span>
       <div className={styles.text}>
         <p
           className={cn(styles.name, {
-            [styles['name-blank']]: !username
+            [styles['name-blank']]: !email
           })}
         >
           <span
@@ -34,10 +34,10 @@ export default function TicketProfile({ name, username, size = 1, ticketGenerati
               [styles.show]: ticketGenerationState === 'loading'
             })}
           >
-            {name || username || 'Your Name'}
+            {name || email || 'Your Name'}
           </span>
         </p>
-        <p className={styles.username}>
+        <p className={styles.email}>
           <span
             className={cn(styles.skeleton, styles.wrapper, {
               [styles.show]: ticketGenerationState === 'loading'
@@ -46,7 +46,7 @@ export default function TicketProfile({ name, username, size = 1, ticketGenerati
             <span className={styles.githubIcon}>
               <PxvIcon color="var(--secondary-color)" size={`20`} />
             </span>
-            {username || <>username</>}
+            {email || <>email</>}
           </span>
         </p>
       </div>
