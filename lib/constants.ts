@@ -2,7 +2,7 @@ export const SITE_URL = 'https://pxv.vercel.app'
 export const SITE_ORIGIN = 'https://pxv.vercel.app/'
 export const BRAND_NAME = 'pXv'
 
-export const SITE_DESCRIPTION = 'The best experience for you.'
+export const SITE_DESCRIPTION = 'A melhor experiência para você.'
 export const DATE = 'September 20, 2021'
 
 export const COOKIE = 'user-id'

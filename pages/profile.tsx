@@ -8,6 +8,9 @@ import { useContext } from 'react'
 import LoadingDots from '@components/loading-dots'
 import { UserProductsContext } from '@components/user-products-context'
 import { isActive } from '@lib/isActive'
+import LoginButton from '@components/login-button'
+import PageContainer from '@components/page-container'
+import cn from 'classnames'
 
 export default function Conf() {
   const meta = {
@@ -17,18 +20,51 @@ export default function Conf() {
   const { loading, session } = useContext(AuthContext)
   const UserProducts = useContext(UserProductsContext)
 
+  const expiration = UserProducts?.products[`king-snkr`]?.expiration
+  const active = isActive(expiration)
+  
   return (
     <Page meta={meta} fullViewport>
       <Layout >
       <Header hero="Profile" description=""/>
+      <PageContainer >
         <TicketVisual
           name={session?.user?.name}
           email={session?.user?.email}
-          active={isActive(UserProducts.products['king-snkr']?.expiration * 1000) ? true : false}
-          userState={!loading ? 'loading' : 'default'}
+          active={active}
+          userState={loading ? 'loading' : 'default'}
           userProductsState={UserProducts.loading ? 'loading' : 'default'}
+          expiration={expiration ? expiration : null}
         />
-        <ActivateKeyForm />
+
+        {loading ? (
+          <></>
+        ) : (
+          <>
+          {session.user ? (
+            <>
+            <button style={{margin:'1rem auto', width:'50%', display:'flex',}} className={cn("buttonRed")}>
+               Sair 
+            </button>
+            {UserProducts.loading ? (
+              <div style={{display:'flex', justifyContent:'center', margin: '3rem 0'}}><LoadingDots size={20}/></div>
+            ) : (
+              <>
+                {active ? (
+                  <></>
+                ) : (
+                  <ActivateKeyForm />
+                )}
+              </>
+            )}
+            </>
+          ) : (
+            <LoginButton />
+          )}
+          </>
+        )}
+        
+        </PageContainer>
       </Layout>
     </Page>
   );

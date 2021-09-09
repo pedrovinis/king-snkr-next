@@ -30,7 +30,6 @@ export const getAndFormatSnkrData = async(link:string) => {
     const DataLayer:iDataLayer = await getAndFormatSnkrDataLayer(link)
     const sizesInfo:object = await getSizesInfo(data)
     const edition:string = await getEdition(data)
-    
 
     return {
         snkr_name: DataLayer.snkr_name,
@@ -109,7 +108,6 @@ const getCountDown = (data:any) => {
     const hours = mhStartSliced.slice(0,2)
     const minutes = mhStartSliced.slice(3,5)
     
-
     const countdown = new Date(
         yearMonthDay.getFullYear(),
         yearMonthDay.getMonth(),
@@ -118,7 +116,8 @@ const getCountDown = (data:any) => {
         minutes,
         0,0
     )
-    console.log(countdown)
+    //@ts-ignore
+    if(isNaN(countdown)) return parseInt(Date.now()/1000)
     //@ts-ignore
     return parseInt(countdown.getTime()/1000)
 }

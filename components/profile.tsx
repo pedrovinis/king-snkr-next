@@ -8,7 +8,6 @@ import UserIcon from "./icons/icon-user"
 
 type ButtonState = 'default' | 'loading' 
 
-
 export default function Profile({user}:any) {
     const [signOutState, setSignOutState] = useState('default')
 
@@ -18,12 +17,14 @@ export default function Profile({user}:any) {
         <div className={styles.info}>
             {user?.name}
             <p>{user?.email}</p>
-            <a className="buttonRed" onClick={()=> {
+            <button
+            style={{'width':`150px`}} 
+            className="buttonRed" onClick={()=> {
                 setSignOutState('loading')
                 void signOut()
             }}>
                 {signOutState == 'default' ? <> Sair </> : <LoadingDots size={6}/>}
-            </a>
+            </button>
         </div>
       </div>
     )

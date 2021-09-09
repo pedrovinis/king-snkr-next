@@ -17,7 +17,7 @@ export default function LoginButton() {
         setLoading(true)
     }}
     >
-    {loading ? <LoadingDots size={6}/> : <>Login or Register </>}</button>
+    {loading ? <LoadingDots size={6}/> : <>Entre ou registre-se</>}</button>
   )
 }
 

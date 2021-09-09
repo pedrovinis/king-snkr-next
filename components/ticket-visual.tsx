@@ -8,13 +8,14 @@ import TicketMono from './ticket-mono'
 import TicketInfo from './ticket-info'
 import TicketMonoMobile from './ticket-mono-mobile'
 import cn from 'classnames'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type Props = {
   size?: number
   name?: string
   email?: string
   active?: boolean
+  expiration?: number | null
   userState?: UserState
   userProductsState?: UserProductsState
 }
@@ -24,6 +25,7 @@ export default function TicketVisual({
   name,
   email,
   active,
+  expiration,
   userState = 'default',
   userProductsState = 'default'
 }: Props) {
@@ -35,7 +37,7 @@ export default function TicketVisual({
         max: 5,
         'max-glare': 0.16,
         'full-page-listening': true
-      });
+      })
     }
   }, [ticketRef])
 
@@ -61,11 +63,13 @@ export default function TicketVisual({
           />
         </div>
         <div className={styles.info}>
-          <TicketInfo userProductsState={userProductsState} logoTextSecondaryColor={active ? 'var(--brand)' : undefined} />
+          <TicketInfo userProductsState={userProductsState}
+            active={active}
+            expiration = {expiration}
+            logoTextSecondaryColor={active ? 'var(--brand)' : undefined} />
         </div>
-        
       </div>
       </div>
     </>
-  );
+  )
 }

@@ -25,11 +25,10 @@ export const UserProductsProvider = ({ children }:any) => {
             if(session){
                 const res = await fetch(`/api/user/products`)
                 const data = await res.json()
-                setProducts(data.products? data?.products : {})
                 setLoading(false)
+                setProducts(data.products? data?.products : {})
             }
         })()
-
     }, [session])
 
 

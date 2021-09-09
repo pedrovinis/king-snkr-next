@@ -72,7 +72,7 @@ export default function ActivateKeyForm() {
           className={cn("buttonWhite", styles[formState])}
           disabled={formState === 'loading'}
         >
-          {formState === 'loading' ? <LoadingDots size={6}/> : <>Active KING SNKR</>}
+          {formState === 'loading' ? <LoadingDots size={6}/> : <>Ativar KING SNKR</>}
         </button>
       </div>
     </form>

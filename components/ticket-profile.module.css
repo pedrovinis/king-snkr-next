@@ -51,7 +51,7 @@
   margin: 0;
 }
 
-.githubIcon {
+.icon {
   margin-right: calc(5px * var(--size));
   display: inline-flex;
 }

@@ -19,7 +19,17 @@
   }
 }
 
+.expirationText {
+  display: block;
+}
+
+.expiration {
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
 .date {
+  display: inline-block;
   text-transform: uppercase;
   font-size: calc(20px * var(--size));
   line-height: 1.15;

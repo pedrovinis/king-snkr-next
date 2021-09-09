@@ -43,10 +43,10 @@ export default function TicketProfile({ name, email, size = 1, userState }: Prop
               [styles.show]: userState=== 'loading'
             })}
           >
-            <span className={styles.githubIcon}>
+            <span className={styles.icon}>
               <PxvIcon color="var(--secondary-color)" size={`20`} />
             </span>
-            {email || <>email</>}
+            {email || <>Email</>}
           </span>
         </p>
       </div>

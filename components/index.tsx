@@ -15,7 +15,7 @@ import PageContainer from './page-container'
 
 
 export default function Index() {
-  const { session, loading } = useContext(AuthContext)
+  const { loading, session } = useContext(AuthContext)
 
   return (
       <Layout>
@@ -28,7 +28,7 @@ export default function Index() {
                 <LoadingDots size={20} />
               ) : (
                 <>
-                {session ? (
+                {session.user ? (
                   <Profile user={session?.user}/>
                 ) : (
                   <LoginButton />
