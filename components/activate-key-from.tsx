@@ -4,18 +4,16 @@ import cn from 'classnames'
 import LoadingDots from './loading-dots'
 import styles from './activate-key-form.module.css'
 
-import { addSnkrFetch } from '@lib/snkr-api'
 import router from 'next/router'
 import { toast } from 'react-toastify'
 import IconKey from './icons/icon-key'
+import { activateFetch } from '@lib/kingsnkr-api'
 
 type FormState = 'default' | 'loading' | 'error'
 
 export default function ActivateKeyForm() {
-  const [link, setLink] = useState('')
-  const [errorMsg, setErrorMsg] = useState('')
-  const [errorTryAgain, setErrorTryAgain] = useState(false)
-  const [linkFocused, setLinkFocused] = useState(false)
+  const [key, setkey] = useState('')
+  const [keyFocused, setkeyFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
 
   const handleDeleteRes = async(res:any) => {
@@ -43,9 +41,9 @@ export default function ActivateKeyForm() {
         <IconKey size={'80px'}/>
       </div>
       <label
-          htmlFor="link-input-field"
+          htmlFor="key-input-field"
           className={cn(styles['input-label'], {
-            [styles.focused]: linkFocused
+            [styles.focused]: keyFocused
           })}
         >
           <input
@@ -56,10 +54,10 @@ export default function ActivateKeyForm() {
             autoComplete="off"
             type="text"
             id="keycode-input-field"
-            value={link}
-            onChange={e => setLink(e.target.value.toUpperCase().trim())}
-            onFocus={() => setLinkFocused(true)}
-            onBlur={() => setLinkFocused(false)}
+            value={key}
+            onChange={e => setkey(e.target.value.toUpperCase().trim())}
+            onFocus={() => setkeyFocused(true)}
+            onBlur={() => setkeyFocused(false)}
             placeholder="Enter your Keycode: XXXX-XXXX-XXXX-XXXX"
             aria-label="Active Keycode"
             required
@@ -69,6 +67,10 @@ export default function ActivateKeyForm() {
           type="submit"
           className={cn(styles.submit, styles[formState])}
           disabled={formState === 'loading'}
+          onClick={async ()=> {
+            setFormState('loading')
+            const res = await activateFetch(key)
+          }}
         >
           {formState === 'loading' ? <LoadingDots size={6}/> : <>Active KING SNKR</>}
         </button>

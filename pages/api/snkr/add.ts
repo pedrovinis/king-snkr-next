@@ -18,8 +18,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     const snkr = new SnkrClass()
     
     try {
-        const snkrDataReq = req.body
-        const fSnkrData = JSON.parse(Buffer.from(snkrDataReq, 'base64').toString())
+        const fSnkrData = JSON.parse(Buffer.from(req.body, 'base64').toString())
         let link:string = fSnkrData.snkr_link.trim()
         if(!link.startsWith('https://')) link = 'https://'+link
         

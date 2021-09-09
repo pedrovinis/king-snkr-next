@@ -2,7 +2,7 @@ import fs from 'fs'
 import TaskClass from '@lib/class/task'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { Snkr, Task, User } from '@lib/types'
+import { Snkr, User } from '@lib/types'
 
 const formatTaskData = (taskData:any, users:User[], snkrs:Snkr[]) => {
     const fTaskData:any = JSON.parse(Buffer.from(taskData, 'base64').toString())

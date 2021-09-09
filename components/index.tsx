@@ -24,7 +24,7 @@ export default function Index() {
               <span className={cn(styleUtils.appear, styles.info,
                   [styleUtils['appear-fourth']],
               )}>
-              {!loading ? (
+              {loading ? (
                 <LoadingDots size={20} />
               ) : (
                 <>
