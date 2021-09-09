@@ -28,10 +28,8 @@ export const AuthProvider = ({ children }:any) => {
 
     useEffect(() => {
         (async () => {
-            console.log('Auth provider')
             const res = await fetch(`/api/auth`)
             const data = await res.json()
-            console.log(data)
             setSession(data.session? data.session : {})
             setLoading(false)
         })()

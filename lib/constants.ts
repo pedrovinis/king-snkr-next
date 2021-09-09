@@ -41,4 +41,6 @@ export const TASKPROGRESS = [
   'Completed'
 ]
 
-export type TicketGenerationState = 'default' | 'loading'
+export type UserState = 'default' | 'loading'
+export type UserProductsState = 'default' | 'loading'
+

@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
 import NProgress from 'nprogress'
 import { AuthProvider } from '@components/auth-context'
+import { UserProductsProvider } from '@components/user-products-context'
 
 
 Router.events.on('routeChangeStart', ()=> {
@@ -26,13 +27,15 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <AuthProvider>
-      <SSRProvider>
-        <OverlayProvider>
-          <ToastContainer transition={Slide}/>
-          <Component {...pageProps} />
-          <ResizeHandler />
-        </OverlayProvider>
-      </SSRProvider>
+      <UserProductsProvider>
+        <SSRProvider>
+          <OverlayProvider>
+            <ToastContainer transition={Slide}/>
+            <Component {...pageProps} />
+            <ResizeHandler />
+          </OverlayProvider>
+        </SSRProvider>
+      </UserProductsProvider>
     </AuthProvider>
   )
 }

@@ -1,10 +1,9 @@
-import { TicketGenerationState } from '@lib/constants'
+import { UserProductsState, UserState } from '@lib/constants'
 import TicketColoredMobile from './ticket-colored-mobile'
 import TicketColored from './ticket-colored'
 import styles from './ticket-visual.module.css'
 import Tilt from 'vanilla-tilt'
 import TicketProfile from './ticket-profile'
-import TicketCode from './ticket-code'
 import TicketMono from './ticket-mono'
 import TicketInfo from './ticket-info'
 import TicketMonoMobile from './ticket-mono-mobile'
@@ -14,17 +13,19 @@ import { useEffect, useRef } from 'react'
 type Props = {
   size?: number
   name?: string
-  ticketCode?: string
   email?: string
-  ticketGenerationState?: TicketGenerationState;
-};
+  active?: boolean
+  userState?: UserState
+  userProductsState?: UserProductsState
+}
 
 export default function TicketVisual({
   size = 1,
   name,
   email,
-  ticketCode,
-  ticketGenerationState = 'default'
+  active,
+  userState = 'default',
+  userProductsState = 'default'
 }: Props) {
   const ticketRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -46,29 +47,23 @@ export default function TicketVisual({
         >
       <div className={styles.visual} style={{ ['--size' as string]: size }}>
         <div className={styles['horizontal-ticket']}>
-          {email ? <TicketColored /> : <TicketMono />}
+          {active ? <TicketColored /> : <TicketMono />}
         </div>
         <div className={styles['vertical-ticket']}>
-          {email ? <TicketColoredMobile /> : <TicketMonoMobile />}
+          {active ? <TicketColoredMobile /> : <TicketMonoMobile />}
         </div>
         <div className={styles.profile}>
           <TicketProfile
             name={name}
             email={email}
             size={size}
-            ticketGenerationState={ticketGenerationState}
+            userState={userState}
           />
         </div>
         <div className={styles.info}>
-          <TicketInfo logoTextSecondaryColor={ticketCode ? 'var(--brand)' : undefined} />
+          <TicketInfo userProductsState={userProductsState} logoTextSecondaryColor={active ? 'var(--brand)' : undefined} />
         </div>
-        {ticketCode && (
-          <div className={styles['ticket-code-wrapper']}>
-            <div className={styles['ticket-code']}>
-              <TicketCode code={ticketCode} />
-            </div>
-          </div>
-        )}
+        
       </div>
       </div>
     </>

@@ -16,13 +16,12 @@ export default function ActivateKeyForm() {
   const [keyFocused, setkeyFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
 
-  const handleDeleteRes = async(res:any) => {
+  const handleActiveRes = async(res:any) => {
     const data = await res.json()
     if(data.success) {
-      router.push('/snkrs')
-      toast.success(`${data.name} successful added.`)
+      toast.success(`${data.message}`)
     }
-    else toast.error('Error on add Snkr. Please try again.')
+    else toast.error(`${data.message}`)
   }
 
   return (
@@ -30,6 +29,9 @@ export default function ActivateKeyForm() {
     onSubmit={async e =>{
         e.preventDefault()
         setFormState('loading')
+        const res = await activateFetch(key)
+        await handleActiveRes(res)
+        setFormState('default')
       }}
     >
       <div className={styles['form-row']}>
@@ -47,7 +49,9 @@ export default function ActivateKeyForm() {
           })}
         >
           <input
-            maxLength={50}
+            min={17}
+            maxLength={17}
+            minLength={17}
             style={{width:'96%'}}
             className={styles.input}
             disabled={formState === 'loading' }
@@ -58,19 +62,15 @@ export default function ActivateKeyForm() {
             onChange={e => setkey(e.target.value.toUpperCase().trim())}
             onFocus={() => setkeyFocused(true)}
             onBlur={() => setkeyFocused(false)}
-            placeholder="Enter your Keycode: XXXX-XXXX-XXXX-XXXX"
+            placeholder="Enter your Keycode: XXXXXX-XXXXXX-XXXXXX"
             aria-label="Active Keycode"
             required
           />
         </label>
         <button
           type="submit"
-          className={cn(styles.submit, styles[formState])}
+          className={cn("buttonWhite", styles[formState])}
           disabled={formState === 'loading'}
-          onClick={async ()=> {
-            setFormState('loading')
-            const res = await activateFetch(key)
-          }}
         >
           {formState === 'loading' ? <LoadingDots size={6}/> : <>Active KING SNKR</>}
         </button>

@@ -1,7 +1,7 @@
 import { User } from "./types"
 
 export const addUserFetch = async(user:any) => {
-    const res = await fetch('api/user/add', {
+    const res = await fetch('api/nikeuser/add', {
         method:'POST',
         body: btoa(JSON.stringify({
             name: user.name,
@@ -14,7 +14,7 @@ export const addUserFetch = async(user:any) => {
 }
 
 export const deleteUserFetch = async(user:User) => {
-    const res = await fetch('/api/user/delete', {
+    const res = await fetch('/api/nikeuser/delete', {
         method:'POST',
         body: btoa(JSON.stringify({
             name: user.name
