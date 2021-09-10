@@ -10,7 +10,7 @@ export default function LoginButton() {
     <button
       id="#auth-button"
       style={{margin:'1rem auto', width:'50%', display:'flex',}}
-      className={cn(styleUtils.appear, "buttonWhite", styleUtils['appear-fourth'])}
+      className={cn(styleUtils.appear, "button", styleUtils['appear-fourth'])}
       disabled={loading}
       onClick={()=>{
         handleAuthWindow()

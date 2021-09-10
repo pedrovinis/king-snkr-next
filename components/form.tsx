@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import LoadingDots from './loading-dots'
 import styleUtils from './utils.module.css'
 import styles from './form.module.css'
-import { register } from '@lib/user-api'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -54,46 +53,7 @@ export default function Form({ sharePage }: Props) {
         [styleUtils['appear-fifth']]: !errorTryAgain && !sharePage,
         [styleUtils['appear-third']]: !errorTryAgain && sharePage
       })}
-      onSubmit={e => {
-        if (formState === 'default') {
-          setFormState('loading');
-          register(email)
-            .then(async res => {
-
-              const data = await res.json();
-              const params = {
-                id: data.id,
-                ticketNumber: data.ticketNumber,
-                name: data.name,
-                username: data.username
-              };
-
-              if (sharePage) {
-                const queryString = Object.keys(params)
-                  .map(
-                    key =>
-                      `${encodeURIComponent(key)}=${encodeURIComponent(
-                        params[key as keyof typeof params] || ''
-                      )}`
-                  )
-                  .join('&');
-                router.replace(`/?${queryString}`, '/');
-              } else {
-                // setUserData(params);
-                // setPageState('ticket');
-              }
-            })
-            .catch(async err => {
-              let message = 'Error! Please try again.';
-
-              setErrorMsg(message);
-              setFormState('error');
-            });
-        } else {
-          setFormState('default');
-        }
-        e.preventDefault();
-      }}
+        
     >
       <div className={styles['form-row']}>
         <label
