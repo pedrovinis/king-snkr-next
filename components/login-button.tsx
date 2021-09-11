@@ -1,6 +1,4 @@
 import { SITE_URL } from '@lib/constants'
-import cn from 'classnames'
-import styleUtils from './utils.module.css'
 import { useState } from 'react'
 import LoadingDots from './loading-dots'
 
@@ -10,7 +8,7 @@ export default function LoginButton() {
     <button
       id="#auth-button"
       style={{margin:'1rem auto', width:'50%', display:'flex',}}
-      className={cn(styleUtils.appear, "button", styleUtils['appear-fourth'])}
+      className="button"
       disabled={loading}
       onClick={()=>{
         handleAuthWindow()
@@ -20,7 +18,6 @@ export default function LoginButton() {
     {loading ? <LoadingDots size={6}/> : <>Entre ou registre-se</>}</button>
   )
 }
-
 
 const handleAuthWindow = () => {
   const width = 700
