@@ -33,21 +33,23 @@ function TaskTable({ task }: { task: Task }) {
     </td>
     <td> 
       <a className={styles.link} href={`user/${task.user.slug}`} target="_blank">
-        {task.user.name} <LinkIcon size={'15px'}/>
+      <span>{task.user.name} <LinkIcon size={'15px'}/></span>
       </a>
     </td>
     <td>
       <a className={styles.snkrLink} href={`snkr/${task.snkr.slug}`} target="_blank">
       <SnkrIcon snkrName={task.snkr.name} size={'90px'}/> 
-      {task.snkr.name} {task.snkr.edition} - {task.cfg.size}<LinkIcon size={'15px'}/>
+      <span>{task.snkr.name} {task.snkr.edition} {' '}<LinkIcon size={'15px'}/> </span>
       </a>
+    </td>
+    <td>
+      {task.cfg.size}
     </td>
     <td>
       <TaskProgress progress={task.progress}/>
     </td>
     <td>
       <a className={styles.action}><StartIcon size={'35px'}/></a>
-      <a className={styles.action}><PauseIcon size={'35px'}/></a>
       <a className={styles.action}><EditIcon size={'35px'}/></a>
       <a className={styles.action}><DeleteIcon size={'35px'}/></a>
     </td>
@@ -71,16 +73,14 @@ export default function TasksGrid({ tasks }: Props) {
             <td>Task</td>
             <td>User</td>
             <td>SNKR</td>
+            <td>Size</td>
             <td>Status</td>
             <td>Actions</td>
           </tr>
         </thead>
         <tbody className={styles.tBody}>
           {tasks.map((task, i)=> {
-            return (
-            <>
-              <TaskTable key={task.name+i} task={task} />
-            </>)
+            return <TaskTable key={task.name+i} task={task} />
           })}
         </tbody>
       </table>

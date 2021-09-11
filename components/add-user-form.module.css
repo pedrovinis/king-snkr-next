@@ -124,7 +124,7 @@
   font-weight: 500;
   outline: none;
   transition: background-color 0.2s ease;
-  width: 120px;
+  width: 100px;
   height: 40px;
   display: inline-flex;
   align-items: center;
@@ -146,48 +146,6 @@
     right: var(--space-2x);
     top: var(--space-2x);
   }
-}
-
-.submit.loading {
-  cursor: default;
-}
-
-.submit.default:hover,
-.submit.default:focus {
-  background: black;
-  color: var(--brand);
-}
-
-.submit.default.generate-with-github:hover path,
-.submit.default.generate-with-github:focus path {
-  fill: var(--brand);
-}
-
-.submit.error:hover,
-.submit.error:focus {
-  background: #000;
-  color: #fff;
-}
-
-.submit.default:disabled,
-.submit.default:disabled:hover,
-.submit.default:disabled:focus {
-  cursor: default;
-  background: red;
-  border-color: var(--gray);
-  color: #fff;
-  justify-content: flex-start;
-  overflow: hidden;
-}
-
-.submit.default.generate-with-github:disabled path,
-.submit.default.generate-with-github:disabled:hover path,
-.submit.default.generate-with-github:disabled:focus path {
-  fill: #fff;
-}
-
-.submit.default.generate-with-github.not-allowed:disabled {
-  cursor: not-allowed;
 }
 
 @media (min-width: 1200px) {

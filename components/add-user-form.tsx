@@ -155,7 +155,7 @@ export default function AddUserForm() {
         </label>
         <button
           type="submit"
-          className={cn(styles.submit, styles[formState])}
+          className={cn("button", styles[formState])}
           disabled={formState === 'loading' }
         >
           {formState === 'loading' ? <LoadingDots size={6} /> : <>Add</>}

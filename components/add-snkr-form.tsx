@@ -62,7 +62,7 @@ export default function AddUserForm() {
         </label>
         <button
           type="submit"
-          className={cn(styles.submit, styles[formState])}
+          className={cn("button", styles[formState])}
           disabled={formState === 'loading'}
           onClick={async()=>{
             setFormState('loading')

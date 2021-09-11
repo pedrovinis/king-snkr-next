@@ -15,7 +15,7 @@ export default function TaskProgress({ progress }:Props) {
             [styles.warn]: warn,
             [styles.error]: error
         })}>
-            • {TASKPROGRESS[progress]}
+            •{TASKPROGRESS[progress]}
         </a>
   )
 }

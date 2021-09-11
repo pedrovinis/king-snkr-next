@@ -9,6 +9,7 @@ export type Task = {
   snkr: Snkr
   cfg: TaskCfg
   progress: number
+  active: boolean
 }
 
 export type TaskCfg = {

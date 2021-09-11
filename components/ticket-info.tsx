@@ -31,7 +31,7 @@ export default function TicketInfo({
       </div>
       <div className={styles.date}>
         <span 
-        style={{'color':'violet'}}
+        style={{'color':'var(--violet)'}}
         className={cn(styles.skeleton, styles.wrapper, {
           [styles.show]: userProductsState == 'loading'
         })}>{expiration ? (

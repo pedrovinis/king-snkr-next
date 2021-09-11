@@ -12,6 +12,7 @@ import SnkrCard from './snkr-card'
 
 import StepProgress from './step-progress'
 import { TASKPROGRESS } from '@lib/constants'
+import cn from 'classnames'
 
 type Props = {
   task: Task
@@ -21,8 +22,8 @@ type ButtonState = 'default' | 'loading' | 'error'
 
 export default function TaskSection({ task }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
-  const [startTaskButtonState, setStartTaskButtonState] = useState<ButtonState>('default')
   const [progress, setProgress] = useState(0)
+  const [active, setActive] = useState(task.active)
 
   const handleDeleteResponse = async(res:Response) => {
     const data = await res.json()
@@ -58,18 +59,21 @@ export default function TaskSection({ task }: Props) {
       </div>
       
         <a
-        className='button'
+        className={cn({
+          ["button"]: !active,
+          ["buttonRed"]: active
+        })}
         style={{
           margin: '',
           width: '300px',
           }}
           
           onClick={async()=> {
-            setStartTaskButtonState('loading')
+            setActive(!active)
             setProgress(1)
           }}
         >
-          {startTaskButtonState === 'loading' ? <LoadingDots size={6} /> : <>Start Task</>}
+          {active ? <>Stop Task</> : <>Start Task</>}
         </a>
           <StepProgress steps={TASKPROGRESS} progress={progress}/>
       <div className={styles['info']}>

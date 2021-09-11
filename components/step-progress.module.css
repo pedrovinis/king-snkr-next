@@ -32,7 +32,7 @@
 	content: "";
 	height: 0.3em;
 	border-radius: 0 0 0.15em 0.15em;
-	background-color: violet;
+	background-color: var(--violet);
 	max-width: 100%;
 	margin: 10px #000000 solid;
 	position: absolute;
