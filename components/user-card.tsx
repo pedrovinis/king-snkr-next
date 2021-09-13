@@ -1,10 +1,8 @@
 import cn from 'classnames'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { User } from '@lib/types'
 import styles from './user-card.module.css'
 import UserIcon from './icons/icon-user'
-import Select from './select'
-import Image from 'next/image'
 
 type Props = {
   user: User
@@ -32,7 +30,7 @@ const title = user.name
             <div className={styles.speaker}>
               <div className={styles['avatar-group']}>
                   <div className={styles['avatar-wrapper']}>
-                    <Image src={'/user-icon.svg'} width={100} height={100}/>
+                    <UserIcon size={'85px'}/>
                   </div>
               </div>
               <h5 className={styles.phone}>

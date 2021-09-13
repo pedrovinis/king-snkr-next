@@ -15,7 +15,7 @@ function EmptyCard({number=0, card='user'}) {
             src={`/${card}-icon.svg`}
             className={cn(styles.image)}
             loading="lazy"
-            width={900}
+            width={1000}
             height={500}
           />
         </div>

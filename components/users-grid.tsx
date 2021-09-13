@@ -3,6 +3,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import { User } from '@lib/types'
 import styles from './users-grid.module.css'
+import UserIcon from './icons/icon-user'
 
 function UserCard({ user }: { user: User }) {
   return (
@@ -13,15 +14,7 @@ function UserCard({ user }: { user: User }) {
         className={cn(styles.card)}
       >
         <div className={styles.imageWrapper}>
-          <Image
-            alt={user.name}
-            src={'/user-icon.svg'}
-            className={cn(styles.image)}
-            loading="lazy"
-            title={user.name}
-            width={1000}
-            height={500}
-          />
+          <UserIcon size={`150px`}/>
         </div>
           <div className={styles.cardBody}>
             <div>
