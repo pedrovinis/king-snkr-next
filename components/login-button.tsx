@@ -26,7 +26,7 @@ const handleAuthWindow = () => {
   const top = (screen.height - height) / 4
       
   const authWindow:any = window.open(`${SITE_URL}/auth`, 'pxv Auth',
-    'width=' + width + ', height=' + height +
-    ', top=' + top + ', left=' + left)
+  'width=' + width + ', height=' + height +
+  ', top=' + top + ', left=' + left)
   authWindow.focus()
 }

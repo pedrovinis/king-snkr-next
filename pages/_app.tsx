@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
 import { AuthProvider } from '@components/auth-context'
 import { UserProductsProvider } from '@components/user-products-context'
+import { TaskProvider } from '@components/task-context'
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -18,13 +19,15 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <UserProductsProvider>
-        <SSRProvider>
-          <OverlayProvider>
-            <ToastContainer transition={Slide}/>
-            <Component {...pageProps} />
-            <ResizeHandler />
-          </OverlayProvider>
-        </SSRProvider>
+        <TaskProvider>
+          <SSRProvider>
+            <OverlayProvider>
+              <ToastContainer transition={Slide}/>
+              <Component {...pageProps} />
+              <ResizeHandler />
+            </OverlayProvider>
+          </SSRProvider>
+        </TaskProvider>
       </UserProductsProvider>
     </AuthProvider>
   )

@@ -40,7 +40,7 @@ export default function SnkrCard({ snkr, setSize, formState, sizeDefault, sizeSe
   
   return (
     <div key={title} className={styles.main}>
-        <a
+        <span
           className={cn(styles.card, {
             [styles['is-released']]: isReleased
           })}
@@ -73,13 +73,13 @@ export default function SnkrCard({ snkr, setSize, formState, sizeDefault, sizeSe
             <option value="" disabled selected>Select a Size</option>
             {sortedSizes.map( size => {
               return (
-                <option disabled={sizeSelectDisabled} selected={sizeDefault==size.value} value={size.value}>
+                <option key={size.value} disabled={sizeSelectDisabled} selected={sizeDefault==size.value} value={size.value}>
                   Size: {size.value}
                 </option>
               )
             })}
           </Select>
-        </a>
+        </span>
     </div>
   )
 }

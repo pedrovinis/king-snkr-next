@@ -27,3 +27,13 @@ export const deleteTaskFetch = async(task:Task) => {
     })
     return res
 }
+
+export const startTaskFetch = async(task:Task) => {
+    const res = await fetch('/api/task/delete', {
+        method:'POST',
+        body: btoa(JSON.stringify({
+            name: task.name
+        }))
+    })
+    return res
+}

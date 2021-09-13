@@ -24,7 +24,7 @@ export default function AddTask({users, snkrs}:Props) {
         <AddTaskForm users={users} snkrs={snkrs}/>
       </Layout>
     </Page>
-  );
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async() => {

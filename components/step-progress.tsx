@@ -23,7 +23,7 @@ export default function StepProgress({steps, progress}:Props) {
 		/>
 		{steps.map( (step, i) => {
 			return (
-			<div id={`node${i}`} className={cn(styles['node'], {
+			<div key={`node${i}`} id={`node${i}`} className={cn(styles['node'], {
 				[styles['done']]: i <= progress
 			})}
 			>

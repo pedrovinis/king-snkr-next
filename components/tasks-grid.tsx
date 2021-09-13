@@ -1,20 +1,25 @@
 import cn from 'classnames'
 import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
-import TaskIcon from '@components/icons/icon-task'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import LinkIcon from './icons/icon-link'
 import StartIcon from './icons/icon-start'
-import PauseIcon from './icons/icon-pause'
 import EditIcon from './icons/icon-edit'
 import SnkrIcon from './icons/icon-snkr'
 import Link from 'next/link'
 import TaskProgress from './task-progress'
 import DeleteIcon from './icons/icon-delete'
+import StopIcon from './icons/icon-stop'
+import { TaskContext } from './task-context'
 
 function TaskTable({ task }: { task: Task }) {
   const [isSelected, setIsSelected] = useState(false)
-  const [progress, setProgress] = useState(0)
+  const { startTask, stopTask, isActive } = useContext(TaskContext)
+  const [active, setActive] = useState(false)
+
+  useEffect(() => {
+    setActive(isActive(task))
+  }, [])
 
   return (
     <>
@@ -46,12 +51,20 @@ function TaskTable({ task }: { task: Task }) {
       {task.cfg.size}
     </td>
     <td>
-      <TaskProgress progress={task.progress}/>
+      <TaskProgress progress={active? task.progress : 0}/>
     </td>
     <td>
-      <a className={styles.action}><StartIcon size={'35px'}/></a>
-      <a className={styles.action}><EditIcon size={'35px'}/></a>
-      <a className={styles.action}><DeleteIcon size={'35px'}/></a>
+      <a 
+      className={styles.action}
+      onClick={async()=> {
+        active ? await stopTask(task) : await startTask(task)
+        setActive(!active)
+      }}
+      >
+        {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
+      </a>
+      <a className={styles.action}><EditIcon size={'30px'}/></a>
+      <a className={styles.action}><DeleteIcon fill="var(--red)" size={'30px'}/></a>
     </td>
   </tr>
   </>
@@ -80,7 +93,7 @@ export default function TasksGrid({ tasks }: Props) {
         </thead>
         <tbody className={styles.tBody}>
           {tasks.map((task, i)=> {
-            return <TaskTable key={task.name+i} task={task} />
+            return  <TaskTable key={task.name+i} task={task} /> 
           })}
         </tbody>
       </table>

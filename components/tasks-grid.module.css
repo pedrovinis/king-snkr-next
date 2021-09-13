@@ -30,7 +30,7 @@
 
 .action svg:hover {
   cursor: pointer;
-  filter: invert(35%);
+  transform: scale(1.05);
 }
 
 .link {

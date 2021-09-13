@@ -1,16 +1,31 @@
-import { SITE_URL } from '@lib/constants'
 import type { NextApiRequest, NextApiResponse } from 'next'
-
+import fs from 'fs'
 export default async (req : NextApiRequest, res: NextApiResponse) => {
-    const pxvres = await fetch(`${SITE_URL}/api/user/products`, {
+    const data = await fetch('https://www.nike.com.br/', {
+        method: 'POST',
         headers: {
-            'cookie': `__Secure-next-auth.session-token=${req.cookies[`pxv-auth.session.token`]}`
-        }
+            'cookie': 'myfakecookie123'
+        },
+        body: JSON.stringify({
+            user: 'hackedUSER',
+            password: 'hacked123'
+        })
     })
-    const data = await pxvres.json()
+    const info = await data.text()
 
     res.status(200).json({
-        success: true,
-        products: data? data : {}
+        info
     })
+}
+
+const isActive = () => {
+    try {
+        const file = JSON.parse(fs.readFileSync("bin/test.json", "utf8"))
+        file.active = !file.active  
+        fs.writeFileSync('bin/test.json', JSON.stringify(file))
+        return file.active
+    }
+    catch {
+        return false
+    }
 }
