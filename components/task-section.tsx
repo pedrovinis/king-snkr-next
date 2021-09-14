@@ -28,7 +28,6 @@ export default function TaskSection({ task }: Props) {
   const active = activeTasks[task.name]?.active
   const progress = activeTasks[task.name]?.progress
 
-
   const handleDeleteResponse = async(res:Response) => {
     const data = await res.json()
     if(data.success) {
@@ -99,7 +98,6 @@ export default function TaskSection({ task }: Props) {
         >
           {deleteButtonState === 'loading' ? <LoadingDots size={6} /> : <>Delete Task</>}
       </button>
-
     </>
   )}, [active, progress])
 }

@@ -16,7 +16,6 @@ export const TaskContext = createContext<Props>({
 
 export const TaskProvider = ({ children }:any) => {
     const [activeTasks, setActiveTasks]:any = useState({})
-    console.log(activeTasks)
 
     useEffect(() => {
         (async () => {
@@ -41,6 +40,7 @@ export const TaskProvider = ({ children }:any) => {
     const stopTask = async(task:Task) => {
         const obj:any = {}
         obj[task.name] = task
+        obj[task.name].progress = activeTasks[task.name].progress
         obj[task.name].active = false
         setActiveTasks((prev:any) => ({...prev, ...obj}))
     }
