@@ -23,12 +23,17 @@ type ButtonState = 'default' | 'loading' | 'error'
 
 export default function TaskSection({ task }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
-  const { startTask, stopTask, isActive } = useContext(TaskContext)
+  const { startTask, stopTask, isActive, activeTasks } = useContext(TaskContext)
   const [active, setActive] = useState(false)
+  const [progress, setProgress] = useState(0)
   
   useEffect(() => {
     setActive(isActive(task))
   }, [])
+
+  useEffect(() => {
+    setProgress(activeTasks[task.name]?.progress)
+  }, [activeTasks])
 
 
   const handleDeleteResponse = async(res:Response) => {
@@ -75,13 +80,13 @@ export default function TaskSection({ task }: Props) {
           }}
           
           onClick={async()=> {
-            active ? await stopTask(task) : await startTask(task)
+            active ? stopTask(task) : startTask(task)
             setActive(!active)
           }}
         >
           {active ? <>Stop Task</> : <>Start Task</>}
         </a>
-          <StepProgress steps={TASKPROGRESS} progress={active? task.progress : 0}/>
+          <StepProgress steps={TASKPROGRESS} progress={active? progress : 0}/>
       <div className={styles['info']}>
           <h3 className={styles['warning-header']}>Warning</h3>
           <p>This user info can be found on path: 'bin/tasks'. Do not try to change user using file explorer, it can broke application.</p>

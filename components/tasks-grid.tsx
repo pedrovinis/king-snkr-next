@@ -11,15 +11,21 @@ import TaskProgress from './task-progress'
 import DeleteIcon from './icons/icon-delete'
 import StopIcon from './icons/icon-stop'
 import { TaskContext } from './task-context'
+import progress from 'pages/api/task/[slug]/progress'
 
 function TaskTable({ task }: { task: Task }) {
   const [isSelected, setIsSelected] = useState(false)
-  const { startTask, stopTask, isActive } = useContext(TaskContext)
+  const { startTask, stopTask, isActive, activeTasks } = useContext(TaskContext)
   const [active, setActive] = useState(false)
+  const [progress, setProgress] = useState(activeTasks[task.name]?.progress)
 
   useEffect(() => {
     setActive(isActive(task))
   }, [])
+
+  useEffect(() => {
+    setProgress(activeTasks[task.name]?.progress)
+  }, [activeTasks])
 
   return (
     <>
@@ -51,13 +57,13 @@ function TaskTable({ task }: { task: Task }) {
       {task.cfg.size}
     </td>
     <td>
-      <TaskProgress progress={active? task.progress : 0}/>
+      <TaskProgress progress={active? progress : 0}/>
     </td>
     <td>
       <a 
       className={styles.action}
       onClick={async()=> {
-        active ? await stopTask(task) : await startTask(task)
+        active ? stopTask(task) : startTask(task)
         setActive(!active)
       }}
       >
