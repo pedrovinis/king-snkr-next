@@ -1,6 +1,6 @@
 import { Task } from '@lib/types'
 import styles from './task-section.module.css'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteTaskFetch } from '@lib/task-api'
 import router from 'next/router'
@@ -23,17 +23,10 @@ type ButtonState = 'default' | 'loading' | 'error'
 
 export default function TaskSection({ task }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
-  const { startTask, stopTask, isActive, activeTasks } = useContext(TaskContext)
-  const [active, setActive] = useState(false)
-  const [progress, setProgress] = useState(0)
+  const { startTask, stopTask, activeTasks } = useContext(TaskContext)
   
-  useEffect(() => {
-    setActive(isActive(task))
-  }, [])
-
-  useEffect(() => {
-    setProgress(activeTasks[task.name]?.progress)
-  }, [activeTasks])
+  const active = activeTasks[task.name]?.active
+  const progress = activeTasks[task.name]?.progress
 
 
   const handleDeleteResponse = async(res:Response) => {
@@ -47,7 +40,8 @@ export default function TaskSection({ task }: Props) {
     }
   }
 
-  return (
+  return useMemo(() => {
+    return (
     <>
       <BackLink text={"Back to Tasks"} href={'/tasks'}/>
       <div key={task.name} className={styles.container}>
@@ -81,7 +75,6 @@ export default function TaskSection({ task }: Props) {
           
           onClick={async()=> {
             active ? stopTask(task) : startTask(task)
-            setActive(!active)
           }}
         >
           {active ? <>Stop Task</> : <>Start Task</>}
@@ -108,5 +101,5 @@ export default function TaskSection({ task }: Props) {
       </button>
 
     </>
-  )
+  )}, [active, progress])
 }

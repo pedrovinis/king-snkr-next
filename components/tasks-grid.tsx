@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
-import { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import LinkIcon from './icons/icon-link'
 import StartIcon from './icons/icon-start'
 import EditIcon from './icons/icon-edit'
@@ -11,22 +11,20 @@ import TaskProgress from './task-progress'
 import DeleteIcon from './icons/icon-delete'
 import StopIcon from './icons/icon-stop'
 import { TaskContext } from './task-context'
-import progress from 'pages/api/task/[slug]/progress'
 
-function TaskTable({ task }: { task: Task }) {
+function TaskTable({ 
+  task,
+ }: { 
+  task: Task
+}) {
+  const { activeTasks } = useContext(TaskContext)
   const [isSelected, setIsSelected] = useState(false)
-  const { startTask, stopTask, isActive, activeTasks } = useContext(TaskContext)
-  const [active, setActive] = useState(false)
-  const [progress, setProgress] = useState(activeTasks[task.name]?.progress)
+  const { startTask, stopTask } = useContext(TaskContext)
 
-  useEffect(() => {
-    setActive(isActive(task))
-  }, [])
+  const active = activeTasks[task.name]?.active
+  const progress = activeTasks[task.name]?.progress
 
-  useEffect(() => {
-    setProgress(activeTasks[task.name]?.progress)
-  }, [activeTasks])
-
+  return useMemo(() => {
   return (
     <>
     <tr className={cn({
@@ -57,14 +55,13 @@ function TaskTable({ task }: { task: Task }) {
       {task.cfg.size}
     </td>
     <td>
-      <TaskProgress progress={active? progress : 0}/>
+      <TaskProgress progress={active? activeTasks[task.name]?.progress : 0}/>
     </td>
     <td>
       <a 
       className={styles.action}
       onClick={async()=> {
         active ? stopTask(task) : startTask(task)
-        setActive(!active)
       }}
       >
         {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
@@ -74,7 +71,7 @@ function TaskTable({ task }: { task: Task }) {
     </td>
   </tr>
   </>
-  )
+  )},[active, progress])
 }
 
 type Props = {
@@ -82,7 +79,6 @@ type Props = {
 }
 
 export default function TasksGrid({ tasks }: Props) {
-
   return (
     <>
       <table className={styles.table}>
@@ -98,8 +94,11 @@ export default function TasksGrid({ tasks }: Props) {
           </tr>
         </thead>
         <tbody className={styles.tBody}>
-          {tasks.map((task, i)=> {
-            return  <TaskTable key={task.name+i} task={task} /> 
+         {tasks.map((task, i)=> {
+            return <TaskTable 
+              key={task.name+i}
+              task={task}
+            />
           })}
         </tbody>
       </table>
