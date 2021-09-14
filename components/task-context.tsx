@@ -5,7 +5,7 @@ import React from "react"
 type Props = {
     startTask: Function
     stopTask: Function
-    activeTasks: {}
+    activeTasks: any
 }
 
 export const TaskContext = createContext<Props>({

@@ -17,9 +17,8 @@ function TaskTable({
  }: { 
   task: Task
 }) {
-  const { activeTasks } = useContext(TaskContext)
   const [isSelected, setIsSelected] = useState(false)
-  const { startTask, stopTask } = useContext(TaskContext)
+  const { activeTasks, startTask, stopTask } = useContext(TaskContext)
 
   const active = activeTasks[task.name]?.active
   const progress = activeTasks[task.name]?.progress
