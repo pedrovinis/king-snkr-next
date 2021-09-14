@@ -23,10 +23,10 @@ type ButtonState = 'default' | 'loading' | 'error'
 
 export default function TaskSection({ task }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
-  const { startTask, stopTask, activeTasks } = useContext(TaskContext)
+  const { startTask, stopTask, tasks } = useContext(TaskContext)
   
-  const active = activeTasks[task.name]?.active
-  const progress = activeTasks[task.name]?.progress
+  const active = tasks[task.name]?.active
+  const progress = tasks[task.name]?.progress
 
   const handleDeleteResponse = async(res:Response) => {
     const data = await res.json()

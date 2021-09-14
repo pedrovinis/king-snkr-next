@@ -18,10 +18,10 @@ function TaskTable({
   task: Task
 }) {
   const [isSelected, setIsSelected] = useState(false)
-  const { activeTasks, startTask, stopTask } = useContext(TaskContext)
+  const { tasks, startTask, stopTask } = useContext(TaskContext)
 
-  const active = activeTasks[task.name]?.active
-  const progress = activeTasks[task.name]?.progress
+  const active = tasks[task.name]?.active
+  const progress = tasks[task.name]?.progress
 
   return useMemo(() => {
   return (
@@ -51,10 +51,10 @@ function TaskTable({
       </a>
     </td>
     <td>
-      {task.cfg.size}
+      {task.cfg?.size}
     </td>
     <td>
-      <TaskProgress progress={active? activeTasks[task.name]?.progress : 0}/>
+      <TaskProgress progress={active? tasks[task.name]?.progress : 0}/>
     </td>
     <td>
       <a 

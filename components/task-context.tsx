@@ -3,19 +3,20 @@ import { createContext, useCallback, useEffect, useState } from "react"
 import React from "react"
 
 type Props = {
+    tasks: any
     startTask: Function
     stopTask: Function
-    activeTasks: any
 }
 
 export const TaskContext = createContext<Props>({
+    tasks: {},
     startTask: () => {},
     stopTask: () => {},
-    activeTasks: {},
 })
 
 export const TaskProvider = ({ children }:any) => {
-    const [activeTasks, setActiveTasks]:any = useState({})
+    const [tasks, setTasks]:any = useState({})
+    console.log(tasks)
 
     useEffect(() => {
         (async () => {
@@ -24,29 +25,27 @@ export const TaskProvider = ({ children }:any) => {
     }, [])
 
     const isActive = (task:Task) => {
-        return activeTasks[task.name]?.active
+        return tasks[task.name]?.active
     }   
     
     const startTask = async(task:Task) => {
         const obj:any = {}
-        obj[task.name] = task
+        obj[task.name] = tasks[task.name] || task
         obj[task.name].active = true
-        setActiveTasks((prev:any) => ({...prev, ...obj}))
+        setTasks((prev:any) => ({...prev, ...obj}))
         await new Promise(r => setTimeout(r, 5000))
         obj[task.name].progress = 3
-        setActiveTasks((prev:any) => ({...prev, ...obj}))
+        setTasks((prev:any) => ({...prev, ...obj}))
     }
 
     const stopTask = async(task:Task) => {
-        const obj:any = {}
-        obj[task.name] = task
-        obj[task.name].progress = activeTasks[task.name].progress
-        obj[task.name].active = false
-        setActiveTasks((prev:any) => ({...prev, ...obj}))
+        const obj = tasks[task.name]
+        obj.active = false
+        setTasks((prev:any) => ({...prev, ...obj}))
     }
 
     const value = {
-        activeTasks,
+        tasks,
         startTask,
         stopTask
     }
