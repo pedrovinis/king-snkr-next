@@ -1,7 +1,8 @@
 .table {
-  margin: 1.5rem;
+  margin: 1rem;
   line-height: 2.7;
   border-collapse: collapse;
+  align-self: center;
 }
 
 .table td {
@@ -11,7 +12,6 @@
 .tHead {
   background-color: transparent;
   font-size: 1.2rem;
-
 }
 
 .tHead tr {
@@ -21,7 +21,6 @@
 .selected {
   border: 1px solid var(--brand);
 }
-
 
 .action {
   padding: 1rem;

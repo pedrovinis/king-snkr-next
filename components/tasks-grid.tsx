@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import LinkIcon from './icons/icon-link'
 import StartIcon from './icons/icon-start'
 import EditIcon from './icons/icon-edit'
@@ -70,7 +70,7 @@ function TaskTable({
     </td>
   </tr>
   </>
-  )},[active, progress])
+  )},[active, progress, isSelected])
 }
 
 type Props = {

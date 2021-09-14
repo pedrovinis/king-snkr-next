@@ -1,5 +1,5 @@
 import { Task } from "@lib/types"
-import { createContext, useCallback, useEffect, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import React from "react"
 
 type Props = {
@@ -16,7 +16,6 @@ export const TaskContext = createContext<Props>({
 
 export const TaskProvider = ({ children }:any) => {
     const [tasks, setTasks]:any = useState({})
-    console.log(tasks)
 
     useEffect(() => {
         (async () => {
