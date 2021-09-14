@@ -19,7 +19,7 @@
   width: var(--loading-dots-size);
   height: var(--loading-dots-size);
   border-radius: 50%;
-  background-color: var(--accents-4);
+  background-color: var(--accents-1);
   display: inline-block;
   margin: 0 1px;
 }

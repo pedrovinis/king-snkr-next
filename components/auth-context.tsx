@@ -30,7 +30,8 @@ export const AuthProvider = ({ children }:any) => {
         (async () => {
             const res = await fetch(`/api/auth`)
             const data = await res.json()
-            setSession(data.session? data.session : {})
+            const session = data.session
+            setSession(session || {})
             setLoading(false)
         })()
 

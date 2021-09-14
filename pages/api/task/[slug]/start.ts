@@ -29,16 +29,3 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
 //         await new Promise(r => setTimeout(r, 1000))
 //     }
 // }
-
-
-// const isActive = () => {
-//     try {
-//         const file = JSON.parse(fs.readFileSync("bin/test.json", "utf8"))
-//         file.active = !file.active  
-//         fs.writeFileSync('bin/test.json', JSON.stringify(file))
-//         return file.active
-//     }
-//     catch {
-//         return false
-//     }
-// }

@@ -20,6 +20,7 @@ export default function ActivateKeyForm() {
     const data = await res.json()
     if(data.success) {
       toast.success(`${data.message}`)
+      router.reload()
     }
     else toast.error(`${data.message}`)
   }

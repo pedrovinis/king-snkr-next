@@ -37,7 +37,7 @@ export default function SnkrSection({ snkr }: Props) {
     const data = await res.json()
     if(data.success){
       router.push('/snkrs')
-      toast.success(`"${snkr.name} ${snkr.edition}" succesfull deleted.`)
+      toast.success(`"${snkr.name} ${snkr.edition}" succesfull deleted.` ,{})
     }
     else {
       toast.error(`Error on deleting "${snkr.name} ${snkr.edition}"'.`)

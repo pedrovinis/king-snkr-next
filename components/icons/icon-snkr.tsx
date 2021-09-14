@@ -6,12 +6,17 @@ interface Props {
 export default function SnkrIcon( {size='300px', snkrName=''}:Props) {
     const snkrNameFormated = snkrName.toLowerCase().replace(/\s/g, "")
     let snkrSVG = 'default'
+    const snkrs = [
+        ['airforce1', 'air-force-1'],
+        ['airjordan1low', 'air-jordan-1-low'],
+        ['dunklow', 'dunk-low'],
+        ['dunkhi', 'dunk-high'],
+        ['flow2020ispa', 'ispa-flow-2020']
+    ]
 
-    if(snkrNameFormated.search('airforce1')>=0) snkrSVG = 'air-force-1'
-    else if(snkrNameFormated.search('airjordan1low')>=0) snkrSVG = 'air-jordan-1-low'
-    else if(snkrNameFormated.search('dunklow')>=0) snkrSVG = 'dunk-low'
-    else if(snkrNameFormated.search('dunkhi')>=0) snkrSVG = 'dunk-high'
-    else if(snkrNameFormated.search('flow2020ispa')>=0) snkrSVG = 'ispa-flow-2020'
+    for(let i=0; i<snkrs.length; i++) {
+        if(snkrNameFormated.search(snkrs[i][0])>=0) snkrSVG = snkrs[i][1]
+    }
 
     return (
     <>

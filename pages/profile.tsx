@@ -11,12 +11,17 @@ import { isActive } from '@lib/isActive'
 import LoginButton from '@components/login-button'
 import PageContainer from '@components/page-container'
 import cn from 'classnames'
+import { SITE_URL } from '@lib/constants'
+import { useState } from 'react'
+import LogoutButton from '@components/logout-button'
 
 export default function Conf() {
   const meta = {
     title: 'King Snkr | Profile',
     description: 'pXv'
   }
+  const [logoutButtonLoading, setLogoutButtonLoading] = useState(false)
+
   const { loading, session } = useContext(AuthContext)
   const UserProducts = useContext(UserProductsContext)
 
@@ -43,9 +48,7 @@ export default function Conf() {
           <>
           {session.user ? (
             <>
-            <button style={{margin:'1rem auto', width:'50%', display:'flex',}} className={cn("buttonRed")}>
-               Sair 
-            </button>
+            <LogoutButton />
             {UserProducts.loading ? (
               <div style={{display:'flex', justifyContent:'center', margin: '3rem 0'}}><LoadingDots size={20}/></div>
             ) : (
@@ -67,5 +70,5 @@ export default function Conf() {
         </PageContainer>
       </Layout>
     </Page>
-  );
+  )
 }
