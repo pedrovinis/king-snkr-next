@@ -1,6 +1,6 @@
 import { Task } from '@lib/types'
 import styles from './task-section.module.css'
-import { useContext, useEffect, useMemo, useState } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteTaskFetch } from '@lib/task-api'
 import router from 'next/router'

@@ -2,6 +2,7 @@ import cn from 'classnames'
 import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
 import React, { useContext, useMemo, useState } from 'react'
+import { deleteTaskFetch } from '@lib/task-api'
 import LinkIcon from './icons/icon-link'
 import StartIcon from './icons/icon-start'
 import EditIcon from './icons/icon-edit'
@@ -11,6 +12,10 @@ import TaskProgress from './task-progress'
 import DeleteIcon from './icons/icon-delete'
 import StopIcon from './icons/icon-stop'
 import { TaskContext } from './task-context'
+import router from 'next/router'
+import { toast } from 'react-toastify'
+import SmsConfirmForm from './sms-confirm-from'
+
 
 function TaskTable({ 
   task,
@@ -22,6 +27,17 @@ function TaskTable({
 
   const active = tasks[task.name]?.active
   const progress = tasks[task.name]?.progress
+
+  const handleDeleteResponse = async(res:Response) => {
+    const data = await res.json()
+    if(data.success) {
+      router.push('/tasks')
+      toast.success(`"${task.name}" successful deleted.`)
+    }
+    else {
+      toast.error(`Error on delete "${task.name}".`)
+    }
+  }
 
   return useMemo(() => {
   return (
@@ -53,7 +69,7 @@ function TaskTable({
     <td>
       {task.cfg?.size}
     </td>
-    <td>
+    <td style={{width:'10rem'}}>
       <TaskProgress progress={active? tasks[task.name]?.progress : 0}/>
     </td>
     <td>
@@ -66,7 +82,12 @@ function TaskTable({
         {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
       </a>
       <a className={styles.action}><EditIcon size={'30px'}/></a>
-      <a className={styles.action}><DeleteIcon fill="var(--red)" size={'30px'}/></a>
+      <a className={styles.action}
+        onClick={async()=> {
+          const res:any = await deleteTaskFetch(task)
+          await handleDeleteResponse(res)
+        }}
+      ><DeleteIcon fill="var(--red)" size={'30px'}/></a>
     </td>
   </tr>
   </>
@@ -80,6 +101,7 @@ type Props = {
 export default function TasksGrid({ tasks }: Props) {
   return (
     <>
+      {/* <SmsConfirmForm /> */}
       <table className={styles.table}>
         <thead className={styles.tHead}>
           <tr>
@@ -94,10 +116,13 @@ export default function TasksGrid({ tasks }: Props) {
         </thead>
         <tbody className={styles.tBody}>
          {tasks.map((task, i)=> {
-            return <TaskTable 
+            return (
+              <>
+            <TaskTable 
               key={task.name+i}
               task={task}
             />
+            </>)
           })}
         </tbody>
       </table>

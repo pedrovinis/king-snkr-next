@@ -46,7 +46,6 @@
     "@types/ms": "0.7.31",
     "@types/node": "^12.19.8",
     "@types/nprogress": "0.2.0",
-    "@types/puppeteer-core": "2.0.0",
     "@types/reach__skip-nav": "0.1.1",
     "@types/react": "17.0.0",
     "@types/smoothscroll-polyfill": "0.3.1",

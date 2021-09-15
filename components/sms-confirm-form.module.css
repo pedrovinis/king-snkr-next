@@ -1,0 +1,85 @@
+.form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    padding: 0 var(--space-4x);
+  }
+  
+  @media (min-width: 1200px) {
+    .form.share-page {
+      justify-content: flex-start;
+    }
+  }
+  
+  .input {
+    border: none;
+    width: 100%;
+    background: transparent;
+    outline: none;
+    height: 56px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: var(--text-md);
+    color: #fff;
+    font-family: inherit;
+  }
+  
+  @media (min-width: 768px) {
+    .input {
+      width: calc(100% - var(--space-32x));
+      padding-right: 0;
+    }
+  }
+  
+  .input::placeholder {
+    color: var(--secondary-color);
+  }
+  
+  .input-label {
+    background-color: var(--gray);
+    border-radius: var(--space-2x);
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .input-label.focused {
+    background-color: #33373c;
+  }
+  
+  .input-label.error {
+    background: red;
+  }
+  
+  .input-label.success {
+    background: #0070f3;
+  }
+  
+  .input-text {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .main {
+    align-self: center;
+    position: relative;
+    max-width: 200px;
+    width: 100%;
+    margin: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .main {
+      max-width: 200px;
+    }
+  }
+  
+  
+  @media (min-width: 1200px) {
+    .submit.generate-with-github {
+      width: 240px;
+    }
+  }
+  

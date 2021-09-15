@@ -36,8 +36,9 @@ export const TASKPROGRESS = [
   'Waiting',
   'NIKE LOGIN',
   'Waiting',
-  'SNKR Buy',
+  'Buying SNKR',
   'SMS Confirm',
+  'Checkout',
   'Completed'
 ]
 
