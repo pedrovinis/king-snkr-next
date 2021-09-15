@@ -7,6 +7,7 @@ import { addUserFetch } from '@lib/user-api'
 import router from 'next/router'
 import { toast } from 'react-toastify'
 import { PhoneNumberFormat } from '@lib/form-format'
+import XIcon from './icons/icon-x'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -15,8 +16,6 @@ export default function AddUserForm() {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
-  const [errorMsg, setErrorMsg] = useState('')
-  const [errorTryAgain, setErrorTryAgain] = useState(false)
   const [nameFocused, setNameFocused] = useState(false)
   const [emailFocused, setEmailFocused] = useState(false)
   const [phoneFocused, setPhoneFocused] = useState(false)
@@ -122,12 +121,12 @@ export default function AddUserForm() {
             aria-label="Your email phone number"
             required
           />
-        <button 
+        <span
         tabIndex={-1} //Not Focusable
         className={cn(styles.buttonClear, styles[formState])} 
         onClick={()=> setPhone('')}>
-          Clear
-        </button>
+          <XIcon />
+        </span>
         </label>
         <label
           htmlFor="email-input-field"

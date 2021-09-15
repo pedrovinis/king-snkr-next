@@ -52,7 +52,8 @@
   border-radius: var(--space-2x);
   border: 1px solid transparent;
   transition: border-color 0.2s ease, background-color 0.2s ease;
-  display: block;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 1rem;
 }
 
@@ -113,28 +114,15 @@
 }
 
 .buttonClear {
-  border-radius: var(--space-2x);
-  border: 1px solid #fff;
-  color: #000;
-  background: #fff;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: var(--text-md);
-  letter-spacing: -0.02em;
-  font-weight: 500;
-  outline: none;
-  transition: background-color 0.2s ease;
-  width: 100px;
-  height: 40px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  margin: 0 1rem;
 }
 
 .buttonClear:hover,
 .buttonClear:focus {
-  background: black;
-  color: #fff;
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 @media (min-width: 768px) {

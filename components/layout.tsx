@@ -7,6 +7,7 @@ import styles from './layout.module.css'
 import Logo from './icons/icon-logo'
 import MobileMenu from './mobile-menu'
 import Footer from './footer'
+import GearIcon from './icons/icon-gear'
 
 type Props = {
   children: React.ReactNode;
@@ -16,8 +17,8 @@ type Props = {
 };
 
 export default function Layout({ children, className, hideNav, layoutStyles }: Props) {
-  const router = useRouter();
-  const activeRoute = router.asPath;
+  const router = useRouter()
+  const activeRoute = router.asPath
   return (
     <>
       <div className={styles.background}>
@@ -26,7 +27,6 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
             <div className={styles['header-logos']}>
               <MobileMenu key={router.asPath} />
               <Link href="/">
-                {/* eslint-disable-next-line */}
                 <a className={styles.logo}>
                   <Logo />
                 </a>
@@ -45,8 +45,12 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
                 </Link>
               ))}
             </div>
-            <div className={cn(styles['header-right'])}>
-                  
+            <div className={styles['header-logos']}>
+            <Link href="/">
+                <a className={styles.logo}>
+                  <GearIcon size={'30px'}/>
+                </a>
+              </Link>
             </div>
           </header>
         )}
@@ -55,7 +59,7 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
             <SkipNavContent />
             <div className={cn(styles.full, className)}>{children}</div>
           </main>
-          {!activeRoute.startsWith('/stage') && <Footer />}
+          <Footer />
         </div>
       </div>
     </>

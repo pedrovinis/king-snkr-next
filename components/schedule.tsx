@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { Snkr, Stage, Talk } from '@lib/types'
+import { Stage } from '@lib/types'
 import styles from './schedule.module.css'
 import ScheduleCard from './schedule-card'
 
