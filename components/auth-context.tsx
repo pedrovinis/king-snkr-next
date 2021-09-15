@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }:any) => {
             setSession(session || {})
             setLoading(false)
         })()
-
     }, [])
 
 

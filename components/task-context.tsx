@@ -18,13 +18,10 @@ export const TaskContext = createContext<Props>({
 
 export const TaskProvider = ({ children }:any) => {
     const [tasks, setTasks]:any = useState({})
-    const [payLoads, setPayloads] = useState({})
 
     useEffect(() => {
         (async () => {
-            const res = await payLoadsFecth()
-            const data = await res.json()
-            setPayloads(data.payloads)
+
         })()
     }, [])
 

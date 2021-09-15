@@ -18,18 +18,18 @@ export const UserProductsProvider = ({ children }:any) => {
     const [products, setProducts]= useState({})
     const [error, setError] = useState(false)
 
-    const { session } = useContext(AuthContext)
+    const auth = useContext(AuthContext)
 
     useEffect(() => {
         (async () => {
-            if(session){
+            if(auth.session != JSON.stringify({}) && !auth.loading){
                 const res = await fetch(`/api/user/products`)
                 const data = await res.json()
                 setLoading(false)
                 setProducts(data.products? data?.products : {})
             }
         })()
-    }, [session])
+    }, [auth])
 
 
     const value = {

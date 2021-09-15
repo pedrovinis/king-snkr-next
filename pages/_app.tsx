@@ -9,6 +9,7 @@ import { Slide, ToastContainer } from 'react-toastify'
 import { AuthProvider } from '@components/auth-context'
 import { UserProductsProvider } from '@components/user-products-context'
 import { TaskProvider } from '@components/task-context'
+import { PayLoadsProvider } from '@components/payloads-context'
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -19,15 +20,17 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <UserProductsProvider>
-        <TaskProvider>
-          <SSRProvider>
-            <OverlayProvider>
-              <ToastContainer transition={Slide}/>
-              <Component {...pageProps} />
-              <ResizeHandler />
-            </OverlayProvider>
-          </SSRProvider>
-        </TaskProvider>
+        <PayLoadsProvider>
+          <TaskProvider>
+            <SSRProvider>
+              <OverlayProvider>
+                <ToastContainer transition={Slide}/>
+                <Component {...pageProps} />
+                <ResizeHandler />
+              </OverlayProvider>
+            </SSRProvider>
+          </TaskProvider>
+        </PayLoadsProvider>
       </UserProductsProvider>
     </AuthProvider>
   )
