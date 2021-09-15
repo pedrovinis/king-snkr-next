@@ -7,6 +7,7 @@ import { deleteUserFetch } from '@lib/user-api'
 import router from 'next/router'
 import BackLink from './backLink'
 import { toast } from 'react-toastify'
+import { PhoneNumberFormat } from '@lib/form-format'
 
 type Props = {
   user: User
@@ -42,7 +43,7 @@ export default function UserSection({ user }: Props) {
               {user.email}
             </p>
             <h2 className={styles['bio-header']}>Phone</h2>
-            <p className={styles.title}>{user.phone}</p>
+            <p className={styles.title}>{PhoneNumberFormat(user.phone)}</p>
           </div>
         </div>
       </div>

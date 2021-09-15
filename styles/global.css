@@ -174,13 +174,13 @@ svg circle {
   width: 0.6rem;
 }
 ::-webkit-scrollbar-track {
-  background:  black; 
+  background:  var(--sidebar); 
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--accents-1); 
+  background: var(--accents-2); 
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accents-3); 
+  background: var(--accents-5); 
 }
 
 ::-moz-selection { /* Code for Firefox */

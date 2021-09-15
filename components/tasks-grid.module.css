@@ -10,7 +10,7 @@
 }
 
 .tHead {
-  background-color: transparent;
+  background-color: var(--sidebar);
   font-size: 1.2rem;
 }
 

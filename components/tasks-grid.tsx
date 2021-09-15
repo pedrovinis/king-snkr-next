@@ -15,6 +15,7 @@ import { TaskContext } from './task-context'
 import router from 'next/router'
 import { toast } from 'react-toastify'
 import SmsConfirmForm from './sms-confirm-from'
+import ScheduleSidebar from './schedule-sidebar'
 
 
 function TaskTable({ 
@@ -81,7 +82,9 @@ function TaskTable({
       >
         {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
       </a>
+      <Link href={`/task/${task.slug}`}>
       <a className={styles.action}><EditIcon size={'30px'}/></a>
+      </Link>
       <a className={styles.action}
         onClick={async()=> {
           const res:any = await deleteTaskFetch(task)

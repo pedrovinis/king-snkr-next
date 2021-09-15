@@ -19,8 +19,8 @@ export default function ActivateKeyForm() {
   const handleActiveRes = async(res:any) => {
     const data = await res.json()
     if(data.success) {
-      router.reload()
       toast.success(`${data.message}`)
+      router.reload()
     }
     else toast.error(`${data.message}`)
   }
@@ -63,7 +63,7 @@ export default function ActivateKeyForm() {
             onChange={e => setkey(e.target.value.toUpperCase().trim())}
             onFocus={() => setkeyFocused(true)}
             onBlur={() => setkeyFocused(false)}
-            placeholder="Enter your Keycode: XXXXXX-XXXXXX-XXXXXX"
+            placeholder="Enter your Keycode: XXXXX-XXXXX-XXXXX"
             aria-label="Active Keycode"
             required
           />

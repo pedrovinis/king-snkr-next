@@ -4,7 +4,6 @@ interface iDataLayer {
     snkr_sale_price: string
 }
 
-
 export const getAndFormatSnkrData = async(link:string) => {
     const res = await fetch(link, {
         "headers": {
@@ -24,7 +23,7 @@ export const getAndFormatSnkrData = async(link:string) => {
         "method": "GET",
         "mode": "cors",
         "credentials": "include"
-      })
+    })
     const data = await res.text()
     
     const DataLayer:iDataLayer = await getAndFormatSnkrDataLayer(link)
@@ -37,8 +36,8 @@ export const getAndFormatSnkrData = async(link:string) => {
         snkr_id: DataLayer.snkr_id,
         snkr_sale_price: DataLayer.snkr_sale_price,
         //@ts-ignore
-        snkr_release: getCountDown(data),
-        sizes: sizesInfo
+        sizes: sizesInfo,
+        snkr_release: getRelease(sizesInfo),
     }
 }
 
@@ -91,33 +90,27 @@ const getSizesInfo = async(data:string) => {
     return jsonInfo
 }
 
-const getCountDown = (data:any) => {
-    const cdStart = data.search('data-countdown="')+16
-    const cdStartSliced = data.slice(cdStart, data.length)
-    const cdEnd = cdStartSliced.search('"')
-    const dataCountDown = cdStartSliced.slice(0, cdEnd)
-    //@ts-ignore
-    const yearMonthDayTimeStamp = parseInt(parseInt(dataCountDown) + (Date.now()/1000))
-    const yearMonthDay = new Date(yearMonthDayTimeStamp*1000)
+const getRelease = (data:any) => {
+    const sizes = Object.keys(data)
+    const dateString = data[sizes[0]].DtLancto
+    const day = dateString.slice(0,2)
+    const month = parseInt(dateString.slice(3,5)) - 1
+    const year = dateString.slice(6,10)
+    const hour = dateString.slice(11,13)
+    const minute = dateString.slice(14,16)
+    const second = dateString.slice(17,19)
 
-    const mhClassStart = data.search('class="detalhes-produto__disponibilidade"')+56
-    const classStartSliced = data.slice(mhClassStart, data.length)
-    const mhStart = classStartSliced.search('s ')+2
-    const mhEnd = classStartSliced.search('h')
-    const mhStartSliced = classStartSliced.slice(mhStart, mhEnd)
-    const hours = mhStartSliced.slice(0,2)
-    const minutes = mhStartSliced.slice(3,5)
-    
-    const countdown = new Date(
-        yearMonthDay.getFullYear(),
-        yearMonthDay.getMonth(),
-        yearMonthDay.getDate(),
-        hours,
-        minutes,
-        0,0
+    console.log(day)
+    const release = new Date(
+        year,
+        month,
+        day,
+        hour,
+        minute,
+        second,
+        0
     )
+    
     //@ts-ignore
-    if(isNaN(countdown)) return parseInt(Date.now()/1000)
-    //@ts-ignore
-    return parseInt(countdown.getTime()/1000)
+    return parseInt(release.getTime()/1000)
 }

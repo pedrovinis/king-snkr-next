@@ -69,7 +69,6 @@ export default function AddTaskForm({users, snkrs}: Props) {
           <input
             minLength={1}
             maxLength={25}
-            style={{width:'96%'}}
             className={styles.input}
             disabled={formState === 'loading' }
             autoComplete="off"

@@ -12,12 +12,12 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build",
-    "export": "next build && next export"
+    "build": "next build"
   },
   "dependencies": {
     "@reach/skip-nav": "0.12.1",
     "classnames": "2.2.6",
+    "moment": "^2.29.1",
     "next": "10.0.3",
     "random-token": "0.0.8",
     "react": "17.0.1",

@@ -14,7 +14,7 @@
   .input {
     border: none;
     width: 100%;
-    background: transparent;
+    background: var(--sidebar);
     outline: none;
     height: 56px;
     padding-left: 15px;
@@ -26,7 +26,7 @@
   
   @media (min-width: 768px) {
     .input {
-      width: calc(100% - var(--space-32x));
+      width: 100%;
       padding-right: 0;
     }
   }

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { User } from '@lib/types'
 import styles from './user-card.module.css'
 import UserIcon from './icons/icon-user'
+import { PhoneNumberFormat } from '@lib/form-format'
 
 type Props = {
   user: User
@@ -10,7 +11,6 @@ type Props = {
 
 export default function UserCard({ user }: Props) {
   const [isReleased, setReleased] = useState(false)
-  const [startTime, setStartTime] = useState('')
 
 const title = user.name
 
@@ -34,7 +34,8 @@ const title = user.name
                   </div>
               </div>
               <h5 className={styles.phone}>
-                Phone: {user.phone}
+                Phone: <br/>
+                {PhoneNumberFormat(user.phone)}
               </h5>
             </div>
           </div>
