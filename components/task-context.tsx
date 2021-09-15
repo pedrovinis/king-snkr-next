@@ -19,7 +19,6 @@ export const TaskContext = createContext<Props>({
 export const TaskProvider = ({ children }:any) => {
     const [tasks, setTasks]:any = useState({})
     const [payLoads, setPayloads] = useState({})
-    console.log(payLoads)
 
     useEffect(() => {
         (async () => {
@@ -59,7 +58,7 @@ export const TaskProvider = ({ children }:any) => {
         setTasks((prev:any) => ({...prev, ...obj}))
         obj[task.name].progress = 8
         setTasks((prev:any) => ({...prev, ...obj}))
-        toast.success(`${task.name} completed.`)
+        toast.success(`"${task.name}" completed.`)
         await new Promise(r => setTimeout(r, 2000))
         obj[task.name].active = false
         setTasks((prev:any) => ({...prev, ...obj}))

@@ -70,7 +70,7 @@ export default function ActivateKeyForm() {
         </label>
         <button
           type="submit"
-          className={cn("buttonWhite", styles[formState])}
+          className={cn("button", styles[formState])}
           disabled={formState === 'loading'}
         >
           {formState === 'loading' ? <LoadingDots size={6}/> : <>Ativar KING SNKR</>}

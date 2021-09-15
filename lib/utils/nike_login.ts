@@ -31,7 +31,7 @@ const fetchLogin = async (email:string, password:string, IFCSHOPSESSID:string) =
 }
 
 const validateLoginAuthCode = async(authCode:string, IFCSHOPSESSID:string) => {
-    const res = await fetch(`https://www.nike.com.br/api/v2/auth/nike-unite/set?code=${authCode}&state=/`, {
+    await fetch(`https://www.nike.com.br/api/v2/auth/nike-unite/set?code=${authCode}&state=/`, {
         "headers": {
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
             "accept-language": "en-US,en;q=0.9",
@@ -74,5 +74,5 @@ export const verifyLogged = async(IFCSHOPSESSID:string) => {
     const data = await res.json()
 
     if(data.Logado) return true
-    else return false
+    return false
 }
