@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import styles from './footer.module.css';
-import { } from '@lib/constants';
+import { SITE_URL } from '@lib/constants';
 
 
 export default function Footer() {
@@ -18,7 +18,7 @@ export default function Footer() {
         <div className={styles['footer-center-group']}>
           <p className={styles['footer-paragraph']}>
             <a
-              href=''
+              href={`${SITE_URL}/privacy-policy`}
               className={styles['footer-link']}
               target="_blank"
               rel="noopener noreferrer"
@@ -29,7 +29,7 @@ export default function Footer() {
           <div className={styles['footer-separator']} />
           <p className={styles['footer-paragraph']}>
             <a
-              href=''
+              href={`${SITE_URL}/terms-of-use`}
               className={styles['footer-link']}
               target="_blank"
               rel="noopener noreferrer"
@@ -41,7 +41,7 @@ export default function Footer() {
               <div className={styles['footer-separator']} />
               <p className={styles['footer-paragraph']}>
                 <a
-                  href=''
+                  href={`${SITE_URL}/contact`}
                   className={styles['footer-link']}
                   target="_blank"
                   rel="noopener noreferrer"
