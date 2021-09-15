@@ -7,7 +7,7 @@ export default function LogoutButton() {
   return (
     <button
       id="#logout-button"
-      style={{margin:'1rem auto', width:'50%', display:'flex',}}
+      style={{margin:'1rem auto', width:'200px', display:'flex',}}
       className="buttonRed"
       disabled={loading}
       onClick={()=>{
@@ -25,7 +25,7 @@ const handleLogoutWindow = () => {
   const left = (screen.width - width) / 2
   const top = (screen.height - height) / 4
       
-  const logoutWindow:any = window.open(`${SITE_URL}/api/auth/signout`, 'pxv Auth',
+  const logoutWindow:any = window.open(`${SITE_URL}/auth/signout`, 'pxv Auth',
   'width=' + width + ', height=' + height +
   ', top=' + top + ', left=' + left)
   logoutWindow.focus()

@@ -12,13 +12,13 @@
   "scripts": {
     "dev": "next",
     "start": "next start",
-    "build": "next build"
+    "build": "next build",
+    "export": "next build && next export"
   },
   "dependencies": {
     "@agility/content-fetch": "1.0.0",
     "@agility/content-sync": "0.1.23",
     "@reach/skip-nav": "0.12.1",
-    "chrome-aws-lambda": "5.5.0",
     "classnames": "2.2.6",
     "cookie": "0.4.1",
     "date-fns": "2.16.1",

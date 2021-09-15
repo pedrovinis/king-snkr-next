@@ -19,8 +19,8 @@ export default function ActivateKeyForm() {
   const handleActiveRes = async(res:any) => {
     const data = await res.json()
     if(data.success) {
-      toast.success(`${data.message}`)
       router.reload()
+      toast.success(`${data.message}`)
     }
     else toast.error(`${data.message}`)
   }
