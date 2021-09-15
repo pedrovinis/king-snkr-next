@@ -10,9 +10,6 @@ import { UserProductsContext } from '@components/user-products-context'
 import { isActive } from '@lib/isActive'
 import LoginButton from '@components/login-button'
 import PageContainer from '@components/page-container'
-import cn from 'classnames'
-import { SITE_URL } from '@lib/constants'
-import { useState } from 'react'
 import LogoutButton from '@components/logout-button'
 
 export default function Conf() {
@@ -20,7 +17,6 @@ export default function Conf() {
     title: 'King Snkr | Profile',
     description: 'pXv'
   }
-  const [logoutButtonLoading, setLogoutButtonLoading] = useState(false)
 
   const { loading, session } = useContext(AuthContext)
   const UserProducts = useContext(UserProductsContext)

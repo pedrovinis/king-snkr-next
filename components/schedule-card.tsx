@@ -13,10 +13,8 @@ type Props = {
 }
 
 const formatDate = (date: string) => {
-  // https://github.com/date-fns/date-fns/issues/946
-  //return format(parseISO(date), "h:mmaaaaa'm'");
   return date
-};
+}
 
 export default function ScheduleCard({ snkr, showTime }: Props) {
   const [isReleased, setReleased] = useState(false)

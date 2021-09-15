@@ -1,6 +1,6 @@
 export const sessionFetch = async() => {
-    const res = await fetch('api/snkr/add', {
-        method:'POST',
+    const res = await fetch('api/auth', {
+        method: 'GET',
     })
     return res
 }

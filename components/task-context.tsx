@@ -2,6 +2,7 @@ import { Task } from "@lib/types"
 import { createContext, useEffect, useState } from "react"
 import React from "react"
 import { toast } from "react-toastify"
+import { payLoadsFecth } from "@lib/kingsnkr-api"
 
 type Props = {
     tasks: any
@@ -17,10 +18,14 @@ export const TaskContext = createContext<Props>({
 
 export const TaskProvider = ({ children }:any) => {
     const [tasks, setTasks]:any = useState({})
+    const [payLoads, setPayloads] = useState({})
+    console.log(payLoads)
 
     useEffect(() => {
         (async () => {
-            
+            const res = await payLoadsFecth()
+            const data = await res.json()
+            setPayloads(data.payloads)
         })()
     }, [])
 

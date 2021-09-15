@@ -1,3 +1,4 @@
+import { sessionFetch } from "@lib/auth-api"
 import { createContext, useEffect, useState } from "react"
 
 type Props = {
@@ -28,7 +29,7 @@ export const AuthProvider = ({ children }:any) => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(`/api/auth`)
+            const res = await sessionFetch()
             const data = await res.json()
             const session = data.session
             setSession(session || {})
