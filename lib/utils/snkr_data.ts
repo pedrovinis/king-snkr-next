@@ -29,10 +29,12 @@ export const getAndFormatSnkrData = async(link:string) => {
     const DataLayer:iDataLayer = await getAndFormatSnkrDataLayer(link)
     const sizesInfo:object = await getSizesInfo(data)
     const edition:string = await getEdition(data)
+    const image:string = await getImage(data)
 
     return {
         snkr_name: DataLayer.snkr_name,
         snkr_edition: edition,
+        snkr_image: image,
         snkr_id: DataLayer.snkr_id,
         snkr_sale_price: DataLayer.snkr_sale_price,
         //@ts-ignore
@@ -78,6 +80,14 @@ const getEdition = (data:string) => {
 
     const edition = startSliced.slice(editionStart, editionEnd)
     return edition
+}
+
+const getImage = async(data:string) => {
+    const start = data.search('https://images.lojanike.com.br/515x515')
+    const slicedStart = data.slice(start, data.length)
+    const end = slicedStart.search('"')
+    const image = slicedStart.slice(0, end)
+    return image
 }
 
 const getSizesInfo = async(data:string) => {

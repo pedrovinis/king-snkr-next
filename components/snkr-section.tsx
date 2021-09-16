@@ -48,8 +48,9 @@ export default function SnkrSection({ snkr }: Props) {
     <>
       <BackLink text={"Back to SNKRS"} href={'/snkrs'}/>
       <div key={snkr.name} className={styles.container}>
-        <div style={{ minWidth: '300px' }}>
-          <IconSnkr snkrName={snkr.name}/>
+        <div className={styles.imagesContainer}>
+          <IconSnkr snkrName={snkr.name} size={'300px'}/>
+          <img src={snkr.image} width={'298px'} height={'298px'}/>
         </div>
         <div className={styles['snkr-details']}>
           <div>

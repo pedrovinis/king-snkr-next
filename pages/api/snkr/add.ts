@@ -27,6 +27,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         snkr.setSnkrLink(link)
         snkr.setSnkrName(snkrData.snkr_name)
         snkr.setSnkrEdition(snkrData.snkr_edition)
+        snkr.setSnkrImage(snkrData.snkr_image)
         snkr.setSnkrId(snkrData.snkr_id)
         snkr.setSnkrSlug(snkrData.snkr_id)
         snkr.setSnkrSalePrice(snkrData.snkr_sale_price)
