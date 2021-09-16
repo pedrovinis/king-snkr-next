@@ -4,8 +4,12 @@ import cn from 'classnames'
 import { User } from '@lib/types'
 import styles from './users-grid.module.css'
 import UserIcon from './icons/icon-user'
+import { useContext } from 'react'
+import { ConfigContext } from './config-context'
 
 function UserCard({ user }: { user: User }) {
+  const { config } = useContext(ConfigContext)
+
   return (
     <Link key={user.name} href={`/user/${user.slug}`}>
       <a
@@ -19,7 +23,9 @@ function UserCard({ user }: { user: User }) {
           <div className={styles.cardBody}>
             <div>
               <h2 className={styles.name}>{user.name}</h2>
-              <p className={styles.description}>{user.email}</p>
+              <p className={cn(styles.description, {
+                ["hide"]: config.hideContent
+              })}>{user.email}</p>
             </div>
           </div>
       </a>

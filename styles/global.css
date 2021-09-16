@@ -193,6 +193,11 @@ svg circle {
   background: var(--violet);
 }
 
+.hide {
+  color: var(--accents-1);
+  filter: blur(0.4rem);
+}
+
 .button {
   width: 200px;
   height: 56px;
@@ -206,7 +211,7 @@ svg circle {
   outline: none;
   font-weight: 500;
   transition: background-color 0.2s ease, color 0.2s ease;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;

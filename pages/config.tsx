@@ -1,18 +1,10 @@
-import fs from 'fs'
 import Page from '@components/page'
 import Layout from '@components/layout'
 import ConfigForm from '@components/config-form'
 import Header from '@components/header'
-import { Config } from '@lib/types'
-import { GetServerSideProps } from 'next'
-import PageContainer from '@components/page-container'
+import i18n from 'translate/i18n'
 
-
-type Props = {
-  config: Config | null
-}
-
-export default function ConfigPage({config}:Props) {
+export default function ConfigPage() {
   const meta = {
     title: 'King Snkr | Config',
     description: 'Configure your preferences.'
@@ -21,25 +13,9 @@ export default function ConfigPage({config}:Props) {
   return (
     <Page meta={meta} fullViewport>
       <Layout>
-        <Header hero="Configurations" description={meta.description}/>
-          <ConfigForm config={config}/>
+        <Header hero={i18n.t('config.title')} description={meta.description}/>
+          <ConfigForm />
       </Layout>
     </Page>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async() => {
-  let config
-  try {
-    config = JSON.parse(fs.readFileSync(`bin/config.json`, 'utf8'))
-  }
-  catch {
-    config = null
-  }
-
-  return {
-    props: {
-      config
-    }
-  }
 }

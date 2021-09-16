@@ -3,6 +3,8 @@ import PxvIcon from '@components/icons/icon-platform'
 import cn from 'classnames'
 import IconUser from './icons/icon-user'
 import styles from './ticket-profile.module.css'
+import { useContext } from 'react'
+import { ConfigContext } from './config-context'
 
 type Props = {
   name?: string
@@ -12,6 +14,7 @@ type Props = {
 }
 
 export default function TicketProfile({ name, email, size = 1, userState }: Props) {
+  const { config } = useContext(ConfigContext)
   return (
     <div className={styles.profile}>
       <span
@@ -40,7 +43,8 @@ export default function TicketProfile({ name, email, size = 1, userState }: Prop
         <p className={styles.email}>
           <span
             className={cn(styles.skeleton, styles.wrapper, {
-              [styles.show]: userState=== 'loading'
+              [styles.show]: userState=== 'loading',
+              ["hide"]: config.hideContent
             })}
           >
             <span className={styles.icon}>

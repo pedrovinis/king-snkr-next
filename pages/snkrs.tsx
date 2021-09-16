@@ -26,14 +26,11 @@ export default function SnkrsPage( {snkrs}: Props) {
       <Layout>
         <Header hero="Snkrs" description={meta.description} />
         <Link href={'/addsnkr'}>
-          <a
+          <button
           className='button'
-          style={{
-            width:'325px',
-          }}
           >
             Add Snkr
-          </a>
+          </button>
         </Link>
         {isEmpty ?(
           <EmptyList list={'snkr'} buttonText={'Add Snkr'}/>

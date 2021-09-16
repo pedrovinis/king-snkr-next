@@ -26,14 +26,11 @@ export default function SnkrsPage( {tasks}: Props) {
       <Layout>
         <Header hero="Tasks" description={meta.description} />
         <Link href={'/addtask'}>
-          <a
+          <button
           className='button'
-          style={{
-            width:'325px',
-          }}
           >
             Add Task
-          </a>
+          </button>
         </Link>
         {isEmpty ? (
           <EmptyList list={'task'} buttonText={'Add Task'}/>

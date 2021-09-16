@@ -11,6 +11,7 @@ import { isActive } from '@lib/isActive'
 import LoginButton from '@components/login-button'
 import PageContainer from '@components/page-container'
 import LogoutButton from '@components/logout-button'
+import i18n from 'translate/i18n'
 
 export default function Conf() {
   const meta = {
@@ -27,7 +28,7 @@ export default function Conf() {
   return (
     <Page meta={meta} fullViewport>
       <Layout >
-      <Header hero="Profile" description=""/>
+      <Header hero={i18n.t('profile.title')} description=""/>
       <PageContainer >
         <TicketVisual
           name={session?.user?.name}

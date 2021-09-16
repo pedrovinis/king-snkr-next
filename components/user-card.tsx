@@ -1,9 +1,10 @@
 import cn from 'classnames'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { User } from '@lib/types'
 import styles from './user-card.module.css'
 import UserIcon from './icons/icon-user'
 import { PhoneNumberFormat } from '@lib/form-format'
+import { ConfigContext } from './config-context'
 
 type Props = {
   user: User
@@ -11,8 +12,9 @@ type Props = {
 
 export default function UserCard({ user }: Props) {
   const [isReleased, setReleased] = useState(false)
+  const { config } = useContext(ConfigContext)
 
-const title = user.name
+  const title = user.name
 
   return (
     <div key={title} className={styles.main}>
@@ -25,7 +27,9 @@ const title = user.name
             <h4 title={title} className={styles.title}> 
               {title} 
             </h4>
-            <a className={styles.name}>{user.email}</a>
+            <a className={cn(styles.name, {
+              ["hide"]: config.hideContent
+            })}>{user.email}</a>
             
             <div className={styles.speaker}>
               <div className={styles['avatar-group']}>
@@ -35,7 +39,8 @@ const title = user.name
               </div>
               <h5 className={styles.phone}>
                 Phone: <br/>
-                {PhoneNumberFormat(user.phone)}
+                <span className={config.hideContent ? "hide": ''}>
+                  {PhoneNumberFormat(user.phone)}</span>
               </h5>
             </div>
           </div>

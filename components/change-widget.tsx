@@ -2,27 +2,29 @@ import cn from 'classnames'
 import { useEffect, useState } from 'react'
 import s from './change-widget.module.css'
 
-export default function ChangeWidget()  {
-  const [active, setActive] = useState(false)
-  useEffect(()=>{
+type Props = {
+  onChange: Function
+  value: boolean
+}
 
-  },[])
-  
+export default function ChangeWidget({onChange, value} : Props) {
   return (
     <>
     <div className={s.button}>
       <input type="checkbox"
       className={s.checkbox}
-      id="chk" />
+      id="chk" 
+      checked={value}
+      />
       <label className={s.label} htmlFor="chk"
       onClick={()=>{
-        setActive(!active)
+        onChange(!value)
       }}>
         <a className={s.opt1}>  </a>
         <a className={s.opt2}>  </a>
         <div className={cn(s.ball, {
-          [s.actived]: active,
-          [s.desactived]: !active
+          [s.actived]: value,
+          [s.desactived]: !value
         })}/>
       </label>
     </div>

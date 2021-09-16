@@ -1,13 +1,15 @@
 import { User } from '@lib/types'
 import styles from './user-section.module.css'
 import IconUser from './icons/icon-user'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteUserFetch } from '@lib/user-api'
 import router from 'next/router'
 import BackLink from './backLink'
 import { toast } from 'react-toastify'
 import { PhoneNumberFormat } from '@lib/form-format'
+import { ConfigContext } from './config-context'
+import cn from 'classnames'
 
 type Props = {
   user: User
@@ -17,6 +19,7 @@ type ButtonState = 'default' | 'loading' | 'error'
 
 export default function UserSection({ user }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
+  const { config } = useContext(ConfigContext)
   
   const handleDeleteResponse = async(res:Response) => {
     const data = await res.json()
@@ -39,11 +42,15 @@ export default function UserSection({ user }: Props) {
         <div className={styles['user-details']}>
           <div>
             <h1 className={styles.name}>{user.name}</h1>
-            <p className={styles.title}>
+            <p className={cn(styles.title, {
+              ["hide"]: config.hideContent
+            })}>
               {user.email}
             </p>
             <h2 className={styles['bio-header']}>Phone</h2>
-            <p className={styles.title}>{PhoneNumberFormat(user.phone)}</p>
+            <p className={cn(styles.title, {
+              ["hide"]: config.hideContent
+            })}>{PhoneNumberFormat(user.phone)}</p>
           </div>
         </div>
       </div>

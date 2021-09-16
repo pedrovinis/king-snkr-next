@@ -1,37 +1,61 @@
-import { Config } from '@lib/types'
 import { CONFIG_OPTIONS } from '@lib/constants'
 import PageContainer from './page-container'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import LoadingDots from './loading-dots'
 import ChangeWidget from './change-widget'
 import styles from './config-form.module.css'
 import Select from './select'
+import { ConfigContext } from './config-context'
+import { setConfigFetch } from '@lib/config-api'
+import { toast } from 'react-toastify'
 
-type FormState = 'default' | 'loading' | 'error'
-
-type Props = {
-  config: Config | null
-}
-
-export default function ConfigForm({config}: Props) {
+export default function ConfigForm(){
+  const { config, loading, setConfig } = useContext(ConfigContext)
   const [applyLoading, setApplyLoading] = useState(false)
+  const [hideContent, setHideContent] = useState(config.hideContent)
+  const [locale, setLocale] = useState(config.locale)
+  const [language, setLanguage] = useState(config.lang)
+
+  const handleConfigRes = async(res:Response, fConfig:any) => {
+    const data = await res.json()
+    if(data?.success) { 
+      setConfig(fConfig)
+      toast.success('Configurations succesful saved, please restart to see all changes.')
+    }
+    else toast.error('Error on save configurations')
+  }
+
+  useEffect(() => {
+    setHideContent(config.hideContent)
+    setLocale(config.locale)
+    setLanguage(config.lang)
+  },[config])
 
   return (
       <PageContainer>
-        <div className={styles.container}>
+        {loading ? (
+          <LoadingDots size={20} />
+        ) : (
+          <>
+          <div className={styles.container}>
           <h2 className={styles.text}>
             Hide Personal Content
           </h2>
-          <ChangeWidget />
+          <ChangeWidget onChange={setHideContent} value={hideContent}/>
         </div>
         <div className={styles.container}>
           <h2 className={styles.text}>
             Locale
           </h2>
-          <Select>
-            {CONFIG_OPTIONS.locale.map( locale => {
-              return (<option key={locale}>
-                {locale}
+          <Select
+          onChange={e =>{
+            const localeValue = e.target.value
+            setLocale(localeValue)
+          }}
+          >
+            {CONFIG_OPTIONS.locale.map( loc => {
+              return (<option key={loc} selected={loc == locale} value={loc}>
+                {loc}
               </option>
               )
             })}
@@ -41,10 +65,14 @@ export default function ConfigForm({config}: Props) {
           <h2 className={styles.text}>
             Language
           </h2>
-          <Select>
-            {CONFIG_OPTIONS.lang.map( locale => {
-              return (<option key={locale[0]}>
-                {locale[1]}
+          <Select
+          onChange={e => {
+            const langValue = e.target.value
+            setLanguage(langValue)
+          }}>
+            {CONFIG_OPTIONS.lang.map(lang => {
+              return (<option key={lang[0]} selected={lang[0] == language} value={lang[0]}>
+                {lang[1]}
               </option>
               )
             })}
@@ -53,13 +81,23 @@ export default function ConfigForm({config}: Props) {
         <button 
           className="button"
           disabled={applyLoading}
-          onClick={ () => {
+          onClick={async() => {
             setApplyLoading(true)
+            const fConfig = {
+              hideContent: hideContent,
+              locale: locale,
+              lang: language
+            }
+            const res = await setConfigFetch(fConfig)
+            handleConfigRes(res, fConfig)
+            setApplyLoading(false)
           }}
         >
           {applyLoading ? <LoadingDots size={6} /> : <>Apply</>}
         </button>
+        </>
+        )}
+        
       </PageContainer>
     )
 }
-

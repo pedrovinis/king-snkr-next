@@ -100,7 +100,6 @@ const getRelease = (data:any) => {
     const minute = dateString.slice(14,16)
     const second = dateString.slice(17,19)
 
-    console.log(day)
     const release = new Date(
         year,
         month,

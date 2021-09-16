@@ -1,3 +1,5 @@
+import i18n from "translate/i18n"
+
 export const SITE_URL = 'https://pxv.vercel.app'
 export const SITE_ORIGIN = 'https://pxv.vercel.app/'
 export const BRAND_NAME = 'pXv'
@@ -6,23 +8,23 @@ export const SITE_DESCRIPTION = 'A melhor experiência para você.'
 
 export const NAVIGATION = [
   {
-    name: 'Profile',
+    name: i18n.t('nav_bar.profile'),
     route: '/profile'
   },
   {
-    name: 'Tasks',
+    name: i18n.t('nav_bar.tasks'),
     route: '/tasks'
   },
   {
-    name: 'Users',
+    name: i18n.t('nav_bar.users'),
     route: '/users'
   },
   {
-    name: 'SNKRS',
+    name: i18n.t('nav_bar.snkrs'),
     route: '/snkrs'
   },
   {
-    name: 'Schedule',
+    name: i18n.t('nav_bar.schedule'),
     route: '/schedule'
   }
 ]
@@ -44,7 +46,7 @@ export const CONFIG_OPTIONS = {
   locale: ['Brasil'],
   lang: [
     ['pt-br', 'Português BR'],
-    ['en-us', 'English'] 
+    ['en', 'English'] 
   ]
 }
 

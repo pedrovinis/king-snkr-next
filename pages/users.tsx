@@ -26,14 +26,11 @@ export default function UsersPage( {users}: Props) {
       <Layout>
         <Header hero="Users" description={meta.description} />
         <Link href={'/adduser'} >
-          <a
+          <button
           className='button'
-          style={{
-            width:'325px',
-          }}
           >
             Add User
-          </a>
+          </button>
         </Link>
         {isEmpty ? (
           <EmptyList list={'user'} buttonText={'Add User'}/>
