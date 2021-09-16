@@ -9,15 +9,13 @@
   min-width: 300px;
   margin-right: 2rem;
   flex-direction: column;
-  border: 1px solid var(--brand);
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px var(--green), 0 0 5px var(--brand);  
 }
 
 .imagesContainer img {
   border: 1px solid var(--brand);
-
+  box-shadow: 0 0 10px var(--green), 0 0 5px var(--brand);  
 }
 
 .speaker-details {
