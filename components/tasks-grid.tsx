@@ -119,13 +119,7 @@ export default function TasksGrid({ tasks }: Props) {
         </thead>
         <tbody className={styles.tBody}>
          {tasks.map((task, i)=> {
-            return (
-              <>
-            <TaskTable 
-              key={task.name+i}
-              task={task}
-            />
-            </>)
+            return <TaskTable key={task.name+i} task={task}/>
           })}
         </tbody>
       </table>

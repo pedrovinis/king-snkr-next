@@ -14,7 +14,7 @@ export default function ChangeWidget({onChange, value} : Props) {
       <input type="checkbox"
       className={s.checkbox}
       id="chk" 
-      checked={value}
+      defaultChecked={value}
       />
       <label className={s.label} htmlFor="chk"
       onClick={()=>{

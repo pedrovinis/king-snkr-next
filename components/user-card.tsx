@@ -27,9 +27,9 @@ export default function UserCard({ user }: Props) {
             <h4 title={title} className={styles.title}> 
               {title} 
             </h4>
-            <a className={cn(styles.name, {
+            <span className={cn(styles.name, {
               ["hide"]: config.hideContent
-            })}>{user.email}</a>
+            })}>{user.email}</span>
             
             <div className={styles.speaker}>
               <div className={styles['avatar-group']}>

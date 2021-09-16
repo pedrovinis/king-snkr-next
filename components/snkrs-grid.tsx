@@ -7,13 +7,13 @@ import SnkrIcon from '@components/icons/icon-snkr'
 function SnkrCard({ snkr }: { snkr: Snkr }) {
   return (
     <Link key={snkr.name} href={`/snkr/${snkr.slug}`}>
-      <a
+      <div
         role="button"
         tabIndex={0}
         className={cn(styles.card)}
       >
         <div className={styles.imageWrapper}>
-          <SnkrIcon snkrName={snkr.name}/>
+          <SnkrIcon snkrName={snkr.name} />
         </div>
           <div className={styles.cardBody}>
             <div>
@@ -21,7 +21,7 @@ function SnkrCard({ snkr }: { snkr: Snkr }) {
             </div>
             <p className={styles.description}>{`R$ ${snkr.sale_price}`}</p>
           </div>
-      </a>
+      </div>
     </Link>
   )
 }

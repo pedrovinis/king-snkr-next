@@ -20,7 +20,6 @@ export default function ScheduleCard({ snkr, showTime }: Props) {
   const [isReleased, setReleased] = useState(false)
   const [startTime, setStartTime] = useState('')
 
-  const title = snkr.name
   const start = new Date(snkr.release*1000).toLocaleString('pt-BR', { hour: '2-digit', minute:'2-digit', hour12: true })
 
   useEffect(() => {
@@ -30,17 +29,17 @@ export default function ScheduleCard({ snkr, showTime }: Props) {
   }, []);
 
   return (
-    <div key={title} className={styles.talk}>
+    <div key={snkr.name+snkr.edition+snkr.id} className={styles.talk}>
       {showTime && <p className={styles.time}>{isReleased? <>Released</> : <>{start}</>}</p>}
       <Link href={`snkr/${snkr.slug}`}>
-        <a
+        <span
           className={cn(styles.card, {
             [styles['is-released']]: isReleased
           })}
         >
           <div className={styles['card-body']}>
-            <h4 title={title} className={styles.title}>
-              {title} 
+            <h4 title={snkr.name} className={styles.title}>
+              {snkr.name}
             </h4>
             <a className={styles.name}>{snkr.edition}</a>
             <div className={styles.speaker}>
@@ -54,7 +53,7 @@ export default function ScheduleCard({ snkr, showTime }: Props) {
               </h5>
             </div>
           </div>
-        </a>
+        </span>
       </Link>
     </div>
   );

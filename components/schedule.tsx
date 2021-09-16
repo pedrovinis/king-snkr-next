@@ -15,7 +15,7 @@ function StageRow({ stage }: { stage: Stage }) {
         })}
       </div>
     </div>
-  );
+  )
 }
 
 type Props = {
@@ -27,7 +27,7 @@ export default function Schedule({ allStages }: Props) {
     <div className={styles.container}>
       <div className={styles['row-wrapper']}>
         {allStages.map(stage => (
-          <StageRow key={stage.slug} stage={stage} />
+          <StageRow key={stage.name} stage={stage} /> 
         ))}
       </div>
     </div>

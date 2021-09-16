@@ -61,7 +61,7 @@ export default function ConfigForm(){
           }}
           >
             {CONFIG_OPTIONS.locale.map( loc => {
-              return (<option key={loc} selected={loc == locale} value={loc}>
+              return (<option key={loc} defaultChecked={loc == locale} value={loc}>
                 {loc}
               </option>
               )

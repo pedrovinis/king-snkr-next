@@ -75,7 +75,7 @@ export default function SnkrSection({ snkr }: Props) {
         <h3 className={styles['warning-header']}>Sizes</h3>
         <div style={{paddingBottom:'1rem'}}>
           {snkr.sizes.sort((a:any,b:any) => parseFloat(a.value) - parseFloat(b.value)).map( size => {
-            return <a className="button" id={styles.size}> {size.value} </a>
+            return <a className="button" key={size.value} id={styles.size}> {size.value} </a>
           })}
         </div>
           <h3 className={styles['warning-header']}>Warning<IconInfo /></h3>
