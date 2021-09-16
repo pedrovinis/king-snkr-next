@@ -7,7 +7,7 @@ import i18n from 'translate/i18n'
 export default function ConfigPage() {
   const meta = {
     title: 'King Snkr | Config',
-    description: 'Configure your preferences.'
+    description: i18n.t('config.desc')
   }
 
   return (

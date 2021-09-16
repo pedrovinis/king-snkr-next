@@ -7,6 +7,7 @@ import { GetServerSideProps } from 'next'
 import { Task } from '@lib/types'
 import Link from 'next/link'
 import EmptyList from '@components/empty-list'
+import i18n from 'translate/i18n'
 
 type Props = {
   tasks: Task[]
@@ -29,11 +30,11 @@ export default function SnkrsPage( {tasks}: Props) {
           <button
           className='button'
           >
-            Add Task
+            {i18n.t('buttons.add_task')}
           </button>
         </Link>
         {isEmpty ? (
-          <EmptyList list={'task'} buttonText={'Add Task'}/>
+          <EmptyList list={'task'} buttonText={i18n.t('buttons.add_task')}/>
         ): (
           <TasksGrid tasks={tasks} />
         )}

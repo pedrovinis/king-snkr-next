@@ -8,6 +8,7 @@ import Select from './select'
 import { ConfigContext } from './config-context'
 import { setConfigFetch } from '@lib/config-api'
 import { toast } from 'react-toastify'
+import i18n from 'translate/i18n'
 
 export default function ConfigForm(){
   const { config, loading, setConfig } = useContext(ConfigContext)
@@ -20,9 +21,9 @@ export default function ConfigForm(){
     const data = await res.json()
     if(data?.success) { 
       setConfig(fConfig)
-      toast.success('Configurations succesful saved, please restart to see all changes.')
+      toast.success(i18n.t('config.success'))
     }
-    else toast.error('Error on save configurations')
+    else toast.error(i18n.t('config.error'))
   }
 
   useEffect(() => {
@@ -39,13 +40,13 @@ export default function ConfigForm(){
           <>
           <div className={styles.container}>
           <h2 className={styles.text}>
-            Hide Personal Content
+            {i18n.t('config.hide_personal_content')}
           </h2>
           <ChangeWidget onChange={setHideContent} value={hideContent}/>
         </div>
         <div className={styles.container}>
           <h2 className={styles.text}>
-            Locale
+            {i18n.t('config.locale')}
           </h2>
           <Select
           onChange={e =>{
@@ -63,7 +64,7 @@ export default function ConfigForm(){
         </div>
         <div className={styles.container}>
           <h2 className={styles.text}>
-            Language
+            {i18n.t('config.language')}
           </h2>
           <Select
           onChange={e => {
@@ -93,7 +94,7 @@ export default function ConfigForm(){
             setApplyLoading(false)
           }}
         >
-          {applyLoading ? <LoadingDots size={6} /> : <>Apply</>}
+          {applyLoading ? <LoadingDots size={6} /> : <>{i18n.t('config.apply')}</>}
         </button>
         </>
         )}

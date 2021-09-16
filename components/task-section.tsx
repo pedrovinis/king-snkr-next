@@ -14,6 +14,7 @@ import StepProgress from './step-progress'
 import { TASK_PROGRESS } from '@lib/constants'
 import cn from 'classnames'
 import { TaskContext } from './task-context'
+import i18n from 'translate/i18n'
 
 type Props = {
   task: Task
@@ -76,7 +77,7 @@ export default function TaskSection({ task }: Props) {
             active ? stopTask(task) : startTask(task)
           }}
         >
-          {active ? <>Stop Task</> : <>Start Task</>}
+          {active ? <>{i18n.t('buttons.stop_task')}</> : <>{i18n.t('buttons.start_task')}</>}
         </a>
           <StepProgress steps={TASK_PROGRESS} progress={active? progress : 0}/>
       <div className={styles['info']}>

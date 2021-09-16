@@ -3,6 +3,7 @@ import { CONFIG_OPTIONS } from "@lib/constants"
 import { Config } from "@lib/types"
 import router from "next/router"
 import { createContext, useEffect, useState } from "react"
+import { toast } from "react-toastify"
 import i18n from "translate/i18n"
 
 type Props = {
@@ -49,7 +50,7 @@ export const ConfigProvider = ({ children, setLang }:any) => {
     useEffect( () => {
         if(!loading && config.lang) {
             i18n.changeLanguage(config.lang)
-            router.reload()
+            toast.warn(i18n.t('config.lang_restart'))
         }
     }, [config.lang])
 

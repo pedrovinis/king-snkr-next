@@ -10,6 +10,7 @@ import TaskIcon from './icons/icon-task'
 import SnkrCard from '@components/snkr-card'
 import UserCard from './user-card'
 import { addTaskFetch } from '@lib/task-api'
+import i18n from 'translate/i18n'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -139,7 +140,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
           className={cn("button", styles[formState])}
           disabled={formState === 'loading' }
         >
-          {formState === 'loading' ? <LoadingDots size={6} /> : <>Add</>}
+          {formState === 'loading' ? <LoadingDots size={6} /> : <>{i18n.t('buttons.add')}</>}
         </button>
       </div>
     </form>

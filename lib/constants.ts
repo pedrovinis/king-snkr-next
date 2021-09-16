@@ -4,7 +4,7 @@ export const SITE_URL = 'https://pxv.vercel.app'
 export const SITE_ORIGIN = 'https://pxv.vercel.app/'
 export const BRAND_NAME = 'pXv'
 
-export const SITE_DESCRIPTION = 'A melhor experiência para você.'
+export const SITE_DESCRIPTION = i18n.t('index.the_best_experience')
 
 export const NAVIGATION = [
   {

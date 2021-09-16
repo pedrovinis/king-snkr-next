@@ -8,6 +8,7 @@ import { GetServerSideProps } from 'next'
 import { User } from '@lib/types'
 import Link from 'next/link'
 import EmptyList from '@components/empty-list'
+import i18n from 'translate/i18n'
 
 type Props = {
   users: User[]
@@ -29,11 +30,11 @@ export default function UsersPage( {users}: Props) {
           <button
           className='button'
           >
-            Add User
+            {i18n.t('buttons.add_user')}
           </button>
         </Link>
         {isEmpty ? (
-          <EmptyList list={'user'} buttonText={'Add User'}/>
+          <EmptyList list={'user'} buttonText={i18n.t('buttons.add_user')}/>
         )
         :(
           <UsersGrid users={users} />

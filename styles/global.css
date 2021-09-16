@@ -195,7 +195,7 @@ svg circle {
 
 .hide {
   color: var(--accents-1);
-  filter: blur(0.4rem);
+  filter: blur(0.35rem);
 }
 
 .button {

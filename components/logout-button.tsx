@@ -1,5 +1,6 @@
 import { SITE_URL } from '@lib/constants'
 import { useState } from 'react'
+import i18n from 'translate/i18n'
 import LoadingDots from './loading-dots'
 
 export default function LogoutButton() {
@@ -15,7 +16,7 @@ export default function LogoutButton() {
         setLoading(true)
     }}
     >
-    {loading ? <LoadingDots size={6}/> : <>Sair</>}</button>
+    {loading ? <LoadingDots size={6}/> : <>{i18n.t('buttons.logout')}</>}</button>
   )
 }
 

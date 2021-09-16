@@ -1,5 +1,6 @@
 import { SITE_URL } from '@lib/constants'
 import { useState } from 'react'
+import i18n from 'translate/i18n'
 import LoadingDots from './loading-dots'
 
 export default function LoginButton() {
@@ -15,7 +16,7 @@ export default function LoginButton() {
         setLoading(true)
     }}
     >
-    {loading ? <LoadingDots size={6}/> : <>Entre ou registre-se</>}</button>
+    {loading ? <LoadingDots size={6}/> : <>{i18n.t('buttons.login_or_register')}</>}</button>
   )
 }
 

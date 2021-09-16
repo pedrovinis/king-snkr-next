@@ -2,15 +2,17 @@
 import styles from './profile.module.css'
 import UserIcon from "./icons/icon-user"
 import LogoutButton from "./logout-button"
+import { useContext } from 'react'
+import { ConfigContext } from './config-context'
 
 export default function Profile({user}:any) {
-
+  const { config } = useContext(ConfigContext)
   return (
       <div className={styles.main}>
           <UserIcon size={`90px`}/>
         <div className={styles.info}>
             {user?.name}
-            <p>{user?.email}</p>
+            <p className={config.hideContent ? "hide" : ''}>{user?.email}</p>
             <LogoutButton />
         </div>
       </div>

@@ -7,6 +7,7 @@ import styles from './add-snkr-form.module.css'
 import { addSnkrFetch } from '@lib/snkr-api'
 import router from 'next/router'
 import { toast } from 'react-toastify'
+import i18n from 'translate/i18n'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -71,7 +72,7 @@ export default function AddUserForm() {
             setFormState('default')
           }}
         >
-          {formState === 'loading' ? <LoadingDots size={6}/> : <>Add SNKR</>}
+          {formState === 'loading' ? <LoadingDots size={6}/> : <>{i18n.t('buttons.add')}</>}
         </button>
       </div>
     </form>

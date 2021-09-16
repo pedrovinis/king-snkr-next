@@ -8,6 +8,7 @@ import router from 'next/router'
 import { toast } from 'react-toastify'
 import { PhoneNumberFormat } from '@lib/form-format'
 import XIcon from './icons/icon-x'
+import i18n from 'translate/i18n'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -157,7 +158,7 @@ export default function AddUserForm() {
           className={cn("button", styles[formState])}
           disabled={formState === 'loading' }
         >
-          {formState === 'loading' ? <LoadingDots size={6} /> : <>Add</>}
+          {formState === 'loading' ? <LoadingDots size={6} /> : <>{i18n.t('buttons.add')}</>}
         </button>
       </div>
     </form>

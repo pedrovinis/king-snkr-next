@@ -7,8 +7,7 @@ export default function Conf() {
   const meta = {
     title: 'King Snkr | Add User',
     description: 'Add a nike User.'
-  };
-
+  }
 
   return (
     <Page meta={meta} fullViewport>

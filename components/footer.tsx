@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import styles from './footer.module.css';
 import { SITE_URL } from '@lib/constants';
+import i18n from 'translate/i18n';
 
 
 export default function Footer() {
@@ -23,7 +24,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Privacy Policy
+              {i18n.t('footer.privacy_policy')}
             </a>
           </p>
           <div className={styles['footer-separator']} />
@@ -34,7 +35,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Terms of use
+              {i18n.t('footer.terms_of_use')}
             </a>
           </p>
             <>
@@ -46,7 +47,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Contact
+                  {i18n.t('footer.contact')}
                 </a>
               </p>
             </>
