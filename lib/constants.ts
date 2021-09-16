@@ -40,6 +40,7 @@ export const TASK_PROGRESS = [
 ]
 
 export const CONFIG_OPTIONS = {
+  hideContent: false,
   locale: ['Brasil'],
   lang: [
     ['pt-br', 'Português BR'],

@@ -1,6 +1,9 @@
 .container {
-    margin: auto 0;
+    margin: auto;
     padding: 0 var(--space-4x);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
   
   @media (min-width: 768px) {

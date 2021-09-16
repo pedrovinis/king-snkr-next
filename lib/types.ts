@@ -1,4 +1,5 @@
 export type Config = {
+  hideContent: boolean
   locale: string
   lang: string
 }

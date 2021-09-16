@@ -9,7 +9,7 @@ import PageContainer from '@components/page-container'
 
 
 type Props = {
-  config: Config
+  config: Config | null
 }
 
 export default function ConfigPage({config}:Props) {
@@ -21,7 +21,7 @@ export default function ConfigPage({config}:Props) {
   return (
     <Page meta={meta} fullViewport>
       <Layout>
-        <Header hero="Config" description={meta.description}/>
+        <Header hero="Configurations" description={meta.description}/>
           <ConfigForm config={config}/>
       </Layout>
     </Page>
@@ -29,7 +29,13 @@ export default function ConfigPage({config}:Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async() => {
-  const config = JSON.parse(fs.readFileSync(`bin/config.json`, 'utf8'))
+  let config
+  try {
+    config = JSON.parse(fs.readFileSync(`bin/config.json`, 'utf8'))
+  }
+  catch {
+    config = null
+  }
 
   return {
     props: {

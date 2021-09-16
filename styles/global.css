@@ -194,7 +194,7 @@ svg circle {
 }
 
 .button {
-  width: 100%;
+  width: 200px;
   height: 56px;
   margin-top: var(--space-4x);
   border-radius: var(--space-2x);
@@ -221,7 +221,7 @@ svg circle {
 }
 
 .buttonWhite {
-  width: 100%;
+  width: 200px;
   height: 56px;
   margin-top: var(--space-4x);
   border-radius: var(--space-2x);
@@ -256,7 +256,7 @@ svg circle {
 }
 
 .buttonRed {
-  width: 100%;
+  width: 150px;
   height: 56px;
   margin-top: var(--space-4x);
   border-radius: var(--space-2x);

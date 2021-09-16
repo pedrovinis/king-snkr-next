@@ -1,0 +1,59 @@
+.button {
+  display: inline-flex;
+  margin: 0.2rem 1rem;
+}
+.button:hover {
+  outline: none;
+}
+.button:focus {
+  outline: none;
+}
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+.checkbox:checked + .label .ball {
+  transform: translateX(21px);
+}
+.label {
+  background-color: var(--gray);
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  height: 24px;
+  width: 44px;
+  transform: scale(1.5);
+}
+.label:hover{
+  opacity: 0.94;
+  transform: scale(1.501);
+}
+.label .ball {
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 19px;
+  width: 19px;
+  transform: translateX(0px);
+  transition: transform 0.2s linear;
+}
+.actived {
+  background-color: var(--brand);
+}
+
+.desactived {
+  opacity: 0.5;
+  background-color: violet;
+}
+
+.opt1{
+  color: white;
+}
+.opt2 {
+  color: white;
+}
