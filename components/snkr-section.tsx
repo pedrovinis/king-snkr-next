@@ -50,7 +50,7 @@ export default function SnkrSection({ snkr }: Props) {
       <div key={snkr.name} className={styles.container}>
         <div className={styles.imagesContainer}>
           <IconSnkr snkrName={snkr.name} size={'300px'}/>
-          <img src={snkr.image} width={'298px'} height={'298px'}/>
+          <img src={snkr.image} width={'300px'} height={'300px'}/>
         </div>
         <div className={styles['snkr-details']}>
           <div>
