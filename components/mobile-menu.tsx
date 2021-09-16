@@ -1,14 +1,14 @@
-import { useRef } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import cn from 'classnames';
-import { NAVIGATION } from '@lib/constants';
-import { useOverlayTriggerState } from '@react-stately/overlays';
-import { useOverlay, usePreventScroll, useModal, OverlayContainer } from '@react-aria/overlays';
-import { useDialog } from '@react-aria/dialog';
-import { FocusScope } from '@react-aria/focus';
-import { useButton } from '@react-aria/button';
-import styles from './mobile-menu.module.css';
+import { useRef } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import cn from 'classnames'
+import { useOverlayTriggerState } from '@react-stately/overlays'
+import { useOverlay, usePreventScroll, useModal, OverlayContainer } from '@react-aria/overlays'
+import { useDialog } from '@react-aria/dialog'
+import { FocusScope } from '@react-aria/focus'
+import { useButton } from '@react-aria/button'
+import styles from './mobile-menu.module.css'
+import i18n from 'translate/i18n'
 
 function ModalDialog(props: Parameters<typeof useOverlay>[0] & Parameters<typeof useDialog>[0]) {
   const router = useRouter();
@@ -19,7 +19,30 @@ function ModalDialog(props: Parameters<typeof useOverlay>[0] & Parameters<typeof
   const { overlayProps } = useOverlay(props, ref);
   const { dialogProps } = useDialog(props, ref);
 
-  usePreventScroll();
+  usePreventScroll()
+
+  const NAVIGATION = [
+    {
+      name: i18n.t('nav_bar.profile'),
+      route: '/profile'
+    },
+    {
+      name: i18n.t('nav_bar.tasks'),
+      route: '/tasks'
+    },
+    {
+      name: i18n.t('nav_bar.users'),
+      route: '/users'
+    },
+    {
+      name: i18n.t('nav_bar.snkrs'),
+      route: '/snkrs'
+    },
+    {
+      name: i18n.t('nav_bar.schedule'),
+      route: '/schedule'
+    }
+  ]
 
   return (
     <div className={styles['nav-overlay']}>

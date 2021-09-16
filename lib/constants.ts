@@ -6,28 +6,6 @@ export const BRAND_NAME = 'pXv'
 
 export const SITE_DESCRIPTION = i18n.t('index.the_best_experience')
 
-export const NAVIGATION = [
-  {
-    name: i18n.t('nav_bar.profile'),
-    route: '/profile'
-  },
-  {
-    name: i18n.t('nav_bar.tasks'),
-    route: '/tasks'
-  },
-  {
-    name: i18n.t('nav_bar.users'),
-    route: '/users'
-  },
-  {
-    name: i18n.t('nav_bar.snkrs'),
-    route: '/snkrs'
-  },
-  {
-    name: i18n.t('nav_bar.schedule'),
-    route: '/schedule'
-  }
-]
 
 export const TASK_PROGRESS = [
   `Desactived`,

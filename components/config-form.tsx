@@ -16,6 +16,7 @@ export default function ConfigForm(){
   const [hideContent, setHideContent] = useState(config.hideContent)
   const [locale, setLocale] = useState(config.locale)
   const [language, setLanguage] = useState(config.lang)
+  const [refreshState, setRefreshState] = useState(false)
 
   const handleConfigRes = async(res:Response, fConfig:any) => {
     const data = await res.json()
@@ -25,6 +26,11 @@ export default function ConfigForm(){
     }
     else toast.error(i18n.t('config.error'))
   }
+
+
+  useEffect(() => {
+    setRefreshState(!refreshState)
+  },[config.lang])
 
   useEffect(() => {
     setHideContent(config.hideContent)

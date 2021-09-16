@@ -50,7 +50,6 @@ export const ConfigProvider = ({ children, setLang }:any) => {
     useEffect( () => {
         if(!loading && config.lang) {
             i18n.changeLanguage(config.lang)
-            toast.warn(i18n.t('config.lang_restart'))
         }
     }, [config.lang])
 
