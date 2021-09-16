@@ -6,7 +6,6 @@ export const BRAND_NAME = 'pXv'
 
 export const SITE_DESCRIPTION = i18n.t('index.the_best_experience')
 
-
 export const TASK_PROGRESS = [
   `Desactived`,
   'Starting',

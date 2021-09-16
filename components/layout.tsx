@@ -7,9 +7,9 @@ import Logo from './icons/icon-logo'
 import MobileMenu from './mobile-menu'
 import Footer from './footer'
 import GearIcon from './icons/icon-gear'
-import i18n from 'translate/i18n'
 import { useContext, useEffect, useState } from 'react'
 import { ConfigContext } from './config-context'
+import i18n from 'translate/i18n'
 
 type Props = {
   children: React.ReactNode;

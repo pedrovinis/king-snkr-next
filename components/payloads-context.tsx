@@ -18,7 +18,6 @@ export const PayLoadsContext = createContext<Props>({
 
 export const PayLoadsProvider = ({ children }:any) => {
     const { products } = useContext(UserProductsContext)
-
     const [loading, setLoading] = useState(true)
     const [payloads, setPayloads] = useState({})
     const [error, setError] = useState(false)
