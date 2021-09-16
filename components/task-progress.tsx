@@ -1,4 +1,4 @@
-import { TASKPROGRESS } from '@lib/constants'
+import { TASK_PROGRESS } from '@lib/constants'
 import cn from 'classnames'
 import styles from './task-progress.module.css'
 
@@ -15,7 +15,7 @@ export default function TaskProgress({ progress }:Props) {
             [styles.warn]: warn,
             [styles.error]: error
         })}>
-            •{TASKPROGRESS[progress]}
+            •{TASK_PROGRESS[progress]}
         </a>
   )
 }

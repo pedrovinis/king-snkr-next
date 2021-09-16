@@ -46,8 +46,8 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
               ))}
             </div>
             <div className={styles['header-logos']}>
-            <Link href="/">
-                <a className={styles.logo}>
+            <Link href="/config">
+                <a className={styles.gear}>
                   <GearIcon size={'30px'}/>
                 </a>
               </Link>

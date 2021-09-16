@@ -100,6 +100,15 @@
   width: 40px;
 }
 
+.gear {
+  display: flex;
+  width: 40px;
+}
+
+.gear svg:hover {
+  transform: rotate(-10deg);
+}
+
 .avatarButton {
   @apply inline-flex justify-center rounded-full;
 }

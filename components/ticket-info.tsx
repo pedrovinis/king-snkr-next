@@ -1,7 +1,7 @@
 import styles from './ticket-info.module.css'
 import styleUtils from './utils.module.css'
 import Logo from './logo'
-import { DATE, SITE_URL, UserProductsState } from '@lib/constants'
+import { SITE_URL, UserProductsState } from '@lib/constants'
 import cn from 'classnames'
 
 const siteUrl = new URL(SITE_URL);

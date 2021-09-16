@@ -1,3 +1,8 @@
+export type Config = {
+  locale: string
+  lang: string
+}
+
 export type Image = {
   url: string
 }

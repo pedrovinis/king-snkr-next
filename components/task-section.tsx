@@ -11,7 +11,7 @@ import UserCard from './user-card'
 import SnkrCard from './snkr-card'
 
 import StepProgress from './step-progress'
-import { TASKPROGRESS } from '@lib/constants'
+import { TASK_PROGRESS } from '@lib/constants'
 import cn from 'classnames'
 import { TaskContext } from './task-context'
 
@@ -78,7 +78,7 @@ export default function TaskSection({ task }: Props) {
         >
           {active ? <>Stop Task</> : <>Start Task</>}
         </a>
-          <StepProgress steps={TASKPROGRESS} progress={active? progress : 0}/>
+          <StepProgress steps={TASK_PROGRESS} progress={active? progress : 0}/>
       <div className={styles['info']}>
           <h3 className={styles['warning-header']}>Warning</h3>
           <p>This user info can be found on path: 'bin/tasks'. Do not try to change user using file explorer, it can broke application.</p>
