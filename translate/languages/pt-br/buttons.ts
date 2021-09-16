@@ -10,7 +10,9 @@ const buttons = {
     delete_snkr: 'Deletar SNKR',
     start_task: 'Iniciar Tarefa',
     stop_task: 'Parar Tarefa',
-    copy: 'Copiar'
+    copy: 'Copiar',
+    copied: 'Copiado!',
+    activate: 'Activar'
 }
 
 export { buttons } 

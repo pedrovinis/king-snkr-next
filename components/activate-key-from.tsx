@@ -8,6 +8,7 @@ import router from 'next/router'
 import { toast } from 'react-toastify'
 import IconKey from './icons/icon-key'
 import { activateFetch } from '@lib/kingsnkr-api'
+import i18n from 'translate/i18n'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -73,7 +74,7 @@ export default function ActivateKeyForm() {
           className={cn("button", styles[formState])}
           disabled={formState === 'loading'}
         >
-          {formState === 'loading' ? <LoadingDots size={6}/> : <>Ativar KING SNKR</>}
+          {formState === 'loading' ? <LoadingDots size={6}/> : <>{i18n.t('buttons.activate')} KING SNKR</>}
         </button>
       </div>
     </form>
