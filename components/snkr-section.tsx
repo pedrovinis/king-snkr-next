@@ -43,6 +43,8 @@ export default function SnkrSection({ snkr }: Props) {
     }
   }
 
+  const released = Date.now() > (snkr.release * 1000)
+
   return (
     <>
       <BackLink text={"Back to SNKRS"} href={'/snkrs'}/>
@@ -53,7 +55,7 @@ export default function SnkrSection({ snkr }: Props) {
           <img src={snkr.image} width={'300px'} height={'300px'}/>
         </div>
         <div className={styles['snkr-details']}>
-          <div>
+          <div style={{'padding': '0 1rem'}}>
             <h1 className={styles.name}>{snkr.name}</h1>
             <a className={styles.edition}>{snkr.edition}</a>
             <p className={styles.title} >
@@ -63,7 +65,11 @@ export default function SnkrSection({ snkr }: Props) {
             <p className={styles.title}>R$ {snkr.sale_price}</p>
 
             <h2 className={styles['bio-header']}>Release</h2>
-            <p className={styles.title}>{formatRelease(snkr.release)}</p>
+            <p className={styles.title}>
+              {formatRelease(snkr.release)} 
+              <span style={{'color': 'var(--violet)'}}>{released ? <> - Released</> : ''}
+              </span>
+            </p>
 
             <h2 className={styles['bio-header']}>Link</h2>
             <p className={styles.bio}>{snkr.link}</p>

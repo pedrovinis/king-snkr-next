@@ -3,10 +3,10 @@
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .container {
-  padding: var(--space-4x);
   display: flex;
   flex-direction: column;
 }
@@ -33,9 +33,9 @@
 }
 
 .info {
-  margin: 1rem 1rem;
-  max-width: 800px;
-  align-self: center;
+  padding: var(--space-8x);
+  max-width: 600px;
+  margin: auto;
   text-align: center;
 }
 
@@ -127,11 +127,11 @@
   margin-left: var(--space-4x);
   margin-right: var(--space-4x);
   padding: 0 var(--space-4x);
-  max-width: 700px;
+  max-width: 437px;
 }
 
 #size {
-  width: 135px;
+  width: 90px;
   height: 56px;
   margin: 0.35rem 0.35rem;
   border-radius: var(--space-2x);
