@@ -61,10 +61,6 @@ export default function UserSection({ user }: Props) {
 
         <button
       className='buttonRed'
-      style={{
-        margin: '5px auto',
-        width: '325px',
-        }}
         onClick={async()=> {
           setDeleteButtonState('loading')
           const res:any = await deleteUserFetch(user)

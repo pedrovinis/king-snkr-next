@@ -1,12 +1,5 @@
-.main {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .container {
+  padding: var(--space-4x);
   display: flex;
   flex-direction: column;
 }
@@ -33,10 +26,11 @@
 }
 
 .info {
-  padding: var(--space-8x);
-  max-width: 600px;
-  margin: auto;
-  text-align: center;
+  margin-top: var(--space-8x);
+  margin-left: var(--space-4x);
+  margin-right: var(--space-4x);
+  padding: 0 var(--space-4x);
+  max-width: 800px;
 }
 
 .bio {
@@ -48,7 +42,6 @@
 .image {
   border-radius: var(--space-2x);
 }
-
 
 @media (min-width: 768px) {
   .container {
@@ -111,10 +104,11 @@
 }
 
 .warning-header {
-  display: inline-flex;
+  display: flex;
   font-size: 24px;
   letter-spacing: -0.05em;
   color: #fff;
+  margin-bottom: var(--space-4x);
   align-items: center;
 }
 
@@ -122,22 +116,13 @@
   cursor: not-allowed;
 }
 
-.sizes-container {
-  margin-top: var(--space-8x);
-  margin-left: var(--space-4x);
-  margin-right: var(--space-4x);
-  padding: 0 var(--space-4x);
-  max-width: 437px;
-}
-
 #size {
-  width: 90px;
-  height: 56px;
+  width: 4rem;
   margin: 0.35rem 0.35rem;
   border-radius: var(--space-2x);
-  border: 1px solid var(--accents-1);
-  background: var(--accents-8);
-  color: var(--accents-1);
+  border: 1px solid var(--brand);
+  background: black;
+  color: var(--brand);
   cursor: pointer;
   font-family: inherit;
   font-size: var(--text-md);
@@ -152,6 +137,6 @@
 
 #size:hover,
 #size:focus {
-  background: var(--accents-1);
-  color: var(--accents-8);
+  background: var(--brand);
+  color: white;
 }

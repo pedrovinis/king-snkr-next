@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
-import React, { useContext, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { deleteTaskFetch } from '@lib/task-api'
 import LinkIcon from './icons/icon-link'
 import StartIcon from './icons/icon-start'
@@ -14,17 +14,14 @@ import StopIcon from './icons/icon-stop'
 import { TaskContext } from './task-context'
 import router from 'next/router'
 import { toast } from 'react-toastify'
-import SmsConfirmForm from './sms-confirm-from'
-import ScheduleSidebar from './schedule-sidebar'
+import { PayLoadsContext } from './payloads-context'
+import LoadingDots from './loading-dots'
 
 
-function TaskTable({ 
-  task,
- }: { 
-  task: Task
-}) {
+function TaskTable({ task }: { task: Task }) {
   const [isSelected, setIsSelected] = useState(false)
-  const { tasks, startTask, stopTask } = useContext(TaskContext)
+  const { tasks, startTask, stopTask, setTasks } = useContext(TaskContext)
+  const payloads = useContext(PayLoadsContext)
 
   const active = tasks[task.name]?.active
   const progress = tasks[task.name]?.progress
@@ -39,6 +36,13 @@ function TaskTable({
       toast.error(`Error on delete "${task.name}".`)
     }
   }
+
+  useEffect(() => {
+    const obj:any = {}
+    obj[task?.name] = task
+    if(!tasks[task.name]) setTasks((prev:any) => ({...prev, ...obj}))
+  },[])
+
 
   return useMemo(() => {
   return (
@@ -74,14 +78,26 @@ function TaskTable({
       <TaskProgress progress={active? tasks[task.name]?.progress : 0}/>
     </td>
     <td>
-      <a 
-      className={styles.action}
-      onClick={async()=> {
-        active ? stopTask(task) : startTask(task)
-      }}
-      >
-        {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
-      </a>
+        {payloads.loading ? (
+          <a className={styles.action}><LoadingDots size={6}/></a>
+        ) : (
+          <>
+          {payloads ? (
+             <a 
+             className={styles.action}
+             onClick={async()=> {
+               active ? stopTask(task) : startTask(task)
+             }}>
+               {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
+             </a>
+          ) : (
+            <a style={{padding: '1rem'}}>
+              <StartIcon fill="gray" size={'30px'}/>
+            </a>
+          )}
+          </>
+        )}
+
       <Link href={`/task/${task.slug}`}>
       <a className={styles.action}><EditIcon size={'30px'}/></a>
       </Link>
@@ -94,7 +110,7 @@ function TaskTable({
     </td>
   </tr>
   </>
-  )},[active, progress, isSelected])
+  )},[active, progress, isSelected, payloads.loading])
 }
 
 type Props = {

@@ -43,19 +43,17 @@ export default function SnkrSection({ snkr }: Props) {
     }
   }
 
-  const released = Date.now() > (snkr.release * 1000)
-
+  const released = Date.now() > (snkr.release*1000)
   return (
     <>
       <BackLink text={"Back to SNKRS"} href={'/snkrs'}/>
-      <div className={styles.main}>
       <div key={snkr.name} className={styles.container}>
         <div className={styles.imagesContainer}>
-          <IconSnkr snkrName={snkr.name} size={'300px'}/>
-          <img src={snkr.image} width={'300px'} height={'300px'}/>
+          <IconSnkr snkrName={snkr.name} size={'250px'}/>
+          <img src={snkr.image} width={'250px'} height={'250px'}/>
         </div>
         <div className={styles['snkr-details']}>
-          <div style={{'padding': '0 1rem'}}>
+          <div>
             <h1 className={styles.name}>{snkr.name}</h1>
             <a className={styles.edition}>{snkr.edition}</a>
             <p className={styles.title} >
@@ -66,9 +64,8 @@ export default function SnkrSection({ snkr }: Props) {
 
             <h2 className={styles['bio-header']}>Release</h2>
             <p className={styles.title}>
-              {formatRelease(snkr.release)} 
-              <span style={{'color': 'var(--violet)'}}>{released ? <> - Released</> : ''}
-              </span>
+              {formatRelease(snkr.release)}
+              {released ? <span style={{'color': 'var(--violet)'}}> - Released</span> : ''}
             </p>
 
             <h2 className={styles['bio-header']}>Link</h2>
@@ -77,19 +74,17 @@ export default function SnkrSection({ snkr }: Props) {
           </div>
         </div>
       </div>
-        <div className={styles['sizes-container']}>
-        <h3 className={styles['bio-header']}>Sizes</h3>
+        <div className={styles['info']}>
+        <h3 className={styles['warning-header']}>Sizes</h3>
         <div style={{paddingBottom:'1rem'}}>
           {snkr.sizes.sort((a:any,b:any) => parseFloat(a.value) - parseFloat(b.value)).map( size => {
-            return <a key={size.value} id={styles.size}> {size.value} </a>
+            return <a className="button" key={size.value} id={styles.size}> {size.value} </a>
           })}
         </div>
+          <h3 className={styles['warning-header']}>Warning<IconInfo /></h3>
+          <p>This snkr info can be found on path: 'bin/snkrs'. Do not try to change snkr using file explorer, it can broke application.</p>
         </div>
-      </div>
-      <div className={styles['info']}>
-      <h3 className={styles['warning-header']}>Warning<IconInfo /></h3>
-          <p>This SNKR info can be found on path: 'bin/snkrs'. Do not try to change snkr using file explorer, it can broke application.</p>
-      </div>
+
       <button
       className='buttonRed'
         onClick={async()=> {

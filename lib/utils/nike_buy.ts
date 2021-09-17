@@ -8,7 +8,6 @@ interface INikeAddCartReturn {
 
 export const nike_add_cart = async(payload:Object, task:Task) => {
     let strPayload = JSON.stringify(payload)
-    console.log(strPayload)
     strPayload = strPayload.replaceAll('${IFCSHOPSESSID}', task.user.authCookie)
     strPayload = strPayload.replaceAll('${SIZE_CODE}', task.cfg.size.code)
     strPayload = strPayload.replaceAll('${SNKR_LINK}', task.snkr.link)
