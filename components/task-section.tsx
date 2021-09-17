@@ -53,7 +53,7 @@ export default function TaskSection({ task }: Props) {
             <h1 className={styles.name}>{task.name}</h1>
             <div className={styles.card}>
               <h2 className={styles['bio-header']}>SNKR</h2>
-              <SnkrCard snkr={task.snkr} sizeDefault={task.cfg.size} sizeSelectDisabled={true}/>
+              <SnkrCard snkr={task.snkr} sizeDefault={task.cfg?.size?.value} sizeSelectDisabled={true}/>
             </div>
             <div className={styles.card}>
             <h2 className={styles['bio-header']}>User</h2>

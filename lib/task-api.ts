@@ -1,3 +1,4 @@
+import { LOCAL_LINK } from "./constants"
 import { Task } from "./types"
 
 export const addTaskFetch = async(
@@ -19,17 +20,7 @@ export const addTaskFetch = async(
 }
 
 export const deleteTaskFetch = async(task:Task) => {
-    const res = await fetch('/api/task/delete', {
-        method:'POST',
-        body: btoa(JSON.stringify({
-            name: task.name
-        }))
-    })
-    return res
-}
-
-export const startTaskFetch = async(task:Task) => {
-    const res = await fetch('/api/task/delete', {
+    const res = await fetch(`${LOCAL_LINK}/api/task/delete`, {
         method:'POST',
         body: btoa(JSON.stringify({
             name: task.name

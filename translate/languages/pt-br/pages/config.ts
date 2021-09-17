@@ -2,7 +2,7 @@ const config = {
     title: 'Configurações',
     desc: 'Configure suas preferências.',
     hide_personal_content: 'Ocultar Conteúdo Pessoal',
-    locale: 'Local',
+    locale: 'Região',
     language: 'Idioma',
     apply: "Aplicar",
     success: "Configurações salvas com sucesso.",

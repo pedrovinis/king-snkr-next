@@ -1,3 +1,10 @@
+.main {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .container {
   padding: var(--space-4x);
   display: flex;
@@ -26,11 +33,10 @@
 }
 
 .info {
-  margin-top: var(--space-8x);
-  margin-left: var(--space-4x);
-  margin-right: var(--space-4x);
-  padding: 0 var(--space-4x);
+  margin: 1rem 1rem;
   max-width: 800px;
+  align-self: center;
+  text-align: center;
 }
 
 .bio {
@@ -42,6 +48,7 @@
 .image {
   border-radius: var(--space-2x);
 }
+
 
 @media (min-width: 768px) {
   .container {
@@ -104,11 +111,10 @@
 }
 
 .warning-header {
-  display: flex;
+  display: inline-flex;
   font-size: 24px;
   letter-spacing: -0.05em;
   color: #fff;
-  margin-bottom: var(--space-4x);
   align-items: center;
 }
 
@@ -116,13 +122,22 @@
   cursor: not-allowed;
 }
 
+.sizes-container {
+  margin-top: var(--space-8x);
+  margin-left: var(--space-4x);
+  margin-right: var(--space-4x);
+  padding: 0 var(--space-4x);
+  max-width: 700px;
+}
+
 #size {
-  width: 4rem;
+  width: 135px;
+  height: 56px;
   margin: 0.35rem 0.35rem;
   border-radius: var(--space-2x);
-  border: 1px solid var(--brand);
-  background: black;
-  color: var(--brand);
+  border: 1px solid var(--accents-1);
+  background: var(--accents-8);
+  color: var(--accents-1);
   cursor: pointer;
   font-family: inherit;
   font-size: var(--text-md);
@@ -137,6 +152,6 @@
 
 #size:hover,
 #size:focus {
-  background: var(--brand);
-  color: white;
+  background: var(--accents-1);
+  color: var(--accents-8);
 }

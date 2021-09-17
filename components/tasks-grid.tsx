@@ -67,8 +67,8 @@ function TaskTable({
       <span>{task.snkr.name} {task.snkr.edition} {' '}<LinkIcon size={'15px'}/> </span>
       </a>
     </td>
-    <td>
-      {task.cfg?.size}
+    <td style={{textAlign: 'center'}}>
+      {task.cfg?.size?.value}
     </td>
     <td style={{width:'10rem'}}>
       <TaskProgress progress={active? tasks[task.name]?.progress : 0}/>

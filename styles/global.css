@@ -261,7 +261,7 @@ svg circle {
 }
 
 .buttonRed {
-  width: 150px;
+  width: 200px;
   height: 56px;
   margin-top: var(--space-4x);
   border-radius: var(--space-2x);

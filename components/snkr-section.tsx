@@ -20,7 +20,6 @@ export default function SnkrSection({ snkr }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
 
     const formatRelease = (release:number) => {
-      if(release < new Date().getTime()/1000) return 'Released'
       const timeStamp = new Date(release * 1000)
       const formatedDate = timeStamp.toLocaleString('pt-BR', {
         year: 'numeric',
@@ -47,6 +46,7 @@ export default function SnkrSection({ snkr }: Props) {
   return (
     <>
       <BackLink text={"Back to SNKRS"} href={'/snkrs'}/>
+      <div className={styles.main}>
       <div key={snkr.name} className={styles.container}>
         <div className={styles.imagesContainer}>
           <IconSnkr snkrName={snkr.name} size={'300px'}/>
@@ -71,23 +71,21 @@ export default function SnkrSection({ snkr }: Props) {
           </div>
         </div>
       </div>
-        <div className={styles['info']}>
-        <h3 className={styles['warning-header']}>Sizes</h3>
+        <div className={styles['sizes-container']}>
+        <h3 className={styles['bio-header']}>Sizes</h3>
         <div style={{paddingBottom:'1rem'}}>
           {snkr.sizes.sort((a:any,b:any) => parseFloat(a.value) - parseFloat(b.value)).map( size => {
-            return <a className="button" key={size.value} id={styles.size}> {size.value} </a>
+            return <a key={size.value} id={styles.size}> {size.value} </a>
           })}
         </div>
-          <h3 className={styles['warning-header']}>Warning<IconInfo /></h3>
-          <p>This snkr info can be found on path: 'bin/snkrs'. Do not try to change snkr using file explorer, it can broke application.</p>
         </div>
-
+      </div>
+      <div className={styles['info']}>
+      <h3 className={styles['warning-header']}>Warning<IconInfo /></h3>
+          <p>This SNKR info can be found on path: 'bin/snkrs'. Do not try to change snkr using file explorer, it can broke application.</p>
+      </div>
       <button
       className='buttonRed'
-      style={{
-        margin: '5px auto',
-        width: '325px',
-        }}
         onClick={async()=> {
           setDeleteButtonState('loading')
           const res = await deleteSnkrFetch(snkr)

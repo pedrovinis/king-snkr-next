@@ -19,7 +19,7 @@ export type Task = {
 }
 
 export type TaskCfg = {
-  size: string
+  size: Size
 }
 
 export type Event = {
@@ -75,6 +75,12 @@ export type User = {
   authCookie: string
 }
 
+export type Size = {
+  value: string
+  id: string
+  code: string
+}
+
 export type Snkr = {
   id: string
   slug: string
@@ -87,11 +93,7 @@ export type Snkr = {
   sale_price: string
 }
 
-export type Size = {
-  value: string
-  id: string
-  code: string
-}
+
 
 export type SponsorLink = {
   text: string

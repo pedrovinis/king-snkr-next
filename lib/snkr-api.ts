@@ -1,7 +1,8 @@
+import { LOCAL_LINK } from "./constants"
 import { Snkr } from "./types"
 
 export const addSnkrFetch = async(snkr_link:string) => {
-    const res = await fetch('api/snkr/add', {
+    const res = await fetch(`${LOCAL_LINK}/api/snkr/add`, {
         method:'POST',
         body: btoa(JSON.stringify({
             snkr_link: snkr_link
@@ -11,11 +12,12 @@ export const addSnkrFetch = async(snkr_link:string) => {
 }
 
 export const deleteSnkrFetch = async(snkr:Snkr) => {
-    const res = await fetch('/api/snkr/delete', {
+    const res = await fetch(`${LOCAL_LINK}/api/snkr/delete`, {
         method:'POST',
         body: btoa(JSON.stringify({
             id: snkr.id,
-            name: snkr.name
+            name: snkr.name,
+            edition: snkr.edition
         }))
     })
     return res

@@ -1,7 +1,7 @@
-import { SITE_URL } from "./constants"
+import { LOCAL_LINK } from "./constants"
 
 export const activateFetch = async(key:string) => {
-    const res = await fetch('/api/kingsnkr/activate', {
+    const res = await fetch(`${LOCAL_LINK}/api/kingsnkr/activate`, {
         method:'POST',
         body: btoa(JSON.stringify({
             key: key
@@ -11,7 +11,7 @@ export const activateFetch = async(key:string) => {
 }
 
 export const payLoadsFecth = async() => {
-    const res = await fetch(`/api/kingsnkr/payloads`, {
+    const res = await fetch(`${LOCAL_LINK}/api/kingsnkr/payloads`, {
         method:'POST',
         headers: {}
     })
