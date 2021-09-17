@@ -29,7 +29,7 @@ export const UserProductsProvider = ({ children }:any) => {
                 setProducts(data.products? data?.products : {})
             }
         })()
-    }, [auth])
+    }, [auth.loading])
 
 
     const value = {
