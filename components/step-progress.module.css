@@ -6,7 +6,8 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 5rem;
+	margin-top: 0.2rem;
+	margin-bottom: 5.5rem;
 }
 
 .statusBar {

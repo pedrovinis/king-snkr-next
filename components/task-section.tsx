@@ -9,13 +9,13 @@ import { toast } from 'react-toastify'
 import TaskIcon from './icons/icon-task'
 import UserCard from './user-card'
 import SnkrCard from './snkr-card'
-
 import StepProgress from './step-progress'
 import { TASK_PROGRESS } from '@lib/constants'
 import cn from 'classnames'
 import { TaskContext } from './task-context'
 import i18n from 'translate/i18n'
 import { PayLoadsContext } from './payloads-context'
+import IconInfo from './icons/info-icon'
 
 type Props = {
   task: Task
@@ -51,25 +51,22 @@ export default function TaskSection({ task }: Props) {
   return useMemo(() => {
     return (
     <>
-      <BackLink text={"Back to Tasks"} href={'/tasks'}/>
-      <div key={task.name} className={styles.container}>
-        <div style={{ minWidth: '300px' }}>
-          <TaskIcon />
-        </div>
-        <div>
-          <div className={styles.grid}>
-            <h1 className={styles.name}>{task.name}</h1>
-            <div className={styles.card}>
-              <h2 className={styles['bio-header']}>SNKR</h2>
-              <SnkrCard snkr={task.snkr} sizeDefault={task.cfg?.size?.value} sizeSelectDisabled={true}/>
-            </div>
-            <div className={styles.card}>
-            <h2 className={styles['bio-header']}>User</h2>
-              <UserCard user={task.user}/>
-            </div>
-           </div>
-        </div>
+    <BackLink text={"Back to Tasks"} href={'/tasks'}/>
+      <div style={{alignSelf: 'center', margin:'0 1rem'}}>
+        <TaskIcon />
+        <h2 className={styles.name}>{task.name}</h2>
       </div>
+        <div className={styles.grid}>
+          <div className={styles.card}>
+            <h2 className={styles['bio-header']}>SNKR</h2>
+            <SnkrCard snkr={task.snkr} sizeDefault={task.cfg?.size?.value} sizeSelectDisabled={true}/>
+          </div>
+          <div className={styles.card}>
+          <h2 className={styles['bio-header']}>User</h2>
+            <UserCard user={task.user}/>
+          </div>
+        </div>
+      <StepProgress steps={TASK_PROGRESS} progress={active? progress : 0}/>
       {payloads.loading ? (
           <span style={{alignSelf: 'center'}}><LoadingDots size={10}/></span>
         ) : (
@@ -90,10 +87,9 @@ export default function TaskSection({ task }: Props) {
           )}
           </>
         )}
-          <StepProgress steps={TASK_PROGRESS} progress={active? progress : 0}/>
 
       <div className={styles['info']}>
-          <h3 className={styles['warning-header']}>Warning</h3>
+          <h3 className={styles['warning-header']}>Warning <IconInfo /></h3>
           <p>This user info can be found on path: 'bin/tasks'. Do not try to change user using file explorer, it can broke application.</p>
         </div>
         <button
