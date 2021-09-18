@@ -3,6 +3,7 @@ import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { deleteTaskFetch } from '@lib/task-api'
+import LinkIcon from './icons/icon-link'
 import StartIcon from './icons/icon-start'
 import EditIcon from './icons/icon-edit'
 import SnkrIcon from './icons/icon-snkr'
@@ -22,7 +23,7 @@ function TaskTable({ task }: { task: Task }) {
   const { tasks, startTask, stopTask, setTasks } = useContext(TaskContext)
   const payloads = useContext(PayLoadsContext)
 
-  const running = tasks[task.name]?.running
+  const active = tasks[task.name]?.active
   const progress = tasks[task.name]?.progress
 
   const handleDeleteResponse = async(res:Response) => {
@@ -76,7 +77,7 @@ function TaskTable({ task }: { task: Task }) {
       {task.cfg?.size?.value}
     </td>
     <td style={{width:'10rem'}}>
-      <TaskProgress progress={running? tasks[task.name]?.progress : 0}/>
+      <TaskProgress progress={active? tasks[task.name]?.progress : 0}/>
     </td>
     <td>
         {payloads.loading ? (
@@ -87,9 +88,9 @@ function TaskTable({ task }: { task: Task }) {
              <a 
              className={styles.action}
              onClick={async()=> {
-               running ? stopTask(task) : startTask(task)
+               active ? stopTask(task) : startTask(task)
              }}>
-               {running ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
+               {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
              </a>
           ) : (
             <a style={{padding: '1rem'}}>
@@ -111,7 +112,7 @@ function TaskTable({ task }: { task: Task }) {
     </td>
   </tr>
   </>
-  )},[running, progress, isSelected, payloads.loading])
+  )},[active, progress, isSelected, payloads.loading])
 }
 
 type Props = {
