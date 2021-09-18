@@ -121,7 +121,7 @@
 .sizes-container {
   margin-top: var(--space-8x);
   padding: 0 var(--space-4x);
-  max-width: 400px;
+  max-width: 50%;
 }
 
 #size {
