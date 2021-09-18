@@ -1,21 +1,24 @@
+.main {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .container {
-  padding: var(--space-4x);
+  padding: var(--space-2x);
   display: flex;
   flex-direction: column;
 }
 
 .imagesContainer {
   display: flex;
-  min-width: 300px;
-  margin-right: 2rem;
+  min-width: 250px;
+  margin: 1rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.imagesContainer img {
-  border: 1px solid var(--brand);
-  box-shadow: 0 0 10px var(--green), 0 0 5px var(--brand);  
 }
 
 .speaker-details {
@@ -26,11 +29,10 @@
 }
 
 .info {
-  margin-top: var(--space-8x);
-  margin-left: var(--space-4x);
-  margin-right: var(--space-4x);
-  padding: 0 var(--space-4x);
-  max-width: 800px;
+  margin: 1rem 1rem;
+  max-width: 600px;
+  align-self: center;
+  text-align: center;
 }
 
 .bio {
@@ -42,6 +44,7 @@
 .image {
   border-radius: var(--space-2x);
 }
+
 
 @media (min-width: 768px) {
   .container {
@@ -104,11 +107,10 @@
 }
 
 .warning-header {
-  display: flex;
+  display: inline-flex;
   font-size: 24px;
   letter-spacing: -0.05em;
   color: #fff;
-  margin-bottom: var(--space-4x);
   align-items: center;
 }
 
@@ -116,13 +118,20 @@
   cursor: not-allowed;
 }
 
+.sizes-container {
+  margin-top: var(--space-8x);
+  padding: 0 var(--space-4x);
+  max-width: 400px;
+}
+
 #size {
-  width: 4rem;
+  width: 80px;
+  height: 56px;
   margin: 0.35rem 0.35rem;
   border-radius: var(--space-2x);
-  border: 1px solid var(--brand);
-  background: black;
-  color: var(--brand);
+  border: 1px solid var(--accents-1);
+  background: var(--accents-8);
+  color: var(--accents-1);
   cursor: pointer;
   font-family: inherit;
   font-size: var(--text-md);
@@ -137,6 +146,6 @@
 
 #size:hover,
 #size:focus {
-  background: var(--brand);
-  color: white;
+  background: var(--accents-1);
+  color: var(--accents-8);
 }

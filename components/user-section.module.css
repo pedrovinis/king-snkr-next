@@ -2,6 +2,7 @@
   padding: var(--space-4x);
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .backlink {
@@ -28,11 +29,10 @@
 }
 
 .info {
-  margin-top: var(--space-8x);
-  margin-left: var(--space-4x);
-  margin-right: var(--space-4x);
-  padding: 0 var(--space-4x);
-  max-width: 800px;
+  margin: 1rem 1rem;
+  max-width: 600px;
+  align-self: center;
+  text-align: center;
 }
 
 .bio {
@@ -71,6 +71,13 @@
   }
 }
 
+.user-details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
 .iconUser {
   display: flex;
   justify-content: center;
@@ -106,10 +113,11 @@
 }
 
 .warning-header {
+  display: inline-flex;
   font-size: 24px;
   letter-spacing: -0.05em;
   color: #fff;
-  margin-bottom: var(--space-4x);
+  align-items: center;
 }
 
 .disabled {

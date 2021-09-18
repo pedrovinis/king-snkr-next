@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 import { PhoneNumberFormat } from '@lib/form-format'
 import { ConfigContext } from './config-context'
 import cn from 'classnames'
+import IconInfo from './icons/info-icon'
 
 type Props = {
   user: User
@@ -40,7 +41,6 @@ export default function UserSection({ user }: Props) {
           <IconUser size={'200px'}/>
         </div>
         <div className={styles['user-details']}>
-          <div>
             <h1 className={styles.name}>{user.name}</h1>
             <p className={cn(styles.title, {
               ["hide"]: config.hideContent
@@ -51,11 +51,10 @@ export default function UserSection({ user }: Props) {
             <p className={cn(styles.title, {
               ["hide"]: config.hideContent
             })}>{PhoneNumberFormat(user.phone)}</p>
-          </div>
         </div>
       </div>
         <div className={styles['info']}>
-          <h3 className={styles['warning-header']}>Warning</h3>
+          <h3 className={styles['warning-header']}>Warning <IconInfo /></h3>
           <p>This user info can be found on path: 'bin/users'. Do not try to change user using file explorer, it can broke application.</p>
         </div>
 

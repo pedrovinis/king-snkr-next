@@ -29,26 +29,34 @@ export const TaskProvider = ({ children }:any) => {
     }   
     
     const startTask = async(task:Task) => {
-        console.log(payloads)
-        const payload = payloads['nike_buy']
         const obj:any = {}
-        obj[task.name] = tasks[task.name] || task
+        const payload = payloads['nike_buy']
+        obj[task.name] = tasks[task.name]
         obj[task.name].progress = 1
         obj[task.name].active = true
-        setTasks((prev:any) => ({...prev, ...obj}))
-        //const a = await nike_add_cart(payload['add_cart'], task)
         
-        await new Promise(r => setTimeout(r, 2000))
+        const progress = obj[task.name].progress
+        setTasks((prev:any) => ({...prev, ...obj}))
+        
+        if(!isActive(task)) return
 
-        if(!isActive(task)) return
-        obj[task.name].progress = 2
-        setTasks((prev:any) => ({...prev, ...obj}))
-        await new Promise(r => setTimeout(r, 2000))
-        if(!isActive(task)) return
-        toast.success(`"${task.name}" completed.`)
-        await new Promise(r => setTimeout(r, 2000))
-        obj[task.name].active = false
-        setTasks((prev:any) => ({...prev, ...obj}))
+
+        while(isActive(task)) {
+            console.log(`${task.name} running.`)
+            await new Promise(r => setTimeout(r, 1000))
+        }
+
+        //const a = await nike_add_cart(payload['add_cart'], task)
+
+        // if(!isActive(task)) return
+        // obj[task.name].progress = 2
+        // setTasks((prev:any) => ({...prev, ...obj}))
+        // await new Promise(r => setTimeout(r, 2000))
+        // if(!isActive(task)) return
+        // toast.success(`"${task.name}" completed.`)
+        // await new Promise(r => setTimeout(r, 2000))
+        // obj[task.name].active = false
+        // setTasks((prev:any) => ({...prev, ...obj}))
     }
 
     const stopTask = async(task:Task) => {
