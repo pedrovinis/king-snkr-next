@@ -15,6 +15,7 @@ export const TASK_PROGRESS = [
   'NIKE LOGIN',
   'Waiting',
   'Buying SNKR',
+  'Generating SMS',
   'SMS Confirm',
   'Checkout',
   'Completed'

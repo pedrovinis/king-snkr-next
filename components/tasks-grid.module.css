@@ -3,6 +3,7 @@
   line-height: 2.7;
   border-collapse: collapse;
   align-self: center;
+  line-height: normal;
 }
 
 .table td {
@@ -22,8 +23,8 @@
   border: 1px solid var(--brand);
 }
 
-.action {
-  padding: 1rem;
+.action svg{
+  margin: 0.3rem 1rem;
 }
 
 .action svg:hover {

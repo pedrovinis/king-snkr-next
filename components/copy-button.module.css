@@ -27,7 +27,7 @@
   .copied{
     width: 5.5rem;
     height: 2rem;
-    margin-top: var(--space-4x);
+    margin-top: var(--space-2x);
     border-radius: var(--space-2x);
     border: 1px solid black;
     background: white;

@@ -1,9 +1,8 @@
 import { Task } from "@lib/types"
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useState } from "react"
 import React from "react"
 import { toast } from "react-toastify"
-import { payLoadsFecth } from "@lib/kingsnkr-api"
-import { nike_add_cart } from "@lib/utils/nike_buy"
+import { nike_add_cart, nike_two_factor_generate } from "@lib/utils/nike_buy"
 import { PayLoadsContext } from "./payloads-context"
 
 type Props = {
@@ -26,27 +25,59 @@ export const TaskProvider = ({ children }:any) => {
 
     const isActive = (task:Task) => {
         return tasks[task.name]?.active
-    }   
-    
-    const startTask = async(task:Task) => {
+    }
+
+    const setActive = (task:Task, active:Boolean) => {
         const obj:any = {}
-        const payload = payloads['nike_buy']
         obj[task.name] = tasks[task.name]
-        obj[task.name].progress = 1
-        obj[task.name].active = true
-        
-        const progress = obj[task.name].progress
+        obj[task.name].active = active
         setTasks((prev:any) => ({...prev, ...obj}))
+    }
+    
+    const setProgress = (task:Task, progress:Number) => {
+        const obj:any = {}
+        obj[task.name] = tasks[task.name]
+        obj[task.name].progress = progress
+        setTasks((prev:any) => ({...prev, ...obj}))
+    }
+
+    const getProgress = (task:Task) => {
+        return tasks[task.name].progress
+    }
+
+    const startTask = async(task:Task) => {
+        const payload = payloads['nike_buy']
+        const progress = getProgress(task)
+
+        setActive(task, true)
+        setProgress(task, 1)
+
+        await new Promise(r => setTimeout(r, 1000))
         
         if(!isActive(task)) return
 
-
-        while(isActive(task)) {
-            console.log(`${task.name} running.`)
-            await new Promise(r => setTimeout(r, 1000))
+        if(progress <= 4) {
+            setProgress(task, 4)
+            let dropTime = (task.snkr.release * 1000) - Date.now()
+            while(isActive(task) && dropTime > 0) {
+                dropTime --
+                console.log(dropTime)
+                await new Promise(r => setTimeout(r, 1000))
+            }
         }
 
-        //const a = await nike_add_cart(payload['add_cart'], task)
+        if(!isActive(task)) return
+
+        setProgress(task, 5)
+        //const add_cart = await nike_add_cart(payload['add_cart'], task)
+
+        if(!isActive(task)) return
+
+        if(progress <= 6) {
+
+        }
+
+        //const b = await nike_two_factor_generate(payloads['two_factor_generate'], task)
 
         // if(!isActive(task)) return
         // obj[task.name].progress = 2
@@ -60,9 +91,7 @@ export const TaskProvider = ({ children }:any) => {
     }
 
     const stopTask = async(task:Task) => {
-        const obj = tasks[task.name]
-        obj.active = false
-        setTasks((prev:any) => ({...prev, ...obj}))
+        setActive(task, false)
     }
 
     const value = {

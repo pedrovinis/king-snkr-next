@@ -46,7 +46,6 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         task.setSlug(formatedTaskData.slug)
         task.setUser(formatedTaskData.user)
         task.setSnkr(formatedTaskData.snkr)
-        console.log(formatedTaskData.cfg.size)
         task.setSize(formatedTaskData.cfg.size)
 
         task.saveConfigs()

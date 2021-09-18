@@ -13,7 +13,6 @@ type Props = {
   tasks: Task[]
 }
 
-
 export default function SnkrsPage( {tasks}: Props) {
   const meta = {
     title: 'King Snkr | Tasks',

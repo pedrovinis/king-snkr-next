@@ -3,7 +3,6 @@ import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { deleteTaskFetch } from '@lib/task-api'
-import LinkIcon from './icons/icon-link'
 import StartIcon from './icons/icon-start'
 import EditIcon from './icons/icon-edit'
 import SnkrIcon from './icons/icon-snkr'
@@ -23,7 +22,7 @@ function TaskTable({ task }: { task: Task }) {
   const { tasks, startTask, stopTask, setTasks } = useContext(TaskContext)
   const payloads = useContext(PayLoadsContext)
 
-  const active = tasks[task.name]?.active
+  const running = tasks[task.name]?.running
   const progress = tasks[task.name]?.progress
 
   const handleDeleteResponse = async(res:Response) => {
@@ -61,21 +60,23 @@ function TaskTable({ task }: { task: Task }) {
       <Link href={`/task/${task.slug}`}><a className={styles.link}>{task.name}</a></Link>
     </td>
     <td> 
-      <a className={styles.link} href={`user/${task.user.slug}`} target="_blank">
-      <span>{task.user.name} <LinkIcon size={'15px'}/></span>
-      </a>
+      <Link  href={`user/${task.user.slug}`}>
+        <span className={styles.link}>{task.user.name} </span>
+      </Link>
     </td>
     <td>
-      <a className={styles.snkrLink} href={`snkr/${task.snkr.slug}`} target="_blank">
-      <SnkrIcon snkrName={task.snkr.name} size={'90px'}/> 
-      <span>{task.snkr.name} {task.snkr.edition} {' '}<LinkIcon size={'15px'}/> </span>
-      </a>
+      <Link  href={`snkr/${task.snkr.slug}`}>
+        <a className={styles.snkrLink}>
+        <SnkrIcon snkrName={task.snkr.name} size={'90px'}/> 
+        <span >{task.snkr.name} {task.snkr.edition}</span>
+        </a>
+      </Link>
     </td>
     <td style={{textAlign: 'center'}}>
       {task.cfg?.size?.value}
     </td>
     <td style={{width:'10rem'}}>
-      <TaskProgress progress={active? tasks[task.name]?.progress : 0}/>
+      <TaskProgress progress={running? tasks[task.name]?.progress : 0}/>
     </td>
     <td>
         {payloads.loading ? (
@@ -86,9 +87,9 @@ function TaskTable({ task }: { task: Task }) {
              <a 
              className={styles.action}
              onClick={async()=> {
-               active ? stopTask(task) : startTask(task)
+               running ? stopTask(task) : startTask(task)
              }}>
-               {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
+               {running ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
              </a>
           ) : (
             <a style={{padding: '1rem'}}>
@@ -110,7 +111,7 @@ function TaskTable({ task }: { task: Task }) {
     </td>
   </tr>
   </>
-  )},[active, progress, isSelected, payloads.loading])
+  )},[running, progress, isSelected, payloads.loading])
 }
 
 type Props = {
