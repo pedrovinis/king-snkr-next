@@ -47,7 +47,7 @@ export default function Conf() {
             <>
             <LogoutButton />
             {UserProducts.loading ? (
-              <div style={{display:'flex', justifyContent:'center', margin: '3rem 0'}}><LoadingDots size={20}/></div>
+              <div style={{display:'flex', justifyContent:'center', margin: '3rem 0'}}><LoadingDots size={15}/></div>
             ) : (
               <>
                 {active ? (

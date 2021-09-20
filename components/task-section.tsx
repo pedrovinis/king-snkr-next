@@ -71,7 +71,7 @@ export default function TaskSection({ task }: Props) {
           <span style={{alignSelf: 'center'}}><LoadingDots size={10}/></span>
         ) : (
           <>
-          {payloads ? (
+          {payloads.payloads ? (
             <button className={cn({
               ["button"]: !active,
               ["buttonRed"]: active

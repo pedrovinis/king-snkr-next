@@ -17,24 +17,23 @@ export const PayLoadsContext = createContext<Props>({
 })
 
 export const PayLoadsProvider = ({ children }:any) => {
-    const { products } = useContext(UserProductsContext)
+    const products = useContext(UserProductsContext)
     const [loading, setLoading] = useState(true)
     const [payloads, setPayloads] = useState(null)
     const [error, setError] = useState(false)
 
     useEffect(() => {
         (async () => {
-            if(isActive(products['king-snkr']?.expiration)) {
-                const res = await payLoadsFecth()
-                const data = await res.json()
-                setPayloads(data.payloads)
-                setLoading(false)
-            }
-            else if(!isActive(products['king-snkr']?.expiration) && products['king-snkr']?.expiration) {
+            if(!products.loading) {
+                if(isActive(products.products['king-snkr']?.expiration)) {
+                    const res = await payLoadsFecth()
+                    const data = await res.json()
+                    setPayloads(data.payloads)
+                }
                 setLoading(false)
             }
         })()
-    }, [products['king-snkr']?.expiration])
+    }, [products.loading])
 
 
     const value = {

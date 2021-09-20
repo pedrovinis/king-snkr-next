@@ -41,7 +41,7 @@ export default function ConfigForm(){
   return (
       <PageContainer>
         {loading ? (
-          <LoadingDots size={20} />
+          <LoadingDots size={15} />
         ) : (
           <>
           <div className={styles.container}>

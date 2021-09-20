@@ -23,6 +23,10 @@
   border: 1px solid var(--brand);
 }
 
+.actionDisabled {
+  margin: 0.3rem 1rem;
+}
+
 .action svg{
   margin: 0.3rem 1rem;
 }

@@ -25,7 +25,7 @@ export default function Index() {
                   [styleUtils['appear-fourth']],
               )}>
               {loading ? (
-                <LoadingDots size={20} />
+                <LoadingDots size={15} />
               ) : (
                 <>
                 {session.user ? (

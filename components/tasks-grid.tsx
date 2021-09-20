@@ -94,7 +94,7 @@ function TaskTable({ task }: { task: Task }) {
                {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
              </a>
           ) : (
-            <a className={styles.action}>
+            <a className={styles.actionDisabled}>
               <StartIcon fill="gray" size={'30px'}/>
             </a>
           )}
