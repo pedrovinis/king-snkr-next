@@ -24,10 +24,13 @@ export const PayLoadsProvider = ({ children }:any) => {
 
     useEffect(() => {
         (async () => {
-            if(isActive(products['king-snkr']?.expiration)){
+            if(isActive(products['king-snkr']?.expiration)) {
                 const res = await payLoadsFecth()
                 const data = await res.json()
                 setPayloads(data.payloads)
+                setLoading(false)
+            }
+            else if(!isActive(products['king-snkr']?.expiration) && products['king-snkr']?.expiration) {
                 setLoading(false)
             }
         })()

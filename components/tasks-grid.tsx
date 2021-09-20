@@ -80,11 +80,12 @@ function TaskTable({ task }: { task: Task }) {
       <TaskProgress progress={active? tasks[task.name]?.progress : 0}/>
     </td>
     <td>
+      <div style={{display: 'flex', alignItems: 'center'}}>
         {payloads.loading ? (
           <a className={styles.action}><LoadingDots size={6}/></a>
         ) : (
           <>
-          {payloads ? (
+          {payloads.payloads ? (
              <a 
              className={styles.action}
              onClick={async()=> {
@@ -93,7 +94,7 @@ function TaskTable({ task }: { task: Task }) {
                {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
              </a>
           ) : (
-            <a style={{padding: '1rem'}}>
+            <a className={styles.action}>
               <StartIcon fill="gray" size={'30px'}/>
             </a>
           )}
@@ -109,6 +110,7 @@ function TaskTable({ task }: { task: Task }) {
           await handleDeleteResponse(res)
         }}
       ><DeleteIcon fill="var(--red)" size={'30px'}/></a>
+      </div>
     </td>
   </tr>
   </>
