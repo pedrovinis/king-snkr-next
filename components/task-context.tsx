@@ -23,14 +23,23 @@ export const TaskProvider = ({ children }:any) => {
     const [tasks, setTasks]:any = useState({})
     const { payloads } = useContext(PayLoadsContext)
 
-    const isActive = (task:Task) => {
-        return tasks[task.name]?.active
+    const isActiveHandler = (task:Task) => {
+        const isActive = tasks[task.name]?.active
+        if(!isActive) setRunning(task, false)
+        return isActive
     }
 
     const setActive = (task:Task, active:Boolean) => {
         const obj:any = {}
         obj[task.name] = tasks[task.name]
         obj[task.name].active = active
+        setTasks((prev:any) => ({...prev, ...obj}))
+    }
+
+    const setRunning = (task:Task, running:Boolean) => {
+        const obj:any = {}
+        obj[task.name] = tasks[task.name]
+        obj[task.name].running = running
         setTasks((prev:any) => ({...prev, ...obj}))
     }
     
@@ -50,28 +59,29 @@ export const TaskProvider = ({ children }:any) => {
         const progress = getProgress(task)
 
         setActive(task, true)
+        setRunning(task, true)
         setProgress(task, 1)
 
         await new Promise(r => setTimeout(r, 1000))
         
-        if(!isActive(task)) return
+        if(!isActiveHandler(task)) return
 
         if(progress <= 4) {
             setProgress(task, 4)
             let dropTime = (task.snkr.release * 1000) - Date.now()
-            while(isActive(task) && dropTime > 0) {
+            while(isActiveHandler(task) && dropTime > 0) {
                 dropTime --
                 console.log(dropTime)
                 await new Promise(r => setTimeout(r, 1000))
             }
         }
 
-        if(!isActive(task)) return
+        if(!isActiveHandler(task)) return
 
         setProgress(task, 5)
         //const add_cart = await nike_add_cart(payload['add_cart'], task)
 
-        if(!isActive(task)) return
+        if(!isActiveHandler(task)) return
 
         if(progress <= 6) {
 

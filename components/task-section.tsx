@@ -29,6 +29,7 @@ export default function TaskSection({ task }: Props) {
   const payloads = useContext(PayLoadsContext)
   
   const active = tasks[task.name]?.active
+  const running = tasks[task.name]?.running
   const progress = tasks[task.name]?.progress
 
   useEffect(() => {
@@ -66,7 +67,7 @@ export default function TaskSection({ task }: Props) {
             <UserCard user={task.user}/>
           </div>
         </div>
-      <StepProgress steps={TASK_PROGRESS} progress={active? progress : 0}/>
+      <StepProgress steps={TASK_PROGRESS} progress={running ? progress : 0}/>
       {payloads.loading ? (
           <span style={{alignSelf: 'center'}}><LoadingDots size={10}/></span>
         ) : (
@@ -77,10 +78,10 @@ export default function TaskSection({ task }: Props) {
               ["buttonRed"]: active
             })}
               onClick={async()=> {
-                active ? stopTask(task) : startTask(task)
+                !active && !running ? startTask(task) : stopTask(task)
               }}
             >
-              {active ? <>{i18n.t('buttons.stop_task')}</> : <>{i18n.t('buttons.start_task')}</>}
+              {running && active ? <>{i18n.t('buttons.stop_task')}</> : <>{i18n.t('buttons.start_task')}</>}
             </button>
           ) : (
             <></>
@@ -104,5 +105,5 @@ export default function TaskSection({ task }: Props) {
           {deleteButtonState === 'loading' ? <LoadingDots size={5} /> : <>Delete Task</>}
       </button>
     </>
-  )}, [active, progress, payloads.loading])
+  )}, [active, running, progress, payloads.loading])
 }

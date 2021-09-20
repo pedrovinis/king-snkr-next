@@ -24,6 +24,7 @@ function TaskTable({ task }: { task: Task }) {
   const payloads = useContext(PayLoadsContext)
 
   const active = tasks[task.name]?.active
+  const running = tasks[task.name]?.running
   const progress = tasks[task.name]?.progress
 
   const handleDeleteResponse = async(res:Response) => {
@@ -77,7 +78,7 @@ function TaskTable({ task }: { task: Task }) {
       {task.cfg?.size?.value}
     </td>
     <td style={{width:'10rem'}}>
-      <TaskProgress progress={active? tasks[task.name]?.progress : 0}/>
+      <TaskProgress progress={running ? tasks[task.name]?.progress : 0}/>
     </td>
     <td>
       <div style={{display: 'flex', alignItems: 'center'}}>
@@ -89,9 +90,9 @@ function TaskTable({ task }: { task: Task }) {
              <a 
              className={styles.action}
              onClick={async()=> {
-               active ? stopTask(task) : startTask(task)
+               !active && !running ? startTask(task) : stopTask(task)
              }}>
-               {active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
+               {running && active ? <StopIcon fill="var(--red)" size={'30px'}/> : <StartIcon fill="var(--green-dark)" size={'30px'}/>}
              </a>
           ) : (
             <a className={styles.actionDisabled}>
@@ -114,7 +115,7 @@ function TaskTable({ task }: { task: Task }) {
     </td>
   </tr>
   </>
-  )},[active, progress, isSelected, payloads.loading])
+  )},[active, running, progress, isSelected, payloads.loading])
 }
 
 type Props = {
