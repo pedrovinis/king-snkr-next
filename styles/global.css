@@ -185,12 +185,12 @@ svg circle {
 
 ::-moz-selection { /* Code for Firefox */
   color: black;
-  background: var(--violet);
+  background: var(--brand);
 }
 
 ::selection {
   color: black;
-  background: var(--violet);
+  background: var(--brand);
 }
 
 .hide {

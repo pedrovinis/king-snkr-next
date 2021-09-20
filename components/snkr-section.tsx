@@ -19,6 +19,8 @@ type ButtonState = 'default' | 'loading' | 'error'
 export default function SnkrSection({ snkr }: Props) {
   const [deleteButtonState, setDeleteButtonState] = useState<ButtonState>('default')
 
+    const released = Date.now() > (snkr.release * 1000)
+
     const formatRelease = (release:number) => {
       const timeStamp = new Date(release * 1000)
       const formatedDate = timeStamp.toLocaleString('pt-BR', {
@@ -57,13 +59,18 @@ export default function SnkrSection({ snkr }: Props) {
             <h1 className={styles.name}>{snkr.name}</h1>
             <a className={styles.edition}>{snkr.edition}</a>
             <p className={styles.title} >
-              {snkr.id}
+              {snkr.plataform_id}
             </p>
             <h2 className={styles['bio-header']}>Sale Price</h2>
             <p className={styles.title}>R$ {snkr.sale_price}</p>
 
             <h2 className={styles['bio-header']}>Release</h2>
-            <p className={styles.title}>{formatRelease(snkr.release)}</p>
+            <p className={styles.title}>
+              {formatRelease(snkr.release)}
+              {released ? (
+              <> { ' - '} <span style={{color: 'var(--brand'}}>Released</span></>
+              ): <></>}
+            </p>
 
             <h2 className={styles['bio-header']}>Link</h2>
             <p className={styles.bio}>{snkr.link}</p>
@@ -93,7 +100,7 @@ export default function SnkrSection({ snkr }: Props) {
           setDeleteButtonState('default')
         }}
       >
-        {deleteButtonState === 'loading' ? <LoadingDots size={6} /> : <>Delete Snkr</>}
+        {deleteButtonState === 'loading' ? <LoadingDots size={5} /> : <>Delete Snkr</>}
       </button>
     </>
   )

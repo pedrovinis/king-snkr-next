@@ -74,7 +74,7 @@ export default function ActivateKeyForm() {
           className={cn("button", styles[formState])}
           disabled={formState === 'loading'}
         >
-          {formState === 'loading' ? <LoadingDots size={6}/> : <>{i18n.t('buttons.activate')} KING SNKR</>}
+          {formState === 'loading' ? <LoadingDots size={5}/> : <>{i18n.t('buttons.activate')} KING SNKR</>}
         </button>
       </div>
     </form>

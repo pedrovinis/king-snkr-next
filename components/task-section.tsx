@@ -101,7 +101,7 @@ export default function TaskSection({ task }: Props) {
               setDeleteButtonState('default')
             }}
         >
-          {deleteButtonState === 'loading' ? <LoadingDots size={6} /> : <>Delete Task</>}
+          {deleteButtonState === 'loading' ? <LoadingDots size={5} /> : <>Delete Task</>}
       </button>
     </>
   )}, [active, progress, payloads.loading])

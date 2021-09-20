@@ -72,7 +72,7 @@ export default function AddUserForm() {
             setFormState('default')
           }}
         >
-          {formState === 'loading' ? <LoadingDots size={6}/> : <>{i18n.t('buttons.add')}</>}
+          {formState === 'loading' ? <LoadingDots size={5}/> : <>{i18n.t('buttons.add')}</>}
         </button>
       </div>
     </form>

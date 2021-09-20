@@ -44,13 +44,14 @@ export default function TicketProfile({ name, email, size = 1, userState }: Prop
           <span
             className={cn(styles.skeleton, styles.wrapper, {
               [styles.show]: userState=== 'loading',
-              ["hide"]: config.hideContent
             })}
           >
             <span className={styles.icon}>
               <PxvIcon color="var(--secondary-color)" size={`20`} />
             </span>
-            {email || <>Email</>}
+            <span className={config.hideContent ? "hide" : ""}>
+              {email || <>Email</>}
+            </span>
           </span>
         </p>
       </div>

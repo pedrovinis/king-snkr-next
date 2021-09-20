@@ -82,7 +82,7 @@ function TaskTable({ task }: { task: Task }) {
     <td>
       <div style={{display: 'flex', alignItems: 'center'}}>
         {payloads.loading ? (
-          <a className={styles.action}><LoadingDots size={6}/></a>
+          <a className={styles.action}><LoadingDots size={5}/></a>
         ) : (
           <>
           {payloads.payloads ? (

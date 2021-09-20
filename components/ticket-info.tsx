@@ -31,7 +31,7 @@ export default function TicketInfo({
       </div>
       <div className={styles.date}>
         <span 
-        style={{'color':'var(--violet)'}}
+        style={{'color':'var(--brand)'}}
         className={cn(styles.skeleton, styles.wrapper, {
           [styles.show]: userProductsState == 'loading'
         })}>{expiration ? (
@@ -39,11 +39,11 @@ export default function TicketInfo({
           {active ? (
             <>Expira em</>
           ) : (
-            <>Expirado em</>
+            <span style={{'color': 'var(--red)'}}>Expirado em</span>
           )}
           </>
         ) : (
-          <>Desativado</>
+          <span style={{'color': 'var(--red)'}}>Desativado</span>
         )}
         </span>
         <span

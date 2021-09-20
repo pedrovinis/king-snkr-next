@@ -47,7 +47,7 @@ export default function SmsConfirmForm() {
           onClick={async()=>{
           }}
         >
-          {formState === 'loading' ? <LoadingDots size={6}/> : <>Confirm</>}
+          {formState === 'loading' ? <LoadingDots size={5}/> : <>Confirm</>}
         </button>
       </div>
     )

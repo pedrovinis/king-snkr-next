@@ -16,7 +16,7 @@ export default function LogoutButton() {
         setLoading(true)
     }}
     >
-    {loading ? <LoadingDots size={6}/> : <>{i18n.t('buttons.logout')}</>}</button>
+    {loading ? <LoadingDots size={5}/> : <>{i18n.t('buttons.logout')}</>}</button>
   )
 }
 

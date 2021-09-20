@@ -18,19 +18,18 @@ const formatDate = (date: string) => {
 
 export default function ScheduleCard({ snkr, showTime }: Props) {
   const [isReleased, setReleased] = useState(false)
-  const [startTime, setStartTime] = useState('')
 
-  const start = new Date(snkr.release*1000).toLocaleString('pt-BR', { hour: '2-digit', minute:'2-digit', hour12: true })
+  const releaseHour = new Date(snkr.release*1000).toLocaleString('pt-BR', { hour: '2-digit', minute:'2-digit', hour12: true })
 
   useEffect(() => {
     const now = Date.now()
     setReleased(now >snkr.release*1000)
-    setStartTime(`${formatDate(start)}`)
-  }, []);
+  }, [])
 
   return (
     <div key={snkr.name+snkr.edition+snkr.id} className={styles.talk}>
-      {showTime && <p className={styles.time}>{isReleased? <>Released</> : <>{start}</>}</p>}
+      {showTime && <p className={styles.time}>{isReleased? <>{releaseHour} - <span style={{color: 'var(--brand)'}}>Released</span>  </> :
+      <>{releaseHour}</>}</p>}
       <Link href={`snkr/${snkr.slug}`}>
         <span
           className={cn(styles.card, {

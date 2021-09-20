@@ -22,5 +22,5 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/hooks/useUserAvatar", "pages/users.tx", "/*"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/hooks/useUserAvatar", "pages/users.tx", "/*", "lib/class/task.js"]
 }

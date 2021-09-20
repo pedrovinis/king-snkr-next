@@ -1,7 +1,8 @@
-import User from "@lib/class/user"
+import { User } from "@lib/types"
+
 
 export const NikeLogin = async(user:User, IFCSHOPSESSID:string) => {
-    const data = await fetchLogin(user.getNikeEmail(), user.getNikePassword(), IFCSHOPSESSID)
+    const data = await fetchLogin(user['email'], user['password'], IFCSHOPSESSID)
     const authCode = data.code
     await validateLoginAuthCode(authCode, IFCSHOPSESSID)
 }

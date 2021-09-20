@@ -64,13 +64,13 @@ export type Sponsor = {
 }
 
 export type User = {
+  plataform: string
   name: string
   email: string
   phone: string
   password: string
   slug: string
-  createdAt: number
-  validated: boolean
+  created_at: number
   authCookieCreatedAt: number
   authCookie: string
 }
@@ -82,7 +82,9 @@ export type Size = {
 }
 
 export type Snkr = {
+  plataform: string
   id: string
+  plataform_id: string
   slug: string
   name: string
   image: string
@@ -91,9 +93,8 @@ export type Snkr = {
   sizes: Size[]
   release: number
   sale_price: string
+  kingsnkr_id: string
 }
-
-
 
 export type SponsorLink = {
   text: string

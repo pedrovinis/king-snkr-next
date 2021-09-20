@@ -7,7 +7,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         const snkrData = req.body
         
         const fSnkrData = JSON.parse(Buffer.from(snkrData, 'base64').toString())
-        fs.unlinkSync(`bin/snkrs/${fSnkrData.name}-${fSnkrData.edition}-${fSnkrData.id}.json`)
+        fs.unlinkSync(`bin/snkrs/${fSnkrData.kingsnkr_id}.json`)
         success = true
     }
     catch {

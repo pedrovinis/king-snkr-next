@@ -1,8 +1,8 @@
 import fs from 'fs'
-import TaskClass from '@lib/class/task'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { Snkr, User } from '@lib/types'
+import { saveConfigsJSON } from '@lib/utils/file-save'
 
 const formatTaskData = (taskData:any) => {
     const usersFileName = fs.readdirSync('bin/users')
@@ -35,20 +35,29 @@ const formatTaskData = (taskData:any) => {
 export default async (req : NextApiRequest, res: NextApiResponse) => {
     let sucess = false
 
+    const taskData = {
+        name: '',
+        slug: '',
+        user: '',
+        snkr: '',
+        active: false,
+        progress: 0,
+        cfg: {
+            size: ''
+        }
+    }
+
     try {
-
-
-        const taskData = req.body
-        const formatedTaskData:any = formatTaskData(taskData)
+        const bodyData= req.body
+        const formatedTaskData:any = formatTaskData(bodyData)
         
-        const task = new TaskClass()
-        task.setName(formatedTaskData.name)
-        task.setSlug(formatedTaskData.slug)
-        task.setUser(formatedTaskData.user)
-        task.setSnkr(formatedTaskData.snkr)
-        task.setSize(formatedTaskData.cfg.size)
+        taskData['name'] = formatedTaskData.name
+        taskData['slug'] = formatedTaskData.slug
+        taskData['user'] = formatedTaskData.user
+        taskData['snkr'] = formatedTaskData.snkr
+        taskData['cfg']['size'] = formatedTaskData.cfg.size
 
-        task.saveConfigs()
+        saveConfigsJSON(`bin/tasks/${taskData.name}`, taskData)
         sucess = true
     }
     catch {

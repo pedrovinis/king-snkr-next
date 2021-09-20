@@ -27,7 +27,7 @@
   line-height: 1.4;
   text-align: center;
   margin: auto auto 30px;
-  color: var(--violet);
+  color: var(--brand);
   max-width: 355px;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .statusLoading {
-  color: var(--violet);
+  color: var(--primary-color);
 }
 
 .on {

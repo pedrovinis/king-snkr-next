@@ -100,7 +100,7 @@ export default function ConfigForm(){
             setApplyLoading(false)
           }}
         >
-          {applyLoading ? <LoadingDots size={6} /> : <>{i18n.t('config.apply')}</>}
+          {applyLoading ? <LoadingDots size={5} /> : <>{i18n.t('config.apply')}</>}
         </button>
         </>
         )}

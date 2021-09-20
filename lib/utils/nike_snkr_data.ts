@@ -1,7 +1,8 @@
 interface iDataLayer {
-    snkr_name: string
-    snkr_id: string
-    snkr_sale_price: string
+    name: string
+    id: string
+    nike_id: string
+    sale_price: string
 }
 
 export const getAndFormatSnkrData = async(link:string) => {
@@ -32,14 +33,14 @@ export const getAndFormatSnkrData = async(link:string) => {
     const image:string = await getImage(data)
 
     return {
-        snkr_name: DataLayer.snkr_name,
-        snkr_edition: edition,
-        snkr_image: image,
-        snkr_id: DataLayer.snkr_id,
-        snkr_sale_price: DataLayer.snkr_sale_price,
-        //@ts-ignore
+        name: DataLayer.name,
+        edition: edition,
+        image: image,
+        id: DataLayer.id,
+        nike_id: DataLayer.nike_id,
+        sale_price: DataLayer.sale_price,
         sizes: sizesInfo,
-        snkr_release: getRelease(sizesInfo),
+        release: getRelease(sizesInfo),
     }
 }
 
@@ -66,9 +67,10 @@ const getAndFormatSnkrDataLayer = async(snkrLink:string) => {
     const data:any = await res.json()
 
     return { 
-        snkr_name: data.productInfo.name,
-        snkr_id: data.productInfo.productId,
-        snkr_sale_price: data.productInfo.salePrice
+        name: data.productInfo.name,
+        id: data.productInfo.productId,
+        nike_id: data.productInfo.productNikeId,
+        sale_price: data.productInfo.salePrice
     }
 }
 
@@ -77,8 +79,8 @@ const getEdition = (data:string) => {
     const startSliced = data.slice(start, data.length)
     const editionStart = startSliced.search('<br>')+4
     const editionEnd = startSliced.search('</a>')
-
     const edition = startSliced.slice(editionStart, editionEnd)
+
     return edition
 }
 
@@ -87,6 +89,7 @@ const getImage = async(data:string) => {
     const slicedStart = data.slice(start, data.length)
     const end = slicedStart.search('"')
     const image = slicedStart.slice(0, end)
+    
     return image
 }
 

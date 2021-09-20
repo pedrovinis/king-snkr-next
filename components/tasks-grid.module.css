@@ -42,7 +42,7 @@
 }
 
 .link:hover {
-  color: var(--violet);
+  color: var(--brand);
 }
 
 .snkrLink {
@@ -52,5 +52,5 @@
 }
 
 .snkrLink:hover {
-  color: var(--violet);
+  color: var(--brand);
 }

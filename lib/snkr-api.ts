@@ -15,9 +15,7 @@ export const deleteSnkrFetch = async(snkr:Snkr) => {
     const res = await fetch(`${LOCAL_LINK}/api/snkr/delete`, {
         method:'POST',
         body: btoa(JSON.stringify({
-            id: snkr.id,
-            name: snkr.name,
-            edition: snkr.edition
+            kingsnkr_id: snkr.kingsnkr_id
         }))
     })
     return res

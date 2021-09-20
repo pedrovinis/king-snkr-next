@@ -103,7 +103,7 @@ export default function Form({ sharePage }: Props) {
           className={cn(styles.submit, styles[formState])}
           disabled={formState === 'loading'}
         >
-          {formState === 'loading' ? <LoadingDots size={6} /> : <>Login</>}
+          {formState === 'loading' ? <LoadingDots size={5} /> : <>Login</>}
         </button>
       </div>
     </form>

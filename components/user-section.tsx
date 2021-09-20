@@ -67,7 +67,7 @@ export default function UserSection({ user }: Props) {
           setDeleteButtonState('default')
         }}
       >
-        {deleteButtonState === 'loading' ? <LoadingDots size={6} /> : <>Delete User</>}
+        {deleteButtonState === 'loading' ? <LoadingDots size={5} /> : <>Delete User</>}
       </button>
     </>
   )

@@ -140,7 +140,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
           className={cn("button", styles[formState])}
           disabled={formState === 'loading' }
         >
-          {formState === 'loading' ? <LoadingDots size={6} /> : <>{i18n.t('buttons.add')}</>}
+          {formState === 'loading' ? <LoadingDots size={5} /> : <>{i18n.t('buttons.add')}</>}
         </button>
       </div>
     </form>

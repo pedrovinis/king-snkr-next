@@ -56,7 +56,7 @@ export default function Hero() {
         <p>
           <strong >
             {status == 'Loading' ? (
-              <LoadingDots size={13}/>
+              <LoadingDots size={10}/>
             ) : (
               `• ${status}` 
             )}

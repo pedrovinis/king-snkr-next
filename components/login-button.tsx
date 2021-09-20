@@ -16,7 +16,7 @@ export default function LoginButton() {
         setLoading(true)
     }}
     >
-    {loading ? <LoadingDots size={6}/> : <>{i18n.t('buttons.login_or_register')}</>}</button>
+    {loading ? <LoadingDots size={5}/> : <>{i18n.t('buttons.login_or_register')}</>}</button>
   )
 }
 
