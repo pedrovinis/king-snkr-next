@@ -11,6 +11,6 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
 
     res.status(200).json({
         success: true,
-        session: session? session : {}
+        session: JSON.stringify(session) != '{}' ? session : null
     })
 }

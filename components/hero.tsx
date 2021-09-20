@@ -10,9 +10,14 @@ export default function Hero() {
 
   useEffect(()=> {
     (async()=> {
-      const res = await fetch('api/kingsnkr/status')
-      const data = await res.json()
-      setStatus(data.status)
+      try {
+        const res = await fetch('api/kingsnkr/status')
+        const data = await res.json()
+        setStatus(data.status)
+      }
+      catch {
+        setStatus('Offline')
+      }
     })()
   }, [])
 

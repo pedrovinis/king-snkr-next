@@ -22,12 +22,15 @@ export const UserProductsProvider = ({ children }:any) => {
 
     useEffect(() => {
         (async () => {
-            if(auth.session != JSON.stringify({}) && !auth.loading){
-                const res = await fetch(`/api/user/products`)
-                const data = await res.json()
+            if(!auth.loading) {
+                if(auth.session){
+                    const res = await fetch(`/api/user/products`)
+                    const data = await res.json()
+                    setProducts(data.products? data?.products : {})
+                }
                 setLoading(false)
-                setProducts(data.products? data?.products : {})
             }
+
         })()
     }, [auth.loading])
 

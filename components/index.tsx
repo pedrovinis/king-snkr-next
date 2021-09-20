@@ -28,7 +28,7 @@ export default function Index() {
                 <LoadingDots size={15} />
               ) : (
                 <>
-                {session.user ? (
+                {session ? (
                   <Profile user={session?.user}/>
                 ) : (
                   <LoginButton />

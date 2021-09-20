@@ -24,7 +24,7 @@ export default function Conf() {
 
   const expiration = UserProducts?.products[`king-snkr`]?.expiration
   const active = isActive(expiration)
-  
+    console.log(session)
   return (
     <Page meta={meta} fullViewport>
       <Layout >
@@ -43,7 +43,7 @@ export default function Conf() {
           <></>
         ) : (
           <>
-          {session.user ? (
+          {session ? (
             <>
             <LogoutButton />
             {UserProducts.loading ? (
