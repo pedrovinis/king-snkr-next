@@ -1,23 +1,25 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import cn from 'classnames'
 import LoadingDots from './loading-dots'
 import styles from './sms-confirm-form.module.css'
-import IconInfo from './icons/info-icon'
+import { Task } from '@lib/types'
+import { PhoneNumberFormat } from '@lib/form-format'
+import SMSIcon from './icons/icon-sms'
+import { TaskContext } from './task-context'
 
 type FormState = 'default' | 'loading' | 'error'
 
-export default function SmsConfirmForm() {
+export default function SmsConfirmForm({task}: {task:Task}) {
   const [link, setLink] = useState('')
-
+  const { setTasks, startTask, tasks } = useContext(TaskContext)
   const [linkFocused, setLinkFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
 
-
   return (
       <div className={styles.main}>
-          <div style={{justifyContent:'center', display:'flex', padding:'1rem'}}>
-            <IconInfo size={'50px'}/>
-          </div>
+          <SMSIcon size={'75px'}/> 
+          <p>{task.name} </p>
+          <p>{PhoneNumberFormat(task.user.phone)}</p>
       <label
           htmlFor="link-input-field"
           className={cn(styles['input-label'], {
@@ -25,6 +27,7 @@ export default function SmsConfirmForm() {
           })}
         >
           <input
+            maxLength={6}
             style={{width:'96%'}}
             className={styles.input}
             disabled={formState === 'loading' }
@@ -45,6 +48,10 @@ export default function SmsConfirmForm() {
           className={cn("button", styles[formState])}
           disabled={formState === 'loading'}
           onClick={async()=>{
+            const obj:any = {}
+            obj[task?.name] = task
+            if(!tasks[task.name]) setTasks((prev:any) => ({...prev, ...obj}))
+            startTask(task)
           }}
         >
           {formState === 'loading' ? <LoadingDots size={5}/> : <>Confirm</>}

@@ -16,6 +16,7 @@ export type Task = {
   cfg: TaskCfg
   progress: number
   active: boolean
+  running: boolean
 }
 
 export type TaskCfg = {

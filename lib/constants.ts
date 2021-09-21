@@ -10,13 +10,12 @@ export const SITE_DESCRIPTION = i18n.t('index.the_best_experience')
 
 export const TASK_PROGRESS = [
   `Desactived`,
-  'Starting',
   'Waiting',
   'NIKE LOGIN',
   'Waiting',
-  'Buying SNKR',
+  'Adding to Cart',
   'Generating SMS',
-  'SMS Confirm',
+  'Waiting SMS Confirm',
   'Checkout',
   'Completed'
 ]

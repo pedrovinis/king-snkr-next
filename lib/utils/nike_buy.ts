@@ -13,6 +13,13 @@ interface Inike_two_factor_generate {
     valid: boolean
 }
 
+interface Inike_two_factor_validate {
+    message?: string
+    needLogin?: boolean
+    twoFactorAuth?: boolean
+    valid?: boolean
+}
+
 export const nike_add_cart = async(payload:Object, task:Task) => {
     let strPayload = JSON.stringify(payload)
     strPayload = strPayload.replaceAll('${IFCSHOPSESSID}', task.user.authCookie)
@@ -31,11 +38,25 @@ export const nike_two_factor_generate = async(payload:Object, task:Task) => {
     strPayload = strPayload.replaceAll('${IFCSHOPSESSID}', task.user.authCookie)
     strPayload = strPayload.replaceAll('${SNKR_LINK}', task.snkr.link)
     strPayload = strPayload.replaceAll('${PHONE_NUMBER}', task.user.phone)
-    strPayload = strPayload.replaceAll('${SIZE_ID}', task.user.phone)
+    strPayload = strPayload.replaceAll('${SIZE_ID}', task.cfg.size.id)
 
     const fPayload = JSON.parse(strPayload)
     const res = await fetchPayload(fPayload)
     const data = await res.json()
     const nikeData:Inike_two_factor_generate = JSON.parse(data.data)
+    return nikeData
+}
+
+export const nike_two_factor_validate = async(payload:Object, task:Task, code:string) => {
+    let strPayload = JSON.stringify(payload)
+    strPayload = strPayload.replaceAll('${IFCSHOPSESSID}', task.user.authCookie)
+    strPayload = strPayload.replaceAll('${SNKR_LINK}', task.snkr.link)
+    strPayload = strPayload.replaceAll('${SIZE_ID}', task.cfg.size.id)
+    strPayload = strPayload.replaceAll('${VALIDATION_CODE}', code)
+
+    const fPayload = JSON.parse(strPayload)
+    const res = await fetchPayload(fPayload)
+    const data = await res.json()
+    const nikeData:Inike_two_factor_validate = JSON.parse(data.data)
     return nikeData
 }

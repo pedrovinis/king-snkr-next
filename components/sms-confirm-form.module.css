@@ -1,9 +1,17 @@
-.form {
+.main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 24px;
     padding: 0 var(--space-4x);
   }
+
+.main p {
+  margin: 0.2rem 0;
+}
+
   
   @media (min-width: 1200px) {
     .form.share-page {

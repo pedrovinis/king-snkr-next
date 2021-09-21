@@ -3,7 +3,6 @@ import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { deleteTaskFetch } from '@lib/task-api'
-import LinkIcon from './icons/icon-link'
 import StartIcon from './icons/icon-start'
 import EditIcon from './icons/icon-edit'
 import SnkrIcon from './icons/icon-snkr'
@@ -16,6 +15,7 @@ import router from 'next/router'
 import { toast } from 'react-toastify'
 import { PayLoadsContext } from './payloads-context'
 import LoadingDots from './loading-dots'
+import SmsConfirmForm from './sms-confirm-from'
 
 
 function TaskTable({ task }: { task: Task }) {
@@ -83,7 +83,7 @@ function TaskTable({ task }: { task: Task }) {
     <td>
       <div style={{display: 'flex', alignItems: 'center'}}>
         {payloads.loading ? (
-          <a className={styles.action}><LoadingDots size={5}/></a>
+          <span className={styles.action}><LoadingDots size={5}/></span>
         ) : (
           <>
           {payloads.payloads ? (
@@ -123,9 +123,16 @@ type Props = {
 }
 
 export default function TasksGrid({ tasks }: Props) {
+  const tasksCtx = useContext(TaskContext)
+
   return (
     <>
-      {/* <SmsConfirmForm /> */}
+    <div className={styles.userInput}>
+      {Object.keys(tasksCtx?.tasks)?.map( (taskName:string) => {
+        const task = tasksCtx.tasks[taskName]
+        if(task.running && task.progress == 5) return <SmsConfirmForm task={task}/>
+      })}
+      </div>
       <table className={styles.table}>
         <thead className={styles.tHead}>
           <tr>
