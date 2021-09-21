@@ -67,30 +67,31 @@ export const TaskProvider = ({ children }:any) => {
                 console.log(dropTime)
                 await new Promise(r => setTimeout(r, 1000))
             }
+
+            if(!isActive(task)) { setRunning(task, false); return }
             setProgress(task, 4)
         }
 
-        if(!isActive(task)) { setRunning(task, false); return }
 
         if(getProgress(task) <= 4) {
             const add_cart = await nike_add_cart(payload['add_cart'], task)
-            if(add_cart.twoFactorAuth) setProgress(task, 5)
-            else setProgress(task, 7)
+            if(add_cart.success) setProgress(task, 8)
+            else if(add_cart.twoFactorAuth) setProgress(task, 5)
+            else setActive(task, false)
         }
 
         if(!isActive(task)) { setRunning(task, false); return }
 
         if(getProgress(task) <= 5) {
             const two_factor_generate = await nike_two_factor_generate(payload['two_factor_generate'], task)
-            if(two_factor_generate.valid) setProgress(task, 6)
-            setRunning(task, false)
-            return
+            if(two_factor_generate.valid) setProgress(task, 6); return
         }
 
         if(!isActive(task)) { setRunning(task, false); return }
 
         if(getProgress(task) <= 6) {
             const code = tasks[task.name].sms_code
+            if(!code) { setRunning(task, false); return }
             const two_factor_validate = await nike_two_factor_validate(payload['two_factor_validate'], task, code)
             if(two_factor_validate.valid) setProgress(task, 7)
         }
@@ -98,11 +99,17 @@ export const TaskProvider = ({ children }:any) => {
         if(!isActive(task)) { setRunning(task, false); return }
 
         if(getProgress(task) <= 7) {
-            setProgress(task, 8)
+            const add_cart = await nike_add_cart(payload['add_cart'], task)
+            if(add_cart.success) setProgress(task, 8)
         }
 
+        if(!isActive(task)) { setRunning(task, false); return }
 
         if(getProgress(task) <= 8) {
+            setProgress(task, 9)
+        }
+
+        if(getProgress(task) <= 9) {
             toast.success(`${task.name} completed.`)
             await new Promise(r => setTimeout(r, 2000))
         }

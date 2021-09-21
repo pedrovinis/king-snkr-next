@@ -10,9 +10,9 @@ import { TaskContext } from './task-context'
 type FormState = 'default' | 'loading' | 'error'
 
 export default function SmsConfirmForm({task}: {task:Task}) {
-  const [link, setLink] = useState('')
+  const [code, setCode] = useState('')
   const { setTasks, startTask, tasks } = useContext(TaskContext)
-  const [linkFocused, setLinkFocused] = useState(false)
+  const [inputFocused, setInputFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
 
   return (
@@ -23,7 +23,7 @@ export default function SmsConfirmForm({task}: {task:Task}) {
       <label
           htmlFor="link-input-field"
           className={cn(styles['input-label'], {
-            [styles.focused]: linkFocused
+            [styles.focused]: inputFocused
           })}
         >
           <input
@@ -34,10 +34,10 @@ export default function SmsConfirmForm({task}: {task:Task}) {
             autoComplete="off"
             type="link"
             id="link-input-field"
-            value={link}
-            onChange={e => setLink(e.target.value)}
-            onFocus={() => setLinkFocused(true)}
-            onBlur={() => setLinkFocused(false)}
+            value={code}
+            onChange={e => setCode(e.target.value)}
+            onFocus={() => setInputFocused(true)}
+            onBlur={() => setInputFocused(false)}
             placeholder="SMS Code"
             aria-label="Enter SMS Code"
             required
@@ -49,7 +49,8 @@ export default function SmsConfirmForm({task}: {task:Task}) {
           disabled={formState === 'loading'}
           onClick={async()=>{
             const obj:any = {}
-            obj[task?.name] = task
+            obj[task.name] = task
+            obj[task.name].sms_code = code
             if(!tasks[task.name]) setTasks((prev:any) => ({...prev, ...obj}))
             startTask(task)
           }}

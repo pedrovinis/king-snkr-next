@@ -130,7 +130,7 @@ export default function TasksGrid({ tasks }: Props) {
     <div className={styles.userInput}>
       {Object.keys(tasksCtx?.tasks)?.map( (taskName:string) => {
         const task = tasksCtx.tasks[taskName]
-        if(task.running && task.progress == 5) return <SmsConfirmForm task={task}/>
+        if(task.active && task.progress == 6) return <SmsConfirmForm task={task}/>
       })}
       </div>
       <table className={styles.table}>
