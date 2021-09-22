@@ -9,7 +9,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     })
     const session = await pxvreq.json()
 
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         session: JSON.stringify(session) != '{}' ? session : null
     })

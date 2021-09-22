@@ -13,19 +13,19 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     const task = tasks.find((s:any) => s.slug === slug) || null
 
     if(!task) {
-      res.status(200).json({
+      return res.status(200).json({
         success: false,
         message: 'No task found'
       })
     }
 
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         progress: task?.progress
     })
     }
     catch {
-      res.status(200).json({
+      return res.status(200).json({
         success: false,
         message: 'Error on get progress'
       })

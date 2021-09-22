@@ -17,12 +17,12 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
 
         fs.writeFileSync(`bin/config.json`, JSON.stringify(fConfig))
     
-        res.status(200).json({
+        return res.status(200).json({
             success: true
         })
     }
     catch {
-        res.status(200).json({
+        return res.status(200).json({
             success: false
         })
     }

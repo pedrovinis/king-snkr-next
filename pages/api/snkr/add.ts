@@ -59,7 +59,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         success = false
     }
 
-    res.status(200).json({
+    return res.status(200).json({
         success:success,
         name: snkrData['name']
     })

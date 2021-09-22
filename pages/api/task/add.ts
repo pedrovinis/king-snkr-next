@@ -64,5 +64,5 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         sucess = false
     }
     
-    res.status(200).json({success:sucess})
+    return res.status(200).json({success:sucess})
 }

@@ -4,13 +4,14 @@ import React from "react"
 import { toast } from "react-toastify"
 import { nike_add_cart, nike_two_factor_generate, nike_two_factor_validate } from "@lib/utils/nike_buy"
 import { PayLoadsContext } from "./payloads-context"
-import { isActive } from "@lib/isActive"
 
 type Props = {
     tasks: any
     setTasks: Function
     startTask: Function
     stopTask: Function
+    setRunning: Function
+    setSMSCode: Function
 }
 
 export const TaskContext = createContext<Props>({
@@ -18,6 +19,8 @@ export const TaskContext = createContext<Props>({
     setTasks: () => {},
     startTask: () => {},
     stopTask: () => {},
+    setRunning: () => {},
+    setSMSCode: () => {}
 })
 
 export const TaskProvider = ({ children }:any) => {
@@ -27,6 +30,10 @@ export const TaskProvider = ({ children }:any) => {
     const isActive = (task:Task) => {
         const isActive = tasks[task.name]?.active
         return isActive
+    }
+
+    const getProgress = (task:Task) => {
+        return tasks[task.name].progress
     }
 
     const setActive = (task:Task, active:Boolean) => {
@@ -50,8 +57,11 @@ export const TaskProvider = ({ children }:any) => {
         setTasks((prev:any) => ({...prev, ...obj}))
     }
 
-    const getProgress = (task:Task) => {
-        return tasks[task.name].progress
+    const setSMSCode = (task:Task, code:string) => {
+        const obj:any = {}
+        obj[task.name] = tasks[task.name]
+        obj[task.name].sms_code = code
+        setTasks((prev:any) => ({...prev, ...obj}))
     }
 
     const startTask = async(task:Task) => {
@@ -84,14 +94,15 @@ export const TaskProvider = ({ children }:any) => {
 
         if(getProgress(task) <= 5) {
             const two_factor_generate = await nike_two_factor_generate(payload['two_factor_generate'], task)
-            if(two_factor_generate.valid) setProgress(task, 6); return
+            if(two_factor_generate.valid) { setProgress(task, 6); return }
+            else if(!two_factor_generate.valid) { setRunning(task, false); return }
         }
 
         if(!isActive(task)) { setRunning(task, false); return }
 
         if(getProgress(task) <= 6) {
             const code = tasks[task.name].sms_code
-            if(!code) { setRunning(task, false); return }
+            if(!code) { setActive(task, false); return }
             const two_factor_validate = await nike_two_factor_validate(payload['two_factor_validate'], task, code)
             if(two_factor_validate.valid) setProgress(task, 7)
         }
@@ -110,11 +121,10 @@ export const TaskProvider = ({ children }:any) => {
         }
 
         if(getProgress(task) <= 9) {
-            toast.success(`${task.name} completed.`)
-            await new Promise(r => setTimeout(r, 2000))
+            toast.success(`"${task.name}" completed.`)
+            setActive(task, false)
         }
 
-        setActive(task, false)
     }
 
     const stopTask = async(task:Task) => {
@@ -125,7 +135,9 @@ export const TaskProvider = ({ children }:any) => {
         tasks,
         startTask,
         stopTask,
-        setTasks
+        setTasks,
+        setSMSCode,
+        setRunning
     }
 
     return (

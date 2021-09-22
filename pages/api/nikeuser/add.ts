@@ -54,11 +54,11 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     const logged = await verifyLogged(IFCSHOPSESSID)
 
     if(!logged) {
-        res.status(200).json({success:false})
+        return res.status(200).json({success:false})
     }
     
     userData['password'] = 'SECRET'
     saveConfigsJSON(`bin/users/${userData.name}`, userData)
 
-    res.status(200).json({success:true})
+    return res.status(200).json({success:true})
 }

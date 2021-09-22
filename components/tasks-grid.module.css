@@ -11,6 +11,8 @@
   border-collapse: collapse;
   align-self: center;
   line-height: normal;
+  border-spacing: 0;
+  
 }
 
 .table td {

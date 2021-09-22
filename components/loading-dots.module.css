@@ -5,6 +5,7 @@
   --loading-dots-height: auto;
   --loading-dots-size: 2px;
   height: var(--loading-dots-height);
+  margin: 1rem;
 }
 
 .loading .spacer {

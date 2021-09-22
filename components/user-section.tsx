@@ -29,7 +29,7 @@ export default function UserSection({ user }: Props) {
       toast.success(`"${user.name}" successful deleted.`)
     }
     else {
-      toast.error(`Error on delete "${user.name}".`)
+      toast.error(`Error on delete "${user.name}". ${data.message}`)
     }
   }
 

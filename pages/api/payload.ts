@@ -7,13 +7,13 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         const fetchRes = await fetch(body.url, body.opts)
         const data = await fetchRes.text()
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             data: data,
         })
     }
     catch {
-        res.status(200).json({
+        return res.status(200).json({
             success: false,
             data: null
         })

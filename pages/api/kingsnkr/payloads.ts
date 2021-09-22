@@ -11,7 +11,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     })
     const data = await pxvreq.json()
 
-    res.status(200).json({
+    return res.status(200).json({
         success: data.success,
         message: data.message,
         payloads: data.payloads || {}

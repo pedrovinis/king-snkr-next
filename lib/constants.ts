@@ -21,6 +21,8 @@ export const TASK_PROGRESS = [
   'Completed'
 ]
 
+export const SMS_CONFIRM_INDEX = 6
+
 export const CONFIG_OPTIONS = {
   hideContent: false,
   locale: ['Brasil'],

@@ -12,6 +12,14 @@
   margin: 0.2rem 0;
 }
 
+.close {
+  display: flex;
+  align-self: flex-end;
+}
+
+.close:hover {
+  cursor: pointer;
+}
   
   @media (min-width: 1200px) {
     .form.share-page {

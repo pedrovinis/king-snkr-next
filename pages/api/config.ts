@@ -7,12 +7,12 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         config = file
     }
     catch {
-        res.status(200).json({
+        return res.status(200).json({
             success: false
         })
     }
 
-    res.status(200).json({
+    return res.status(200).json({
         success: true,
         config: config
     })

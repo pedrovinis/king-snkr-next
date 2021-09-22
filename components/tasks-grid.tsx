@@ -16,6 +16,7 @@ import { toast } from 'react-toastify'
 import { PayLoadsContext } from './payloads-context'
 import LoadingDots from './loading-dots'
 import SmsConfirmForm from './sms-confirm-from'
+import { SMS_CONFIRM_INDEX } from '@lib/constants'
 
 
 function TaskTable({ task }: { task: Task }) {
@@ -130,7 +131,7 @@ export default function TasksGrid({ tasks }: Props) {
     <div className={styles.userInput}>
       {Object.keys(tasksCtx?.tasks)?.map( (taskName:string) => {
         const task = tasksCtx.tasks[taskName]
-        if(task.active && task.progress == 6) return <SmsConfirmForm task={task}/>
+        if(task.running && task.progress == SMS_CONFIRM_INDEX) return <SmsConfirmForm task={task}/>
       })}
       </div>
       <table className={styles.table}>
@@ -147,7 +148,7 @@ export default function TasksGrid({ tasks }: Props) {
         </thead>
         <tbody className={styles.tBody}>
          {tasks.map((task, i)=> {
-            return <TaskTable key={task.name+i} task={task}/>
+            return <TaskTable key={task.name+i} task={task} />
           })}
         </tbody>
       </table>

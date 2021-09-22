@@ -6,20 +6,32 @@ import { Task } from '@lib/types'
 import { PhoneNumberFormat } from '@lib/form-format'
 import SMSIcon from './icons/icon-sms'
 import { TaskContext } from './task-context'
+import { ConfigContext } from './config-context'
+import XIcon from './icons/icon-x'
 
 type FormState = 'default' | 'loading' | 'error'
 
 export default function SmsConfirmForm({task}: {task:Task}) {
   const [code, setCode] = useState('')
-  const { setTasks, startTask, tasks } = useContext(TaskContext)
+  const { startTask, setSMSCode, setRunning } = useContext(TaskContext)
   const [inputFocused, setInputFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
+  const { config } = useContext(ConfigContext)
 
   return (
       <div className={styles.main}>
+          <span
+          className={styles.close}
+          onClick={() => {
+            setRunning(task, false)
+          }}
+
+          ><XIcon /></span>
           <SMSIcon size={'75px'}/> 
           <p>{task.name} </p>
-          <p>{PhoneNumberFormat(task.user.phone)}</p>
+          <p
+          className={config.hideContent ? "hide" : ''}
+          >{PhoneNumberFormat(task.user.phone)}</p>
       <label
           htmlFor="link-input-field"
           className={cn(styles['input-label'], {
@@ -47,11 +59,9 @@ export default function SmsConfirmForm({task}: {task:Task}) {
           type="submit"
           className={cn("button", styles[formState])}
           disabled={formState === 'loading'}
-          onClick={async()=>{
-            const obj:any = {}
-            obj[task.name] = task
-            obj[task.name].sms_code = code
-            if(!tasks[task.name]) setTasks((prev:any) => ({...prev, ...obj}))
+          onClick={()=>{
+            setFormState('loading')
+            setSMSCode(task, code)
             startTask(task)
           }}
         >
