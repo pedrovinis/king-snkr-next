@@ -1,8 +1,0 @@
-{
-  "name": "pXv",
-  "description": "King SNKR, for improve your life.",
-  "datocmsProjectId": "37685",
-  "deploymentType": "vercel",
-  "buildCommand": "npm run build",
-  "livePreviewUrl": "https://pxv.vercel.app"
-}

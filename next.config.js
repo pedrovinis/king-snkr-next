@@ -1,5 +1,3 @@
-const { config } = require("process")
-
 module.exports = {
   images: {
     domains: [
