@@ -5,7 +5,11 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 24px;
-    padding: 0 var(--space-4x);
+    align-self: center;
+    position: relative;
+    max-width: 200px;
+    margin: 1rem;
+    background-color: var(--sidebar);
   }
 
 .main p {
@@ -15,17 +19,13 @@
 .close {
   display: flex;
   align-self: flex-end;
+  padding: 0.3rem;
 }
 
 .close:hover {
   cursor: pointer;
+  transform: scale(1.1);
 }
-  
-  @media (min-width: 1200px) {
-    .form.share-page {
-      justify-content: flex-start;
-    }
-  }
   
   .input {
     border: none;
@@ -77,25 +77,3 @@
     align-items: center;
     width: 100%;
   }
-  
-  .main {
-    align-self: center;
-    position: relative;
-    max-width: 200px;
-    width: 100%;
-    margin: 1rem;
-  }
-  
-  @media (min-width: 768px) {
-    .main {
-      max-width: 200px;
-    }
-  }
-  
-  
-  @media (min-width: 1200px) {
-    .submit.generate-with-github {
-      width: 240px;
-    }
-  }
-  

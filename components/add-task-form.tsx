@@ -31,7 +31,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
     const data = await res.json()
     if(data.success){
       router.push('/tasks')
-      toast.success(`"${taskName}" succesfull added.`)
+      toast.success(`"${taskName}" successful added.`)
     }
     else {
       toast.error('Error, try again.')

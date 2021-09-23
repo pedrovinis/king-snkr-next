@@ -5,7 +5,7 @@ const config = {
     locale: 'Region',
     language: 'Language',
     apply: 'Apply',
-    success: "Configurations succesful saved.",
+    success: "Configurations successful saved.",
     error: "Error on saving configurations.",
     lang_restart: "Your language has been updated. Please restart the application."
 }

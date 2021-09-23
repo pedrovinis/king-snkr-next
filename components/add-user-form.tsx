@@ -27,7 +27,7 @@ export default function AddUserForm() {
     const data = await res.json()
     if(data.success){
       if(router.route=='/adduser') router.push('/users')
-      toast.success(`"${name}" succesfull added.`)
+      toast.success(`"${name}" successful added.`)
     }
     else {
       toast.error('Error, verify your credentials and try again.')

@@ -19,7 +19,15 @@ export default function SmsConfirmForm({task}: {task:Task}) {
   const { config } = useContext(ConfigContext)
 
   return (
-      <div className={styles.main}>
+    <form
+    onSubmit={async e => {
+      e.preventDefault()
+      setFormState('loading')
+      // setSMSCode(task, code)
+      // startTask(task)
+    }}
+    >
+          <div className={styles.main}>
           <span
           className={styles.close}
           onClick={() => {
@@ -39,6 +47,7 @@ export default function SmsConfirmForm({task}: {task:Task}) {
           })}
         >
           <input
+            minLength={6}
             maxLength={6}
             style={{width:'96%'}}
             className={styles.input}
@@ -59,14 +68,10 @@ export default function SmsConfirmForm({task}: {task:Task}) {
           type="submit"
           className={cn("button", styles[formState])}
           disabled={formState === 'loading'}
-          onClick={()=>{
-            setFormState('loading')
-            setSMSCode(task, code)
-            startTask(task)
-          }}
         >
           {formState === 'loading' ? <LoadingDots size={5}/> : <>Confirm</>}
         </button>
       </div>
+      </form>
     )
 }
