@@ -8,6 +8,7 @@
 }
 
 .page {
+  margin-top: var(--header-height);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -33,6 +34,8 @@
   border-bottom: 1px solid var(--accents-7);
   height: var(--header-height);
   z-index: 2;
+  width: 100%;
+  position: fixed;
 }
 
 .header-logos {
@@ -107,12 +110,4 @@
 
 .gear svg:hover {
   transform: rotate(-10deg);
-}
-
-.avatarButton {
-  @apply inline-flex justify-center rounded-full;
-}
-
-.avatarButton:focus {
-  @apply outline-none;
 }
