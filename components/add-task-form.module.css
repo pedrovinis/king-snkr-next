@@ -14,7 +14,9 @@
   }
 
   .selects {
+    justify-content: center;
     display: flex;
+    flex-wrap: wrap;
   }
 
   .input-label {
