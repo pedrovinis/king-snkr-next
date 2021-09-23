@@ -16,7 +16,7 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
         })}
       >
         <div className={styles.imageWrapper}>
-          <Image
+          <img
             alt={sponsor.name}
             src={sponsor.cardImage.url}
             className={cn(styles.image, {

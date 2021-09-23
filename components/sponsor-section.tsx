@@ -43,7 +43,7 @@ export default function SponsorSection({ sponsor }: Props) {
         />
         <div className={styles.container}>
           <div className={styles['name-and-logo']}>
-            <Image
+            <img
               alt={sponsor.name}
               src={sponsor.logo.url}
               className={styles.image}

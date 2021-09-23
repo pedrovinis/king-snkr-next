@@ -84,6 +84,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
             required
           />
         </label>
+        <div className={styles.selects}>
         <div className={styles.select}>
         <Select
             disabled={formState === 'loading' }
@@ -134,6 +135,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
               return <SnkrCard snkr={snkr} setSize={setSizeSelected} formState={formState}/>
             }
         })}
+        </div>
         </div>
         <button
           type="submit"
