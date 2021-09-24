@@ -1,31 +1,28 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import fs from 'fs'
+//@ts-ignore
+
 export default async (req : NextApiRequest, res: NextApiResponse) => {
-    const data = await fetch('https://www.nike.com.br/', {
-        method: 'POST',
-        headers: {
-            'cookie': 'myfakecookie123'
-        },
-        body: JSON.stringify({
-            user: 'hackedUSER',
-            password: 'hacked123'
-        })
-    })
-    const info = await data.text()
+    var crypto = require('crypto')
 
-    res.status(200).json({
-        info
-    })
-}
+    const algorithm = 'aes256'
+    const key = 'SECRETKEYwaddwaadwadwawd'
+    const key2 = ''
+    const text = '1password1'
 
-const isActive = () => {
+    let encrypted=null, decrypted=null
+
     try {
-        const file = JSON.parse(fs.readFileSync("bin/test.json", "utf8"))
-        file.active = !file.active  
-        fs.writeFileSync('bin/test.json', JSON.stringify(file))
-        return file.active
+        const cipher = crypto.createCipher(algorithm, key)
+        encrypted = cipher.update(text, 'utf8', 'hex') + cipher.final('hex')
+        const decipher = crypto.createDecipher(algorithm, key2)
+        decrypted = decipher.update(encrypted, 'hex', 'utf8') + decipher.final('utf8')
     }
     catch {
-        return false
+
     }
+
+    res.status(200).json({
+        encrypted,
+        decrypted
+    })
 }

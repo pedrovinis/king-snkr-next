@@ -51,7 +51,7 @@ export default function ActivateKeyForm() {
           })}
         >
           <input
-            min={17}
+            spellCheck={false}
             maxLength={17}
             minLength={17}
             style={{width:'96%'}}

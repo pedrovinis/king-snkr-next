@@ -21,7 +21,7 @@ export default function TicketInfo({
 }:Props) {
   const createdBy = (
     <div className={styles['created-by']}>
-      <div className={styles['created-by-text']}>{siteUrlForTicket}</div>
+      <div className={styles['created-by-text']}>pxv.app</div>
     </div>
   )
   return (

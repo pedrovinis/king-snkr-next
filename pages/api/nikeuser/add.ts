@@ -25,10 +25,11 @@ const formatUserData = (userData:any) => {
 
 export default async (req : NextApiRequest, res: NextApiResponse) => {
     const bodyData = req.body
-    const formatedUserData:User = formatUserData(bodyData)
+    const formatedUserData:any = formatUserData(bodyData)
 
     const userData:User = {
-        plataform: '',
+        kingsnkr_id: '',
+        plataform: 'NIKE',
         name: '',
         email: '',
         slug: '',
@@ -41,12 +42,13 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
 
     userData['name'] = formatedUserData.name
     userData['email'] = formatedUserData.email
-    userData['slug'] = formatedUserData.slug
     userData['password'] = formatedUserData.password
     userData['phone'] = formatedUserData.phone
     userData['created_at'] = formatedUserData.created_at
     userData['authCookie'] = formatedUserData.authCookie
     userData['authCookieCreatedAt'] = formatedUserData.authCookieCreatedAt
+    userData['kingsnkr_id'] = `${userData.plataform} - ${userData.name}`
+    userData['slug'] = userData['kingsnkr_id']
 
     const IFCSHOPSESSID = userData['authCookie']
     console.log('IFCSHOPSESSID: ' + IFCSHOPSESSID)

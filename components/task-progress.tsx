@@ -8,7 +8,7 @@ type Props = {
 
 export default function TaskProgress({ progress }:Props) {
     const error = false
-    const warn = false
+    const warn = progress != 0 && progress != TASK_PROGRESS.length
     return (
         <a className={cn(styles.default, {
             [styles.inProgress]: progress,

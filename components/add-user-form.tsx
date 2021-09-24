@@ -60,6 +60,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            spellCheck={false}
             minLength={1}
             maxLength={25}
             style={{width:'96%'}}
@@ -85,6 +86,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            spellCheck={false}
             maxLength={256}
             style={{width:'96%'}}
             className={styles.input}
@@ -108,6 +110,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            spellCheck={false}
             maxLength={30}
             className={styles.input}
             disabled={formState === 'loading' }

@@ -8,6 +8,7 @@ type Props = {
 }
 
 type sessionProps = {
+    userId?: string
     user?: userProps
 }
 

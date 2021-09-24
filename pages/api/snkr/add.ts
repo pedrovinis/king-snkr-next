@@ -19,6 +19,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
     let success = false
     
     const snkrData: Snkr = {
+        kingsnkr_id: '',
         plataform: 'NIKE',
         name: '',
         edition: '',
@@ -30,7 +31,6 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         sizes: [],
         release: 0,
         sale_price: '',
-        kingsnkr_id: ''
     }
     
     try {

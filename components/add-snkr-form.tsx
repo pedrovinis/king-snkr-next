@@ -46,6 +46,7 @@ export default function AddUserForm() {
           })}
         >
           <input
+            spellCheck={false}
             style={{width:'96%'}}
             className={styles.input}
             disabled={formState === 'loading' }

@@ -11,11 +11,13 @@ import { UserProductsProvider } from '@components/user-products-context'
 import { TaskProvider } from '@components/task-context'
 import { PayLoadsProvider } from '@components/payloads-context'
 import { ConfigProvider } from '@components/config-context'
+import { handleKingSnkrId } from '@lib/handle-local-storage'
 
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     document.body.classList?.remove('loading')
+    handleKingSnkrId(window.localStorage)
   }, [])
 
   return (

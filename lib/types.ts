@@ -65,6 +65,7 @@ export type Sponsor = {
 }
 
 export type User = {
+  kingsnkr_id: string
   plataform: string
   name: string
   email: string

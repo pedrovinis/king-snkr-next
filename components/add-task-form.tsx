@@ -68,6 +68,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
           })}
         >
           <input
+            spellCheck={false}
             minLength={1}
             maxLength={25}
             className={styles.input}
