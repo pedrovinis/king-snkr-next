@@ -34,8 +34,8 @@ export default function Hero() {
         {SITE_DESCRIPTION}
       </h2>
       <h1 className={cn(styles.hero)}>
-        PXV
-        <br className={styleUtils['show-on-desktop']} /> King Snkrs Bot
+        pXv
+        <br className={styleUtils['show-on-desktop']} /> King SNKR Bot
       </h1>
       <h2
         className={cn(
