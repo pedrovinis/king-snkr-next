@@ -37,7 +37,6 @@ export default function SnkrsPage( {tasks}: Props) {
         ): (
           <TasksGrid tasks={tasks} />
         )}
-
       </Layout>
     </Page>
   )

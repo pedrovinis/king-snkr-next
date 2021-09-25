@@ -5,6 +5,10 @@
   margin: 1rem;
 }
 
+.tableOptions {
+  display: inline;
+}
+
 .table {
   margin: 1rem;
   line-height: 2.7;
@@ -12,7 +16,6 @@
   align-self: center;
   line-height: normal;
   border-spacing: 0;
-  
 }
 
 .table td {
@@ -29,7 +32,22 @@
 }
 
 .selected {
-  border: 1px solid var(--brand);
+  box-shadow: 0 0 5px 1px var(--brand);
+}
+
+.allActionsContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-self: center;
+  justify-content: center;
+}
+
+.actionsContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-self: center;
 }
 
 .actionDisabled {
@@ -37,7 +55,7 @@
 }
 
 .action svg{
-  margin: 0.3rem 1rem;
+  margin: 0.3rem 0.75rem;
 }
 
 .action svg:hover {

@@ -82,7 +82,7 @@ function TaskTable({ task }: { task: Task }) {
       <TaskProgress progress={running ? tasks[task.name]?.progress : 0}/>
     </td>
     <td>
-      <div style={{display: 'flex', alignItems: 'center'}}>
+      <div className={styles.actionsContainer}>
         {payloads.loading ? (
           <span className={styles.action}><LoadingDots size={5}/></span>
         ) : (
@@ -133,25 +133,38 @@ export default function TasksGrid({ tasks }: Props) {
         const task = tasksCtx.tasks[taskName]
         if(task.running && task.progress == SMS_CONFIRM_INDEX) return <SmsConfirmForm task={task}/>
       })}
+      
       </div>
-      <table className={styles.table}>
-        <thead className={styles.tHead}>
-          <tr>
-            <td> </td>
-            <td>Task</td>
-            <td>User</td>
-            <td>SNKR</td>
-            <td>Size</td>
-            <td>Status</td>
-            <td>Actions</td>
-          </tr>
-        </thead>
-        <tbody className={styles.tBody}>
-         {tasks.map((task, i)=> {
-            return <TaskTable key={task.name+i} task={task} />
-          })}
-        </tbody>
-      </table>
+
+      <div style={{alignSelf: 'center'}}>
+        <div className={styles.tableOptions}>
+          <div className={styles.allActionsContainer} >
+            <a className={styles.action}><StartIcon fill="var(--green-dark)" size={'30px'}/></a>
+            <a className={styles.action}><StopIcon fill="var(--red)" size={'30px'}/></a>
+            <a className={styles.action}><EditIcon size={'30px'}/></a>
+            <a className={styles.action}><DeleteIcon fill="var(--red)" size={'30px'}/></a>
+          </div>
+        </div>
+
+        <table className={styles.table}>
+          <thead className={styles.tHead}>
+            <tr>
+              <td> </td>
+              <td>Task</td>
+              <td>User</td>
+              <td>SNKR</td>
+              <td>Size</td>
+              <td>Status</td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody className={styles.tBody}>
+          {tasks.map((task, i)=> {
+              return <TaskTable key={task.name+i} task={task} />
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }
