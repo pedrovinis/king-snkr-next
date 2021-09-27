@@ -36,7 +36,7 @@ export default function AddUserForm() {
         justifyContent: "center",
         margin: "1rem 0"
       }}>
-        <img src={'/snkr-icon.svg'} width={400} height={250}/>
+        <img src={'/snkr-icon.svg'} width={300} />
       </div>
       
       <label

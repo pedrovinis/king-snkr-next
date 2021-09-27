@@ -50,7 +50,7 @@ export default function AddUserForm() {
         justifyContent: "center",
         margin: "1rem 0"
       }}>
-        <IconUser size="200px"/> 
+        <IconUser size="125px"/> 
       </div>
       
       <label

@@ -162,7 +162,11 @@ export default function TasksGrid({ tasks }: Props) {
       <></>
     )}
 
+      {tasks.length > 1 ? ( 
       <SearchBar value={searchValue} setValue={setSearchValue}/>
+      ) : (
+        <></>
+      )}
 
       <div style={{alignSelf: 'center'}}>
         <div className={styles.tableOptions}>
