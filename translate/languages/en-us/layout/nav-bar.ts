@@ -2,7 +2,7 @@ const nav_bar = {
     profile: 'Profile',
     tasks: 'Tasks',
     users: 'Users',
-    snkrs: 'SNKRS',
+    snkrs: 'SNEAKERS',
     schedule: 'Schedule'
 }
 

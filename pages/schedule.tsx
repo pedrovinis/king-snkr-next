@@ -13,7 +13,7 @@ type Props = {
 export default function SchedulePage({ schedule }: Props) {
   const meta = {
     title: 'King Snkr | Schedule',
-    description: 'Snkrs added schedule, to add a snkr go to "SNKRS" and click on "Add Snkr".'
+    description: 'Sneakers added schedule, to add a sneaker go to "SNEAKERS" and click on "Add SNEAKER".'
   }
 
   return (

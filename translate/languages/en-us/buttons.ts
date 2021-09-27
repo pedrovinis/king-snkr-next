@@ -3,7 +3,7 @@ const buttons = {
     logout: 'Logout',
     add_task: 'Add Task',
     add_user: 'Add User',
-    add_snkr: 'Add SNKR',
+    add_snkr: 'Add SNEAKER',
     add: 'Add',
     delete_task: 'Delete Task',
     delete_user: 'Delete User',

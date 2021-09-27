@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import cn from 'classnames'
-import Image from 'next/image'
 import LoadingDots from './loading-dots'
 import styles from './add-snkr-form.module.css'
 
 import { addSnkrFetch } from '@lib/snkr-api'
-import router from 'next/router'
 import { toast } from 'react-toastify'
 import i18n from 'translate/i18n'
 
@@ -13,19 +11,16 @@ type FormState = 'default' | 'loading' | 'error'
 
 export default function AddUserForm() {
   const [link, setLink] = useState('')
-  const [errorMsg, setErrorMsg] = useState('')
-  const [errorTryAgain, setErrorTryAgain] = useState(false)
   const [linkFocused, setLinkFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
 
   const handleDeleteRes = async(res:any) => {
     const data = await res.json()
     if(data.success) {
-      // if(router.route=='/addsnkr') router.push('/snkrs')
       toast.success(`${data.name} successful added.`)
       setLink('')
     }
-    else toast.error('Error on add Snkr. Please try again.')
+    else toast.error('Error on add SNEAKER. Please try again.')
   }
 
   return (

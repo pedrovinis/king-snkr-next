@@ -43,7 +43,7 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
     },
     {
       name: i18n.t('nav_bar.snkrs'),
-      route: '/snkrs'
+      route: '/sneakers'
     },
     {
       name: i18n.t('nav_bar.schedule'),

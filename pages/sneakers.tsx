@@ -15,10 +15,10 @@ type Props = {
   snkrs: Snkr[]
 }
 
-export default function SnkrsPage( {snkrs}: Props) {
+export default function SneakersPage( {snkrs}: Props) {
   const meta = {
-    title: 'King Snkr | Snkrs',
-    description: 'Here you will find your Nike SNKRS.'
+    title: 'King Snkr | Sneakers',
+    description: 'Here you will find your SNEAKERS.'
   }
 
   const isEmpty = !snkrs.length
@@ -26,7 +26,7 @@ export default function SnkrsPage( {snkrs}: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="SNKRS" description={meta.description} />
+        <Header hero="SNEAKERS" description={meta.description} />
         <Link href={'/addsnkr'}>
           <button
           className='button'

@@ -4,6 +4,7 @@
     text-align: center;
     align-items: center;
     justify-content: center;
+    z-index: 1;
   }
   
   @media (min-width: 768px) {

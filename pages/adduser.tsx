@@ -12,7 +12,7 @@ export default function Conf() {
   return (
     <Page meta={meta} fullViewport>
       <Layout>
-        <Header hero="Add user" description={meta.description}/>
+        <Header hero="Add User" description={meta.description}/>
         <AddUserForm />
       </Layout>
     </Page>

@@ -11,7 +11,7 @@ type Props = {
 
 export default function UserPage({ task }: Props) {
   const meta = {
-    title: `King Snkr | ${task.name}`,
+    title: `King Sneaker | ${task.name}`,
     description: 'pXv'
   };
 
