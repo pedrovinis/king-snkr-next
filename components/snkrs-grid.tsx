@@ -40,9 +40,8 @@ export default function SnkrsGrid({ snkrs }: Props) {
   const filtredSNKRS:ReactElement[] = []
 
   snkrs.map(snkr => {
-    const fSnkrName = snkr.name.toUpperCase().replace(/\s/g, '')
-    const fSnkrEdition = snkr.edition.toUpperCase().replace(/\s/g, '')
-    if(fSnkrName.search(fSearchValue) >= 0 || fSnkrEdition.search(fSearchValue) >= 0) {
+    const fSnkrName = (snkr.name+snkr.edition).toUpperCase().replace(/\s/g, '')
+    if(fSnkrName.search(fSearchValue)>=0) {
       filtredSNKRS.push(<SnkrCard key={snkr.name+snkr.edition} snkr={snkr} />)
     }
   })

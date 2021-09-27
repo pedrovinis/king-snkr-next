@@ -59,8 +59,8 @@ export default function usersGrid({ users }: Props) {
           {filtredUSERS}
         </div>
       ) : (
-        <div className={styles.notFoundMessage}>
-          There are no users that match
+      <div className={styles.notFoundMessage}>
+        There are no users that match
         <a style={{color:'var(--brand)'}}> "{searchValue}" </a>
       </div>
       )}

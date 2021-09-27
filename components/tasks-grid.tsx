@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { Task } from '@lib/types'
 import styles from './tasks-grid.module.css'
-import React, { useContext, useEffect, useMemo, useState } from 'react'
+import React, { ReactElement, useContext, useEffect, useMemo, useState } from 'react'
 import { deleteTaskFetch } from '@lib/task-api'
 import StartIcon from './icons/icon-start'
 import EditIcon from './icons/icon-edit'
@@ -20,7 +20,7 @@ import { SMS_CONFIRM_INDEX } from '@lib/constants'
 import SearchBar from './search-bar'
 
 
-function TaskTable({ task }: { task: Task }) {
+function TaskRow({ task }: { task: Task }) {
   const [isSelected, setIsSelected] = useState(false)
   const { tasks, startTask, stopTask, setTasks } = useContext(TaskContext)
   const payloads = useContext(PayLoadsContext)
@@ -126,15 +126,43 @@ type Props = {
 
 export default function TasksGrid({ tasks }: Props) {
   const tasksCtx = useContext(TaskContext)
+  const [searchValue, setSearchValue] = useState('')
+  const fSearchValue = searchValue.toUpperCase().replace(/\s/g, '').replace(/\s/g, '').replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&")
+
+  const filtredTASKS:ReactElement[] = []
+  const usersInputs:ReactElement[] = []
+
+  Object.keys(tasksCtx?.tasks)?.find( (taskName:string) => {
+    const task = tasksCtx.tasks[taskName]
+    if(task.running && task.progress == SMS_CONFIRM_INDEX) usersInputs.push(<SmsConfirmForm task={task}/>)
+  })
+
+  tasks.map((task, i) => {
+    const fTaskName = task.name.toUpperCase().replace(/\s/g, '')
+    const fTaskUserName = task.user.name.toUpperCase().replace(/\s/g, '')
+    const fTaskSnkrName = (task.snkr.name + task.snkr.edition).toUpperCase().replace(/\s/g, '')
+    if(
+    fTaskName.search(fSearchValue)>=0
+    || 
+    fTaskUserName.search(fSearchValue)>=0
+    || 
+    fTaskSnkrName.search(fSearchValue)>=0
+    ) {
+      filtredTASKS.push(<TaskRow key={task.name+i} task={task} /> )
+    }
+  })
 
   return (
     <>
-    <div className={styles.userInput}>
-      {Object.keys(tasksCtx?.tasks)?.map( (taskName:string) => {
-        const task = tasksCtx.tasks[taskName]
-        if(task.running && task.progress == SMS_CONFIRM_INDEX) return <SmsConfirmForm task={task}/>
-      })}
+    {usersInputs.length ? (
+      <div className={styles.userInput}>
+        {usersInputs}
       </div>
+    ) : (
+      <></>
+    )}
+
+      <SearchBar value={searchValue} setValue={setSearchValue}/>
 
       <div style={{alignSelf: 'center'}}>
         <div className={styles.tableOptions}>
@@ -159,12 +187,18 @@ export default function TasksGrid({ tasks }: Props) {
             </tr>
           </thead>
           <tbody className={styles.tBody}>
-          {tasks.map((task, i)=> {
-              return <TaskTable key={task.name+i} task={task} />
-            })}
+          {filtredTASKS}
           </tbody>
         </table>
       </div>
+      {filtredTASKS.length == 0 ? (
+        <div className={styles.notFoundMessage}>
+          There are no tasks that match
+          <a style={{color:'var(--brand)'}}> "{searchValue}" </a>
+        </div>
+        ): (
+          <></>
+        )}
     </>
   )
 }
