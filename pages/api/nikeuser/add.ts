@@ -5,6 +5,7 @@ import randomToken from 'random-token'
 
 import { User } from '@lib/types'
 import { saveConfigsJSON } from '@lib/utils/file-save'
+import { messages } from 'translate/languages/pt-br/pt-br'
 
 const formatUserData = (userData:any) => {
     const fUserData = JSON.parse(Buffer.from(userData, 'base64').toString())
@@ -52,10 +53,15 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
 
     const IFCSHOPSESSID = userData['authCookie']
     console.log('IFCSHOPSESSID: ' + IFCSHOPSESSID)
-    await NikeLogin(userData, IFCSHOPSESSID)
-    const logged = await verifyLogged(IFCSHOPSESSID)
 
-    if(!logged) {
+    try {
+        await NikeLogin(userData, IFCSHOPSESSID)
+        const logged = await verifyLogged(IFCSHOPSESSID)
+        if(!logged) {
+            return res.status(200).json({success:false})
+        }
+    }
+    catch {
         return res.status(200).json({success:false})
     }
     

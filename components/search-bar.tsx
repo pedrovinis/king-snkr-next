@@ -21,6 +21,7 @@ export default function SearchBar({value, setValue}: Props) {
               className={cn(styles.searchQueryInput, {
                   [styles.focused]: focused
               })}
+              type="text"
               name="searchQueryInput"
               placeholder="Search"
               onChange={e => setValue(e.target.value)}

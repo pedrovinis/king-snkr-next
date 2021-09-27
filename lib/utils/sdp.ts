@@ -2,8 +2,6 @@ const crypto = require('crypto')
 const algorithm = 'aes256'
 
 export const encrypt = (value:string, localKey:string, userId:string, ) => {
-    console.log(localKey)
-    console.log(userId)
     try {
         const key = localKey+userId
         const cipher = crypto.createCipher(algorithm, key)

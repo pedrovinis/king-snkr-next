@@ -17,6 +17,7 @@ import { PayLoadsContext } from './payloads-context'
 import LoadingDots from './loading-dots'
 import SmsConfirmForm from './sms-confirm-from'
 import { SMS_CONFIRM_INDEX } from '@lib/constants'
+import SearchBar from './search-bar'
 
 
 function TaskTable({ task }: { task: Task }) {
@@ -133,7 +134,6 @@ export default function TasksGrid({ tasks }: Props) {
         const task = tasksCtx.tasks[taskName]
         if(task.running && task.progress == SMS_CONFIRM_INDEX) return <SmsConfirmForm task={task}/>
       })}
-      
       </div>
 
       <div style={{alignSelf: 'center'}}>

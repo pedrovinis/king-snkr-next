@@ -40,7 +40,7 @@ type Props = {
 
 export default function usersGrid({ users }: Props) {
   const [searchValue, setSearchValue] = useState('')
-  const fSearchValue = searchValue.toUpperCase().replace(/\s/g, '')
+  const fSearchValue = searchValue.toUpperCase().replace(/\s/g, '').replace(/\s/g, '').replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&")
 
   const filtredUSERS:ReactElement[] = []
 
@@ -53,8 +53,8 @@ export default function usersGrid({ users }: Props) {
 
   return (
     <>
-      <SearchBar value={searchValue} setValue={setSearchValue}/>
-      {filtredUSERS.length > 1 ? (
+      {users.length > 1 ? <SearchBar value={searchValue} setValue={setSearchValue}/> : ''}
+      {filtredUSERS.length ? (
         <div className={styles.grid}>
           {filtredUSERS}
         </div>

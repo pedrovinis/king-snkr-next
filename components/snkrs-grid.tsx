@@ -34,8 +34,8 @@ type Props = {
 }
 
 export default function SnkrsGrid({ snkrs }: Props) {
-  const [searchValue, setSearchValue] = useState('')
-  const fSearchValue = searchValue.toUpperCase().replace(/\s/g, '')
+  const [searchValue, setSearchValue] = useState("")
+  const fSearchValue:string = searchValue.toUpperCase().replace(/\s/g, '').replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&")
 
   const filtredSNKRS:ReactElement[] = []
 
@@ -49,8 +49,8 @@ export default function SnkrsGrid({ snkrs }: Props) {
 
   return (
     <>
-      <SearchBar value={searchValue} setValue={setSearchValue}/>
-        {filtredSNKRS.length > 1 ? (
+      {snkrs.length > 1 ? <SearchBar value={searchValue} setValue={setSearchValue}/> : ''}
+        {filtredSNKRS.length ? (
         <div className={styles.grid}>
           {filtredSNKRS}
         </div>
