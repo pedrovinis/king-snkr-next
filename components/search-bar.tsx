@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import { useState } from 'react'
 import SearchIcon from './icons/icon-search'
+import XIcon from './icons/icon-x'
 import styles from './search-bar.module.css'
 
 type Props = {
@@ -29,8 +30,17 @@ export default function SearchBar({value, setValue}: Props) {
               onBlur={() => setFocused(false)}
               value={value}
               />
-              <button className={styles.searchQuerySubmit} name="searchQuerySubmit">
-              <SearchIcon fill={'var(--accents-1)'}/>
+              <button 
+              className={styles.searchQuerySubmit} 
+              name="searchQuerySubmit"
+              onClick={()=> {
+                if(value.length) setValue('')
+              }}
+              >
+              {value.length ? 
+              <XIcon fill={'var(--accents-1)'}/>
+              : 
+              <SearchIcon fill={'var(--accents-1)'}/>}
               </button>
           </div>
       </div>
