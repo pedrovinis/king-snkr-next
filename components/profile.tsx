@@ -9,7 +9,7 @@ export default function Profile({user}:any) {
   const { config } = useContext(ConfigContext)
   return (
       <div className={styles.main}>
-          <UserIcon size={`90px`}/>
+          <UserIcon size={`70px`}/>
         <div className={styles.info}>
             {user?.name}
             <p className={config.hideContent ? "hide" : ''}>{user?.email}</p>

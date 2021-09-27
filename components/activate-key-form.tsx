@@ -42,7 +42,7 @@ export default function ActivateKeyForm() {
         justifyContent: "center",
         margin: "1rem 0"
       }}>
-        <IconKey size={'80px'}/>
+        <IconKey size={'60px'}/>
       </div>
       <label
           htmlFor="key-input-field"
