@@ -2,7 +2,7 @@ import Layout from '@components/layout'
 import Page from '@components/page'
 import TicketVisual from '@components/ticket-visual'
 import Header from '@components/header'
-import ActivateKeyForm from '@components/activate-key-from'
+import ActivateKeyForm from '@components/activate-key-form'
 import { AuthContext } from '@components/auth-context'
 import { useContext } from 'react'
 import LoadingDots from '@components/loading-dots'
@@ -28,7 +28,7 @@ export default function Conf() {
   return (
     <Page meta={meta} fullViewport>
       <Layout >
-      <Header hero={i18n.t('profile.title')} description=""/>
+      <Header hero={i18n.t('profile.title')} description="Your profile, info and details."/>
       <PageContainer >
         <TicketVisual
           name={session?.user?.name}

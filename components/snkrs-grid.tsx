@@ -3,6 +3,9 @@ import cn from 'classnames'
 import { Snkr } from '@lib/types'
 import styles from './snkrs-grid.module.css'
 import SnkrIcon from '@components/icons/icon-snkr'
+import SearchBar from './search-bar'
+import { ReactElement, useState } from 'react'
+import PageContainer from './page-container'
 
 function SnkrCard({ snkr }: { snkr: Snkr }) {
   return (
@@ -31,11 +34,32 @@ type Props = {
 }
 
 export default function SnkrsGrid({ snkrs }: Props) {
+  const [searchValue, setSearchValue] = useState('')
+  const fSearchValue = searchValue.toUpperCase().replace(/\s/g, '')
+
+  const filtredSNKRS:ReactElement[] = []
+
+  snkrs.map(snkr => {
+    const fSnkrName = snkr.name.toUpperCase().replace(/\s/g, '')
+    const fSnkrEdition = snkr.edition.toUpperCase().replace(/\s/g, '')
+    if(fSnkrName.search(fSearchValue) >= 0 || fSnkrEdition.search(fSearchValue) >= 0) {
+      filtredSNKRS.push(<SnkrCard key={snkr.name+snkr.edition} snkr={snkr} />)
+    }
+  })
+
   return (
     <>
-      <div className={styles.grid}>
-        {snkrs.map(snkr => <SnkrCard key={snkr.name} snkr={snkr} /> )}
-      </div>
+      <SearchBar value={searchValue} setValue={setSearchValue}/>
+        {filtredSNKRS.length > 1 ? (
+        <div className={styles.grid}>
+          {filtredSNKRS}
+        </div>
+        ) : (
+            <div className={styles.notFoundMessage}>
+            There are no SNKRS that match
+            <a style={{color:'var(--brand)'}}> "{searchValue}" </a>
+          </div>
+        )}
     </>
   )
 }

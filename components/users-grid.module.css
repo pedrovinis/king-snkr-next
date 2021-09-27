@@ -17,6 +17,11 @@
     linear-gradient(to right, var(--brand), var(--brand));
 }
 
+.notFoundMessage {
+  font-size: 1.3rem;
+  margin: auto;
+}
+
 .grid {
   width: 100%;
   margin: 50px auto;

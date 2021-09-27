@@ -4,8 +4,9 @@ import cn from 'classnames'
 import { User } from '@lib/types'
 import styles from './users-grid.module.css'
 import UserIcon from './icons/icon-user'
-import { useContext } from 'react'
+import { ReactElement, useContext, useState } from 'react'
 import { ConfigContext } from './config-context'
+import SearchBar from './search-bar'
 
 function UserCard({ user }: { user: User }) {
   const { config } = useContext(ConfigContext)
@@ -38,11 +39,32 @@ type Props = {
 }
 
 export default function usersGrid({ users }: Props) {
+  const [searchValue, setSearchValue] = useState('')
+  const fSearchValue = searchValue.toUpperCase().replace(/\s/g, '')
+
+  const filtredUSERS:ReactElement[] = []
+
+  users.map(user => {
+    const fSnkrName = user.name.toUpperCase().replace(/\s/g, '')
+    if(fSnkrName.search(fSearchValue) >= 0) {
+      filtredUSERS.push(<UserCard key={user.name} user={user} /> )
+    }
+  })
+
   return (
     <>
-      <div className={styles.grid}>
-        {users.map(user => <UserCard key={user.name} user={user} /> )}
+      <SearchBar value={searchValue} setValue={setSearchValue}/>
+      {filtredUSERS.length > 1 ? (
+        <div className={styles.grid}>
+          {filtredUSERS}
+        </div>
+      ) : (
+        <div className={styles.notFoundMessage}>
+          There are no users that match
+        <a style={{color:'var(--brand)'}}> "{searchValue}" </a>
       </div>
+      )}
+
     </>
   )
 }

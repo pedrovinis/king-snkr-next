@@ -8,6 +8,7 @@ import { User } from '@lib/types'
 import Link from 'next/link'
 import EmptyList from '@components/empty-list'
 import i18n from 'translate/i18n'
+import SearchBar from '@components/search-bar'
 
 type Props = {
   users: User[]
@@ -36,7 +37,9 @@ export default function UsersPage( {users}: Props) {
           <EmptyList list={'user'} buttonText={i18n.t('buttons.add_user')}/>
         )
         :(
+          <>
           <UsersGrid users={users} />
+          </>
         )}
       </Layout>
     </Page>

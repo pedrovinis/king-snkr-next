@@ -9,6 +9,7 @@ import { Snkr } from '@lib/types'
 import Link from 'next/link'
 import EmptyList from '@components/empty-list'
 import i18n from 'translate/i18n'
+import SearchBar from '@components/search-bar'
 
 type Props = {
   snkrs: Snkr[]

@@ -3,11 +3,15 @@ import { User } from "@lib/types"
 
 export const NikeLogin = async(user:User, IFCSHOPSESSID:string) => {
     const data = await fetchLogin(user['email'], user['password'], IFCSHOPSESSID)
+    console.log(data)
     const authCode = data.code
     await validateLoginAuthCode(authCode, IFCSHOPSESSID)
 }
 
 const fetchLogin = async (email:string, password:string, IFCSHOPSESSID:string) => {
+    console.log(email)
+    console.log(password)
+    console.log(IFCSHOPSESSID)
     const res = await fetch("https://unite.nike.com.br/partnerLogin?appVersion=905&experienceVersion=905&uxid=com.nike.commerce.nikedotcom.brazil.oauth.web&locale=pt_BR&backendEnvironment=identity&browser=Google%20Inc.&os=undefined&mobile=false&native=false&visit=1&visitor=", {
         "headers": {
             "accept": "*/*",
@@ -27,6 +31,8 @@ const fetchLogin = async (email:string, password:string, IFCSHOPSESSID:string) =
         "mode": "cors",
         "credentials": "include"
         })
+    console.log(res)
+
     const data = await res.json()
     return data
 }

@@ -11,6 +11,11 @@
 
 }
 
+.notFoundMessage {
+  font-size: 1.3rem;
+  margin: auto;
+}
+
 .card:hover,
 .card:focus {
   outline: none;

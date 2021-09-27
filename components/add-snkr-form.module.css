@@ -36,16 +36,16 @@
 }
 
 .input-label {
-  background-color: var(--gray);
+  background-color: var(--accents-8);
   border-radius: var(--space-2x);
-  border: 1px solid transparent;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  border: 1px solid var(--gray);
+  transition: border-color 0.2s ease;
   display: block;
   margin-bottom: 1rem;
 }
 
 .input-label.focused {
-  background-color: #33373c;
+  border: 1px solid var(--brand);
 }
 
 .input-label.error {
