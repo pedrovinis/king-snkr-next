@@ -69,7 +69,7 @@ function TaskRow({ task }: { task: Task }) {
       </Link>
     </td>
     <td>
-      <Link  href={`snkr/${task.snkr.slug}`}>
+      <Link  href={`sneaker/${task.snkr.slug}`}>
         <a className={styles.snkrLink}>
         <SnkrIcon snkrName={task.snkr.name} size={'90px'}/> 
         <span >{task.snkr.name} {task.snkr.edition}</span>

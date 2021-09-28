@@ -30,7 +30,7 @@ export default function ScheduleCard({ snkr, showTime }: Props) {
     <div key={snkr.name+snkr.edition+snkr.id} className={styles.talk}>
       {showTime && <p className={styles.time}>{isReleased? <>{releaseHour} - <span style={{color: 'var(--brand)'}}>Released</span>  </> :
       <>{releaseHour}</>}</p>}
-      <Link href={`snkr/${snkr.slug}`}>
+      <Link href={`sneaker/${snkr.slug}`}>
         <span
           className={cn(styles.card, {
             [styles['is-released']]: isReleased

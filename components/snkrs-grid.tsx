@@ -9,7 +9,7 @@ import PageContainer from './page-container'
 
 function SnkrCard({ snkr }: { snkr: Snkr }) {
   return (
-    <Link key={snkr.name} href={`/snkr/${snkr.slug}`}>
+    <Link key={snkr.name} href={`/sneaker/${snkr.slug}`}>
       <div
         role="button"
         tabIndex={0}

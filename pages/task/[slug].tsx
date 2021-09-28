@@ -25,7 +25,7 @@ export default function UserPage({ task }: Props) {
         ) : (
           <PageContainer>
           <h1> Task Not Found </h1>
-          <Link href="/users"><a>Clique aqui para ver suas Tasks.</a></Link>
+          <Link href="/users"><a>Click here to check your Tasks.</a></Link>
           </PageContainer>
         )}
       </Layout>

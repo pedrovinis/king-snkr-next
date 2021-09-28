@@ -36,7 +36,7 @@ function ModalDialog(props: Parameters<typeof useOverlay>[0] & Parameters<typeof
     },
     {
       name: i18n.t('nav_bar.snkrs'),
-      route: '/snkrs'
+      route: '/sneakers'
     },
     {
       name: i18n.t('nav_bar.schedule'),

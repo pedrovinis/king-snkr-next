@@ -28,7 +28,7 @@ export default function UserPage({ user }: Props) {
         ) : (
           <PageContainer>
           <h1> User Not Found </h1>
-          <Link href="/users"><a>Clique aqui para ver seus Users.</a></Link>
+          <Link href="/users"><a>Click here to check your Users.</a></Link>
           </PageContainer>
         )}
       </Layout>

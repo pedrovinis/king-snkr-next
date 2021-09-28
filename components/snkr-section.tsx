@@ -37,7 +37,7 @@ export default function SnkrSection({ snkr }: Props) {
   const handleDeleteSnkrRes = async(res:Response) => {
     const data = await res.json()
     if(data.success){
-      router.push('/snkrs')
+      router.push('/sneakers')
       toast.success(`"${snkr.name} ${snkr.edition}" successful deleted.` ,{})
     }
     else {
@@ -47,7 +47,7 @@ export default function SnkrSection({ snkr }: Props) {
 
   return (
     <>
-      <BackLink text={"Back to SNKRS"} href={'/snkrs'}/>
+      <BackLink text={"Back to SNKRS"} href={'/sneakers'}/>
       <div className={styles.main}>
       <div key={snkr.name} className={styles.container}>
         <div className={styles.imagesContainer}>

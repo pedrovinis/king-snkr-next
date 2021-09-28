@@ -69,7 +69,7 @@ const formatSchedule = (snkrs:Snkr[]) => {
     const formatedSchedule = Object.keys(snkrByDate).map( date => {
       return {
         name: date,
-        slug: '/snkrs',
+        slug: '/sneakers',
         schedule: snkrByDate[date]
       }
     })

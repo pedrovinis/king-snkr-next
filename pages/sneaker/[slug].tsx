@@ -14,7 +14,7 @@ type Props = {
 export default function SnkrPage({ snkr }: Props) {
   const meta = {
     title: `King Snkr | ${snkr? `${snkr.name} ${snkr.edition}`: 'SNKR Not Found'}`,
-    description: 'META_DESCRIPTION'
+    description: 'a'
   }
 
   return (
@@ -24,8 +24,8 @@ export default function SnkrPage({ snkr }: Props) {
           <SnkrSection snkr={snkr} />
         ) : (
           <PageContainer>
-            <h1> SNKR Not Found </h1>
-            <Link href="/snkrs"><a>Clique aqui para ver seus SNKRS.</a></Link>
+            <h1> SNEAKER Not Found </h1>
+            <Link href="/sneakers"><a>Click here to check your SNEAKERS.</a></Link>
           </PageContainer>
         )}
       </Layout>

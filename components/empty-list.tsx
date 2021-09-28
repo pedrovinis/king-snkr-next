@@ -3,8 +3,8 @@ import styles from './empty-list.module.css'
 import PageContainer from './page-container'
 
 type Props = {
-  list: 'task' | 'user' | 'snkr'
-  buttonText: string
+  list: 'task' | 'user' | 'sneaker'
+  buttonText?: string
 }
 
 export default function EmptyList({list, buttonText}:Props) {
