@@ -35,7 +35,7 @@ export default function SneakersPage( {snkrs}: Props) {
           </button>
         </Link>
         {isEmpty ?(
-          <EmptyList list={'snkr'} buttonText={i18n.t('buttons.add_snkr')}/>
+          <EmptyList list={'sneaker'} buttonText={i18n.t('buttons.add_snkr')}/>
         ): (
           <SnkrsGrid snkrs={snkrs} />
         )}

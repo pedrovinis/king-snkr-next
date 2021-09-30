@@ -59,7 +59,7 @@ export default function SnkrSection({ snkr }: Props) {
             <h1 className={styles.name}>{snkr.name}</h1>
             <a className={styles.edition}>{snkr.edition}</a>
             <p className={styles.title} >
-              {snkr.plataform_id}
+              {snkr.SKU}
             </p>
             <h2 className={styles['bio-header']}>Sale Price</h2>
             <p className={styles.title}>R$ {snkr.sale_price}</p>

@@ -24,7 +24,7 @@ export const UserProductsProvider = ({ children }:any) => {
         (async () => {
             if(!auth.loading) {
                 if(auth.session){
-                    const res = await fetch(`/api/user/products`)
+                    const res = await fetch(`/api/profile/products`)
                     const data = await res.json()
                     setProducts(data.products? data?.products : {})
                 }

@@ -45,11 +45,11 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         snkrData['edition'] = fSnkrData.edition
         snkrData['image'] = fSnkrData.image
         snkrData['id'] = fSnkrData.id
-        snkrData['plataform_id'] = fSnkrData.nike_id
+        snkrData['SKU'] = fSnkrData.nike_id
         snkrData['sale_price'] = fSnkrData.sale_price
         snkrData['release'] = fSnkrData.release
         snkrData['sizes'] = formatSizes(fSnkrData.sizes)
-        snkrData['kingsnkr_id'] = `${snkrData.plataform} - ${snkrData.plataform_id}`
+        snkrData['kingsnkr_id'] = `${snkrData.plataform} - ${snkrData.SKU}`
         snkrData['slug'] = snkrData['kingsnkr_id']
 
         saveConfigsJSON(`bin/snkrs/${snkrData.kingsnkr_id}`, snkrData)

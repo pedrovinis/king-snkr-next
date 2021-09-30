@@ -71,9 +71,11 @@ export const TaskProvider = ({ children }:any) => {
 
         if(getProgress(task) <= 3) {
             setProgress(task, 3)
-            let dropTime = (task.snkr.release * 1000) - Date.now()
+            //@ts-ignore
+            let dropTime = task.snkr.release - parseInt(Date.now() / 1000)
             while(isActive(task) && dropTime > 0) {
-                dropTime --
+                //@ts-ignore
+                dropTime = task.snkr.release - parseInt(Date.now() / 1000)
                 console.log(dropTime)
                 await new Promise(r => setTimeout(r, 1000))
             }
@@ -81,7 +83,6 @@ export const TaskProvider = ({ children }:any) => {
             if(!isActive(task)) { setRunning(task, false); return }
             setProgress(task, 4)
         }
-
 
         if(getProgress(task) <= 4) {
             const add_cart = await nike_add_cart(payload['add_cart'], task)
@@ -124,7 +125,6 @@ export const TaskProvider = ({ children }:any) => {
             toast.success(`"${task.name}" completed.`)
             setActive(task, false)
         }
-
     }
 
     const stopTask = async(task:Task) => {

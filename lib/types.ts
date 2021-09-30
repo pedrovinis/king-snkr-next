@@ -86,7 +86,7 @@ export type Size = {
 export type Snkr = {
   plataform: string
   id: string
-  plataform_id: string
+  SKU: string
   slug: string
   name: string
   image: string

@@ -54,7 +54,7 @@
 .actionsContainer {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-self: center;
 }
 

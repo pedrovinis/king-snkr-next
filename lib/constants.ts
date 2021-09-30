@@ -8,6 +8,10 @@ export const LOCAL_LINK =  'http://localhost:3000'
 
 export const SITE_DESCRIPTION = i18n.t('index.the_best_experience')
 
+const PLATAFORMS = [
+  'NIKE'
+]
+
 export const TASK_PROGRESS = [
   `Desactived`,
   'Waiting',

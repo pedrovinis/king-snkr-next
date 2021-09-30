@@ -2,31 +2,30 @@ import { User } from "@lib/types"
 
 
 export const NikeLogin = async(user:User, IFCSHOPSESSID:string) => {
-    const data = await fetchLogin(user['email'], user['password'], IFCSHOPSESSID)
+    const data = await fetchLogin(user['email'], user['password'])
     const authCode = data.code
     await validateLoginAuthCode(authCode, IFCSHOPSESSID)
 }
 
-const fetchLogin = async (email:string, password:string, IFCSHOPSESSID:string) => {
-    const res = await fetch("https://unite.nike.com.br/partnerLogin?appVersion=905&experienceVersion=905&uxid=com.nike.commerce.nikedotcom.brazil.oauth.web&locale=pt_BR&backendEnvironment=identity&browser=Google%20Inc.&os=undefined&mobile=false&native=false&visit=1&visitor=", {
+const fetchLogin = async (email:string, password:string) => {
+    const res = await fetch("https://unite.nike.com/login?appVersion=907&experienceVersion=907&uxid=com.nike.commerce.nikedotcom.brazil.oauth.web&locale=pt_BR&backendEnvironment=identity&browser=Google%20Inc.&os=undefined&mobile=false&native=false&visit=3&visitor=3e4a0125-c404-4558-9e88-9abf13aea66f", {
         "headers": {
-            "accept": "*/*",
-            "accept-language": "en-US,en;q=0.9",
-            "content-type": "application/json",
-            "cookie": `IFCSHOPSESSID=${IFCSHOPSESSID}`,
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "same-origin",
-            "sec-gpc": "1",
-            "x-sec-clge-req-type": "ajax"
+          "accept": "*/*",
+          "accept-language": "en-US,en;q=0.9",
+          "content-type": "application/json",
+          "sec-fetch-dest": "empty",
+          "sec-fetch-mode": "cors",
+          "sec-fetch-site": "same-origin",
+          "sec-gpc": "1",
+          "x-sec-clge-req-type": "ajax"
         },
-        "referrer": `https://unite.nike.com.br/oauth.html?client_id=QLegGiUU042XMAUWE4qWL3fPUIrpQTnq&redirect_uri=https%3A%2F%2Fwww.nike.com.br%2Fapi%2Fv2%2Fauth%2Fnike-unite%2Fset&response_type=code&locale=pt_BR&state=%2F`,
+        "referrer": "https://unite.nike.com/oauth.html?client_id=QLegGiUU042XMAUWE4qWL3fPUIrpQTnq&redirect_uri=https%3A%2F%2Fwww.nike.com.br%2Fapi%2Fv2%2Fauth%2Fnike-unite%2Fset&response_type=code&locale=pt_BR&state=%2F",
         "referrerPolicy": "strict-origin-when-cross-origin",
-        "body": `{\"username\":\"${email}\",\"password\":\"${password}\",\"client_id\":\"QLegGiUU042XMAUWE4qWL3fPUIrpQTnq\",\"state\":{}}`,
+        "body": `{\"username\":\"${email}\",\"password\":\"${password}\",\"client_id\":\"QLegGiUU042XMAUWE4qWL3fPUIrpQTnq\",\"ux_id\":\"com.nike.commerce.nikedotcom.brazil.oauth.web\",\"grant_type\":\"password\"}`,
         "method": "POST",
         "mode": "cors",
         "credentials": "include"
-        })
+      })
     const data = await res.json()
     return data
 }
