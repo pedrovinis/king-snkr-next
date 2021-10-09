@@ -7,9 +7,8 @@ export default function LogoutButton() {
   const [loading, setLoading] = useState(false)
   return (
     <button
-      id="#logout-button"
+      id="buttonRed"
       style={{margin:'1rem auto', width:'200px', display:'flex',}}
-      className="buttonRed"
       disabled={loading}
       onClick={()=>{
         handleLogoutWindow()

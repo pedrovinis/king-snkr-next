@@ -1,6 +1,6 @@
 import { User } from '@lib/types'
 import styles from './user-section.module.css'
-import IconUser from './icons/icon-user'
+import IconUser from './icons/user-icon'
 import { useContext, useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteUserFetch } from '@lib/user-api'
@@ -59,7 +59,7 @@ export default function UserSection({ user }: Props) {
         </div>
 
         <button
-      className='buttonRed'
+        id='buttonRed'
         onClick={async()=> {
           setDeleteButtonState('loading')
           const res:any = await deleteUserFetch(user)

@@ -2,12 +2,12 @@ import { useState } from 'react'
 import cn from 'classnames'
 import LoadingDots from './loading-dots'
 import styles from './add-user-form.module.css'
-import IconUser from './icons/icon-user'
+import IconUser from './icons/user-icon'
 import { addUserFetch } from '@lib/user-api'
 import router from 'next/router'
 import { toast } from 'react-toastify'
 import { PhoneNumberFormat } from '@lib/form-format'
-import XIcon from './icons/icon-x'
+import XIcon from './icons/x-icon'
 import i18n from 'translate/i18n'
 
 type FormState = 'default' | 'loading' | 'error'
@@ -52,19 +52,10 @@ export default function AddUserForm() {
       }}>
         <IconUser size="125px"/> 
       </div>
-      
-      <label
-          htmlFor="name-input-field"
-          className={cn(styles['input-label'], {
-            [styles.focused]: nameFocused
-          })}
-        >
           <input
             spellCheck={false}
             minLength={1}
             maxLength={25}
-            style={{width:'96%'}}
-            className={styles.input}
             disabled={formState === 'loading' }
             autoComplete="off"
             type="name"
@@ -77,19 +68,9 @@ export default function AddUserForm() {
             aria-label="Enter a username"
             required
           />
-        </label>
-
-        <label
-          htmlFor="email-input-field"
-          className={cn(styles['input-label'], {
-            [styles.focused]: emailFocused
-          })}
-        >
           <input
             spellCheck={false}
             maxLength={256}
-            style={{width:'96%'}}
-            className={styles.input}
             disabled={formState === 'loading' }
             autoComplete="off"
             type="email"
@@ -102,7 +83,6 @@ export default function AddUserForm() {
             aria-label="Your Nike email address"
             required
           />
-        </label>
         <label
           htmlFor="phone-input-field"
           className={cn(styles['input-label'], {
@@ -132,18 +112,10 @@ export default function AddUserForm() {
           <XIcon />
         </span>
         </label>
-        <label
-          htmlFor="email-input-field"
-          className={cn(styles['input-label'], {
-            [styles.focused]: passwordFocused,
-          })}
-        >
         <input
             minLength={5}
             maxLength={256}
-            style={{width:'96%'}}
             disabled={formState === 'loading' }
-            className={styles.input}
             autoComplete="off"
             type="password"
             id="password-input-field"
@@ -155,10 +127,9 @@ export default function AddUserForm() {
             aria-label="Your password"
             required
         />
-        </label>
         <button
           type="submit"
-          className={cn("button", styles[formState])}
+          className={styles[formState]}
           disabled={formState === 'loading' }
         >
           {formState === 'loading' ? <LoadingDots size={5} /> : <>{i18n.t('buttons.add')}</>}

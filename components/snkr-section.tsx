@@ -1,12 +1,12 @@
 import { Snkr } from '@lib/types'
 import styles from './snkr-section.module.css'
-import IconSnkr from './icons/icon-snkr'
+import IconSnkr from './icons/snkr-icon'
 import { useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteSnkrFetch } from '@lib/snkr-api'
 import router from 'next/router'
 import BackLink from './backLink'
-import CopyButton from './copy-button'
+import CopyButton from './common/copy-button'
 import { toast } from 'react-toastify'
 import IconInfo from './icons/info-icon'
 
@@ -47,7 +47,7 @@ export default function SnkrSection({ snkr }: Props) {
 
   return (
     <>
-      <BackLink text={"Back to SNKRS"} href={'/sneakers'}/>
+      <BackLink text={"Back to SNEAKERS"} href={'/sneakers'}/>
       <div className={styles.main}>
       <div key={snkr.name} className={styles.container}>
         <div className={styles.imagesContainer}>
@@ -92,7 +92,7 @@ export default function SnkrSection({ snkr }: Props) {
           <p>This SNKR info can be found on path: 'bin/snkrs'. Do not try to change snkr using file explorer, it can broke application.</p>
       </div>
       <button
-      className='buttonRed'
+      id='buttonRed'
         onClick={async()=> {
           setDeleteButtonState('loading')
           const res = await deleteSnkrFetch(snkr)

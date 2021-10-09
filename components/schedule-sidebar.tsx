@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Stage } from '@lib/types'
 import styles from './schedule-sidebar.module.css'
-import Select from './select'
 import ScheduleCard from './schedule-card'
 
 
@@ -23,7 +22,7 @@ export default function ScheduleSidebar({ allStages }: Props) {
     <div className={styles.schedule}>
       <h3 className={styles.header}>Filter</h3>
       <p>By Date</p>
-      <Select
+      <select
         aria-label="Select a stage"
         value={currentStageSlug}
         onChange={e => {
@@ -36,7 +35,7 @@ export default function ScheduleSidebar({ allStages }: Props) {
             {stage.name}
           </option>
         ))}
-      </Select>
+      </select>
       <div className={styles.talks}>
         {currentStage?.schedule.map(snkr => (
           <ScheduleCard key={snkr.name} snkr={snkr} showTime />

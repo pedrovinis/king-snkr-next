@@ -1,0 +1,15 @@
+.icon {
+  display: flex;
+  width: 1.5rem;
+  height: auto;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .isClosed {
+      display: none;
+  }
+}

@@ -31,7 +31,7 @@ export default function Form({ sharePage }: Props) {
     >
       <div className={styles['form-row']}>
         <div className={cn(styles['input-label'], styles.error)}>
-          <div className={cn(styles.input, styles['input-text'])}>{errorMsg}</div>
+          <div className={styles['input-text']}>{errorMsg}</div>
           <button
             type="button"
             className={cn(styles.submit, styles.register, styles.error)}
@@ -56,15 +56,7 @@ export default function Form({ sharePage }: Props) {
         
     >
       <div className={styles['form-row']}>
-        <label
-          htmlFor="email-input-field"
-          className={cn(styles['input-label'], {
-            [styles.focused]: emailFocused
-          })}
-        >
           <input
-            style={{width:'96%'}}
-            className={styles.input}
             autoComplete="off"
             type="email"
             id="email-input-field"
@@ -76,16 +68,7 @@ export default function Form({ sharePage }: Props) {
             aria-label="Your email address"
             required
           />
-        </label>
-        <label
-          htmlFor="email-input-field"
-          className={cn(styles['input-label'], {
-            [styles.focused]: passwordFocused
-          })}
-        >
         <input
-            style={{width:'96%'}}
-            className={styles.input}
             autoComplete="off"
             type="password"
             id="password-input-field"
@@ -97,10 +80,8 @@ export default function Form({ sharePage }: Props) {
             aria-label="Your password"
             required
         />
-        </label>
         <button
           type="submit"
-          className={cn(styles.submit, styles[formState])}
           disabled={formState === 'loading'}
         >
           {formState === 'loading' ? <LoadingDots size={5} /> : <>Login</>}

@@ -7,8 +7,6 @@ export default function LoginButton() {
   const [loading, setLoading] = useState(false)
   return (
     <button
-      id="#auth-button"
-      style={{margin:'1rem auto', width:'50%', display:'flex',}}
       className="button"
       disabled={loading}
       onClick={()=>{

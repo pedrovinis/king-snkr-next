@@ -1,5 +1,17 @@
+.container  {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 12.5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid var(--accents-7);
+  background-color: var(--accents-8);
+}
+
 .hero {
-  font-size: 28px;
+  font-size: 3rem;
   line-height: 1;
   letter-spacing: -0.05em;
   font-weight: 800;
@@ -9,18 +21,13 @@
 .description {
   font-size: var(--text-md);
   line-height: 1.4;
-  color: var(--secondary-color);
+  color: var(--accents-4);
   margin-top: 0;
-  margin-left: 24px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .hero {
-    font-size: 40px;
-    margin: var(--space-16x) var(--space-8x) var(--space-4x);
+    font-size: 2rem;
   }
 
-  .description {
-    margin-left: var(--space-8x);
-  }
 }

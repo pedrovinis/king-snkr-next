@@ -33,17 +33,9 @@ export default function AddUserForm() {
       }}>
         <img src={'/snkr-icon.svg'} width={300} />
       </div>
-      
-      <label
-          htmlFor="link-input-field"
-          className={cn(styles['input-label'], {
-            [styles.focused]: linkFocused
-          })}
-        >
           <input
             spellCheck={false}
             style={{width:'96%'}}
-            className={styles.input}
             disabled={formState === 'loading' }
             autoComplete="off"
             type="link"
@@ -56,7 +48,6 @@ export default function AddUserForm() {
             aria-label="Enter a SNKR link"
             required
           />
-        </label>
         <button
           type="submit"
           className={cn("button", styles[formState])}

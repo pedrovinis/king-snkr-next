@@ -4,7 +4,7 @@ export type Config = {
   lang: string
 }
 
-export type Image = {
+export type image = {
   url: string
 }
 
@@ -29,7 +29,7 @@ export type Event = {
   title: string
   slug: string
   talk: Talk
-  image: Image
+  image: image
 }
 
 export type Stage = {
@@ -45,24 +45,11 @@ export type Talk = {
   end: string
 }
 
-export type Link = {
-  url: string
+export type link = {
+  name: string
+  route: string
 }
 
-export type Sponsor = {
-  name: string
-  description: string
-  slug: string;
-  website: string
-  callToAction: string
-  callToActionLink: string
-  links: SponsorLink[]
-  discord: string
-  tier: string
-  cardImage: Image
-  logo: Image
-  youtubeSlug: string
-}
 
 export type User = {
   kingsnkr_id: string
@@ -98,10 +85,6 @@ export type Snkr = {
   kingsnkr_id: string
 }
 
-export type SponsorLink = {
-  text: string
-  url: string
-}
 
 export type Service = {
   id: string

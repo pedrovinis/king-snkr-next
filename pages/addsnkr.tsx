@@ -1,5 +1,4 @@
-import Page from '@components/page'
-import Layout from '@components/layout'
+import Page from '@components/page/page'
 import AddSnkrForm from '@components/add-snkr-form'
 import Header from '@components/header'
 
@@ -12,10 +11,8 @@ export default function Conf() {
 
   return (
     <Page meta={meta} fullViewport>
-      <Layout>
         <Header hero="Add SNEAKER" description={meta.description}/>
         <AddSnkrForm />
-      </Layout>
     </Page>
   )
 }

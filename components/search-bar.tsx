@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { useState } from 'react'
-import SearchIcon from './icons/icon-search'
-import XIcon from './icons/icon-x'
+import SearchIcon from './icons/search-icon'
+import XIcon from './icons/x-icon'
 import styles from './search-bar.module.css'
 
 type Props = {

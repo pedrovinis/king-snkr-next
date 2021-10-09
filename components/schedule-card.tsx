@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Snkr } from '@lib/types'
 import styles from './schedule-card.module.css'
-import SnkrIcon from './icons/icon-snkr'
+import SnkrIcon from './icons/snkr-icon'
 
 type Props = {
   key: string

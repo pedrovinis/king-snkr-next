@@ -6,7 +6,7 @@ import styles from './activate-key-form.module.css'
 
 import router from 'next/router'
 import { toast } from 'react-toastify'
-import IconKey from './icons/icon-key'
+import IconKey from './icons/key-icon'
 import { activateFetch } from '@lib/kingsnkr-api'
 import i18n from 'translate/i18n'
 
@@ -44,18 +44,11 @@ export default function ActivateKeyForm() {
       }}>
         <IconKey size={'60px'}/>
       </div>
-      <label
-          htmlFor="key-input-field"
-          className={cn(styles['input-label'], {
-            [styles.focused]: keyFocused
-          })}
-        >
           <input
             spellCheck={false}
             maxLength={17}
             minLength={17}
             style={{width:'96%'}}
-            className={styles.input}
             disabled={formState === 'loading' }
             autoComplete="off"
             type="text"
@@ -68,7 +61,6 @@ export default function ActivateKeyForm() {
             aria-label="Active Keycode"
             required
           />
-        </label>
         <button
           type="submit"
           className={cn("button", styles[formState])}

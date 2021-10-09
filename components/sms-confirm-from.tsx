@@ -4,10 +4,10 @@ import LoadingDots from './loading-dots'
 import styles from './sms-confirm-form.module.css'
 import { Task } from '@lib/types'
 import { PhoneNumberFormat } from '@lib/form-format'
-import SMSIcon from './icons/icon-sms'
+import SMSIcon from './icons/sms-icon'
 import { TaskContext } from './task-context'
 import { ConfigContext } from './config-context'
-import XIcon from './icons/icon-x'
+import XIcon from './icons/x-icon'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -39,13 +39,9 @@ export default function SmsConfirmForm({task}: {task:Task}) {
           <p>{task.name} </p>
           <p
           className={config.hideContent ? "hide" : ''}
-          >{PhoneNumberFormat(task.user.phone)}</p>
-      <label
-          htmlFor="link-input-field"
-          className={cn(styles['input-label'], {
-            [styles.focused]: inputFocused
-          })}
-        >
+          >
+            {PhoneNumberFormat(task.user.phone)}
+          </p>
           <input
             minLength={6}
             maxLength={6}
@@ -63,7 +59,6 @@ export default function SmsConfirmForm({task}: {task:Task}) {
             aria-label="Enter SMS Code"
             required
           />
-        </label>
         <button
           type="submit"
           className={cn("button", styles[formState])}

@@ -1,5 +1,4 @@
-import Layout from '@components/layout'
-import Page from '@components/page'
+import Page from '@components/page/page'
 import TicketVisual from '@components/ticket-visual'
 import Header from '@components/header'
 import ActivateKeyForm from '@components/activate-key-form'
@@ -9,7 +8,6 @@ import LoadingDots from '@components/loading-dots'
 import { UserProductsContext } from '@components/user-products-context'
 import { isActive } from '@lib/isActive'
 import LoginButton from '@components/login-button'
-import PageContainer from '@components/page-container'
 import LogoutButton from '@components/logout-button'
 import i18n from 'translate/i18n'
 
@@ -27,9 +25,7 @@ export default function Conf() {
 
   return (
     <Page meta={meta} fullViewport>
-      <Layout >
       <Header hero={i18n.t('profile.title')} description="Your profile, info and details."/>
-      <PageContainer >
         <TicketVisual
           name={session?.user?.name}
           email={session?.user?.email}
@@ -63,9 +59,6 @@ export default function Conf() {
           )}
           </>
         )}
-        
-        </PageContainer>
-      </Layout>
     </Page>
   )
 }

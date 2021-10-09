@@ -6,7 +6,7 @@
   font-size: 14px;
   min-height: 1px;
   height: 40vh;
-  max-height: calc(var(--100vh) - var(--header-height) - 400px);
+  max-height: calc(var(--100vh) - var(--navbar-height) - 400px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   --talk-card-width: 100%;

@@ -1,5 +1,4 @@
-import Page from '@components/page'
-import Layout from '@components/layout'
+import Page from '@components/page/page'
 import AddUserForm from '@components/add-user-form'
 import Header from '@components/header'
 
@@ -11,10 +10,8 @@ export default function Conf() {
 
   return (
     <Page meta={meta} fullViewport>
-      <Layout>
         <Header hero="Add User" description={meta.description}/>
         <AddUserForm />
-      </Layout>
     </Page>
-  );
+  )
 }

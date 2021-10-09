@@ -6,7 +6,7 @@ import { deleteTaskFetch } from '@lib/task-api'
 import router from 'next/router'
 import BackLink from './backLink'
 import { toast } from 'react-toastify'
-import TaskIcon from './icons/icon-task'
+import TaskIcon from './icons/task-icon'
 import UserCard from './user-card'
 import SnkrCard from './snkr-card'
 import StepProgress from './step-progress'
@@ -94,7 +94,7 @@ export default function TaskSection({ task }: Props) {
           <p>This user info can be found on path: 'bin/tasks'. Do not try to change user using file explorer, it can broke application.</p>
         </div>
         <button
-          className='buttonRed'
+          id='buttonRed'
             onClick={async()=> {
               setDeleteButtonState('loading')
               const res:any = await deleteTaskFetch(task)

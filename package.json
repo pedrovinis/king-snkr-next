@@ -24,8 +24,7 @@
     "next": "10.0.3",
     "random-token": "0.0.8",
     "react": "17.0.1",
-    "react-aria": "3.2.0",
-    "react-dom": "17.0.1",
+    "react-dom": "^17.0.2",
     "react-toastify": "^7.0.4",
     "smoothscroll-polyfill": "0.4.4",
     "vanilla-tilt": "1.7.0"

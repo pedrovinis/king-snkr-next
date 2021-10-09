@@ -1,10 +1,8 @@
 import { CONFIG_OPTIONS } from '@lib/constants'
-import PageContainer from './page-container'
 import { useContext, useEffect, useState } from 'react'
 import LoadingDots from './loading-dots'
 import ChangeWidget from './change-widget'
 import styles from './config-form.module.css'
-import Select from './select'
 import { ConfigContext } from './config-context'
 import { setConfigFetch } from '@lib/config-api'
 import { toast } from 'react-toastify'
@@ -39,7 +37,7 @@ export default function ConfigForm(){
   },[config])
 
   return (
-      <PageContainer>
+      <>
         {loading ? (
           <LoadingDots size={15} />
         ) : (
@@ -54,7 +52,7 @@ export default function ConfigForm(){
           <h2 className={styles.text}>
             {i18n.t('config.locale')}
           </h2>
-          <Select
+          <select
           onChange={e =>{
             const localeValue = e.target.value
             setLocale(localeValue)
@@ -66,13 +64,13 @@ export default function ConfigForm(){
               </option>
               )
             })}
-          </Select>
+          </select>
         </div>
         <div className={styles.container}>
           <h2 className={styles.text}>
             {i18n.t('config.language')}
           </h2>
-          <Select
+          <select
           onChange={e => {
             const langValue = e.target.value
             setLanguage(langValue)
@@ -83,7 +81,7 @@ export default function ConfigForm(){
               </option>
               )
             })}
-          </Select>
+          </select>
         </div>
         <button 
           className="button"
@@ -104,7 +102,6 @@ export default function ConfigForm(){
         </button>
         </>
         )}
-        
-      </PageContainer>
+      </>
     )
 }

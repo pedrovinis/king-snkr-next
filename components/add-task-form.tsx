@@ -4,9 +4,8 @@ import LoadingDots from './loading-dots'
 import styles from './add-task-form.module.css'
 import router from 'next/router'
 import { toast } from 'react-toastify'
-import Select from './select'
 import { Snkr, User } from '@lib/types'
-import TaskIcon from './icons/icon-task'
+import TaskIcon from './icons/task-icon'
 import SnkrCard from '@components/snkr-card'
 import UserCard from './user-card'
 import { addTaskFetch } from '@lib/task-api'
@@ -61,17 +60,10 @@ export default function AddTaskForm({users, snkrs}: Props) {
       }}>
         <TaskIcon size={'100px'}/>
       </div>
-      <label
-          htmlFor="name-input-field"
-          className={cn(styles['input-label'], {
-            [styles.focused]: nameFocused
-          })}
-        >
           <input
             spellCheck={false}
             minLength={1}
             maxLength={25}
-            className={styles.input}
             disabled={formState === 'loading' }
             autoComplete="off"
             type="task"
@@ -84,16 +76,15 @@ export default function AddTaskForm({users, snkrs}: Props) {
             aria-label="Enter a task name"
             required
           />
-        </label>
         <div className={styles.selects}>
         <div className={styles.select}>
-        <Select
+        <select
             disabled={formState === 'loading' }
             aria-label="Select a User"
             value={userSelected}
             required
             onChange={e => {
-            const user = e.target.value;
+            const user = e.target.value
             setUserSelected(user)
         }}>
             <option value="" disabled selected>Select a USER</option>
@@ -104,7 +95,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
                    </option>
                )
             })}
-        </Select>
+        </select>
         {users.map( user => {
             if(userSelected == user.name) {
                 return <UserCard user={user}/>
@@ -112,7 +103,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
         })}
         </div>
         <div className={styles.select}>
-        <Select
+        <select
             disabled={formState === 'loading' }
             placeholder={'Select a Snkr'}
             aria-label="Select a Snkr"
@@ -130,7 +121,7 @@ export default function AddTaskForm({users, snkrs}: Props) {
                     </option>
                 )
             })}
-        </Select>
+        </select>
         {snkrs.map( snkr => {
             if(snkrSelected == snkr.id) {
               return <SnkrCard snkr={snkr} setSize={setSizeSelected} formState={formState}/>

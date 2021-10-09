@@ -1,6 +1,6 @@
-import IconLogo from './icons/icon-logo'
+import IconLogo from './icons/logo-icon'
 import styles from './logo.module.css'
-import PxvLogo from '@components/icons/icon-platform'
+import PxvLogo from '@components/icons/plataform-icon'
 
 export default function Logo() {
   return (

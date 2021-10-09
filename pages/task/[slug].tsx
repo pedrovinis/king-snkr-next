@@ -1,10 +1,8 @@
 import fs from 'fs'
-import Page from '@components/page'
-import Layout from '@components/layout'
+import Page from '@components/page/page'
 import { Task } from '@lib/types'
 import TaskSection from '@components/task-section'
 import { GetServerSideProps } from 'next'
-import PageContainer from '@components/page-container'
 import Link from 'next/link'
 
 type Props = {
@@ -19,16 +17,14 @@ export default function UserPage({ task }: Props) {
 
   return (
     <Page meta={meta}>
-      <Layout>
         { task ? (
           <TaskSection task={task} />
         ) : (
-          <PageContainer>
+          <>
           <h1> Task Not Found </h1>
           <Link href="/users"><a>Click here to check your Tasks.</a></Link>
-          </PageContainer>
+          </>
         )}
-      </Layout>
     </Page>
   )
 }

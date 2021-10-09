@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import styles from './profile.module.css'
-import UserIcon from "./icons/icon-user"
+import UserIcon from "./icons/user-icon"
 import LogoutButton from "./logout-button"
 import { useContext } from 'react'
 import { ConfigContext } from './config-context'

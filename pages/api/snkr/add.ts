@@ -25,7 +25,7 @@ export default async (req : NextApiRequest, res: NextApiResponse) => {
         edition: '',
         image: '',
         id: '',
-        plataform_id: '',
+        SKU: '',
         slug: '',
         link: '',
         sizes: [],

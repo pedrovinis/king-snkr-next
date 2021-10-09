@@ -4,8 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Snkr } from '@lib/types'
 import styles from './snkr-card.module.css'
-import SnkrIcon from './icons/icon-snkr'
-import Select from './select'
+import SnkrIcon from './icons/snkr-icon'
 
 type FormState = 'default' | 'loading' | 'error'
 
@@ -63,7 +62,7 @@ export default function SnkrCard({ snkr, setSize, formState, sizeDefault, sizeSe
             </div>
           <p className={styles.time}>{isReleased? <>Released</> : <>{start}</>}</p>
           </div>
-          <Select
+          <select
             disabled={formState === 'loading'}
             required
             onChange={e => {
@@ -78,7 +77,7 @@ export default function SnkrCard({ snkr, setSize, formState, sizeDefault, sizeSe
                 </option>
               )
             })}
-          </Select>
+          </select>
         </span>
     </div>
   )

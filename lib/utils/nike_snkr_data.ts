@@ -27,6 +27,7 @@ export const getAndFormatSnkrData = async(link:string) => {
         "credentials": "include"
     })
     const data = await res.text()
+
     
     const DataLayer:iDataLayer = await getAndFormatSnkrDataLayer(link)
     const sizesInfo:object = await getSizesInfo(data)

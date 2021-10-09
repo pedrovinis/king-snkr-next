@@ -1,13 +1,12 @@
 import fs from 'fs'
-import Page from '@components/page'
+import Page from '@components/page/page'
 import SnkrsGrid from '@components/snkrs-grid'
 import Header from '@components/header'
-import Layout from '@components/layout'
 
 import { GetServerSideProps } from 'next'
 import { Snkr } from '@lib/types'
 import Link from 'next/link'
-import EmptyList from '@components/empty-list'
+import EmptyList from '@components/common/empty-list'
 import i18n from 'translate/i18n'
 import SearchBar from '@components/search-bar'
 
@@ -25,7 +24,6 @@ export default function SneakersPage( {snkrs}: Props) {
 
   return (
     <Page meta={meta}>
-      <Layout>
         <Header hero="SNEAKERS" description={meta.description} />
         <Link href={'/addsnkr'}>
           <button
@@ -39,7 +37,6 @@ export default function SneakersPage( {snkrs}: Props) {
         ): (
           <SnkrsGrid snkrs={snkrs} />
         )}
-      </Layout>
     </Page>
   )
 }

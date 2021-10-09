@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { useContext, useState } from 'react'
 import { User } from '@lib/types'
 import styles from './user-card.module.css'
-import UserIcon from './icons/icon-user'
+import UserIcon from './icons/user-icon'
 import { PhoneNumberFormat } from '@lib/form-format'
 import { ConfigContext } from './config-context'
 

@@ -1,6 +1,5 @@
 import fs from 'fs'
-import Page from '@components/page'
-import Layout from '@components/layout'
+import Page from '@components/page/page'
 import AddTaskForm from '@components/add-task-form'
 import Header from '@components/header'
 import { User, Snkr } from '@lib/types'
@@ -19,10 +18,8 @@ export default function AddTask({users, snkrs}:Props) {
 
   return (
     <Page meta={meta} fullViewport>
-      <Layout>
         <Header hero="Add Task" description={meta.description}/>
         <AddTaskForm users={users} snkrs={snkrs}/>
-      </Layout>
     </Page>
   )
 }

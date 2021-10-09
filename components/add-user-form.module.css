@@ -11,19 +11,6 @@
   }
 }
 
-.input {
-  border: none;
-  width: 96%;
-  background: transparent;
-  outline: none;
-  height: 56px;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: var(--text-md);
-  color: #fff;
-  font-family: inherit;
-}
-
 .phoneInput {
   border: none;
   background: transparent;
@@ -34,45 +21,6 @@
   font-size: var(--text-md);
   color: #fff;
   font-family: inherit;
-}
-
-@media (min-width: 768px) {
-  .input {
-    width: calc(100% - var(--space-32x));
-    padding-right: 0;
-  }
-}
-
-.input::placeholder {
-  color: var(--secondary-color);
-}
-
-.input-label {
-  background-color: var(--accents-8);
-  border-radius: var(--space-2x);
-  border: 1px solid var(--gray);
-  transition: border-color 0.2s ease;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.input-label.focused {
-  border: 1px solid var(--brand);
-}
-
-.input-label.error {
-  background: red;
-}
-
-.input-label.success {
-  background: #0070f3;
-}
-
-.input-text {
-  display: flex;
-  align-items: center;
-  width: 100%;
 }
 
 .form-row {
@@ -105,12 +53,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.submit.generate-with-github {
-  display: flex;
-  margin-bottom: 12px;
-  position: relative;
 }
 
 .buttonClear {

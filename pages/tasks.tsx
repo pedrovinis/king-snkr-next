@@ -1,12 +1,11 @@
 import fs from 'fs'
-import Page from '@components/page'
+import Page from '@components/page/page'
 import TasksGrid from '@components/tasks-grid'
 import Header from '@components/header'
-import Layout from '@components/layout'
 import { GetServerSideProps } from 'next'
 import { Task } from '@lib/types'
 import Link from 'next/link'
-import EmptyList from '@components/empty-list'
+import EmptyList from '@components/common/empty-list'
 import i18n from 'translate/i18n'
 
 type Props = {
@@ -23,7 +22,6 @@ export default function SnkrsPage( {tasks}: Props) {
 
   return (
     <Page meta={meta}>
-      <Layout>
         <Header hero="Tasks" description={meta.description} />
         <Link href={'/addtask'}>
           <button
@@ -37,7 +35,6 @@ export default function SnkrsPage( {tasks}: Props) {
         ): (
           <TasksGrid tasks={tasks} />
         )}
-      </Layout>
     </Page>
   )
 }

@@ -1,14 +1,10 @@
 import fs from 'fs'
 
-import Page from '@components/page'
-import Layout from '@components/layout'
-
+import Page from '@components/page/page'
 import { User } from '@lib/types'
 import UserSection from '@components/user-section'
 import { GetServerSideProps } from 'next'
-import PageContainer from '@components/page-container'
 import Link from 'next/link'
-import UserIcon from '@components/icons/icon-user'
 
 type Props = {
   user?: User | null
@@ -22,16 +18,14 @@ export default function UserPage({ user }: Props) {
 
   return (
     <Page meta={meta}>
-      <Layout>
         {user ? (
           <UserSection user={user} />
         ) : (
-          <PageContainer>
+          <>
           <h1> User Not Found </h1>
           <Link href="/users"><a>Click here to check your Users.</a></Link>
-          </PageContainer>
+          </>
         )}
-      </Layout>
     </Page>
   )
 }
