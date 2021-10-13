@@ -5,7 +5,7 @@ import { User } from '@lib/types'
 import styles from './users-grid.module.css'
 import UserIcon from './icons/user-icon'
 import { ReactElement, useContext, useState } from 'react'
-import { ConfigContext } from './config-context'
+import { ConfigContext } from './context/config-context'
 import SearchBar from './search-bar'
 
 function UserCard({ user }: { user: User }) {

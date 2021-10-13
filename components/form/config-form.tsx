@@ -1,12 +1,13 @@
 import { CONFIG_OPTIONS } from '@lib/constants'
 import { useContext, useEffect, useState } from 'react'
-import LoadingDots from './loading-dots'
-import ChangeWidget from './change-widget'
+import LoadingDots from '../loading-dots'
+import ChangeWidget from '../change-widget'
 import styles from './config-form.module.css'
-import { ConfigContext } from './config-context'
+import { ConfigContext } from '../context/config-context'
 import { setConfigFetch } from '@lib/config-api'
 import { toast } from 'react-toastify'
 import i18n from 'translate/i18n'
+import Select from '@components/common/select'
 
 export default function ConfigForm(){
   const { config, loading, setConfig } = useContext(ConfigContext)
@@ -52,7 +53,7 @@ export default function ConfigForm(){
           <h2 className={styles.text}>
             {i18n.t('config.locale')}
           </h2>
-          <select
+          <Select
           onChange={e =>{
             const localeValue = e.target.value
             setLocale(localeValue)
@@ -64,13 +65,13 @@ export default function ConfigForm(){
               </option>
               )
             })}
-          </select>
+          </Select>
         </div>
         <div className={styles.container}>
           <h2 className={styles.text}>
             {i18n.t('config.language')}
           </h2>
-          <select
+          <Select
           onChange={e => {
             const langValue = e.target.value
             setLanguage(langValue)
@@ -81,7 +82,7 @@ export default function ConfigForm(){
               </option>
               )
             })}
-          </select>
+          </Select>
         </div>
         <button 
           className="button"

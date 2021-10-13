@@ -20,15 +20,14 @@ export default function Footer({ links } : Props) {
           {links.map( (link, i) => {
             return (
               <>
-                <p className={styles['footer-paragraph']}>
                 <a
-                  href={`${SITE_URL}${link.route}`}
-                  className={styles['footer-link']}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                href={`${SITE_URL}${link.route}`}
+                className={styles['footer-link']}
+                target="_blank"
+                rel="noopener noreferrer"
                 >
                   {link.name}
-                </a></p>
+                </a>
                 {i != links.length - 1 && <div className={styles['footer-separator']} />}
               </>
             )

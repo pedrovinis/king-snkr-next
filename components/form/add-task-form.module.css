@@ -1,0 +1,19 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.selects {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.select {
+    width: min-content;
+    margin: 1rem;
+    min-width: 250px;
+}

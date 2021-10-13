@@ -10,10 +10,10 @@ import Link from 'next/link'
 import TaskProgress from './task-progress'
 import DeleteIcon from './icons/delete-icon'
 import StopIcon from './icons/stop-icon'
-import { TaskContext } from './task-context'
+import { TaskContext } from './context/task-context'
 import router from 'next/router'
 import { toast } from 'react-toastify'
-import { PayLoadsContext } from './payloads-context'
+import { PayLoadsContext } from '@components/context/payloads-context'
 import LoadingDots from './loading-dots'
 import SmsConfirmForm from './sms-confirm-from'
 import { SMS_CONFIRM_INDEX } from '@lib/constants'
@@ -154,18 +154,14 @@ export default function TasksGrid({ tasks }: Props) {
 
   return (
     <>
-    {usersInputs.length ? (
+    {usersInputs.length && (
       <div className={styles.userInput}>
         {usersInputs}
       </div>
-    ) : (
-      <></>
     )}
 
-      {tasks.length > 1 ? ( 
-      <SearchBar value={searchValue} setValue={setSearchValue}/>
-      ) : (
-        <></>
+      {tasks.length > 1 && ( 
+        <SearchBar value={searchValue} setValue={setSearchValue}/>
       )}
 
       <div style={{alignSelf: 'center'}}>
@@ -195,13 +191,11 @@ export default function TasksGrid({ tasks }: Props) {
           </tbody>
         </table>
       </div>
-      {filtredTASKS.length == 0 ? (
+      {!filtredTASKS.length && (
         <div className={styles.notFoundMessage}>
           There are no tasks that match
           <a style={{color:'var(--brand)'}}> "{searchValue}" </a>
         </div>
-        ): (
-          <></>
         )}
     </>
   )

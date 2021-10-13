@@ -5,7 +5,6 @@ import styles from './snkrs-grid.module.css'
 import SnkrIcon from '@components/icons/snkr-icon'
 import SearchBar from './search-bar'
 import { ReactElement, useState } from 'react'
-import PageContainer from './page-container'
 
 function SnkrCard({ snkr }: { snkr: Snkr }) {
   return (

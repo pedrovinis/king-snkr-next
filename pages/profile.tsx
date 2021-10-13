@@ -1,20 +1,17 @@
 import Page from '@components/page/page'
 import TicketVisual from '@components/ticket-visual'
-import Header from '@components/header'
-import ActivateKeyForm from '@components/activate-key-form'
-import { AuthContext } from '@components/auth-context'
+import ActivateKeyForm from '@components/form/activate-key-form'
+import { AuthContext } from '@components/context/auth-context'
 import { useContext } from 'react'
 import LoadingDots from '@components/loading-dots'
-import { UserProductsContext } from '@components/user-products-context'
+import { UserProductsContext } from '@components/context/user-products-context'
 import { isActive } from '@lib/isActive'
 import LoginButton from '@components/login-button'
 import LogoutButton from '@components/logout-button'
-import i18n from 'translate/i18n'
 
 export default function Conf() {
   const meta = {
-    title: 'King Snkr | Profile',
-    description: 'pXv'
+    title: 'pXv Profile',
   }
 
   const { loading, session } = useContext(AuthContext)
@@ -24,8 +21,7 @@ export default function Conf() {
   const active = isActive(expiration)
 
   return (
-    <Page meta={meta} fullViewport>
-      <Header hero={i18n.t('profile.title')} description="Your profile, info and details."/>
+    <Page meta={meta}>
         <TicketVisual
           name={session?.user?.name}
           email={session?.user?.email}
@@ -34,24 +30,15 @@ export default function Conf() {
           userProductsState={UserProducts.loading ? 'loading' : 'default'}
           expiration={expiration ? expiration : null}
         />
-
-        {loading ? (
-          <></>
-        ) : (
+        {!loading && (
           <>
           {session ? (
             <>
             <LogoutButton />
             {UserProducts.loading ? (
-              <div style={{display:'flex', justifyContent:'center', margin: '3rem 0'}}><LoadingDots size={15}/></div>
+              <LoadingDots size={15}/>
             ) : (
-              <>
-                {active ? (
-                  <></>
-                ) : (
-                  <ActivateKeyForm />
-                )}
-              </>
+              !active && <ActivateKeyForm />
             )}
             </>
           ) : (

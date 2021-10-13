@@ -8,7 +8,7 @@ import Profile from '@components/profile'
 
 import LearnMore from './learn-more'
 import LoginButton from './login-button'
-import { AuthContext } from './auth-context'
+import { AuthContext } from './context/auth-context'
 import LoadingDots from './loading-dots'
 
 

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import Page from '@components/page/page'
 import UsersGrid from '@components/users-grid'
-import Header from '@components/header'
+import Header from '@components/common/header'
 import { GetServerSideProps } from 'next'
 import { User } from '@lib/types'
 import Link from 'next/link'
@@ -14,15 +14,13 @@ type Props = {
 
 export default function UsersPage( {users}: Props) {
   const meta = {
-    title: 'King Snkr | Users',
-    description: 'Here you will find your Nike Users.'
+    title: 'Users',
   }
 
   const isEmpty = !users.length
 
   return (
     <Page meta={meta}>
-        <Header hero="Users" description={meta.description} />
         <Link href={'/adduser'} >
           <button
           className='button'

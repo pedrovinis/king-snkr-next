@@ -1,7 +1,7 @@
 :root {
   --border-radius: 0.3rem;
   --navbar-height: 4.5rem;
-  --footer-height: 2.5rem;
+  --footer-height: 3.1rem;
 
   --space: 4px;
   --space-2x: 8px;
@@ -107,34 +107,6 @@ a {
   color: var(--secondary-color);
 }
 
-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-input {
-  padding-left: 15px;
-  padding-right: 15px;
-  background: transparent;
-  outline: none;
-  height: 56px;
-  border-radius: var(--border-radius);
-  color: var(--text-primary);
-  font-family: inherit;
-  border: 1px solid var(--gray);
-  transition: border-color 0.2s ease;
-  font-size: var(--text-md);
-}
-
-input:focus {
-  border-color: var(--brand);
-}
-
-input::placeholder {
-  color: var(--accents-4);
-}
-
 svg {
   shape-rendering: crispEdges;
 }
@@ -179,13 +151,14 @@ svg circle {
 }
 
 button {
+  min-width: 10rem;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   font-size: 1.2rem;
   font-weight: 500;
   background-color: transparent;
   outline: none;
-  border: 1px solid var(--gray);
+  border: 2px solid var(--accents-7);
   border-radius: var(--border-radius);
   transition: border-color 0.2s ease, color 0.2s ease;
   color: var(--accents-2);
@@ -224,13 +197,33 @@ button:focus {
   border-color:  var(--brand);
 }
 
+input {
+  padding-left: 15px;
+  padding-right: 15px;
+  background: transparent;
+  outline: none;
+  height: 56px;
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  font-family: inherit;
+  border: 1px solid var(--gray);
+  transition: border-color 0.2s ease;
+  font-size: var(--text-md);
+}
+
+input:focus {
+  border-color: var(--brand);
+}
+
+input::placeholder {
+  color: var(--accents-4);
+}
+
 #buttonRed {
   color: var(--red);
-  border-color: var(--red);
 }
 
 #buttonRed:hover,
 #buttonRed:focus {
-  background: var(--red);
-  color: var(--accents-9);
+  border-color: var(--red);
 }

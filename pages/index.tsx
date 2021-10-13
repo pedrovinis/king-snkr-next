@@ -10,7 +10,7 @@ export default function Conf() {
   }
 
   return (
-    <Page meta={meta} fullViewport>
+    <Page meta={meta}>
       <SkipNavContent />
       <IndexComp />
     </Page>

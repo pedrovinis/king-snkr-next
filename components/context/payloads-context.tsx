@@ -1,6 +1,5 @@
 import { payLoadsFecth } from "@lib/kingsnkr-api"
-import payloads from "pages/api/kingsnkr/payloads"
-import { UserProductsContext } from '@components/user-products-context'
+import { UserProductsContext } from './user-products-context'
 import { createContext, useContext, useEffect, useState } from "react"
 import { isActive } from "@lib/isActive"
 

@@ -4,7 +4,7 @@ import { User } from '@lib/types'
 import styles from './user-card.module.css'
 import UserIcon from './icons/user-icon'
 import { PhoneNumberFormat } from '@lib/form-format'
-import { ConfigContext } from './config-context'
+import { ConfigContext } from './context/config-context'
 
 type Props = {
   user: User

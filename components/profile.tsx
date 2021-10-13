@@ -3,7 +3,7 @@ import styles from './profile.module.css'
 import UserIcon from "./icons/user-icon"
 import LogoutButton from "./logout-button"
 import { useContext } from 'react'
-import { ConfigContext } from './config-context'
+import { ConfigContext } from './context/config-context'
 
 export default function Profile({user}:any) {
   const { config } = useContext(ConfigContext)

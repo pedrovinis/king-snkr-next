@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import cn from 'classnames'
 
-import LoadingDots from './loading-dots'
+import LoadingDots from '../loading-dots'
 import styles from './activate-key-form.module.css'
 
 import router from 'next/router'
 import { toast } from 'react-toastify'
-import IconKey from './icons/key-icon'
+import IconKey from '../icons/key-icon'
 import { activateFetch } from '@lib/kingsnkr-api'
 import i18n from 'translate/i18n'
 
@@ -14,7 +14,6 @@ type FormState = 'default' | 'loading' | 'error'
 
 export default function ActivateKeyForm() {
   const [key, setkey] = useState('')
-  const [keyFocused, setkeyFocused] = useState(false)
   const [formState, setFormState] = useState<FormState>('default')
 
   const handleActiveRes = async(res:any) => {
@@ -48,15 +47,12 @@ export default function ActivateKeyForm() {
             spellCheck={false}
             maxLength={17}
             minLength={17}
-            style={{width:'96%'}}
             disabled={formState === 'loading' }
             autoComplete="off"
             type="text"
             id="keycode-input-field"
             value={key}
             onChange={e => setkey(e.target.value.toUpperCase().trim())}
-            onFocus={() => setkeyFocused(true)}
-            onBlur={() => setkeyFocused(false)}
             placeholder="Enter your Keycode: XXXXX-XXXXX-XXXXX"
             aria-label="Active Keycode"
             required

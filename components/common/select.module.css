@@ -1,0 +1,33 @@
+.container {
+  appearance: none;
+  color: var(--secondary-color);
+  display: inline-flex;
+  text-transform: uppercase;
+  user-select: none;
+  font-weight: 100;
+  position: relative;
+  white-space: nowrap;
+  line-height: 0;
+  height: 56px;
+  width: 100%;
+  min-width: 160px;
+  outline: none;
+  overflow: hidden;
+  border-radius: var(--space-2x);
+  background-color: var(--sidebar);
+}
+
+.arrow {
+  width: 30px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  transition: border 0.2s ease 0s;
+}
+
+.arrow > svg {
+  color: #fff;
+}

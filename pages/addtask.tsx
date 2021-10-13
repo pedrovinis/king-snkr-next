@@ -1,7 +1,6 @@
 import fs from 'fs'
 import Page from '@components/page/page'
-import AddTaskForm from '@components/add-task-form'
-import Header from '@components/header'
+import AddTaskForm from '@components//form/add-task-form'
 import { User, Snkr } from '@lib/types'
 import { GetServerSideProps } from 'next'
 
@@ -12,13 +11,11 @@ type Props = {
 
 export default function AddTask({users, snkrs}:Props) {
   const meta = {
-    title: 'King Snkr | Add Task',
-    description: 'Add a nike User.'
-  };
+    title: 'Add Task',
+  }
 
   return (
-    <Page meta={meta} fullViewport>
-        <Header hero="Add Task" description={meta.description}/>
+    <Page meta={meta}>
         <AddTaskForm users={users} snkrs={snkrs}/>
     </Page>
   )

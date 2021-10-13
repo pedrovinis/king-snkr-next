@@ -1,7 +1,7 @@
 import fs from 'fs'
 import Page from '@components/page/page'
 import SnkrsGrid from '@components/snkrs-grid'
-import Header from '@components/header'
+import Header from '@components/common/header'
 
 import { GetServerSideProps } from 'next'
 import { Snkr } from '@lib/types'
@@ -16,15 +16,13 @@ type Props = {
 
 export default function SneakersPage( {snkrs}: Props) {
   const meta = {
-    title: 'King Snkr | Sneakers',
-    description: 'Here you will find your SNEAKERS.'
+    title: 'Sneakers',
   }
 
   const isEmpty = !snkrs.length
 
   return (
     <Page meta={meta}>
-        <Header hero="SNEAKERS" description={meta.description} />
         <Link href={'/addsnkr'}>
           <button
           className='button'

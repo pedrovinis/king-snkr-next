@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 12.5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 1px solid var(--accents-7);
+    background-color: var(--accents-8);
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    margin: 1rem 10rem;
+    margin-top: 2rem;
+}
+
+.description {
+    margin: 0;
+    width: 70%;
+    margin-bottom: 2rem;
+}

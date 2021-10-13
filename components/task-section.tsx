@@ -4,17 +4,17 @@ import { useContext, useEffect, useMemo, useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteTaskFetch } from '@lib/task-api'
 import router from 'next/router'
-import BackLink from './backLink'
+import BackLink from './common/backLink'
 import { toast } from 'react-toastify'
 import TaskIcon from './icons/task-icon'
 import UserCard from './user-card'
 import SnkrCard from './snkr-card'
-import StepProgress from './step-progress'
+import StepProgress from './common/step-progress'
 import { TASK_PROGRESS } from '@lib/constants'
 import cn from 'classnames'
-import { TaskContext } from './task-context'
+import { TaskContext } from './context/task-context'
 import i18n from 'translate/i18n'
-import { PayLoadsContext } from './payloads-context'
+import { PayLoadsContext } from './context/payloads-context'
 import IconInfo from './icons/info-icon'
 
 type Props = {
@@ -69,10 +69,10 @@ export default function TaskSection({ task }: Props) {
         </div>
       <StepProgress steps={TASK_PROGRESS} progress={running ? progress : 0}/>
       {payloads.loading ? (
-          <span style={{alignSelf: 'center'}}><LoadingDots size={10}/></span>
+          <span ><LoadingDots size={10}/></span>
         ) : (
           <>
-          {payloads.payloads ? (
+          {payloads.payloads && (
             <button className={cn({
               ["button"]: !active,
               ["buttonRed"]: active
@@ -83,8 +83,6 @@ export default function TaskSection({ task }: Props) {
             >
               {running && active ? <>{i18n.t('buttons.stop_task')}</> : <>{i18n.t('buttons.start_task')}</>}
             </button>
-          ) : (
-            <></>
           )}
           </>
         )}

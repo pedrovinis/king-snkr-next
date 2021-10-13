@@ -1,6 +1,7 @@
 .container {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  border: none;
 }
 
 .container::-webkit-scrollbar {
@@ -46,7 +47,7 @@
 
 @media (min-width: 500px) {
   .container {
-    border-top: 1px solid var(--accents-7);
+    border-top: 1px solid var(--accents-7); 
   }
 
   .row {

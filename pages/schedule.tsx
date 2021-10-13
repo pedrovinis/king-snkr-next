@@ -2,7 +2,7 @@ import fs from 'fs'
 import { GetServerSideProps } from 'next'
 import Page from '@components/page/page'
 import Schedule from '@components/schedule'
-import Header from '@components/header'
+import Header from '@components/common/header'
 import { Stage, Snkr } from '@lib/types'
 
 type Props = {
@@ -11,13 +11,12 @@ type Props = {
 
 export default function SchedulePage({ schedule }: Props) {
   const meta = {
-    title: 'King Snkr | Schedule',
-    description: 'Sneakers added schedule, to add a sneaker go to "SNEAKERS" and click on "Add SNEAKER".'
+    title: 'Schedule'
   }
 
   return (
-    <Page meta={meta}>
-        <Header hero="Schedule" description={meta.description} />
+    <Page meta={meta} display="block">
+      <Header title={'Schedule'}/>
         <Schedule allStages={schedule} /> 
     </Page>
   )

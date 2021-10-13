@@ -1,8 +1,6 @@
 import i18n from "translate/i18n"
 
 export const SITE_URL = 'https://pxv.vercel.app'
-export const SITE_ORIGIN = 'https://pxv.vercel.app/'
-export const BRAND_NAME = 'pXv'
 
 export const LOCAL_LINK =  'http://localhost:3000'
 

@@ -1,7 +1,7 @@
 import NavBar from './navbar'
 import Footer from './footer'
 import { useContext, useEffect, useState } from 'react'
-import { ConfigContext } from '../config-context'
+import { ConfigContext } from '../context/config-context'
 import i18n from 'translate/i18n'
 import MobileMenuContainer from './moble-menu/mobile-menu-container'
 

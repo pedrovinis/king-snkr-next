@@ -4,7 +4,7 @@ import cn from 'classnames'
 import IconUser from './icons/user-icon'
 import styles from './ticket-profile.module.css'
 import { useContext } from 'react'
-import { ConfigContext } from './config-context'
+import { ConfigContext } from './context/config-context'
 
 type Props = {
   name?: string

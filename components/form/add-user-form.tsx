@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import cn from 'classnames'
-import LoadingDots from './loading-dots'
+import LoadingDots from '../loading-dots'
 import styles from './add-user-form.module.css'
-import IconUser from './icons/user-icon'
+import IconUser from '../icons/user-icon'
 import { addUserFetch } from '@lib/user-api'
 import router from 'next/router'
 import { toast } from 'react-toastify'
 import { PhoneNumberFormat } from '@lib/form-format'
-import XIcon from './icons/x-icon'
+import XIcon from '../icons/x-icon'
 import i18n from 'translate/i18n'
 
 type FormState = 'default' | 'loading' | 'error'
@@ -132,7 +132,7 @@ export default function AddUserForm() {
           className={styles[formState]}
           disabled={formState === 'loading' }
         >
-          {formState === 'loading' ? <LoadingDots size={5} /> : <>{i18n.t('buttons.add')}</>}
+          {formState === 'loading' ? <LoadingDots size={5} /> : <>{i18n.t('buttons.add_user')}</>}
         </button>
       </div>
     </form>

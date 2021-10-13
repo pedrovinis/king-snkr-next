@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import cn from 'classnames'
-import LoadingDots from './loading-dots'
+import LoadingDots from '../loading-dots'
 import styles from './add-snkr-form.module.css'
 
 import { addSnkrFetch } from '@lib/snkr-api'
@@ -20,7 +20,7 @@ export default function AddUserForm() {
       toast.success(`${data.name} successful added.`)
       setLink('')
     }
-    else toast.error('Error on add SNEAKER. Please try again.')
+    else toast.error('Error on add Sneaker. Please try again.')
   }
 
   return (
@@ -59,7 +59,7 @@ export default function AddUserForm() {
             setFormState('default')
           }}
         >
-          {formState === 'loading' ? <LoadingDots size={5}/> : <>{i18n.t('buttons.add')}</>}
+          {formState === 'loading' ? <LoadingDots size={5}/> : <>{i18n.t('buttons.add_snkr')}</>}
         </button>
       </div>
     </form>

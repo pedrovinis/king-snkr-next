@@ -5,7 +5,7 @@ import { useState } from 'react'
 import LoadingDots from './loading-dots'
 import { deleteSnkrFetch } from '@lib/snkr-api'
 import router from 'next/router'
-import BackLink from './backLink'
+import BackLink from './common/backLink'
 import CopyButton from './common/copy-button'
 import { toast } from 'react-toastify'
 import IconInfo from './icons/info-icon'
@@ -67,9 +67,7 @@ export default function SnkrSection({ snkr }: Props) {
             <h2 className={styles['bio-header']}>Release</h2>
             <p className={styles.title}>
               {formatRelease(snkr.release)}
-              {released ? (
-              <> { ' - '} <span style={{color: 'var(--brand'}}>Released</span></>
-              ): <></>}
+              {released && (<> { ' - '} <span style={{color: 'var(--brand'}}>Released</span></>)}
             </p>
 
             <h2 className={styles['bio-header']}>Link</h2>

@@ -1,20 +1,16 @@
 import Page from '@components/page/page'
-import ConfigForm from '@components/config-form'
-import Header from '@components/header'
-import i18n from 'translate/i18n'
+import ConfigForm from '@components/form/config-form'
 import packageJSON from '../package.json'
 
 export default function ConfigPage() {
   const meta = {
-    title: 'King Snkr | Config',
-    description: i18n.t('config.desc')
+    title: 'Configurations'
   }
 
   return (
-    <Page meta={meta} fullViewport>
-        <Header hero={i18n.t('config.title')} description={meta.description}/>
-          <ConfigForm />
-          <h5 style={{margin: '0 auto', marginTop: '1.5rem'}}>{`KING SNKR V${packageJSON.version}`}</h5>
+    <Page meta={meta}>
+      <ConfigForm />
+      <h5>{`KING SNKR V${packageJSON.version}`}</h5>
     </Page>
   )
 }
